@@ -208,7 +208,7 @@ It is my intent that students from all diverse backgrounds and perspectives be w
 This course is assessed 100% on your coursework (there is no exam). We will be assessing you based on the following assignments,
 
 | Assignment                 | Type       | Value | Due                                        |
-|:----------------|:----------------|:----------------|---------------------|
+|:-----------------|:-----------------|:-----------------|--------------------|
 | Attendance + participation | Individual | 5%    |                                            |
 | Reading quizzes            | Individual | 10%   | \~ Every other week                        |
 | Homeworks                  | Individual | 45%   | \~ Every other week                        |
@@ -230,17 +230,21 @@ This is not required but highly recommended!
 
 -   Homework assignments:
 
-    -   Late, but same day (before midnight): -10% of available points
-    -   Late, but next day: -20% of available points
-    -   Two days late or later: No credit, and we will not provide written feedback
+    -   Late, within 24 hours of deadline: -10% of available points
+
+    -   Late, within 24-48 hours of deadline: -20% of available points
+
+    -   More than 48 hours later: No credit, and we will not provide written feedback
 
 -   Project presentations: Late submissions not accepted
 
 -   Project write-ups:
 
-    -   Late, but same day (before midnight): -10% of available points
-    -   Late, but next day: -20% of available points
-    -   Two days late or later: No credit, and we will not provide written feedback
+    -   Late, within 24 hours of deadline: -10% of available points
+
+    -   Late, within 24-48 hours of deadline: -20% of available points
+
+    -   More than 48 hours later: No credit, and we will not provide written feedback
 
 -   Peer evaluation:
 

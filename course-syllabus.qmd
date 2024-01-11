@@ -211,11 +211,11 @@ Policy on late work depends on the particular course component:
 
 -   Homework assignments: GitHub repositories will be closed to contributions at the deadline. If you need to submit your work late, send a DM on Slack to the Head TA to reopen your repository.
 
-    -   Late, but same day (before midnight): -10% of available points
+    -   Late, within 24 hours of deadline: -10% of available points
 
-    -   Late, but next day: -20% of available points
+    -   Late, within 24-48 hours of deadline: -20% of available points
 
-    -   Two days late or later: No credit, and we will not provide written feedback
+    -   More than 48 hours later: No credit, and we will not provide written feedback
 
 -   Projects: The following three components contribute to your project score.
 
@@ -223,11 +223,11 @@ Policy on late work depends on the particular course component:
 
     -   Write up: GitHub repositories will be closed to contributions at the deadline. If you need to submit your work late, Slack/email me to reopen your repository.
 
-        -   Late, but same day (before midnight): -10% of available points
+        -   Late, within 24 hours of deadline: -10% of available points
 
-        -   Late, but next day: -20% of available points
+        -   Late, within 24-48 hours of deadline: -20% of available points
 
-        -   Two days late or later: No credit, and we will not provide written feedback
+        -   More than 48 hours later: No credit, and we will not provide written feedback
 
     -   Peer evaluation: Late peer evaluations are not accepted and there are no make ups for missed presentations. If you do not turn in your peer evaluation, you get 0 points for your own peer score as well, regardless of how your teammates have evaluated you.
 
