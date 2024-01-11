@@ -208,7 +208,7 @@ It is my intent that students from all diverse backgrounds and perspectives be w
 This course is assessed 100% on your coursework (there is no exam). We will be assessing you based on the following assignments,
 
 | Assignment                 | Type       | Value | Due                                        |
-|:---------------|:---------------|:---------------|-------------------------|
+|:----------------|:----------------|:----------------|-----------------------|
 | Attendance + participation | Individual | 5%    |                                            |
 | Reading quizzes            | Individual | 10%   | \~ Every other week                        |
 | Homeworks                  | Individual | 45%   | \~ Every other week                        |
@@ -273,12 +273,9 @@ This is not required but highly recommended!
 
     -   \(2\) *Ethical dimension***:** Students using AI should be transparent about their use and make sure it aligns with academic integrity.
 
-```{=html}
-<!-- -->
-```
--   **✅ AI tools for code:** You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism. See the syllabus for guidelines for citing AI-generated content.
+-   **✅ AI tools for code:** You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code. See the syllabus for guidelines for citing AI-generated content.
 
--   **❌ AI tools for narrative:** Unless instructed otherwise, you may not use generative AI to write narrative on assignments. In general, you may use generative AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content.
+-   **❌ AI tools for narrative:** Unless instructed otherwise, you may not use generative AI to write narrative on assignments. In general, you may use generative AI as a resource as you complete assignments but not to answer the exercises for you.
 
 ## Academic integrity
 
@@ -478,7 +475,6 @@ library(tidyverse)
 -   For help with ggplot2, see [ggplot2.tidyverse.org](http://ggplot2.tidyverse.org/)
 
 ## Data: Palmer Penguins {.smaller}
-
 
 ::: columns
 ::: {.column width="80%"}
