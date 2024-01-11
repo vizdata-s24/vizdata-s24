@@ -1,0 +1,79 @@
+---
+title: "STA 313: Advanced Data Visualization"
+execute: 
+  freeze: false
+---
+
+This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.
+
+::: callout-warning
+UPDATE SCHEDULE
+:::
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| eval: false
+
+library(googlesheets4)
+library(gt)
+library(tidyverse)
+gs4_deauth()
+d <- read_sheet("https://docs.google.com/spreadsheets/d/1XBJwiTSZ9uYwLzTjEs-0lHFHkH4KPckP_MIO7q57SJ0/edit?usp=sharing")
+```
+
+```{r}
+#| echo: false
+#| eval: false
+
+d |>
+  filter(!is.na(session)) |>
+  select(-dow, -admin_notes, -number, -session) |>
+  mutate(date = as.Date(date)) |>
+  relocate(due, .after = materials) |>
+  gt() |>
+  fmt_date(date, date_style = 31) |>
+  sub_missing(columns = c(week, prepare, topic, materials, due), missing_text = "") |>
+  cols_align(
+    align = "center", 
+    columns = c(week)
+  ) |>
+  cols_align(
+    align = "right", 
+    columns = c(date)
+  ) |>
+  cols_align(
+    align = "left", 
+    columns = c(topic, prepare, materials, due)
+  ) |>
+  tab_style(
+    style = cell_borders(
+      sides = "right",
+      color = "#D3D3D3",
+      style = "solid"
+    ),
+    locations = cells_body(
+      columns = c(date, topic, prepare, materials)
+    )
+  ) |>
+  fmt_markdown(
+    columns = c(topic, prepare, materials, due)
+  ) |>
+  cols_width(
+    week ~ px(45),
+    date ~ px(100), 
+    prepare ~ px(100),
+    topic ~ px(300),
+    materials ~ px(150),
+    due ~ px(300)
+  ) |>
+  cols_label_with(fn = function(x) {
+      janitor::make_clean_names(x, case = "title") |>
+        toupper() |>
+        stringr::str_replace_all("^|$", "**") |>
+        md()
+    }) |>
+  tab_options(table.font.size = 13) |>
+  opt_row_striping()
+```
