@@ -27,15 +27,13 @@ Old Chem 213
 ::: {.column width="50%"}
 ### Teaching assistants
 
--   Holly Cui - Lab 1 TA
--   Eli Gnesin - Head + Lab 2 TA
--   Kelsey Brod - Project lead + Lecture TA
--   Shelby Tisdale - Project support + Lecture TA
+-   Eli Gnesin - Head TA + Lab 2 TA
 -   Glenn Palmer
+-   Holly Cui - Lab 1 TA
+-   Kelsey Brod - Project lead + Lecture TA (Thursdays)
+-   Shelby Tisdale - Project support + Lecture TA (Tuesdays)
 :::
 :::
-
-### 
 
 ## Timetable
 
@@ -104,7 +102,7 @@ aka "the one link to rule them all"
 
 -   In person
 
--   Attendance is required (as long as you're healthy!)
+-   Attendance is required
 
 -   A little bit of everything:
 
@@ -116,7 +114,7 @@ aka "the one link to rule them all"
 
 ## Labs
 
--   Attendance is required (as long as you're healthy!)
+-   Attendance is required
 
 -   Opportunity to work on course assignments with TA support
 
@@ -210,7 +208,7 @@ It is my intent that students from all diverse backgrounds and perspectives be w
 This course is assessed 100% on your coursework (there is no exam). We will be assessing you based on the following assignments,
 
 | Assignment                 | Type       | Value | Due                                        |
-|:--------------|:--------------|:----------------|-----------------------------|
+|:---------------|:---------------|:---------------|-------------------------|
 | Attendance + participation | Individual | 5%    |                                            |
 | Reading quizzes            | Individual | 10%   | \~ Every other week                        |
 | Homeworks                  | Individual | 45%   | \~ Every other week                        |
@@ -225,14 +223,6 @@ This is not required but highly recommended!
 -   I encourage you to participate, or at a minimum, browse others' contributions on Twitter or Mastodon with [#TidyTuesday](https://twitter.com/search?q=%23TidyTuesday&src=typed_query&f=live)
 
 # Course policies
-
-## COVID policies
-
--   Wear a mask if the university requires
-
--   Stay home if you're sick and follow guidance
-
--   Read and follow university guidance
 
 ## Late work policy {.smaller}
 
@@ -269,9 +259,26 @@ This is not required but highly recommended!
 
 -   We are aware that a huge volume of code is available on the web, and many tasks may have solutions posted
 
--   Unless explicitly stated otherwise, this course's policy is that you may make use of any online resources (e.g. RStudio Community, StackOverflow, etc.) but you must explicitly cite where you obtained any code you directly use or use as inspiration in your solution(s).
+-   Unless explicitly stated otherwise, this course's policy is that you may make use of any online resources (e.g. RStudio Community, StackOverflow, etc.) but you must explicitly cite where you obtained any code you directly use or use as inspiration in your solution(s)
 
 -   Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism, regardless of source
+
+## Use of generative artificial intelligence (AI) {.smaller}
+
+-   Treat generative AI, such as ChatGPT, the same as other online resources.
+
+-   Guiding principles:
+
+    -   \(1\) *Cognitive dimension:* Working with AI should not reduce your ability to think clearly. We will practice using AI to facilitate—rather than hinder—learning.
+
+    -   \(2\) *Ethical dimension***:** Students using AI should be transparent about their use and make sure it aligns with academic integrity.
+
+```{=html}
+<!-- -->
+```
+-   **✅ AI tools for code:** You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism. See the syllabus for guidelines for citing AI-generated content.
+
+-   **❌ AI tools for narrative:** Unless instructed otherwise, you may not use generative AI to write narrative on assignments. In general, you may use generative AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content.
 
 ## Academic integrity
 
@@ -299,11 +306,13 @@ ask if you're not sure if something violates a policy!
 
 -   Mine:
 
-    -   Tuesdays 2:30 - 3:30 pm - Zoom
+    -   Tuesdays 2:30 - 3:30 pm - Old Chem 213 (+ Zoom upon request)
 
-        -   Any exceptions will be announced in class / by email
+        -   Any exceptions will be announced in class / course announcement
 
--   TAs: TBA
+-   TAs: TBA!
+
+-   Office hours start next Tuesday
 
 -   \+ lots more resources listed on the syllabus!
 
@@ -468,20 +477,21 @@ library(tidyverse)
 
 -   For help with ggplot2, see [ggplot2.tidyverse.org](http://ggplot2.tidyverse.org/)
 
-## Data: Palmer Penguins
+## Data: Palmer Penguins {.smaller}
 
-Measurements for penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.
 
 ::: columns
-::: {.column width="20%"}
-![](images/penguins.png){fig-align="left"}
-:::
-
 ::: {.column width="80%"}
+Measurements for penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.
+
 ```{r}
 library(palmerpenguins)
 glimpse(penguins)
 ```
+:::
+
+::: {.column width="20%"}
+![](images/penguins.png){fig-align="left"}
 :::
 :::
 
@@ -503,14 +513,14 @@ glimpse(penguins)
 
 ggplot(
   penguins,
-  aes(x = bill_depth_mm, y = bill_length_mm, colour = species)
+  aes(x = bill_depth_mm, y = bill_length_mm, color = species)
 ) +
   geom_point() +
   labs(
     title = "Bill depth and length",
     subtitle = "Dimensions for Adelie, Chinstrap, and Gentoo Penguins",
     x = "Bill depth (mm)", y = "Bill length (mm)",
-    colour = "Species"
+    color = "Species"
   )
 ```
 :::
@@ -533,13 +543,14 @@ ggplot(
 
 ggplot(
   penguins,
-  aes(x = bill_depth_mm,y = bill_length_mm,colour = species)) +
-  geom_point() +
+  aes(x = bill_depth_mm, y = bill_length_mm, color = species, shape = species)) +
+  geom_point(size = 2) +
   labs(
     title = "Bill depth and length",
     subtitle = "Dimensions for Adelie, Chinstrap, and Gentoo Penguins",
     x = "Bill depth (mm)", y = "Bill length (mm)",
-    colour = "Species",
+    color = "Species",
+    shape = "Species",
     caption = "Source: Palmer Station LTER / palmerpenguins package"
   ) +
   theme_minimal() +
@@ -550,9 +561,9 @@ ggplot(
 
 Start with the `penguins` data frame, map bill depth to the x-axis and map bill length to the y-axis.
 
-Represent each observation with a point and map species to the colour of each point.
+Represent each observation with a point and map species to the color and shape of each point.
 
 Title the plot "Bill depth and length", add the subtitle "Dimensions for Adelie, Chinstrap, and Gentoo Penguins", label the x and y axes as "Bill depth (mm)" and "Bill length (mm)", respectively, label the legend "Species", and add a caption for the data source.
 
-Finally, use a discrete colour scale that is designed to be perceived by viewers with common forms of colour blindness.
+Finally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness.
 :::
