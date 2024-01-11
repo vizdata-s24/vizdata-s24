@@ -15,7 +15,7 @@ title: "Teaching team"
 ## Teaching assistants
 
 |                                          | Name                                                          | Role                         | Lab section       | Office hours |
-|---------------|---------------|---------------|---------------|---------------|
+|------------------------------------------|---------------------------------------------------------------|------------------------------|-------------------|--------------|
 | ![](images/team/holly.png){width="100"}  | [Holly Cui](https://www.linkedin.com/in/holly-cui-4b4520236/) | Lab TA                       | W 1:25PM - 2:40PM | TBA          |
 | ![](images/team/eli.png){width="100"}    | [Eli Gnesin](https://www.linkedin.com/in/elignesin/)          | Head + Lab TA                | W 3:05PM - 4:20PM | TBA          |
 | ![](images/team/kelsey.png){width="100"} | [Kelsey Brod](https://www.kelseybrod.com/)                    | Project lead + Lecture TA    |                   | TBA          |
