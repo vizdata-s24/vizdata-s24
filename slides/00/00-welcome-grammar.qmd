@@ -77,7 +77,7 @@ Old Chem 213
 
 -   Then, share your good graphs -- Same deal, share your examples of "good" graphs and why you think they're good.
 
--   Finally, choose the **one** plot from your group that you think is most striking, either because it's bad or because it's good, and have one team member share the graph on #general in Slack.
+-   Finally, choose the **one** plot from your group that you think is most striking, either because it's bad or because it's good, and have one team member share the graph on #general in Slack in the relevant thread.
 :::
 
 # Course components
@@ -208,7 +208,7 @@ It is my intent that students from all diverse backgrounds and perspectives be w
 This course is assessed 100% on your coursework (there is no exam). We will be assessing you based on the following assignments,
 
 | Assignment                 | Type       | Value | Due                                        |
-|:----------------|:----------------|:----------------|-----------------------|
+|:----------------|:----------------|:----------------|---------------------|
 | Attendance + participation | Individual | 5%    |                                            |
 | Reading quizzes            | Individual | 10%   | \~ Every other week                        |
 | Homeworks                  | Individual | 45%   | \~ Every other week                        |
