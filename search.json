@@ -448,13 +448,6 @@
     "text": "Slack\n\nOnline forum for asking and answering questions\nPrivate repo in the course organization\nYou will need to join the course organization for access\nAsk and answer questions related to course logistics, assignment, etc. here\nPersonal questions (e.g., extensions, illnesses, etc.) should be via email to me\nOnce you join, browse the channels to make sure you’re posting questions in the right channel, update your profile with your name, photo/avatar of you that matches your GitHub profile, and your pronouns\nUnfortunately Slack is not the best place to ask coding questions, but it’s a great place for real-time connection and collaboration\n\n\nDemo on Tuesday for asking good questions with proper code formatting."
   },
   {
-    "objectID": "slides/00/00-welcome-grammar.html#before-the-weekend",
-    "href": "slides/00/00-welcome-grammar.html#before-the-weekend",
-    "title": "Welcome to STA 313",
-    "section": "Before the weekend",
-    "text": "Before the weekend\n\nCreate a GitHub account if you don’t have one\nRead the syllabus\nMake sure you can login in to RStudio and reserve a container for STA 313: cmgr.oit.duke.edu/containers\nComplete the Getting to know you survey on Canvas – to be posted\nComplete the readings – to be posted"
-  },
-  {
     "objectID": "slides/00/00-welcome-grammar.html#data-visualization",
     "href": "slides/00/00-welcome-grammar.html#data-visualization",
     "title": "Welcome to STA 313",
@@ -501,7 +494,21 @@
     "href": "slides/00/00-welcome-grammar.html#an-improved-goal",
     "title": "Welcome to STA 313",
     "section": "An improved goal",
-    "text": "An improved goal\n\nPlotCodeNarrative\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(\n  penguins,\n  aes(x = bill_depth_mm, y = bill_length_mm, color = species, shape = species)) +\n  geom_point(size = 2) +\n  labs(\n    title = \"Bill depth and length\",\n    subtitle = \"Dimensions for Adelie, Chinstrap, and Gentoo Penguins\",\n    x = \"Bill depth (mm)\", y = \"Bill length (mm)\",\n    color = \"Species\",\n    shape = \"Species\",\n    caption = \"Source: Palmer Station LTER / palmerpenguins package\"\n  ) +\n  theme_minimal() +\n  ggthemes::scale_color_colorblind()\n\n\n\nStart with the penguins data frame, map bill depth to the x-axis and map bill length to the y-axis.\nRepresent each observation with a point and map species to the color and shape of each point.\nTitle the plot “Bill depth and length”, add the subtitle “Dimensions for Adelie, Chinstrap, and Gentoo Penguins”, label the x and y axes as “Bill depth (mm)” and “Bill length (mm)”, respectively, label the legend “Species”, and add a caption for the data source.\nFinally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness.\n\n\n\n\n\n\n\n🔗 vizdata.org"
+    "text": "An improved goal\n\nPlotCodeNarrative\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(\n  penguins,\n  aes(x = bill_depth_mm, y = bill_length_mm, color = species, shape = species)) +\n  geom_point(size = 2) +\n  labs(\n    title = \"Bill depth and length\",\n    subtitle = \"Dimensions for Adelie, Chinstrap, and Gentoo Penguins\",\n    x = \"Bill depth (mm)\", y = \"Bill length (mm)\",\n    color = \"Species\",\n    shape = \"Species\",\n    caption = \"Source: Palmer Station LTER / palmerpenguins package\"\n  ) +\n  theme_minimal() +\n  ggthemes::scale_color_colorblind()\n\n\n\nStart with the penguins data frame, map bill depth to the x-axis and map bill length to the y-axis.\nRepresent each observation with a point and map species to the color and shape of each point.\nTitle the plot “Bill depth and length”, add the subtitle “Dimensions for Adelie, Chinstrap, and Gentoo Penguins”, label the x and y axes as “Bill depth (mm)” and “Bill length (mm)”, respectively, label the legend “Species”, and add a caption for the data source.\nFinally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness."
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#disclaimer",
+    "href": "slides/00/00-welcome-grammar.html#disclaimer",
+    "title": "Welcome to STA 313",
+    "section": "Disclaimer",
+    "text": "Disclaimer\nI have a class in the next period in Bio Sci, so I will be rushing out of class each time. I’m always available on Slack and in office hours and happy to make appointments as well!"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#this-weeks-tasks",
+    "href": "slides/00/00-welcome-grammar.html#this-weeks-tasks",
+    "title": "Welcome to STA 313",
+    "section": "This week’s tasks",
+    "text": "This week’s tasks\n\nCreate a GitHub account if you don’t have one\nRead the syllabus\nMake sure you can login in to RStudio and reserve a container for STA 313: cmgr.oit.duke.edu/containers\nComplete the Getting to know you survey on Canvas – to be posted\nComplete the readings\n\n\n\n\n\n🔗 vizdata.org"
   },
   {
     "objectID": "student-work/project-2.html",
