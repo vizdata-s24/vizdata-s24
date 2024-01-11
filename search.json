@@ -26,7 +26,7 @@
     "href": "course-team.html#teaching-assistants",
     "title": "Teaching team",
     "section": "Teaching assistants",
-    "text": "Teaching assistants\n\n\n\n\nName\nRole\nLab section\nOffice hours\n\n\n\n\n\nHolly Cui\nLab TA\nW 1:25PM - 2:40PM\nTBA\n\n\n\nEli Gnesin\nHead + Lab TA\nW 3:05PM - 4:20PM\nTBA\n\n\n\nGlenn Palmer\nHW Lead\n\nTBA\n\n\n\nKelsey Brod\nProject lead + Lecture TA\n\nTBA\n\n\n\nShelby Tisdale\nProject support + Lecture TA\n\nTBA",
+    "text": "Teaching assistants\n\n\n\n\nName\nRole\nLab section\nOffice hours\n\n\n\n\n\nHolly Cui\nLab TA\nW 1:25PM - 2:40PM\nTBA\n\n\n\nEli Gnesin\nHead + Lab TA\nW 3:05PM - 4:20PM\nTBA\n\n\n\nKelsey Brod\nProject lead + Lecture TA\n\nTBA\n\n\n\nShelby Tisdale\nProject support + Lecture TA\n\nTBA\n\n\n\nGlenn Palmer\n\n\nTBA",
     "crumbs": [
       "Course information",
       "Teaching team"
@@ -231,6 +231,429 @@
     ]
   },
   {
+    "objectID": "slides/00/00-welcome-grammar.html#teaching-team",
+    "href": "slides/00/00-welcome-grammar.html#teaching-team",
+    "title": "Welcome to STA 313",
+    "section": "Teaching team",
+    "text": "Teaching team\n\n\nInstructor\nDr. Mine Çetinkaya-Rundel\nOld Chem 213\nmc301@duke.edu\n\nTeaching assistants\n\nHolly Cui - Lab 1 TA\nEli Gnesin - Head + Lab 2 TA\nKelsey Brod - Project lead + Lecture TA\nShelby Tisdale - Project support + Lecture TA\nGlenn Palmer"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#timetable",
+    "href": "slides/00/00-welcome-grammar.html#timetable",
+    "title": "Welcome to STA 313",
+    "section": "Timetable",
+    "text": "Timetable\n\nLectures (weekly)\n\nTuesdays, 10:05 - 11:45 pm - LSRC D106\nThursdays, 10:05 - 11:45 pm - LSRC D106\n\nLabs (weekly)\n\nLab 1: Wednesdays, 1:25 - 2:40 pm - Link Classroom 5\nLab 2: Wednesdays, 3:05 - 4:20 pm - Link Classroom 5"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#themes-what-why-and-how",
+    "href": "slides/00/00-welcome-grammar.html#themes-what-why-and-how",
+    "title": "Welcome to STA 313",
+    "section": "Themes: what, why, and how",
+    "text": "Themes: what, why, and how\n\nWhat: the plot\n\nSpecific types of visualizations for a particular purpose (e.g., maps for spatial data, Sankey diagrams for proportions, etc.)\nTooling to produce them (e.g., specific R packages)\n\n\n\n\nHow: the process\n\nStart with a design (sketch + pseudo code)\nPre-process data (e.g., wrangle, reshape, join, etc.)\nMap data to aesthetics\nMake visual encoding decisions t(e.g., address accessibility concerns)\nPost-process for visual appeal and annotation\n\n\n\n\n\nWhy: the theory\n\nTie together “how” and “what” through the grammar of graphics"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#show-and-tell",
+    "href": "slides/00/00-welcome-grammar.html#show-and-tell",
+    "title": "Welcome to STA 313",
+    "section": "Show and tell",
+    "text": "Show and tell\n\n\nForm a small group (2-4 people) with people sitting around you\nFirst, introduce yourselves to each other – name (and proper pronunciation of name), year, major, where are you from, etc.\nStart with the bad graphs – Share your examples of “bad” graphs and why you think they’re bad.\nThen, share your good graphs – Same deal, share your examples of “good” graphs and why you think they’re good.\nFinally, choose the one plot from your group that you think is most striking, either because it’s bad or because it’s good, and have one team member share the graph on #general in Slack."
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#course-website",
+    "href": "slides/00/00-welcome-grammar.html#course-website",
+    "title": "Welcome to STA 313",
+    "section": "Course website",
+    "text": "Course website\n\nvizdata.org\n\n\naka “the one link to rule them all”"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#lectures",
+    "href": "slides/00/00-welcome-grammar.html#lectures",
+    "title": "Welcome to STA 313",
+    "section": "Lectures",
+    "text": "Lectures\n\nIn person\nAttendance is required (as long as you’re healthy!)\nA little bit of everything:\n\nTraditional lecture\nLive coding + demos\nShort exercises + solution discussion\n\nRecordings will be posted after class – to be used for review + make-up if you can’t make it to class due to health reasons, they’re not an alternative to class attendance"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#labs",
+    "href": "slides/00/00-welcome-grammar.html#labs",
+    "title": "Welcome to STA 313",
+    "section": "Labs",
+    "text": "Labs\n\nAttendance is required (as long as you’re healthy!)\nOpportunity to work on course assignments with TA support\nOpportunity to work with teammates on projects"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#announcements",
+    "href": "slides/00/00-welcome-grammar.html#announcements",
+    "title": "Welcome to STA 313",
+    "section": "Announcements",
+    "text": "Announcements\n\nPosted on Canvas (Announcements tool) and sent via email, be sure to check both regularly\nI’ll assume that you’ve read an announcement by the next “business” day"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#diversity-and-inclusion",
+    "href": "slides/00/00-welcome-grammar.html#diversity-and-inclusion",
+    "title": "Welcome to STA 313",
+    "section": "Diversity and inclusion",
+    "text": "Diversity and inclusion\nIt is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit.\n\nIf you have a name that differs from those that appear in your official Duke records, please let me know!\nPlease let me know your preferred pronouns.\nIf you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. I want to be a resource for you. If you prefer to speak with someone outside of the course, your advisers and deans are excellent resources.\nI (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it."
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#accessibility",
+    "href": "slides/00/00-welcome-grammar.html#accessibility",
+    "title": "Welcome to STA 313",
+    "section": "Accessibility",
+    "text": "Accessibility\n\nThe Student Disability Access Office (SDAO) is available to ensure that students are able to engage with their courses and related assignments.\nI am committed to making all course materials accessible and I’m always learning how to do this better. If any course component is not accessible to you in any way, please don’t hesitate to let me know."
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#attendance-participation-5",
+    "href": "slides/00/00-welcome-grammar.html#attendance-participation-5",
+    "title": "Welcome to STA 313",
+    "section": "Attendance + participation (5%)",
+    "text": "Attendance + participation (5%)\n\nRequired throughout the semester in lecture and lab\nStudents who attend at least 80% of the lectures and participate regularly in lecture and/or other course venues (lab + Slack) will receive full credit for this portion of their grade\nParticipation in labs as well as on Slack will also count towards this component"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#reading-quizzes-10",
+    "href": "slides/00/00-welcome-grammar.html#reading-quizzes-10",
+    "title": "Welcome to STA 313",
+    "section": "Reading quizzes (10%)",
+    "text": "Reading quizzes (10%)\n\nOnline, individual\nCover reading that is due since the previous quiz and up to and including the deadline for the given quiz\nDue by 10 am ET (beginning of class) on the indicated day on the course schedule\nLowest dropped"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#homework-assignments-45",
+    "href": "slides/00/00-welcome-grammar.html#homework-assignments-45",
+    "title": "Welcome to STA 313",
+    "section": "Homework assignments (45%)",
+    "text": "Homework assignments (45%)\n\nSubmitted on GitHub, individual\nSome lab sessions allocated to working on homework / getting feedback from TAs\nDue by 5 pm ET on the indicated day on the course schedule\nLowest dropped"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#projects",
+    "href": "slides/00/00-welcome-grammar.html#projects",
+    "title": "Welcome to STA 313",
+    "section": "Projects",
+    "text": "Projects\n\nSubmitted on GitHub, team-based\nInterim deadlines, peer review on content, peer evaluation for team contribution\nSome lab sessions allocated to working on projects, doing peer review, getting feedback from TAs"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#teams",
+    "href": "slides/00/00-welcome-grammar.html#teams",
+    "title": "Welcome to STA 313",
+    "section": "Teams",
+    "text": "Teams\n\nTeam assignments\n\nIn class exercises and projects\nAssigned different teams for each project\nPeer evaluation during teamwork and after completion\n\nExpectations and roles\n\nEveryone is expected to contribute equal effort\nEveryone is expected to understand all code turned in\nIndividual contribution evaluated by peer evaluation, commits, etc."
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#project-1-15",
+    "href": "slides/00/00-welcome-grammar.html#project-1-15",
+    "title": "Welcome to STA 313",
+    "section": "Project 1 (15%)",
+    "text": "Project 1 (15%)\n\nSame/similar data, different results\nPresentation and write-up\nWrapped up before midterms grades are due"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#project-2-25",
+    "href": "slides/00/00-welcome-grammar.html#project-2-25",
+    "title": "Welcome to STA 313",
+    "section": "Project 2 (25%)",
+    "text": "Project 2 (25%)\n\nThe world is your oyster! (and more details TBA)\nNew team\nPresentation and write-up\nWrapped up on the final exam date"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#grading",
+    "href": "slides/00/00-welcome-grammar.html#grading",
+    "title": "Welcome to STA 313",
+    "section": "Grading",
+    "text": "Grading\nThis course is assessed 100% on your coursework (there is no exam). We will be assessing you based on the following assignments,\n\n\n\n\n\n\n\n\n\nAssignment\nType\nValue\nDue\n\n\n\n\nAttendance + participation\nIndividual\n5%\n\n\n\nReading quizzes\nIndividual\n10%\n~ Every other week\n\n\nHomeworks\nIndividual\n45%\n~ Every other week\n\n\nProject 1\nTeam\n15%\n~ Week 6 + earlier interim deadlines\n\n\nProject 2\nTeam\n25%\n~ Finals week + earlier interim deadlines"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#community-participation",
+    "href": "slides/00/00-welcome-grammar.html#community-participation",
+    "title": "Welcome to STA 313",
+    "section": "Community participation",
+    "text": "Community participation\nThis is not required but highly recommended!\n\nTidyTuesday - New dataset every week for wrangling, visualizing, modeling\nI encourage you to participate, or at a minimum, browse others’ contributions on Twitter or Mastodon with #TidyTuesday"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#covid-policies",
+    "href": "slides/00/00-welcome-grammar.html#covid-policies",
+    "title": "Welcome to STA 313",
+    "section": "COVID policies",
+    "text": "COVID policies\n\nWear a mask if the university requires\nStay home if you’re sick and follow guidance\nRead and follow university guidance"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#late-work-policy",
+    "href": "slides/00/00-welcome-grammar.html#late-work-policy",
+    "title": "Welcome to STA 313",
+    "section": "Late work policy",
+    "text": "Late work policy\n\nReading quizzes: Late submissions not accepted\nHomework assignments:\n\nLate, but same day (before midnight): -10% of available points\nLate, but next day: -20% of available points\nTwo days late or later: No credit, and we will not provide written feedback\n\nProject presentations: Late submissions not accepted\nProject write-ups:\n\nLate, but same day (before midnight): -10% of available points\nLate, but next day: -20% of available points\nTwo days late or later: No credit, and we will not provide written feedback\n\nPeer evaluation:\n\nLate submissions not accepted\nMust turn in peer evaluation if you want your own score from others"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#collaboration-policy",
+    "href": "slides/00/00-welcome-grammar.html#collaboration-policy",
+    "title": "Welcome to STA 313",
+    "section": "Collaboration policy",
+    "text": "Collaboration policy\n\nOnly work that is clearly assigned as team work should be completed collaboratively (Projects)\nReading quizzes must be completed individually, you may not discuss answers with teammates, clarification questions should only be asked to myself and the TAs\nHomework assignments must be completed individually. You may not directly share answers / code with others, however you are welcome to discuss the problems in general and ask for advice"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#sharing-reusing-code-policy",
+    "href": "slides/00/00-welcome-grammar.html#sharing-reusing-code-policy",
+    "title": "Welcome to STA 313",
+    "section": "Sharing / reusing code policy",
+    "text": "Sharing / reusing code policy\n\nWe are aware that a huge volume of code is available on the web, and many tasks may have solutions posted\nUnless explicitly stated otherwise, this course’s policy is that you may make use of any online resources (e.g. RStudio Community, StackOverflow, etc.) but you must explicitly cite where you obtained any code you directly use or use as inspiration in your solution(s).\nAny recycled code that is discovered and is not explicitly cited will be treated as plagiarism, regardless of source"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#academic-integrity",
+    "href": "slides/00/00-welcome-grammar.html#academic-integrity",
+    "title": "Welcome to STA 313",
+    "section": "Academic integrity",
+    "text": "Academic integrity\n\nTo uphold the Duke Community Standard:\n\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors; and\nI will act if the Standard is compromised."
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#section-1",
+    "href": "slides/00/00-welcome-grammar.html#section-1",
+    "title": "Welcome to STA 313",
+    "section": "",
+    "text": "most importantly:\nask if you’re not sure if something violates a policy!"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#office-hours",
+    "href": "slides/00/00-welcome-grammar.html#office-hours",
+    "title": "Welcome to STA 313",
+    "section": "Office hours",
+    "text": "Office hours\n\nMine:\n\nTuesdays 2:30 - 3:30 pm - Zoom\n\nAny exceptions will be announced in class / by email\n\n\nTAs: TBA\n+ lots more resources listed on the syllabus!"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#wellness",
+    "href": "slides/00/00-welcome-grammar.html#wellness",
+    "title": "Welcome to STA 313",
+    "section": "Wellness",
+    "text": "Wellness\nI want to make sure that you learn everything you were hoping to learn from this class. If this requires flexibility, please don’t hesitate to ask.\n\nYou never owe me personal information about your health (mental or physical) but you’re always welcome to talk to me. If I can’t help, I likely know someone who can.\nI want you to learn lots of things from this class, but I primarily want you to stay healthy, balanced, and grounded."
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#rstudio",
+    "href": "slides/00/00-welcome-grammar.html#rstudio",
+    "title": "Welcome to STA 313",
+    "section": "RStudio",
+    "text": "RStudio\n\nhttps://cmgr.oit.duke.edu/containers\n\n\nBrowser based RStudio instance(s) provided by Duke OIT\nRequires internet connection to access\nProvides consistency in hardware and software environments\nLocal R installations are fine but we will not guarantee support"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#github",
+    "href": "slides/00/00-welcome-grammar.html#github",
+    "title": "Welcome to STA 313",
+    "section": "GitHub",
+    "text": "GitHub\n\nhttps://github.com/vizdata-s24\n\n\nGitHub organization for the course\nAll of your work and your membership (enrollment) in the organization is private\nEach assignment is a private repo on GitHub, I distribute the assignments on GitHub and you submit them there\nFeedback on assignments is given as GitHub issues, scores recorded on Sakai Gradebook\n\n\nFill out the Getting to know you survey for collection of your account names, later this week you will be invited to the course organization."
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#username-advice",
+    "href": "slides/00/00-welcome-grammar.html#username-advice",
+    "title": "Welcome to STA 313",
+    "section": "Username advice",
+    "text": "Username advice\n\nin case you don’t yet have a GitHub account…\n\nSome brief advice about selecting your account names (particularly for GitHub),\n\nIncorporate your actual name! People like to know who they’re dealing with and makes your username easier for people to guess or remember\nReuse your username from other contexts, e.g., Twitter or Slack\nPick a username you will be comfortable revealing to your future boss\nShorter is better than longer, but be as unique as possible\nMake it timeless. Avoid highlighting your current university, employer, or place of residence"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#slack",
+    "href": "slides/00/00-welcome-grammar.html#slack",
+    "title": "Welcome to STA 313",
+    "section": "Slack",
+    "text": "Slack\n\nOnline forum for asking and answering questions\nPrivate repo in the course organization\nYou will need to join the course organization for access\nAsk and answer questions related to course logistics, assignment, etc. here\nPersonal questions (e.g., extensions, illnesses, etc.) should be via email to me\nOnce you join, browse the channels to make sure you’re posting questions in the right channel, update your profile with your name, photo/avatar of you that matches your GitHub profile, and your pronouns\nUnfortunately Slack is not the best place to ask coding questions, but it’s a great place for real-time connection and collaboration\n\n\nDemo on Tuesday for asking good questions with proper code formatting."
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#before-the-weekend",
+    "href": "slides/00/00-welcome-grammar.html#before-the-weekend",
+    "title": "Welcome to STA 313",
+    "section": "Before the weekend",
+    "text": "Before the weekend\n\nCreate a GitHub account if you don’t have one\nRead the syllabus\nMake sure you can login in to RStudio and reserve a container for STA 313: cmgr.oit.duke.edu/containers\nComplete the Getting to know you survey on Canvas – to be posted\nComplete the readings – to be posted"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#data-visualization",
+    "href": "slides/00/00-welcome-grammar.html#data-visualization",
+    "title": "Welcome to STA 313",
+    "section": "Data visualization",
+    "text": "Data visualization\n\n“The simple graph has brought more information to the data analyst’s mind than any other device.” — John Tukey\n\n\nData visualization is the creation and study of the visual representation of data\nMany tools for visualizing data – R is one of them\nMany approaches/systems within R for making data visualizations – ggplot2 is one of them, and that’s what we’re going to use"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#ggplot2-tidyverse",
+    "href": "slides/00/00-welcome-grammar.html#ggplot2-tidyverse",
+    "title": "Welcome to STA 313",
+    "section": "ggplot2 ∈ tidyverse",
+    "text": "ggplot2 ∈ tidyverse\n\n\n\n\n\n\n\n\n\nggplot2 is tidyverse’s data visualization package\ngg in “ggplot2” stands for Grammar of Graphics\nInspired by the book Grammar of Graphics by Leland Wilkinson"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#grammar-of-graphics-1",
+    "href": "slides/00/00-welcome-grammar.html#grammar-of-graphics-1",
+    "title": "Welcome to STA 313",
+    "section": "Grammar of Graphics",
+    "text": "Grammar of Graphics\n\n\nA grammar of graphics is a tool that enables us to concisely describe the components of a graphic\n\n\n\n\n\n\n\n\n\n\nSource: BloggoType"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#hello-ggplot2",
+    "href": "slides/00/00-welcome-grammar.html#hello-ggplot2",
+    "title": "Welcome to STA 313",
+    "section": "Hello ggplot2!",
+    "text": "Hello ggplot2!\n\nggplot() is the main function in ggplot2\nPlots are constructed in layers\nStructure of the code for plots can be summarized as\n\n\nggplot(data = [dataset], \n       mapping = aes(x = [x-variable], y = [y-variable])) +\n   geom_xxx() +\n   other options\n\n\nThe ggplot2 package comes with the tidyverse\n\n\nlibrary(tidyverse)\n\n\nFor help with ggplot2, see ggplot2.tidyverse.org"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#data-palmer-penguins",
+    "href": "slides/00/00-welcome-grammar.html#data-palmer-penguins",
+    "title": "Welcome to STA 313",
+    "section": "Data: Palmer Penguins",
+    "text": "Data: Palmer Penguins\nMeasurements for penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.\n\n\n\n\n\n\n\n\n\nlibrary(palmerpenguins)\nglimpse(penguins)\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#goal",
+    "href": "slides/00/00-welcome-grammar.html#goal",
+    "title": "Welcome to STA 313",
+    "section": "Goal",
+    "text": "Goal\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(\n  penguins,\n  aes(x = bill_depth_mm, y = bill_length_mm, colour = species)\n) +\n  geom_point() +\n  labs(\n    title = \"Bill depth and length\",\n    subtitle = \"Dimensions for Adelie, Chinstrap, and Gentoo Penguins\",\n    x = \"Bill depth (mm)\", y = \"Bill length (mm)\",\n    colour = \"Species\"\n  )"
+  },
+  {
+    "objectID": "slides/00/00-welcome-grammar.html#an-improved-goal",
+    "href": "slides/00/00-welcome-grammar.html#an-improved-goal",
+    "title": "Welcome to STA 313",
+    "section": "An improved goal",
+    "text": "An improved goal\n\nPlotCodeNarrative\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(\n  penguins,\n  aes(x = bill_depth_mm,y = bill_length_mm,colour = species)) +\n  geom_point() +\n  labs(\n    title = \"Bill depth and length\",\n    subtitle = \"Dimensions for Adelie, Chinstrap, and Gentoo Penguins\",\n    x = \"Bill depth (mm)\", y = \"Bill length (mm)\",\n    colour = \"Species\",\n    caption = \"Source: Palmer Station LTER / palmerpenguins package\"\n  ) +\n  theme_minimal() +\n  ggthemes::scale_color_colorblind()\n\n\n\nStart with the penguins data frame, map bill depth to the x-axis and map bill length to the y-axis.\nRepresent each observation with a point and map species to the colour of each point.\nTitle the plot “Bill depth and length”, add the subtitle “Dimensions for Adelie, Chinstrap, and Gentoo Penguins”, label the x and y axes as “Bill depth (mm)” and “Bill length (mm)”, respectively, label the legend “Species”, and add a caption for the data source.\nFinally, use a discrete colour scale that is designed to be perceived by viewers with common forms of colour blindness.\n\n\n\n\n\n\n\n🔗 vizdata.org"
+  },
+  {
+    "objectID": "student-work/project-2.html",
+    "href": "student-work/project-2.html",
+    "title": "Project 2 outputs",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Student work",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "student-work/ugly-plot.html",
+    "href": "student-work/ugly-plot.html",
+    "title": "Ugly plots",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Student work",
+      "Ugly plots"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "STA 313: Advanced Data Visualization",
+    "section": "",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nThu, Jan 11\n\n\nWelcome + Grammar of graphics\n\n\n\n\n\n\n2\nTue, Jan 16\n📚 ggplot2-book - Chp 13  📚 socviz\nDeep dive into ggplot2 layers I\n\n\n\n\n\n\n\n\nWed, Jan 17\n\n\nMeet the toolkit\n\n\n\n\n\n\n\n\nThu, Jan 18\n\n\nDeep dive into ggplot2 layers II\n\n\n\n\n\n\n3\nTue, Jan 23\n\n\nData wrangling I\n\n\n✅ RQ 1 at 10 am\n\n\n\n\nWed, Jan 24\n\n\nWork on HW 1\n\n\n\n\n\n\n\n\nThu, Jan 25\n\n\nData wrangling II\n\n\n\n\n\n\n4\nTue, Jan 30\n\n\nVisualizing time series data I\n\n\n📝 HW 1 at 5 pm\n\n\n\n\nWed, Jan 31\n\n\nWork on Project 1 proposals\n\n\n\n\n\n\n\n\nThu, Feb 1\n\n\nVisualizing time series data II\n\n\n\n\n\n\n5\nTue, Feb 6\n\n\n🎤 Guest lecture: Kieran Healey\n\n\n✅ RQ 2 at 10 am\n\n\n\n\nWed, Feb 7\n\n\nPeer review for Project 1 proposals + Work on HW 2\n\n\n\n\n\n\n\n\nThu, Feb 8\n\n\n🎤 Guest lecture: Kelsey Brod\n\n\n\n\n\n\n6\nTue, Feb 13\n\n\nThemes + axes + annotation\n\n\n📝 HW 2 at 5 pm\n\n\n\n\nWed, Feb 14\n\n\nWork on Project 1 presentations + writeups\n\n\n\n\n\n\n\n\nThu, Feb 15\n\n\nData visualization accessibility\n\n\n\n\n\n\n7\nTue, Feb 20\n\n\nPresentation ready plots I\n\n\n\n\n\n\n\n\nWed, Feb 21\n\n\nProject 1 presentations\n\n\n📑 Project 1\n\n\n\n\nThu, Feb 22\n\n\nDu Bois visualizations\n\n\n\n\n\n\n8\nTue, Feb 27\n\n\nProject 2 preview + Visualizing Likert data I\n\n\n✅ RQ 3 at 10 am\n\n\n\n\nWed, Feb 28\n\n\nWork on HW 3\n\n\n\n\n\n\n\n\nThu, Feb 29\n\n\nVisualizing Likert data II\n\n\n\n\n\n\n9\nTue, Mar 5\n\n\nVisualizing geospatial data I\n\n\n📝 HW 3 at 5 pm\n\n\n\n\nWed, Mar 6\n\n\nWork on HW 4\n\n\n\n\n\n\n\n\nThu, Mar 7\n\n\nVisualizing geospatial data II\n\n\n\n\n\n\n10\nTue, Mar 12\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n\n\nWed, Mar 13\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n\n\nThu, Mar 14\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n11\nTue, Mar 19\n\n\nVisualizing uncertainty\n\n\n✅ RQ 4 at 10 am\n\n\n\n\nWed, Mar 20\n\n\nWork on Project 2 proposals\n\n\n\n\n\n\n\n\nThu, Mar 21\n\n\nVisualizing … (TBA)\n\n\n\n\n\n\n12\nTue, Mar 26\n\n\nVisualizing … (TBA)\n\n\n📝 HW 4 at 5 pm\n\n\n\n\nWed, Mar 27\n\n\nProject 2 proposal peer review\n\n\n\n\n\n\n\n\nThu, Mar 28\n\n\nVisualizing … (TBA)\n\n\n\n\n\n\n13\nTue, Apr 2\n\n\nTables\n\n\n✅ RQ 5 at 10 am\n\n\n\n\nWed, Apr 3\n\n\nWork on HW 5\n\n\n\n\n\n\n\n\nThu, Apr 4\n\n\nAnimation\n\n\n\n\n\n\n14\nTue, Apr 9\n\n\nInteractive visualizations + reporting with Shiny I\n\n\n📝 HW 5 at 5 pm\n\n\n\n\nWed, Apr 10\n\n\nWork on Project 2\n\n\n\n\n\n\n\n\nThu, Apr 11\n\n\nInteractive visualizations + reporting with Shiny II\n\n\n\n\n\n\n15\nTue, Apr 16\n\n\nGenerative art I\n\n\n✅ RQ 6 at 10 am\n\n\n\n\nWed, Apr 17\n\n\nWork on HW 6\n\n\n\n\n\n\n\n\nThu, Apr 18\n\n\nGenerative art II\n\n\n\n\n\n\n16\nTue, Apr 23\n\n\nPresentation ready plots II\n\n\n📝 HW 6 at 5 pm\n\n\n\n\nWed, Apr 24\n\n\nProject 2 code review\n\n\n\n\n\n\n17\nWed, May 1\n\n\nProject 2 presentations (9 am - 12 pm)\n\n\n📑 Project 2",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
+  },
+  {
+    "objectID": "hw/hw-3.html",
+    "href": "hw/hw-3.html",
+    "title": "HW 3 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 3"
+    ]
+  },
+  {
+    "objectID": "hw/hw-4.html",
+    "href": "hw/hw-4.html",
+    "title": "HW 4 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 4"
+    ]
+  },
+  {
+    "objectID": "hw/hw-1.html",
+    "href": "hw/hw-1.html",
+    "title": "HW 1 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "hw/hw-5.html",
+    "href": "hw/hw-5.html",
+    "title": "HW 5 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 5"
+    ]
+  },
+  {
+    "objectID": "hw/hw-2.html",
+    "href": "hw/hw-2.html",
+    "title": "HW 2 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 2"
+    ]
+  },
+  {
+    "objectID": "hw/hw-6.html",
+    "href": "hw/hw-6.html",
+    "title": "Lab 1 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 6"
+    ]
+  },
+  {
+    "objectID": "course-faq.html",
+    "href": "course-faq.html",
+    "title": "FAQ",
+    "section": "",
+    "text": "The short answer is, I’d rather you didn’t, to save yourself some headache. But, the long answer is, sure! But you will need to install a specific versions of R and RStudio for everything to work as expected. You will also need to install the R packages we’re using as well as have Git installed on your computer. These are not extremely challenging things to get right, but they are not trivial either, particularly on certain operating systems. Myself and the TAs are always happy to provide help with any computational questions when you’re working in the containers we have provided for you. If you’re working on your local setup, we can’t guarantee being able to resolve your issues, though we’re happy to try.\nIf you want to take this path, here is what you need to do:\n\nDownload and install R 4.2.2: https://cran.r-project.org/\nDownload and install the preview build of RStudio: https://www.rstudio.com/products/rstudio/download/preview-release-notes\nInstall Git: https://happygitwithr.com/install-git.html\nInstall any necessary packages with install.packages(\"___\")\n\nAnd I’d like to reiterate again that successful installation of these software is not a learning goal of this course. So if any of this seems tedious or intimidating in any way, just use the computing environment we have set up for you. More on that here.",
+    "crumbs": [
+      "Course information",
+      "FAQ"
+    ]
+  },
+  {
+    "objectID": "course-faq.html#can-i-use-a-local-install-of-r-and-rstudio-instead-of-using-the-rstudio-containers",
+    "href": "course-faq.html#can-i-use-a-local-install-of-r-and-rstudio-instead-of-using-the-rstudio-containers",
+    "title": "FAQ",
+    "section": "",
+    "text": "The short answer is, I’d rather you didn’t, to save yourself some headache. But, the long answer is, sure! But you will need to install a specific versions of R and RStudio for everything to work as expected. You will also need to install the R packages we’re using as well as have Git installed on your computer. These are not extremely challenging things to get right, but they are not trivial either, particularly on certain operating systems. Myself and the TAs are always happy to provide help with any computational questions when you’re working in the containers we have provided for you. If you’re working on your local setup, we can’t guarantee being able to resolve your issues, though we’re happy to try.\nIf you want to take this path, here is what you need to do:\n\nDownload and install R 4.2.2: https://cran.r-project.org/\nDownload and install the preview build of RStudio: https://www.rstudio.com/products/rstudio/download/preview-release-notes\nInstall Git: https://happygitwithr.com/install-git.html\nInstall any necessary packages with install.packages(\"___\")\n\nAnd I’d like to reiterate again that successful installation of these software is not a learning goal of this course. So if any of this seems tedious or intimidating in any way, just use the computing environment we have set up for you. More on that here.",
+    "crumbs": [
+      "Course information",
+      "FAQ"
+    ]
+  },
+  {
+    "objectID": "student-work/project-1.html",
+    "href": "student-work/project-1.html",
+    "title": "Project 1 outputs",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Student work",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "student-work/thank-you.html",
+    "href": "student-work/thank-you.html",
+    "title": "Thank you",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Student work",
+      "Thank you cards"
+    ]
+  },
+  {
     "objectID": "course-overview.html",
     "href": "course-overview.html",
     "title": "Course overview",
@@ -261,156 +684,6 @@
     "crumbs": [
       "Course information",
       "Overview"
-    ]
-  },
-  {
-    "objectID": "student-work/thank-you.html",
-    "href": "student-work/thank-you.html",
-    "title": "Thank you",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "Student work",
-      "Thank you cards"
-    ]
-  },
-  {
-    "objectID": "student-work/project-1.html",
-    "href": "student-work/project-1.html",
-    "title": "Project 1 outputs",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "Student work",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "course-faq.html",
-    "href": "course-faq.html",
-    "title": "FAQ",
-    "section": "",
-    "text": "The short answer is, I’d rather you didn’t, to save yourself some headache. But, the long answer is, sure! But you will need to install a specific versions of R and RStudio for everything to work as expected. You will also need to install the R packages we’re using as well as have Git installed on your computer. These are not extremely challenging things to get right, but they are not trivial either, particularly on certain operating systems. Myself and the TAs are always happy to provide help with any computational questions when you’re working in the containers we have provided for you. If you’re working on your local setup, we can’t guarantee being able to resolve your issues, though we’re happy to try.\nIf you want to take this path, here is what you need to do:\n\nDownload and install R 4.2.2: https://cran.r-project.org/\nDownload and install the preview build of RStudio: https://www.rstudio.com/products/rstudio/download/preview-release-notes\nInstall Git: https://happygitwithr.com/install-git.html\nInstall any necessary packages with install.packages(\"___\")\n\nAnd I’d like to reiterate again that successful installation of these software is not a learning goal of this course. So if any of this seems tedious or intimidating in any way, just use the computing environment we have set up for you. More on that here.",
-    "crumbs": [
-      "Course information",
-      "FAQ"
-    ]
-  },
-  {
-    "objectID": "course-faq.html#can-i-use-a-local-install-of-r-and-rstudio-instead-of-using-the-rstudio-containers",
-    "href": "course-faq.html#can-i-use-a-local-install-of-r-and-rstudio-instead-of-using-the-rstudio-containers",
-    "title": "FAQ",
-    "section": "",
-    "text": "The short answer is, I’d rather you didn’t, to save yourself some headache. But, the long answer is, sure! But you will need to install a specific versions of R and RStudio for everything to work as expected. You will also need to install the R packages we’re using as well as have Git installed on your computer. These are not extremely challenging things to get right, but they are not trivial either, particularly on certain operating systems. Myself and the TAs are always happy to provide help with any computational questions when you’re working in the containers we have provided for you. If you’re working on your local setup, we can’t guarantee being able to resolve your issues, though we’re happy to try.\nIf you want to take this path, here is what you need to do:\n\nDownload and install R 4.2.2: https://cran.r-project.org/\nDownload and install the preview build of RStudio: https://www.rstudio.com/products/rstudio/download/preview-release-notes\nInstall Git: https://happygitwithr.com/install-git.html\nInstall any necessary packages with install.packages(\"___\")\n\nAnd I’d like to reiterate again that successful installation of these software is not a learning goal of this course. So if any of this seems tedious or intimidating in any way, just use the computing environment we have set up for you. More on that here.",
-    "crumbs": [
-      "Course information",
-      "FAQ"
-    ]
-  },
-  {
-    "objectID": "hw/hw-6.html",
-    "href": "hw/hw-6.html",
-    "title": "Lab 1 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 6"
-    ]
-  },
-  {
-    "objectID": "hw/hw-2.html",
-    "href": "hw/hw-2.html",
-    "title": "Lab 1 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 2"
-    ]
-  },
-  {
-    "objectID": "hw/hw-5.html",
-    "href": "hw/hw-5.html",
-    "title": "Lab 1 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 5"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "hw/hw-1.html",
-    "href": "hw/hw-1.html",
-    "title": "Lab 1 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "hw/hw-4.html",
-    "href": "hw/hw-4.html",
-    "title": "Lab 1 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 4"
-    ]
-  },
-  {
-    "objectID": "hw/hw-3.html",
-    "href": "hw/hw-3.html",
-    "title": "Lab 1 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 3"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "STA 313: Advanced Data Visualization",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nThu, Jan 11\n\n\nWelcome to STA 313 + Grammar of graphics\n\n\n\n\n\n\n2\nTue, Jan 16\n\n\nDeep dive into ggplot2 layers I\n\n\n\n\n\n\n\n\nWed, Jan 17\n\n\nMeet the toolkit\n\n\n\n\n\n\n\n\nThu, Jan 18\n\n\nDeep dive into ggplot2 layers II\n\n\n\n\n\n\n3\nTue, Jan 23\n\n\nData wrangling I\n\n\n✅ RQ 1 at 10 am\n\n\n\n\nWed, Jan 24\n\n\nWork on HW 1\n\n\n\n\n\n\n\n\nThu, Jan 25\n\n\nData wrangling II\n\n\n\n\n\n\n4\nTue, Jan 30\n\n\nVisualizing time series data I\n\n\n📝 HW 1 at 5 pm\n\n\n\n\nWed, Jan 31\n\n\nWork on Project 1 proposals\n\n\n\n\n\n\n\n\nThu, Feb 1\n\n\nVisualizing time series data II\n\n\n\n\n\n\n5\nTue, Feb 6\n\n\n🎤 Guest lecture: Kieran Healey\n\n\n✅ RQ 2 at 10 am\n\n\n\n\nWed, Feb 7\n\n\nPeer review for Project 1 proposals + Work on HW 2\n\n\n\n\n\n\n\n\nThu, Feb 8\n\n\n🎤 Guest lecture: Kelsey Brod\n\n\n\n\n\n\n6\nTue, Feb 13\n\n\nThemes + axes + annotation\n\n\n📝 HW 2 at 5 pm\n\n\n\n\nWed, Feb 14\n\n\nWork on Project 1 presentations + writeups\n\n\n\n\n\n\n\n\nThu, Feb 15\n\n\nData visualization accessibility\n\n\n\n\n\n\n7\nTue, Feb 20\n\n\nPresentation ready plots I\n\n\n\n\n\n\n\n\nWed, Feb 21\n\n\nProject 1 presentations\n\n\n📑 Project 1\n\n\n\n\nThu, Feb 22\n\n\nDu Bois visualizations\n\n\n\n\n\n\n8\nTue, Feb 27\n\n\nProject 2 preview + Visualizing Likert data I\n\n\n✅ RQ 3 at 10 am\n\n\n\n\nWed, Feb 28\n\n\nWork on HW 3\n\n\n\n\n\n\n\n\nThu, Feb 29\n\n\nVisualizing Likert data II\n\n\n\n\n\n\n9\nTue, Mar 5\n\n\nVisualizing geospatial data I\n\n\n📝 HW 3 at 5 pm\n\n\n\n\nWed, Mar 6\n\n\nWork on HW 4\n\n\n\n\n\n\n\n\nThu, Mar 7\n\n\nVisualizing geospatial data II\n\n\n\n\n\n\n10\nTue, Mar 12\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n\n\nWed, Mar 13\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n\n\nThu, Mar 14\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n11\nTue, Mar 19\n\n\nVisualizing uncertainty\n\n\n✅ RQ 4 at 10 am\n\n\n\n\nWed, Mar 20\n\n\nWork on Project 2 proposals\n\n\n\n\n\n\n\n\nThu, Mar 21\n\n\nVisualizing … (TBA)\n\n\n\n\n\n\n12\nTue, Mar 26\n\n\nVisualizing … (TBA)\n\n\n📝 HW 4 at 5 pm\n\n\n\n\nWed, Mar 27\n\n\nProject 2 proposal peer review\n\n\n\n\n\n\n\n\nThu, Mar 28\n\n\nVisualizing … (TBA)\n\n\n\n\n\n\n13\nTue, Apr 2\n\n\nTables\n\n\n✅ RQ 5 at 10 am\n\n\n\n\nWed, Apr 3\n\n\nWork on HW 5\n\n\n\n\n\n\n\n\nThu, Apr 4\n\n\nAnimation\n\n\n\n\n\n\n14\nTue, Apr 9\n\n\nInteractive visualizations + reporting with Shiny I\n\n\n📝 HW 5 at 5 pm\n\n\n\n\nWed, Apr 10\n\n\nWork on Project 2\n\n\n\n\n\n\n\n\nThu, Apr 11\n\n\nInteractive visualizations + reporting with Shiny II\n\n\n\n\n\n\n15\nTue, Apr 16\n\n\nGenerative art I\n\n\n✅ RQ 6 at 10 am\n\n\n\n\nWed, Apr 17\n\n\nWork on HW 6\n\n\n\n\n\n\n\n\nThu, Apr 18\n\n\nGenerative art II\n\n\n\n\n\n\n16\nTue, Apr 23\n\n\nPresentation ready plots II\n\n\n📝 HW 6 at 5 pm\n\n\n\n\nWed, Apr 24\n\n\nProject 2 code review\n\n\n\n\n\n\n17\nWed, May 1\n\n\nProject 2 presentations (9 am - 12 pm)\n\n\n📑 Project 2",
-    "crumbs": [
-      "Course information",
-      "Schedule"
-    ]
-  },
-  {
-    "objectID": "student-work/ugly-plot.html",
-    "href": "student-work/ugly-plot.html",
-    "title": "Ugly plots",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "Student work",
-      "Ugly plots"
-    ]
-  },
-  {
-    "objectID": "student-work/project-2.html",
-    "href": "student-work/project-2.html",
-    "title": "Project 2 outputs",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "Student work",
-      "Project 2"
     ]
   },
   {
