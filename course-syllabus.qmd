@@ -259,17 +259,14 @@ Students are permitted by university policy to be absent from class to observe a
 
 ## Important dates
 
-::: callout-caution
-Dates for this semester to be added soon!
-:::
-
--   **Wednesday, January 11:** Classes begin, Monday schedule (no class for us)
--   **Wednesday, January 25:** Drop/add ends
--   **Friday, February 24:** Mid-semester grades reported
--   **Saturday - Sunday, March 11 - 19**: Spring Break (continuing, but limited course support available)
--   **Wednesday, March 29:** Last day to withdraw with W
--   **Wednesday, April 26**: Classes end
--   **Thursday - Sunday, April 27 - 30**: Reading period
--   **Thursday, May 4, 2-5pm**: Project 2 presentations
+-   **Wednesday, January 10:** Classes begin, Monday schedule (no class for us)
+-   **Wednesday, January 24:** Drop/add ends
+-   **Wednesday, February 21:** Project 1 presentations
+-   **Friday, February 23:** Mid-semester grades reported
+-   **Saturday - Sunday, March 9 - 17**: Spring Break
+-   **Wednesday, March 27:** Last day to withdraw with W
+-   **Wednesday, April 24**: Classes end
+-   **Thursday - Sunday, April 25 – 28**: Reading period
+-   **Wednesday, May 1, 9 am - 12 pm**: Project 2 presentations
 
 For more important dates, see the full [Duke Academic Calendar](https://registrar.duke.edu/academic-calendar/current-academic-calendar/#spring2024).
