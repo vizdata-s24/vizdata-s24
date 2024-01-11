@@ -393,18 +393,6 @@ Some brief advice about selecting your account names (particularly for GitHub),
 Demo on Tuesday for asking good questions with proper code formatting.
 :::
 
-## Before the weekend
-
-1.  Create a GitHub account if you don't have one
-
-2.  Read the [syllabus](https://www.vizdata.org/syllabus.html)
-
-3.  Make sure you can login in to RStudio and reserve a container for STA 313: [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers)
-
-4.  Complete the *Getting to know you* survey on Canvas -- to be posted
-
-5.  Complete the readings -- to be posted
-
 # Grammar of graphics
 
 ## Data visualization
@@ -563,3 +551,21 @@ Title the plot "Bill depth and length", add the subtitle "Dimensions for Adelie,
 
 Finally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness.
 :::
+
+# Wrap up
+
+## Disclaimer
+
+I have a class in the next period in Bio Sci, so I will be rushing out of class each time. I'm always available on Slack and in office hours and happy to make appointments as well!
+
+## This week's tasks
+
+1.  Create a GitHub account if you don't have one
+
+2.  Read the [syllabus](https://www.vizdata.org/syllabus.html)
+
+3.  Make sure you can login in to RStudio and reserve a container for STA 313: [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers)
+
+4.  Complete the *Getting to know you* survey on Canvas -- to be posted
+
+5.  Complete the readings
