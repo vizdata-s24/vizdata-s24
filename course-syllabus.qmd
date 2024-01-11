@@ -109,7 +109,7 @@ Assessment for the course is comprised of four components: attendance and partic
 
 -   **Homework assignments**, due every other week (roughly), completed individually. Lowest homework assignment score is dropped.
 
-    Homework assignments are due by 10 pm ET (beginning of class) on the indicated day on the [course schedule](https://www.vizdata.org/schedule.html).
+    Homework assignments are due by 5 pm ET on the indicated day on the [course schedule](https://www.vizdata.org/schedule.html).
 
 -   **Projects** (2), mid-semester and end of semester, completed in teams.
 
