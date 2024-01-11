@@ -1,0 +1,14 @@
+institute: "Duke University <br> STA 313 - Spring 2024"
+author: "Dr. Mine Çetinkaya-Rundel"
+footer: "[🔗 vizdata.org](https://vizdata.org/)"
+logo: "../logo.png"
+format:
+  revealjs:
+    theme: slides.scss
+    transition: fade
+    slide-number: true
+    chalkboard: true
+editor: visual
+execute:
+  freeze: auto
+  echo: true
