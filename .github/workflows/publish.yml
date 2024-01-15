@@ -19,7 +19,7 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           tinytex: true
-          version: 1.4.537
+          version: 1.4.542
 
       - name: Install libcurl
         run: |
