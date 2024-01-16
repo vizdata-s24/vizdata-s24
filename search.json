@@ -817,7 +817,7 @@
     "href": "slides/01/01-layers-I.html#summary-statistics",
     "title": "Deep dive into ggplot2 layers - I",
     "section": "Summary statistics",
-    "text": "Summary statistics\n\nmean_area_decade &lt;- duke_forest |&gt;\n  group_by(decade_built_cat) |&gt;\n  summarise(mean_area = mean(area))\n\nmean_area_decade\n\n# A tibble: 6 × 2\n  decade_built_cat mean_area\n  &lt;chr&gt;                &lt;dbl&gt;\n1 1940 or before       2072.\n2 1950                 2545.\n3 1960                 2873.\n4 1970                 3413.\n5 1980                 2889.\n6 1990 or after        2822."
+    "text": "Summary statistics\n\nmean_area_decade &lt;- duke_forest |&gt;\n  group_by(decade_built_cat) |&gt;\n  summarize(mean_area = mean(area))\n\nmean_area_decade\n\n# A tibble: 6 × 2\n  decade_built_cat mean_area\n  &lt;chr&gt;                &lt;dbl&gt;\n1 1940 or before       2072.\n2 1950                 2545.\n3 1960                 2873.\n4 1970                 3413.\n5 1980                 2889.\n6 1990 or after        2822."
   },
   {
     "objectID": "slides/01/01-layers-I.html#barplot",
