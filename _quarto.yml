@@ -28,7 +28,7 @@ website:
         href: https://cmgr.oit.duke.edu/containers
         text: "RStudio Containers"
       - icon: person-fill
-        href: https://canvas.duke.edu
+        href: https://canvas.duke.edu/courses/27066
         text: "Canvas"
 
     style: docked
@@ -67,6 +67,8 @@ website:
             text: Tips + resources
       - section: "HW"
         contents:
+          - href: hw/hw-0.qmd
+            text: HW 0
           - href: hw/hw-1.qmd
             text: HW 1
           - href: hw/hw-2.qmd
