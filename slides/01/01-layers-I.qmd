@@ -12,11 +12,15 @@ format: revealjs
 
 ## Announcements
 
--   Office hours + locations finalized at [vizdata.org/course-team.html](https://vizdata.org/course-team.html).
+-   Office hours + locations finalized at [vizdata.org/course-team.html](https://vizdata.org/course-team.html)
 
--   Don't forget to complete the getting to know you survey by 8pm today at the latest!
+-   Don't forget to complete the getting to know you survey by 8pm today at the latest – we need your GitHub names for tomorrow's lab!
 
--   A note on readings for this week: Some of it is review so feel free to skim those parts.
+-   A note on readings for this week: Some of it is review so feel free to skim those parts
+
+-   No class recordings on Panopto – unfortunately the room isn't set up for it 😥
+
+-   Lecture participation today: Test run, not graded!
 
 ## Setup
 
@@ -220,7 +224,7 @@ ggplot(
 ## Vote
 
 ```{=html}
-<iframe frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/events/SJERMI/questions/65a60ed5cb175c309f397699" width="100%"></iframe>
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
 ```
 :::
 
@@ -261,7 +265,7 @@ ggplot(
 ## Vote
 
 ```{=html}
-<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/events/SJERMI/questions/65a60ee91afc5f38bc6e8a85" width="100%"></iframe>
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
 ```
 :::
 
@@ -345,7 +349,7 @@ ggplot(
 ## Vote
 
 ```{=html}
-<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/events/SJERMI/questions/65a60f09cb175c309f3977d7" width="100%"></iframe>
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
 ```
 :::
 
@@ -541,7 +545,7 @@ ggplot(
 Can you spot the differences between the code here and the one provided in the previous slide? Are there any differences in the resulting plot? Work in a pair (or group) to answer.
 
 ```{=html}
-<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/events/SJERMI/questions/65a60f67a84d3e76fff34d58" width="100%"></iframe>
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
 ```
 :::
 
@@ -586,7 +590,7 @@ ggplot(duke_forest, aes(x = area, y = price)) +
 ## Discussion
 
 ```{=html}
-<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/events/SJERMI/questions/65a610521afc5f38bc6e9bab" width="100%"></iframe>
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
 ```
 :::
 
@@ -601,5 +605,5 @@ Think back to all the plots you saw in the lecture, without flipping back throug
 :::
 
 ```{=html}
-<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/events/SJERMI/questions/65a6106c1afc5f38bc6e9d34" width="100%"></iframe>
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
 ```
