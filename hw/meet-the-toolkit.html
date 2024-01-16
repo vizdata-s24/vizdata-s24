@@ -356,14 +356,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#meet-the-toolkit" id="toc-meet-the-toolkit" class="nav-link active" data-scroll-target="#meet-the-toolkit">Meet the toolkit</a>
-  <ul class="collapse">
-  <li><a href="#github-authentication" id="toc-github-authentication" class="nav-link" data-scroll-target="#github-authentication">1. GitHub authentication</a>
+  <li><a href="#github-authentication" id="toc-github-authentication" class="nav-link active" data-scroll-target="#github-authentication">GitHub authentication</a>
   <ul class="collapse">
   <li><a href="#frequently-asked-questions" id="toc-frequently-asked-questions" class="nav-link" data-scroll-target="#frequently-asked-questions">Frequently Asked Questions</a></li>
   </ul></li>
-  <li><a href="#profiles-in-course-tools" id="toc-profiles-in-course-tools" class="nav-link" data-scroll-target="#profiles-in-course-tools">2. Profiles in course tools</a></li>
-  </ul></li>
+  <li><a href="#profiles-in-course-tools" id="toc-profiles-in-course-tools" class="nav-link" data-scroll-target="#profiles-in-course-tools">Profiles in course tools</a></li>
   <li><a href="#visualizing-us-polling-places" id="toc-visualizing-us-polling-places" class="nav-link" data-scroll-target="#visualizing-us-polling-places">Visualizing US Polling Places</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/vizdata-s24/vizdata-s24/edit/main/hw/meet-the-toolkit.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vizdata-s24/vizdata-s24/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -390,16 +387,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="meet-the-toolkit" class="level1">
-<h1>Meet the toolkit</h1>
 <p>The goals of this exercise are:</p>
 <ul>
 <li>Help you configure GitHub authentication</li>
 <li>Get your data visualization juices flowing</li>
 </ul>
 <p>To complete this exercise, and all future work in R associated with this course, go to https://cmgr.oit.duke.edu/containers and log in with your Duke credentials. If you haven’t yet done so, reserve a container for STA 313 by on the <em>Reservations available</em> menu on the right. You only need to do this once, and when you do, you’ll see this container moved to the <em>My reservations</em> menu on the left. Next, click on STA313 under <em>My reservations</em> to access the RStudio instance you’ll use for the course.</p>
-<section id="github-authentication" class="level2">
-<h2 class="anchored" data-anchor-id="github-authentication">1. GitHub authentication</h2>
+<section id="github-authentication" class="level1">
+<h1>GitHub authentication</h1>
 <p>Begin by creating a public private key pair using the <code>credentials</code> package, run the following line in the RStudio Console:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>credentials<span class="sc">::</span><span class="fu">ssh_setup_github</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The function will first prompt you to create an SSH key pair if one does not already exist</p>
@@ -429,8 +424,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Once finished, you can click the green Add SSH key button. This key should now show in the list of GitHub SSH keys on <a href="https://github.com/settings/keys" class="uri">https://github.com/settings/keys</a>.</p>
 <p>You can now test that the SSH authentication is working by attempting to clone a private repository (make sure to select the SSH url and not HTTPS).</p>
 <p><img src="images/github_ssh3.png" width="100%"></p>
-<section id="frequently-asked-questions" class="level3">
-<h3 class="anchored" data-anchor-id="frequently-asked-questions">Frequently Asked Questions</h3>
+<section id="frequently-asked-questions" class="level2">
+<h2 class="anchored" data-anchor-id="frequently-asked-questions">Frequently Asked Questions</h2>
 <ol type="1">
 <li><p><strong>What happens if I already have an SSH key?</strong></p>
 <p>Nothing bad, the <code>creditials</code> package will recognize this and just print the existing public SSH key. If you want to get rid of the existing key you will need to delete the <code>id_rsa</code> and <code>id_rsa.pub</code> files from the <code>.ssh</code> directory in your home directory.</p></li>
@@ -456,13 +451,12 @@ and the repository exists.</code></pre>
 </ol>
 </section>
 </section>
-<section id="profiles-in-course-tools" class="level2">
-<h2 class="anchored" data-anchor-id="profiles-in-course-tools">2. Profiles in course tools</h2>
+<section id="profiles-in-course-tools" class="level1">
+<h1>Profiles in course tools</h1>
 <ul>
 <li><p>Update your GitHub profile to show your real name and (ideally, but optionally) a recent photo of yours. If you prefer not to use your photo, that’s fine, but please use some personalized avatar that’s not the one GitHub randomly assigns to you.</p></li>
 <li><p>Make sure you’ve joined the course Slack and match your Slack profile to your GitHub profile.</p></li>
 </ul>
-</section>
 </section>
 <section id="visualizing-us-polling-places" class="level1">
 <h1>Visualizing US Polling Places</h1>
