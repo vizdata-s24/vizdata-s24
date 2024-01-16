@@ -3,7 +3,7 @@ project:
 
 website:
   page-navigation: true
-  title: "STA 199"
+  title: "STA 313"
   description: "Homepage for STA 313 - Advanced Data Visualization at Duke University, Spring 2024."
   site-url: "https://vizdata.org/"
 
