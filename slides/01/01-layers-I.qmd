@@ -14,7 +14,7 @@ format: revealjs
 
 -   Office hours + locations finalized at [vizdata.org/course-team.html](https://vizdata.org/course-team.html)
 
-    -   My office hours **today**: 2-3 pm at Old Chem 213
+    -   My office hours **today** only: 2-3 pm at Old Chem 213
 
 -   Don't forget to complete the getting to know you survey by 8pm today at the latest – we need your GitHub names for tomorrow's lab!
 
