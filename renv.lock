@@ -96,6 +96,16 @@
       ],
       "Hash": "df924bedbdcaaf3b1d3ac7ed94f4d001"
     },
+    "airports": {
+      "Package": "airports",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "14e997c91e0cdca32231b04143e0904c"
+    },
     "askpass": {
       "Package": "askpass",
       "Version": "1.2.0",
@@ -256,6 +266,16 @@
       ],
       "Hash": "f61dbaec772ccd2e17705c1e872e9e7c"
     },
+    "cherryblossom": {
+      "Package": "cherryblossom",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "ef936debf27cd40d667339a6ad89cd75"
+    },
     "cli": {
       "Package": "cli",
       "Version": "3.6.1",
@@ -310,6 +330,19 @@
         "rlang"
       ],
       "Hash": "bb097fccb22d156624fd07cd2894ddb6"
+    },
+    "countdown": {
+      "Package": "countdown",
+      "Version": "0.4.0",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "htmltools",
+        "prismatic",
+        "utils",
+        "whisker"
+      ],
+      "Hash": "b44ad5a5e287637c3b8ca0e9bb64bb18"
     },
     "cpp11": {
       "Package": "cpp11",
@@ -1028,6 +1061,24 @@
       ],
       "Hash": "8d1938040a05566f4f7a14af4feadd6b"
     },
+    "openintro": {
+      "Package": "openintro",
+      "Version": "2.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "airports",
+        "cherryblossom",
+        "ggplot2",
+        "graphics",
+        "readr",
+        "rmarkdown",
+        "tibble",
+        "usdata"
+      ],
+      "Hash": "b392256e8a002162618cd58dc0381b67"
+    },
     "openssl": {
       "Package": "openssl",
       "Version": "2.1.1",
@@ -1084,6 +1135,19 @@
         "R"
       ],
       "Hash": "6b01fc98b1e86c4f705ce9dcfd2f57c7"
+    },
+    "prismatic": {
+      "Package": "prismatic",
+      "Version": "1.1.1",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "farver",
+        "grDevices",
+        "graphics"
+      ],
+      "Hash": "faa2193fdec94a45b4390aefc1280a62"
     },
     "processx": {
       "Package": "processx",
@@ -1579,6 +1643,17 @@
       ],
       "Hash": "f561504ec2897f4d46f0c7657e488ae1"
     },
+    "usdata": {
+      "Package": "usdata",
+      "Version": "0.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "tibble"
+      ],
+      "Hash": "9cc31e3592089bfd82c69a65260f1e37"
+    },
     "utf8": {
       "Package": "utf8",
       "Version": "1.2.4",
@@ -1648,6 +1723,13 @@
         "withr"
       ],
       "Hash": "9db52c1656cf19c124f93124ea57f0fd"
+    },
+    "whisker": {
+      "Package": "whisker",
+      "Version": "0.4.1",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Hash": "c6abfa47a46d281a7d5159d0a8891e88"
     },
     "withr": {
       "Package": "withr",
