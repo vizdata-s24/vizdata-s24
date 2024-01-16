@@ -106,6 +106,7 @@ format:
     code-overflow: wrap
     mainfont: "Atkinson Hyperlegible"
     highlight-style: a11y-dark
+    code-link: true
 
 execute:
   freeze: auto

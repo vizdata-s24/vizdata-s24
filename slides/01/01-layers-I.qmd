@@ -6,9 +6,6 @@ title-slide-attributes:
   data-background-size: stretch
   data-slide-number: none
 format: revealjs
-highlight-style: a11y
-execute:
-  code-link: true
 ---
 
 # Warm up
@@ -303,7 +300,7 @@ Which of the plots has a higher data-to-ink ratio?
 
 mean_area_decade <- duke_forest |>
   group_by(decade_built_cat) |>
-  summarise(mean_area = mean(area))
+  summarize(mean_area = mean(area))
 
 mean_area_decade
 ```
