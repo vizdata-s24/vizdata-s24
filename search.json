@@ -511,156 +511,6 @@
     "text": "This week’s tasks\n\nCreate a GitHub account if you don’t have one\nRead the syllabus\nMake sure you can login in to RStudio and reserve a container for STA 313: cmgr.oit.duke.edu/containers\nComplete the Getting to know you survey on Canvas – to be posted\nComplete the readings\n\n\n\n\n\n🔗 vizdata.org"
   },
   {
-    "objectID": "student-work/project-2.html",
-    "href": "student-work/project-2.html",
-    "title": "Project 2 outputs",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "Student work",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "student-work/ugly-plot.html",
-    "href": "student-work/ugly-plot.html",
-    "title": "Ugly plots",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "Student work",
-      "Ugly plots"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "STA 313: Advanced Data Visualization",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nThu, Jan 11\n\n\nWelcome + Grammar of graphics\n00-slides\n\n\n\n\n2\nTue, Jan 16\n📚 ggplot2-book - Chp 13  📚 socviz\nDeep dive into ggplot2 layers I\n\n\n\n\n\n\n\n\nWed, Jan 17\n📚 ggplot2-book - Chp 14  📚 ggplot2-book - Chp 15\nMeet the toolkit\n\n\n\n\n\n\n\n\nThu, Jan 18\n📚 ggplot2-book - Chp 16  📚 ggplot2-book - Chp 17  📚 ggplot2-book - Chp 18\nDeep dive into ggplot2 layers II\n\n\n\n\n\n\n3\nTue, Jan 23\n📚 R4DS - Chp 6\nData wrangling I\n\n\n✅ RQ 1 at 10 am\n\n\n\n\nWed, Jan 24\n\n\nWork on HW 1\n\n\n\n\n\n\n\n\nThu, Jan 25\n📚 R4DS - Chp 21\nData wrangling II\n\n\n\n\n\n\n4\nTue, Jan 30\n📚 fdv - Chp 13\nVisualizing time series data I\n\n\n📝 HW 1 at 5 pm\n\n\n\n\nWed, Jan 31\n\n\nWork on Project 1 proposals\n\n\n📑 Project 1 proposals for peer review at 1 pm\n\n\n\n\nThu, Feb 1\n📚 fdv - Chp 14\nVisualizing time series data II\n\n\n\n\n\n\n5\nTue, Feb 6\n\n\n🎤 Guest lecture: Kieran Healey  Topic TBA\n\n\n✅ RQ 2 at 10 am\n\n\n\n\nWed, Feb 7\n\n\nPeer review for Project 1 proposals + Work on HW 2\n\n\n\n\n\n\n\n\nThu, Feb 8\n\n\n🎤 Guest lecture: Kelsey Brod  Topic TBA\n\n\n\n\n\n\n6\nTue, Feb 13\n\n\nThemes + axes + annotation\n\n\n📝 HW 2 at 5 pm\n\n\n\n\nWed, Feb 14\n\n\nWork on Project 1 presentations + writeups\n\n\n\n\n\n\n\n\nThu, Feb 15\n\n\nData visualization accessibility\n\n\n\n\n\n\n7\nTue, Feb 20\n\n\nPresentation ready plots I\n\n\n\n\n\n\n\n\nWed, Feb 21\n\n\nProject 1 presentations\n\n\n📑 Project 1\n\n\n\n\nThu, Feb 22\n\n\nVisualizing Likert data I\n\n\n\n\n\n\n8\nTue, Feb 27\n\n\nVisualizing Likert data II\n\n\n✅ RQ 3 at 10 am\n\n\n\n\nWed, Feb 28\n\n\nHistorical visualizations (Library visit)\n\n\n\n\n\n\n\n\nThu, Feb 29\n\n\nDu Bois visualizations\n\n\n\n\n\n\n9\nTue, Mar 5\n\n\nProject 2 preview + Visualizing geospatial data I\n\n\n📝 HW 3 at 5 pm\n\n\n\n\nWed, Mar 6\n\n\nWork on HW 4\n\n\n\n\n\n\n\n\nThu, Mar 7\n\n\nVisualizing geospatial data II\n\n\n\n\n\n\n10\nTue, Mar 12\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n\n\nWed, Mar 13\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n\n\nThu, Mar 14\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n11\nTue, Mar 19\n\n\nVisualizing geospatial data III\n\n\n✅ RQ 4 at 10 am\n\n\n\n\nWed, Mar 20\n\n\nWork on Project 2 proposals\n\n\n\n\n\n\n\n\nThu, Mar 21\n\n\nVisualizing uncertainty\n\n\n\n\n\n\n12\nTue, Mar 26\n\n\nVisualizing … (TBA)\n\n\n📝 HW 4 at 5 pm\n\n\n\n\nWed, Mar 27\n\n\nProject 2 proposal peer review\n\n\n📑 Project 2 proposals for peer review at 1 pm\n\n\n\n\nThu, Mar 28\n\n\nVisualizing … (TBA)\n\n\n\n\n\n\n13\nTue, Apr 2\n\n\nTables\n\n\n✅ RQ 5 at 10 am\n\n\n\n\nWed, Apr 3\n\n\nWork on HW 5\n\n\n\n\n\n\n\n\nThu, Apr 4\n\n\nAnimation\n\n\n\n\n\n\n14\nTue, Apr 9\n\n\nInteractive visualizations + reporting with Shiny I\n\n\n📝 HW 5 at 5 pm\n\n\n\n\nWed, Apr 10\n\n\nWork on Project 2\n\n\n\n\n\n\n\n\nThu, Apr 11\n\n\nInteractive visualizations + reporting with Shiny II\n\n\n\n\n\n\n15\nTue, Apr 16\n\n\nGenerative art I\n\n\n✅ RQ 6 at 10 am\n\n\n\n\nWed, Apr 17\n\n\nWork on HW 6\n\n\n\n\n\n\n\n\nThu, Apr 18\n\n\nGenerative art II\n\n\n\n\n\n\n16\nTue, Apr 23\n\n\nPresentation ready plots II\n\n\n📝 HW 6 at 5 pm\n\n\n\n\nWed, Apr 24\n\n\nProject 2 code review\n\n\n\n\n\n\n17\nWed, May 1\n\n\nProject 2 presentations (9 am - 12 pm)\n\n\n📑 Project 2",
-    "crumbs": [
-      "Course information",
-      "Schedule"
-    ]
-  },
-  {
-    "objectID": "hw/hw-3.html",
-    "href": "hw/hw-3.html",
-    "title": "HW 3 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 3"
-    ]
-  },
-  {
-    "objectID": "hw/hw-4.html",
-    "href": "hw/hw-4.html",
-    "title": "HW 4 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 4"
-    ]
-  },
-  {
-    "objectID": "hw/hw-1.html",
-    "href": "hw/hw-1.html",
-    "title": "HW 1 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "hw/hw-5.html",
-    "href": "hw/hw-5.html",
-    "title": "HW 5 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 5"
-    ]
-  },
-  {
-    "objectID": "hw/hw-2.html",
-    "href": "hw/hw-2.html",
-    "title": "HW 2 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 2"
-    ]
-  },
-  {
-    "objectID": "hw/hw-6.html",
-    "href": "hw/hw-6.html",
-    "title": "Lab 1 - TBA",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "HW",
-      "HW 6"
-    ]
-  },
-  {
-    "objectID": "course-faq.html",
-    "href": "course-faq.html",
-    "title": "FAQ",
-    "section": "",
-    "text": "The short answer is, I’d rather you didn’t, to save yourself some headache. But, the long answer is, sure! But you will need to install a specific versions of R and RStudio for everything to work as expected. You will also need to install the R packages we’re using as well as have Git installed on your computer. These are not extremely challenging things to get right, but they are not trivial either, particularly on certain operating systems. Myself and the TAs are always happy to provide help with any computational questions when you’re working in the containers we have provided for you. If you’re working on your local setup, we can’t guarantee being able to resolve your issues, though we’re happy to try.\nIf you want to take this path, here is what you need to do:\n\nDownload and install R 4.2.2: https://cran.r-project.org/\nDownload and install the preview build of RStudio: https://www.rstudio.com/products/rstudio/download/preview-release-notes\nInstall Git: https://happygitwithr.com/install-git.html\nInstall any necessary packages with install.packages(\"___\")\n\nAnd I’d like to reiterate again that successful installation of these software is not a learning goal of this course. So if any of this seems tedious or intimidating in any way, just use the computing environment we have set up for you. More on that here.",
-    "crumbs": [
-      "Course information",
-      "FAQ"
-    ]
-  },
-  {
-    "objectID": "course-faq.html#can-i-use-a-local-install-of-r-and-rstudio-instead-of-using-the-rstudio-containers",
-    "href": "course-faq.html#can-i-use-a-local-install-of-r-and-rstudio-instead-of-using-the-rstudio-containers",
-    "title": "FAQ",
-    "section": "",
-    "text": "The short answer is, I’d rather you didn’t, to save yourself some headache. But, the long answer is, sure! But you will need to install a specific versions of R and RStudio for everything to work as expected. You will also need to install the R packages we’re using as well as have Git installed on your computer. These are not extremely challenging things to get right, but they are not trivial either, particularly on certain operating systems. Myself and the TAs are always happy to provide help with any computational questions when you’re working in the containers we have provided for you. If you’re working on your local setup, we can’t guarantee being able to resolve your issues, though we’re happy to try.\nIf you want to take this path, here is what you need to do:\n\nDownload and install R 4.2.2: https://cran.r-project.org/\nDownload and install the preview build of RStudio: https://www.rstudio.com/products/rstudio/download/preview-release-notes\nInstall Git: https://happygitwithr.com/install-git.html\nInstall any necessary packages with install.packages(\"___\")\n\nAnd I’d like to reiterate again that successful installation of these software is not a learning goal of this course. So if any of this seems tedious or intimidating in any way, just use the computing environment we have set up for you. More on that here.",
-    "crumbs": [
-      "Course information",
-      "FAQ"
-    ]
-  },
-  {
-    "objectID": "student-work/project-1.html",
-    "href": "student-work/project-1.html",
-    "title": "Project 1 outputs",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "Student work",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "student-work/thank-you.html",
-    "href": "student-work/thank-you.html",
-    "title": "Thank you",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "Student work",
-      "Thank you cards"
-    ]
-  },
-  {
     "objectID": "course-overview.html",
     "href": "course-overview.html",
     "title": "Course overview",
@@ -692,6 +542,345 @@
       "Course information",
       "Overview"
     ]
+  },
+  {
+    "objectID": "student-work/thank-you.html",
+    "href": "student-work/thank-you.html",
+    "title": "Thank you",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Student work",
+      "Thank you cards"
+    ]
+  },
+  {
+    "objectID": "student-work/project-1.html",
+    "href": "student-work/project-1.html",
+    "title": "Project 1 outputs",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Student work",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "course-faq.html",
+    "href": "course-faq.html",
+    "title": "FAQ",
+    "section": "",
+    "text": "The short answer is, I’d rather you didn’t, to save yourself some headache. But, the long answer is, sure! But you will need to install a specific versions of R and RStudio for everything to work as expected. You will also need to install the R packages we’re using as well as have Git installed on your computer. These are not extremely challenging things to get right, but they are not trivial either, particularly on certain operating systems. Myself and the TAs are always happy to provide help with any computational questions when you’re working in the containers we have provided for you. If you’re working on your local setup, we can’t guarantee being able to resolve your issues, though we’re happy to try.\nIf you want to take this path, here is what you need to do:\n\nDownload and install R 4.2.2: https://cran.r-project.org/\nDownload and install the preview build of RStudio: https://www.rstudio.com/products/rstudio/download/preview-release-notes\nInstall Git: https://happygitwithr.com/install-git.html\nInstall any necessary packages with install.packages(\"___\")\n\nAnd I’d like to reiterate again that successful installation of these software is not a learning goal of this course. So if any of this seems tedious or intimidating in any way, just use the computing environment we have set up for you. More on that here.",
+    "crumbs": [
+      "Course information",
+      "FAQ"
+    ]
+  },
+  {
+    "objectID": "course-faq.html#can-i-use-a-local-install-of-r-and-rstudio-instead-of-using-the-rstudio-containers",
+    "href": "course-faq.html#can-i-use-a-local-install-of-r-and-rstudio-instead-of-using-the-rstudio-containers",
+    "title": "FAQ",
+    "section": "",
+    "text": "The short answer is, I’d rather you didn’t, to save yourself some headache. But, the long answer is, sure! But you will need to install a specific versions of R and RStudio for everything to work as expected. You will also need to install the R packages we’re using as well as have Git installed on your computer. These are not extremely challenging things to get right, but they are not trivial either, particularly on certain operating systems. Myself and the TAs are always happy to provide help with any computational questions when you’re working in the containers we have provided for you. If you’re working on your local setup, we can’t guarantee being able to resolve your issues, though we’re happy to try.\nIf you want to take this path, here is what you need to do:\n\nDownload and install R 4.2.2: https://cran.r-project.org/\nDownload and install the preview build of RStudio: https://www.rstudio.com/products/rstudio/download/preview-release-notes\nInstall Git: https://happygitwithr.com/install-git.html\nInstall any necessary packages with install.packages(\"___\")\n\nAnd I’d like to reiterate again that successful installation of these software is not a learning goal of this course. So if any of this seems tedious or intimidating in any way, just use the computing environment we have set up for you. More on that here.",
+    "crumbs": [
+      "Course information",
+      "FAQ"
+    ]
+  },
+  {
+    "objectID": "hw/hw-6.html",
+    "href": "hw/hw-6.html",
+    "title": "Lab 1 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 6"
+    ]
+  },
+  {
+    "objectID": "hw/hw-2.html",
+    "href": "hw/hw-2.html",
+    "title": "HW 2 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 2"
+    ]
+  },
+  {
+    "objectID": "hw/hw-5.html",
+    "href": "hw/hw-5.html",
+    "title": "HW 5 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 5"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "hw/hw-1.html",
+    "href": "hw/hw-1.html",
+    "title": "HW 1 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "hw/hw-4.html",
+    "href": "hw/hw-4.html",
+    "title": "HW 4 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 4"
+    ]
+  },
+  {
+    "objectID": "hw/hw-3.html",
+    "href": "hw/hw-3.html",
+    "title": "HW 3 - TBA",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "HW",
+      "HW 3"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "STA 313: Advanced Data Visualization",
+    "section": "",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nThu, Jan 11\n\n\nWelcome + Grammar of graphics\nslides-00\n\n\n\n\n2\nTue, Jan 16\n📚 ggplot2-book - Chp 13  📚 socviz\nDeep dive into ggplot2 layers I\nslides-01  ae-01\n\n\n\n\n\n\nWed, Jan 17\n📚 ggplot2-book - Chp 14  📚 ggplot2-book - Chp 15\nMeet the toolkit\n\n\n\n\n\n\n\n\nThu, Jan 18\n📚 ggplot2-book - Chp 16  📚 ggplot2-book - Chp 17  📚 ggplot2-book - Chp 18\nDeep dive into ggplot2 layers II\n\n\n\n\n\n\n3\nTue, Jan 23\n📚 R4DS - Chp 6\nData wrangling I\n\n\n✅ RQ 1 at 10 am\n\n\n\n\nWed, Jan 24\n\n\nWork on HW 1\n\n\n\n\n\n\n\n\nThu, Jan 25\n📚 R4DS - Chp 21\nData wrangling II\n\n\n\n\n\n\n4\nTue, Jan 30\n📚 fdv - Chp 13\nVisualizing time series data I\n\n\n📝 HW 1 at 5 pm\n\n\n\n\nWed, Jan 31\n\n\nWork on Project 1 proposals\n\n\n📑 Project 1 proposals for peer review at 1 pm\n\n\n\n\nThu, Feb 1\n📚 fdv - Chp 14\nVisualizing time series data II\n\n\n\n\n\n\n5\nTue, Feb 6\n\n\n🎤 Guest lecture: Kieran Healey  Topic TBA\n\n\n✅ RQ 2 at 10 am\n\n\n\n\nWed, Feb 7\n\n\nPeer review for Project 1 proposals + Work on HW 2\n\n\n\n\n\n\n\n\nThu, Feb 8\n\n\n🎤 Guest lecture: Kelsey Brod  Topic TBA\n\n\n\n\n\n\n6\nTue, Feb 13\n🎥 Cara Thompson - Dynamic annotations: tips and tricks\nThemes + axes + annotation\n\n\n📝 HW 2 at 5 pm\n\n\n\n\nWed, Feb 14\n\n\nWork on Project 1 presentations + writeups\n\n\n\n\n\n\n\n\nThu, Feb 15\n\n\nData visualization accessibility\n\n\n\n\n\n\n7\nTue, Feb 20\n\n\nPresentation ready plots I\n\n\n\n\n\n\n\n\nWed, Feb 21\n\n\nProject 1 presentations\n\n\n📑 Project 1\n\n\n\n\nThu, Feb 22\n\n\nVisualizing Likert data I\n\n\n\n\n\n\n8\nTue, Feb 27\n\n\nVisualizing Likert data II\n\n\n✅ RQ 3 at 10 am\n\n\n\n\nWed, Feb 28\n\n\nHistorical visualizations (Library visit)\n\n\n\n\n\n\n\n\nThu, Feb 29\n\n\nDu Bois visualizations\n\n\n\n\n\n\n9\nTue, Mar 5\n\n\nProject 2 preview + Visualizing geospatial data I\n\n\n📝 HW 3 at 5 pm\n\n\n\n\nWed, Mar 6\n\n\nWork on HW 4\n\n\n\n\n\n\n\n\nThu, Mar 7\n\n\nVisualizing geospatial data II\n\n\n\n\n\n\n10\nTue, Mar 12\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n\n\nWed, Mar 13\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n\n\nThu, Mar 14\n\n\n🌴 No lab - Spring Break\n\n\n\n\n\n\n11\nTue, Mar 19\n\n\nVisualizing geospatial data III\n\n\n✅ RQ 4 at 10 am\n\n\n\n\nWed, Mar 20\n\n\nWork on Project 2 proposals\n\n\n\n\n\n\n\n\nThu, Mar 21\n\n\nVisualizing uncertainty\n\n\n\n\n\n\n12\nTue, Mar 26\n\n\nVisualizing … (TBA)\n\n\n📝 HW 4 at 5 pm\n\n\n\n\nWed, Mar 27\n\n\nProject 2 proposal peer review\n\n\n📑 Project 2 proposals for peer review at 1 pm\n\n\n\n\nThu, Mar 28\n\n\nVisualizing … (TBA)\n\n\n\n\n\n\n13\nTue, Apr 2\n\n\nTables\n\n\n✅ RQ 5 at 10 am\n\n\n\n\nWed, Apr 3\n\n\nWork on HW 5\n\n\n\n\n\n\n\n\nThu, Apr 4\n\n\nAnimation\n\n\n\n\n\n\n14\nTue, Apr 9\n\n\nInteractive visualizations + reporting with Shiny I\n\n\n📝 HW 5 at 5 pm\n\n\n\n\nWed, Apr 10\n\n\nWork on Project 2\n\n\n\n\n\n\n\n\nThu, Apr 11\n\n\nInteractive visualizations + reporting with Shiny II\n\n\n\n\n\n\n15\nTue, Apr 16\n\n\nGenerative art I\n\n\n✅ RQ 6 at 10 am\n\n\n\n\nWed, Apr 17\n\n\nWork on HW 6\n\n\n\n\n\n\n\n\nThu, Apr 18\n\n\nGenerative art II\n\n\n\n\n\n\n16\nTue, Apr 23\n\n\nPresentation ready plots II\n\n\n📝 HW 6 at 5 pm\n\n\n\n\nWed, Apr 24\n\n\nProject 2 code review\n\n\n\n\n\n\n17\nWed, May 1\n\n\nProject 2 presentations (9 am - 12 pm)\n\n\n📑 Project 2",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
+  },
+  {
+    "objectID": "student-work/ugly-plot.html",
+    "href": "student-work/ugly-plot.html",
+    "title": "Ugly plots",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Student work",
+      "Ugly plots"
+    ]
+  },
+  {
+    "objectID": "student-work/project-2.html",
+    "href": "student-work/project-2.html",
+    "title": "Project 2 outputs",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Student work",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#announcements",
+    "href": "slides/01/01-layers-1.html#announcements",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Announcements",
+    "text": "Announcements\n\nOffice hours + locations finalized at vizdata.org/course-team.html.\nDon’t forget to complete the getting to know you survey by 8pm today at the latest!\nA note on readings for this week: Some of it is review so feel free to skim those parts."
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#setup",
+    "href": "slides/01/01-layers-1.html#setup",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Setup",
+    "text": "Setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(openintro)\nlibrary(countdown)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))\n\n# set figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 7,        # 7\" width\n  fig.asp = 0.618,      # the golden ratio\n  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina\n  fig.align = \"center\", # center align figures\n  dpi = 300             # higher dpi, sharper image\n)"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#data-sale-prices-of-houses-in-duke-forest",
+    "href": "slides/01/01-layers-1.html#data-sale-prices-of-houses-in-duke-forest",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Data: Sale prices of houses in Duke Forest",
+    "text": "Data: Sale prices of houses in Duke Forest\n\n\n\nData on houses that were sold in the Duke Forest neighborhood of Durham, NC around November 2020\nScraped from Zillow\nSource: openintro::duke_forest"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#openintroduke_forest",
+    "href": "slides/01/01-layers-1.html#openintroduke_forest",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "openintro::duke_forest",
+    "text": "openintro::duke_forest\n\nlibrary(tidyverse)\nlibrary(openintro)\n\nglimpse(duke_forest)\n\nRows: 98\nColumns: 13\n$ address    &lt;chr&gt; \"1 Learned Pl, Durham, NC 27705\", \"1616 Pinecrest Rd, Durham, NC 2770…\n$ price      &lt;dbl&gt; 1520000, 1030000, 420000, 680000, 428500, 456000, 1270000, 557450, 69…\n$ bed        &lt;dbl&gt; 3, 5, 2, 4, 4, 3, 5, 4, 4, 3, 4, 4, 3, 5, 4, 5, 3, 4, 4, 3, 3, 4, 3, …\n$ bath       &lt;dbl&gt; 4.0, 4.0, 3.0, 3.0, 3.0, 3.0, 5.0, 3.0, 5.0, 2.0, 3.0, 3.0, 3.0, 4.0,…\n$ area       &lt;dbl&gt; 6040, 4475, 1745, 2091, 1772, 1950, 3909, 2841, 3924, 2173, 2091, 249…\n$ type       &lt;chr&gt; \"Single Family\", \"Single Family\", \"Single Family\", \"Single Family\", \"…\n$ year_built &lt;dbl&gt; 1972, 1969, 1959, 1961, 2020, 2014, 1968, 1973, 1972, 1964, 1977, 196…\n$ heating    &lt;chr&gt; \"Other, Gas\", \"Forced air, Gas\", \"Forced air, Gas\", \"Heat pump, Other…\n$ cooling    &lt;fct&gt; central, central, central, central, central, central, central, centra…\n$ parking    &lt;chr&gt; \"0 spaces\", \"Carport, Covered\", \"Garage - Attached, Covered\", \"Carpor…\n$ lot        &lt;dbl&gt; 0.97, 1.38, 0.51, 0.84, 0.16, 0.45, 0.94, 0.79, 0.53, 0.73, 0.58, 0.5…\n$ hoa        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ url        &lt;chr&gt; \"https://www.zillow.com/homedetails/1-Learned-Pl-Durham-NC-27705/4998…"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#a-simple-visualization",
+    "href": "slides/01/01-layers-1.html#a-simple-visualization",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "A simple visualization",
+    "text": "A simple visualization\n\nCodePlot\n\n\n\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(alpha = 0.7, size = 2) +\n  geom_smooth(method = \"lm\", se = FALSE, size = 0.7) +\n  labs(\n    x = \"Area (square feet)\",\n    y = \"Sale price (USD)\",\n    title = \"Price and area of houses in Duke Forest\"\n  )"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#new-variable-decade_built",
+    "href": "slides/01/01-layers-1.html#new-variable-decade_built",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "New variable: decade_built",
+    "text": "New variable: decade_built\n\nduke_forest &lt;- duke_forest |&gt;\n  mutate(decade_built = (year_built %/% 10) * 10)\n\nduke_forest |&gt;\n  select(year_built, decade_built)\n\n# A tibble: 98 × 2\n   year_built decade_built\n        &lt;dbl&gt;        &lt;dbl&gt;\n 1       1972         1970\n 2       1969         1960\n 3       1959         1950\n 4       1961         1960\n 5       2020         2020\n 6       2014         2010\n 7       1968         1960\n 8       1973         1970\n 9       1972         1970\n10       1964         1960\n# ℹ 88 more rows"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#new-variable-decade_built_cat",
+    "href": "slides/01/01-layers-1.html#new-variable-decade_built_cat",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "New variable: decade_built_cat",
+    "text": "New variable: decade_built_cat\n\nduke_forest &lt;- duke_forest |&gt;\n  mutate(\n    decade_built_cat = case_when(\n      decade_built &lt;= 1940 ~ \"1940 or before\",\n      decade_built &gt;= 1990 ~ \"1990 or after\",\n      TRUE ~ as.character(decade_built)\n    )\n  )\n\nduke_forest |&gt;\n  count(decade_built_cat)\n\n# A tibble: 6 × 2\n  decade_built_cat     n\n  &lt;chr&gt;            &lt;int&gt;\n1 1940 or before       8\n2 1950                26\n3 1960                32\n4 1970                11\n5 1980                13\n6 1990 or after        8"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#a-slightly-more-complex-visualization",
+    "href": "slides/01/01-layers-1.html#a-slightly-more-complex-visualization",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "A slightly more complex visualization",
+    "text": "A slightly more complex visualization\n\nCodePlot\n\n\n\nggplot(\n  duke_forest,\n  aes(x = area, y = price, color = decade_built_cat)\n) +\n  geom_point(alpha = 0.7, show.legend = FALSE) +\n  geom_smooth(method = \"lm\", se = FALSE, size = 0.5, show.legend = FALSE) +\n  facet_wrap(~decade_built_cat) +\n  labs(\n    x = \"Area (square feet)\",\n    y = \"Sale price (USD)\",\n    color = \"Decade built\",\n    title = \"Price and area of houses in Duke Forest\"\n  )"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#ab-testing-1",
+    "href": "slides/01/01-layers-1.html#ab-testing-1",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "A/B testing",
+    "text": "A/B testing\n\nIn the next two slides, the same plots are created with different “cosmetic” choices. Examine the plots two given (Plot A and Plot B), and indicate your preference by voting for one of them in the Vote tab."
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#test-1",
+    "href": "slides/01/01-layers-1.html#test-1",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Test 1",
+    "text": "Test 1\n\nPlot APlot BVote"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#test-2",
+    "href": "slides/01/01-layers-1.html#test-2",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Test 2",
+    "text": "Test 2\n\nPlot APlot BVote"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#bad-taste",
+    "href": "slides/01/01-layers-1.html#bad-taste",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Bad taste",
+    "text": "Bad taste"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#data-to-ink-ratio",
+    "href": "slides/01/01-layers-1.html#data-to-ink-ratio",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Data-to-ink ratio",
+    "text": "Data-to-ink ratio\nTufte strongly recommends maximizing the data-to-ink ratio this in the Visual Display of Quantitative Information (Tufte, 1983).\n\n\n\nGraphical excellence is the well-designed presentation of interesting data—a matter of substance, of statistics, and of design … [It] consists of complex ideas communicated with clarity, precision, and efficiency. … [It] is that which gives to the viewer the greatest number of ideas in the shortest time with the least ink in the smallest space … [It] is nearly always multivariate … And graphical excellence requires telling the truth about the data. (Tufte, 1983, p. 51)."
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#section",
+    "href": "slides/01/01-layers-1.html#section",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "",
+    "text": "Which of the plots has a higher data-to-ink ratio?\n\n\nPlot APlot BVote"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#a-deeper-look",
+    "href": "slides/01/01-layers-1.html#a-deeper-look",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "A deeper look",
+    "text": "A deeper look\n\nat the plotting code"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#summary-statistics",
+    "href": "slides/01/01-layers-1.html#summary-statistics",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Summary statistics",
+    "text": "Summary statistics\n\nmean_area_decade &lt;- duke_forest |&gt;\n  group_by(decade_built_cat) |&gt;\n  summarise(mean_area = mean(area))\n\nmean_area_decade\n\n# A tibble: 6 × 2\n  decade_built_cat mean_area\n  &lt;chr&gt;                &lt;dbl&gt;\n1 1940 or before       2072.\n2 1950                 2545.\n3 1960                 2873.\n4 1970                 3413.\n5 1980                 2889.\n6 1990 or after        2822."
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#barplot",
+    "href": "slides/01/01-layers-1.html#barplot",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Barplot",
+    "text": "Barplot\n\nCodePlot\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_col() +\n  labs(\n    x = \"Mean area (square feet)\", y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#scaterplot",
+    "href": "slides/01/01-layers-1.html#scaterplot",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Scaterplot",
+    "text": "Scaterplot\n\nCodePlot\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_point(size = 4) +\n  labs(\n    x = \"Mean area (square feet)\", y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#lollipop-chart-a-happy-medium",
+    "href": "slides/01/01-layers-1.html#lollipop-chart-a-happy-medium",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Lollipop chart – a happy medium?",
+    "text": "Lollipop chart – a happy medium?"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#application-exercise",
+    "href": "slides/01/01-layers-1.html#application-exercise",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Application exercise",
+    "text": "Application exercise\n\n\nGo to the course GitHub organization: https://github.com/vizdata-s24\nClone the repo called ae-01 and work on the exercise.\n\nNote: For today, this is not a personalized repo for you. The repo is public so everyone can clone it, but you won’t be able to push to it. Starting Thursday you’ll start getting your personalized repos you can push to.\n\nOnce you’re done, share your code on Slack in #general.\nLabel your chunk(s) and pay attention to code style and formatting!\n\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#bad-data",
+    "href": "slides/01/01-layers-1.html#bad-data",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Bad data",
+    "text": "Bad data\n\nOriginalImproved\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHealy, Data Visualization: A practical introduction. Chapter 1. Figures 1.8 and 1.9."
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#bad-perception",
+    "href": "slides/01/01-layers-1.html#bad-perception",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Bad perception",
+    "text": "Bad perception\n\n\n\nHealy, Data Visualization: A practical introduction. Chapter 1. Figure 1.12."
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#a-second-look-lollipop-chart",
+    "href": "slides/01/01-layers-1.html#a-second-look-lollipop-chart",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "A second look: lollipop chart",
+    "text": "A second look: lollipop chart\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_point(size = 4) +\n  geom_segment(aes(\n    x = 0, xend = mean_area,\n    y = decade_built_cat, yend = decade_built_cat\n  )) +\n  labs(\n    x = \"Mean area (square feet)\",\n    y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#activity-spot-the-differences-i",
+    "href": "slides/01/01-layers-1.html#activity-spot-the-differences-i",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Activity: Spot the differences I",
+    "text": "Activity: Spot the differences I\n\nPlotCodeDiscussion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_point(size = 4) +\n  geom_segment(aes(\n    xend = 0,\n    yend = decade_built_cat\n  )) +\n  labs(\n    x = \"Mean area (square feet)\",\n    y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )\n\n\n\nCan you spot the differences between the code here and the one provided in the previous slide? Are there any differences in the resulting plot? Work in a pair (or group) to answer.\n\n\n\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#global-vs.-layer-specific-aesthetics",
+    "href": "slides/01/01-layers-1.html#global-vs.-layer-specific-aesthetics",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Global vs. layer-specific aesthetics",
+    "text": "Global vs. layer-specific aesthetics\n\nAesthetic mappings can be supplied in the initial ggplot() call, in individual layers, or in some combination of both.\nWithin each layer, you can add, override, or remove mappings.\nIf you only have one layer in the plot, the way you specify aesthetics doesn’t make any difference. However, the distinction is important when you start adding additional layers."
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#activity-spot-the-differences-ii",
+    "href": "slides/01/01-layers-1.html#activity-spot-the-differences-ii",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Activity: Spot the differences II",
+    "text": "Activity: Spot the differences II\n\nDo you expect the following plots to be the same or different? If different, how? Discuss in a pair (or group) without running the code and sketch the resulting plots based on what you think the code will produce.\n\n\nPlotDiscussion\n\n\n\n# Plot A\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(aes(color = decade_built_cat))\n# Plot B\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(color = \"blue\")\n# Plot C\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(color = \"#a493ba\")\n\n\n\n\n\n\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/01/01-layers-1.html#wrap-up",
+    "href": "slides/01/01-layers-1.html#wrap-up",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Wrap up",
+    "text": "Wrap up\n\nThink back to all the plots you saw in the lecture, without flipping back through the slides. Which plot first comes to mind? Describe it in words.\n\n\n\n\n\n\n🔗 vizdata.org"
   },
   {
     "objectID": "computing/computing-cheatsheets.html",
