@@ -409,3 +409,167 @@ ggplot(duke_forest, aes(x = area, y = price)) +
   )
 ```
 :::
+
+## Three variables
+
+-   `geom_contour()`: contours
+-   `geom_tile()`: tile the plane with rectangles
+-   `geom_raster()`: fast version of `geom_tile()` for equal sized tiles
+
+## `geom_tile()`
+
+```{r}
+#| fig-asp: 0.5
+#| fig-width: 8
+
+ggplot(duke_forest, aes(x = bed, y = bath)) +
+  geom_tile(aes(fill = price)) +
+  scale_fill_continuous(labels = label_dollar())
+```
+
+# Themes
+
+## Complete themes {.smaller}
+
+```{r}
+#| message: false
+#| warning: false
+#| layout-ncol: 3
+
+p <- ggplot(duke_forest, aes(x = area, y = price)) +
+  geom_point(alpha = 0.6, size = 2)
+
+p + theme_gray() + labs(title = "Gray")
+p + theme_void() + labs(title = "Void")
+p + theme_dark() + labs(title = "Dark")
+```
+
+## Themes from ggthemes {.smaller}
+
+```{r}
+#| message: false
+#| warning: false
+#| layout-ncol: 3
+
+p + theme_fivethirtyeight() + labs(title = "FiveThirtyEight")
+p + theme_economist() + labs(title = "Economist")
+p + theme_wsj() + labs(title = "Wall Street Journal")
+```
+
+## Themes and color scales from **ggthemes**
+
+```{r}
+#| message: false
+#| warning: false
+
+p + 
+  aes(color = decade_built_cat) +
+  scale_color_wsj() +
+  theme_wsj() + 
+  labs(title = "Wall Street Journal")
+```
+
+## Themes from **ThemePark** {.smaller}
+
+```{r}
+#| message: false
+#| warning: false
+#| layout-ncol: 2
+
+p + 
+  geom_point(color = barbie_theme_colors["medium"]) +
+  theme_barbie()
+p + 
+  geom_point(color = gameofthrones_theme_colors["medium"]) +
+  theme_gameofthrones(gameofthrones_font = TRUE)
+```
+
+## Duke theme! {.smaller}
+
+```{r}
+#| fig-asp: 0.5
+#| fig-width: 6
+
+p + 
+  aes(color = price) +
+  theme_duke() +
+  theme(legend.position = "none") +
+  scale_duke_continuous()
+```
+
+## Modifying theme elements {.smaller}
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-asp: 0.5
+
+p + 
+  labs(title = "Duke Forest houses") +
+  theme(
+    plot.title = element_text(color = "red", face = "bold", family = "Comic Sans MS"),
+    plot.background = element_rect(color = "red", fill = "mistyrose")
+  )
+```
+
+# Axes
+
+## Axis breaks {.smaller}
+
+::: task
+How can the following figure be improved with custom breaks in axes, if at all?
+:::
+
+::: panel-tabset
+## Plot
+
+```{r}
+#| ref.label: kids-plot
+#| echo: false
+#| fig-asp: 0.4
+```
+
+## Code
+
+```{r}
+#| label: kids-plot
+#| fig-show: hide
+
+kids_plot <- tidykids |>
+  mutate(year = as.numeric(year)) |>
+  filter(
+    state %in% c("North Carolina", "California", "Florida"),
+    variable == "pubhealth"
+  ) |>
+  ggplot(aes(x = year, y = inf_adj_perchild, color = state, linetype = state)) +
+  geom_smooth(se = FALSE) +
+  scale_color_colorblind() +
+  theme(legend.position = c(0.15, 0.8))
+
+kids_plot
+```
+:::
+
+## Context matters
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-asp: 0.5
+#| code-line-numbers: "2"
+
+kids_plot +
+  scale_x_continuous(breaks = seq(from = 1996, to = 2016, by = 2))
+```
+
+## Conciseness matters
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-asp: 0.5
+#| code-line-numbers: "2"
+
+kids_plot +
+  scale_x_continuous(breaks = seq(from = 1996, to = 2016, by = 4))
+```
