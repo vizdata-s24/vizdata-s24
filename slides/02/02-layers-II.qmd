@@ -21,9 +21,7 @@ editor_options:
     -   On Slack, in public channels for #general, #homework, #project-1, #project-2, #quizzes, and #random as well as in a private channel for their lab section.
     -   Make sure your profile photo/avatar and name matches between GitHub and Slack.
 
--   HW 1 will be posted after class, due next Thursday.
-
-    -   You'll get to work on it in lab next Wednesday, but you should start it before then and go to lab with questions.
+-   Reading Quiz 1 posted, due next Tuesday at 10 am (before class).
 
 ## Setup {.smaller}
 
@@ -210,6 +208,7 @@ More helpful for `r nrow(diamonds)` observations:
 ggplot(diamonds, aes(x = carat, y = price)) +
   geom_hex()
 ```
+
 ## `geom_hex()`
 
 (Maybe) even more helpful on the (natural) log scale:
@@ -232,7 +231,7 @@ install.packages("hexbin")
 
 -   Otherwise you might see
 
-```
+```         
 Warning: Computation failed in `stat_binhex()`
 ```
 
@@ -241,7 +240,6 @@ Warning: Computation failed in `stat_binhex()`
 -   At least one discrete
     -   `geom_count()`: count number of point at distinct locations
     -   `geom_jitter()`: randomly jitter overlapping points
-
 -   One continuous, one discrete
     -   `geom_col()`: a bar chart of pre-computed summaries
     -   `geom_boxplot()`: boxplots
@@ -525,6 +523,7 @@ How can the following figure be improved with custom breaks in axes, if at all?
 
 ::: panel-tabset
 ## Plot
+
 ```{r}
 #| ref.label: kids-plot
 #| echo: false
@@ -532,6 +531,7 @@ How can the following figure be improved with custom breaks in axes, if at all?
 ```
 
 ## Code
+
 ```{r}
 #| label: kids-plot
 #| fig-show: hide
