@@ -18,7 +18,7 @@ editor_options:
 
 -   At this point everyone should be:
 
-    -   On Slack, in public channels for #general, #homework, #project-1, #project-2, #quizzes, and #random as well as in a private channel for their lab section.
+    -   On Slack, in public channels for #general, #random, and a private channel for their lab section.
     -   Make sure your profile photo/avatar and name matches between GitHub and Slack.
 
 -   Reading Quiz 1 posted, due next Tuesday at 10 am (before class).
