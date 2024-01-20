@@ -34,12 +34,7 @@ library(tidyverse)
 library(openintro)
 library(countdown)
 library(palmerpenguins)
-library(ggrepel)
 library(scales)
-library(ggthemes)
-library(ThemePark) # devtools::install_github("MatthewBJane/ThemePark")
-library(duke)      # devtools::install_github("aidangildea/duke")
-library(tidykids)  # devtools::install_github("jrosen48/tidykids")
 
 # set theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
