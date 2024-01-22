@@ -1,6 +1,6 @@
 ---
-title: "HW 2 - TBA"
-categories: "Lab"
+title: "HW 2"
+subtitle: "TBA"
 ---
 
 To be posted.
