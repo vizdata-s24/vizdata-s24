@@ -20,23 +20,6 @@
       ],
       "Hash": "9b4993e98e0e19da84c168460c032fef"
     },
-    "DT": {
-      "Package": "DT",
-      "Version": "0.31",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "crosstalk",
-        "htmltools",
-        "htmlwidgets",
-        "httpuv",
-        "jquerylib",
-        "jsonlite",
-        "magrittr",
-        "promises"
-      ],
-      "Hash": "77b5189f5272ae2b21e3ac2175ad107c"
-    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-60.0.1",
@@ -99,24 +82,6 @@
         "utils"
       ],
       "Hash": "5ea2700d21e038ace58269ecdbeb9ec0"
-    },
-    "ThemePark": {
-      "Package": "ThemePark",
-      "Version": "0.0.1",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "ThemePark",
-      "RemoteUsername": "MatthewBJane",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "f34f5c6ca69e15eb35f3c208ca09b1228d7b3367",
-      "Requirements": [
-        "R",
-        "ggplot2",
-        "showtext",
-        "sysfonts"
-      ],
-      "Hash": "97bf85e1e60bfaa5f29a37e781c17ee5"
     },
     "V8": {
       "Package": "V8",
@@ -402,19 +367,6 @@
       ],
       "Hash": "e8a1e41acf02548751f45c718d55aa6a"
     },
-    "crosstalk": {
-      "Package": "crosstalk",
-      "Version": "1.2.1",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R6",
-        "htmltools",
-        "jsonlite",
-        "lazyeval"
-      ],
-      "Hash": "ab12c7b080a57475248a30f4db6298c0"
-    },
     "curl": {
       "Package": "curl",
       "Version": "5.2.0",
@@ -516,23 +468,6 @@
         "vctrs"
       ],
       "Hash": "54ed3ea01b11e81a86544faaecfef8e2"
-    },
-    "duke": {
-      "Package": "duke",
-      "Version": "0.0.3",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "duke",
-      "RemoteUsername": "aidangildea",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "3328cfba43e0215f9d177efa5a181aa620c8422d",
-      "Requirements": [
-        "R",
-        "ggplot2",
-        "scales"
-      ],
-      "Hash": "6b54a6ff9d852558d63ec6fe5cba7be3"
     },
     "ellipsis": {
       "Package": "ellipsis",
@@ -678,41 +613,6 @@
         "withr"
       ],
       "Hash": "313d31eff2274ecf4c1d3581db7241f9"
-    },
-    "ggrepel": {
-      "Package": "ggrepel",
-      "Version": "0.9.5",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "Rcpp",
-        "ggplot2",
-        "grid",
-        "rlang",
-        "scales",
-        "withr"
-      ],
-      "Hash": "cc3361e234c4a5050e29697d675764aa"
-    },
-    "ggthemes": {
-      "Package": "ggthemes",
-      "Version": "5.0.0",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "ggplot2",
-        "graphics",
-        "grid",
-        "lifecycle",
-        "methods",
-        "purrr",
-        "scales",
-        "stringr",
-        "tibble"
-      ],
-      "Hash": "1bc682f6919559275c36c241cb5274a1"
     },
     "glue": {
       "Package": "glue",
@@ -918,21 +818,6 @@
       ],
       "Hash": "04291cc45198225444a397606810ac37"
     },
-    "httpuv": {
-      "Package": "httpuv",
-      "Version": "1.6.13",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "R6",
-        "Rcpp",
-        "later",
-        "promises",
-        "utils"
-      ],
-      "Hash": "d23d2879001f3d82ee9dc38a9ef53c4c"
-    },
     "httr": {
       "Package": "httr",
       "Version": "1.4.7",
@@ -1049,17 +934,6 @@
       ],
       "Hash": "b64ec208ac5bc1852b285f665d6368b3"
     },
-    "later": {
-      "Package": "later",
-      "Version": "1.3.2",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "Rcpp",
-        "rlang"
-      ],
-      "Hash": "a3e051d405326b8b0012377434c62b37"
-    },
     "lattice": {
       "Package": "lattice",
       "Version": "0.22-5",
@@ -1074,16 +948,6 @@
         "utils"
       ],
       "Hash": "7c5e89f04e72d6611c77451f6331a091"
-    },
-    "lazyeval": {
-      "Package": "lazyeval",
-      "Version": "0.2.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R"
-      ],
-      "Hash": "d908914ae53b04d4c0c0fd72ecc35370"
     },
     "lifecycle": {
       "Package": "lifecycle",
@@ -1329,22 +1193,6 @@
         "prettyunits"
       ],
       "Hash": "f4625e061cb2865f111b47ff163a5ca6"
-    },
-    "promises": {
-      "Package": "promises",
-      "Version": "1.2.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R6",
-        "Rcpp",
-        "fastmap",
-        "later",
-        "magrittr",
-        "rlang",
-        "stats"
-      ],
-      "Hash": "0d8a15c9d000970ada1ab21405387dee"
     },
     "ps": {
       "Package": "ps",
@@ -1614,29 +1462,6 @@
       ],
       "Hash": "3838071b66e0c566d55cc26bd6e27bf4"
     },
-    "showtext": {
-      "Package": "showtext",
-      "Version": "0.9-6",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "grDevices",
-        "showtextdb",
-        "sysfonts"
-      ],
-      "Hash": "c0fd332d248b195bbcb94a0dfda37b0d"
-    },
-    "showtextdb": {
-      "Package": "showtextdb",
-      "Version": "3.0",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "sysfonts",
-        "utils"
-      ],
-      "Hash": "c12e756cf947e58b0f2c2a520521a5a8"
-    },
     "snakecase": {
       "Package": "snakecase",
       "Version": "0.11.1",
@@ -1686,13 +1511,6 @@
       "Repository": "RSPM",
       "Hash": "3a1be13d68d47a8cd0bfd74739ca1555"
     },
-    "sysfonts": {
-      "Package": "sysfonts",
-      "Version": "0.8.8",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Hash": "7f4dac41a3e348ae12832167e6beb875"
-    },
     "systemfonts": {
       "Package": "systemfonts",
       "Version": "1.0.5",
@@ -1734,25 +1552,6 @@
         "vctrs"
       ],
       "Hash": "a84e2cc86d07289b3b6f5069df7a004c"
-    },
-    "tidykids": {
-      "Package": "tidykids",
-      "Version": "0.0.0.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "tidykids",
-      "RemoteUsername": "jrosen48",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "9748cbf6bb070495b1fc8ab0b9dcb02588fbb090",
-      "Requirements": [
-        "DT",
-        "R",
-        "dplyr",
-        "ggplot2",
-        "tibble"
-      ],
-      "Hash": "be8d4d246d8438131e32d54a95ec720e"
     },
     "tidyr": {
       "Package": "tidyr",
