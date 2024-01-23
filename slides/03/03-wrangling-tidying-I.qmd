@@ -43,10 +43,10 @@ format: revealjs
 
 # load packages
 library(tidyverse)
-library(openintro)
 library(countdown)
 library(scales)
 library(ggthemes)
+library(glue)
 
 # set theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
