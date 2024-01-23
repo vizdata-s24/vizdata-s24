@@ -46,6 +46,7 @@ library(tidyverse)
 library(openintro)
 library(countdown)
 library(scales)
+library(ggthemes)
 
 # set theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
@@ -55,11 +56,11 @@ options(width = 65)
 
 # set figure parameters for knitr
 knitr::opts_chunk$set(
-  fig.width = 7,        # 7" width
-  fig.asp = 0.618,      # the golden ratio
-  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina
+  fig.width = 7, # 7" width
+  fig.asp = 0.618, # the golden ratio
+  fig.retina = 3, # dpi multiplier for displaying HTML output on retina
   fig.align = "center", # center align figures
-  dpi = 300             # higher dpi, sharper image
+  dpi = 300 # higher dpi, sharper image
 )
 ```
 
@@ -75,13 +76,14 @@ have a single data frame
 want to slice it, and dice it, and juice it, and process it, so we can plot it
 :::
 
-## Data: Hotel bookings
+## Data: Hotel bookings {.smaller}
 
 -   Data from two hotels: one resort and one city hotel
 -   Observations: Each row represents a hotel booking
 
 ```{r message=FALSE}
 hotels <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv")
+names(hotels)
 ```
 
 ## dplyr 101
@@ -101,7 +103,7 @@ Which of the following (if any) are unfamiliar to you?
 ## Average cost of daily stay
 
 ::: task
-`ae-03`: Let's recreate this visualization!
+`ae-03` - Part 1: Let's recreate this visualization!
 :::
 
 ```{r}
@@ -113,7 +115,7 @@ hotels |>
   mutate(
     arrival_date = glue::glue("{arrival_date_year}-{arrival_date_month}-{arrival_date_day_of_month}"),
     arrival_date = ymd(arrival_date)
-    ) |>
+  ) |>
   group_by(hotel, arrival_date) |>
   summarise(mean_adr = mean(adr), .groups = "drop") |>
   ggplot(aes(x = arrival_date, y = mean_adr, group = hotel, color = hotel)) +
@@ -130,8 +132,10 @@ hotels |>
   ) +
   theme(
     legend.position = c(0.15, 0.9),
-    legend.box.background = element_rect(fill = "white",
-                                         color = "white"),
+    legend.box.background = element_rect(
+      fill = "white",
+      color = "white"
+    ),
     plot.subtitle = element_text(color = "cornsilk4"),
     plot.caption = element_text(color = "cornsilk4")
   )
@@ -149,6 +153,9 @@ Reveal below for code developed during live coding session.
 
 ## Monthly bookings {.smaller}
 
+::: panel-tabset
+## Question
+
 ::: task
 Come up with a plan for making the following visualization and write the pseudocode.
 :::
@@ -157,32 +164,27 @@ Come up with a plan for making the following visualization and write the pseudoc
 #| label: monthly-bookings
 #| fig-asp: 0.5
 #| echo: false
-#| dev: ragg_png
 
 hotels <- hotels |>
   mutate(
     arrival_date_month = fct_relevel(arrival_date_month, month.name),
     season = case_when(
       arrival_date_month %in% c("December", "January", "February") ~ "Winter",
-      arrival_date_month %in% c("March", "April", "May")           ~ "Spring",
-      arrival_date_month %in% c("June", "July", "August")          ~ "Summer",
-      TRUE                                                         ~ "Fall"
+      arrival_date_month %in% c("March", "April", "May") ~ "Spring",
+      arrival_date_month %in% c("June", "July", "August") ~ "Summer",
+      TRUE ~ "Fall"
     ),
-    season = fct_relevel(season, "Winter", "Spring", "Summer", "Fall"),
-    season_emoji = case_when(
-      season == "Winter" ~ "❄️",
-      season == "Spring" ~ "⛅️️",
-      season == "Summer" ~ "☀️",
-      season == "Fall"   ~ "☂️"
-    )
+    season = fct_relevel(season, "Winter", "Spring", "Summer", "Fall")
   )
 
 hotels |>
-  count(season_emoji, hotel, arrival_date_month) |>
+  count(season, hotel, arrival_date_month) |>
   ggplot(aes(x = arrival_date_month, y = n, group = hotel, linetype = hotel)) +
   geom_line(linewidth = 0.8, color = "cornsilk4") +
-  geom_text(aes(label = season_emoji), size = 6, show.legend = FALSE) +
+  geom_point(aes(shape = season, color = season), size = 4, show.legend = FALSE) +
   scale_x_discrete(labels = month.abb) +
+  scale_color_colorblind() +
+  scale_shape_manual(values = c("circle", "square", "diamond", "triangle")) +
   labs(
     x = "Arrival month", y = "Number of bookings", linetype = NULL,
     title = "Number of monthly bookings",
@@ -196,6 +198,25 @@ hotels |>
     plot.subtitle = element_text(color = "cornsilk4"),
     plot.caption = element_text(color = "cornsilk4")
   )
+```
+
+## Submit
+
+```{=html}
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
+```
+:::
+
+## Monthly bookings {.smaller}
+
+::: task
+`ae-03` - Part 2: Let's recreate this visualization!
+:::
+
+```{r}
+#| ref.label: monthly-bookings
+#| fig-asp: 0.5
+#| echo: false
 ```
 
 ## Livecoding {.smaller}
@@ -235,7 +256,7 @@ hotels |>
 
 hotels |>
   select(adults, children, babies) |>
-  rowwise() |> 
+  rowwise() |>
   mutate(guests = sum(c(adults, children, babies))) |>
   filter(adults > 0, children > 0, babies > 0) # to show sum works
 ```
@@ -248,10 +269,10 @@ Use `across()` combined with `summarise()` to calculate summary statistics for m
 #| code-line-numbers: "|2|4"
 
 hotels |>
-  summarise(across(.cols = starts_with("stays"),  mean))
+  summarise(across(.cols = starts_with("stays"), mean))
 
 hotels |>
-  summarise(across(.cols = starts_with("stays"),  list(mean, sd))) |>
+  summarise(across(.cols = starts_with("stays"), list(mean, sd))) |>
   glimpse()
 ```
 
@@ -281,7 +302,6 @@ hotels |>
     across(.cols = starts_with("stays"), list(mean = mean, sd = sd), .names = "{.fn}_{.col}")
   ) |>
   glimpse()
-
 ```
 
 ## Columnwise operations {.smaller}
@@ -316,29 +336,36 @@ hotels_summary <- hotels |>
 hotels_summary
 ```
 
-## 
+## Mean number of stays {.smaller}
+
+::: panel-tabset
+## Question
 
 ::: task
-Which variables are plotted in the following visualization? Which aesthetics are they mapped to? Recreate the visualization.
+Which variables are plotted in the following visualization? Which aesthetics are they mapped to?
 :::
 
 ```{r}
 #| label: stay-nights
 #| fig-asp: 0.5
+#| fig-width: 6
 #| echo: false
-#| dev: ragg_png
 
 hotels_summary |>
   mutate(is_canceled = if_else(is_canceled == 0, "Not canceled", "Canceled")) |>
-  pivot_longer(cols = starts_with("mean"),
-               names_to = "day_type",
-               values_to = "mean_stays",
-               names_prefix = "mean_stays_in_") |>
+  pivot_longer(
+    cols = starts_with("mean"),
+    names_to = "day_type",
+    values_to = "mean_stays",
+    names_prefix = "mean_stays_in_"
+  ) |>
   mutate(
     day_type = if_else(str_detect(day_type, "weekend"), "Weekend", "Weekday")
-    ) |>
-  ggplot(aes(x = str_wrap(is_canceled, 10), y = mean_stays, 
-             group = hotel, color = hotel)) +
+  ) |>
+  ggplot(aes(
+    x = str_wrap(is_canceled, 10), y = mean_stays,
+    group = hotel, color = hotel
+  )) +
   geom_point(show.legend = FALSE) +
   geom_line(aes(linetype = hotel), linewidth = 1) +
   facet_wrap(~day_type) +
@@ -353,6 +380,25 @@ hotels_summary |>
   scale_color_manual(values = c("cornsilk4", "deepskyblue3")) +
   scale_y_continuous(limits = c(0, 4), breaks = 0:4) +
   theme(legend.position = "bottom")
+```
+
+## Submit
+
+```{=html}
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
+```
+:::
+
+## Mean number of stays
+
+::: task
+`ae-03` - Part 3: Let's recreate this visualization!
+:::
+
+```{r}
+#| ref.label: stay-nights
+#| fig-asp: 0.5
+#| echo: false
 ```
 
 ## Livecoding
@@ -411,10 +457,10 @@ hotels |>
   ggplot(aes(x = arrival_date_month, y = adr)) +
   geom_point(alpha = 0.5) +
   stat_summary(
-    geom = "point", fun = "median", 
+    geom = "point", fun = "median",
     colour = "red", size = 5, pch = 4, stroke = 2
   ) +
-  facet_wrap(~ hotel, ncol = 1)
+  facet_wrap(~hotel, ncol = 1)
 ```
 
 ## Alternate: layering with stats {.smaller}
@@ -429,10 +475,10 @@ hotels |>
   ggplot(aes(x = arrival_date_month, y = adr)) +
   geom_point(alpha = 0.5) +
   geom_point(
-    stat = "summary", fun = "median", 
+    stat = "summary", fun = "median",
     colour = "red", size = 5, pch = 4, stroke = 2
   ) +
-  facet_wrap(~ hotel, ncol = 1)
+  facet_wrap(~hotel, ncol = 1)
 ```
 
 ## Statistical transformations {.smaller}
