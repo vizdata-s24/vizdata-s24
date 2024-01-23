@@ -15,6 +15,26 @@ format: revealjs
 -   Project 1 due date move to one 1 week later to accommodate a change in schedule in the library visit / historical data visualizations unit.
 -   HW 1 is posted, you will be working on it in lab tomorrow, due on Tue, Jan 30 at 5 pm. To submit, simply push your work to your GitHub repository.
 
+## From RQ reflections {.smaller}
+
+::: incremental
+- More on the following upcoming in the class: 
+  - Scales (e.g., 400000 to 400K), themes and theme features (e.g., moving plot title), faceting
+  - Plot sizing for including in a report, slide deck, etc.
+
+- Which plots to use for numerical vs. categorical variables
+
+- Strategies for figuring out which function to use
+
+- Why do we need to set a seed for `geom_jitter()`?
+
+- How to choose between `fill` and `color`?
+
+- Review more examples of "bad graphs" with less obvious reasons as to why they are bad -- bring your (good and bad) plots to school!
+
+- Suggestion: Time for random plotting/coding questions during/end of class
+:::
+
 ## Today's focus
 
 ::: columns
