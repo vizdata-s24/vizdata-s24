@@ -238,6 +238,13 @@
     "text": "Announcements\n\nProject 1 due date move to one 1 week later to accommodate a change in schedule in the library visit / historical data visualizations unit.\nHW 1 is posted, you will be working on it in lab tomorrow, due on Tue, Jan 30 at 5 pm. To submit, simply push your work to your GitHub repository."
   },
   {
+    "objectID": "slides/03/03-wrangling-tidying-I.html#from-rq-reflections",
+    "href": "slides/03/03-wrangling-tidying-I.html#from-rq-reflections",
+    "title": "Data wrangling + tidying - I",
+    "section": "From RQ reflections",
+    "text": "From RQ reflections\n\n\nMore on the following upcoming in the class:\n\nScales (e.g., 400000 to 400K), themes and theme features (e.g., moving plot title), faceting\nPlot sizing for including in a report, slide deck, etc.\n\nWhich plots to use for numerical vs. categorical variables\nStrategies for figuring out which function to use\nWhy do we need to set a seed for geom_jitter()?\nHow to choose between fill and color?\nReview more examples of “bad graphs” with less obvious reasons as to why they are bad – bring your (good and bad) plots to school!\nSuggestion: Time for random plotting/coding questions during/end of class"
+  },
+  {
     "objectID": "slides/03/03-wrangling-tidying-I.html#todays-focus",
     "href": "slides/03/03-wrangling-tidying-I.html#todays-focus",
     "title": "Data wrangling + tidying - I",
