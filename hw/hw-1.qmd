@@ -80,7 +80,9 @@ c\. Recreate the R code necessary to generate the following graphs. Note that wh
 
 ![](images/county-recreate-5.png)
 
-![](images/county-recreate-6.png) ![](images/county-recreate-7.png)
+![](images/county-recreate-6.png)
+
+![](images/county-recreate-7.png)
 
 ![](images/county-recreate-8.png)
 :::
@@ -133,6 +135,6 @@ The instructions for this exercise are simple: recreate [Napoleon’s march plot
 
 -   You should make sure your response properly cites all of the resources you use. I’m defining “use” to include “browse, read, get inspired by, or directly borrow snippets of code from”. You don’t need to worry about formal citations, it’s okay to make a list with links to your resources and provide a brief summary of how you used each one.
 
--   For this exercise, you’re asked to describe what your code does (instead of interpreting the visualization, since we already did that in class). If you write the code, it should be straightforward for you to describe it. If you borrow any code from outside resources, you need to understand what that code does, and describe it, ***in your own words***. (This is important, you’re allowed to use found code, but you are not allowed to copy someone’s blog post or tutorial as your description of their code.)
+-   For this exercise, you’re asked to describe what your code does. If you write the code, it should be straightforward for you to describe it. If you borrow any code from outside resources, you need to understand what that code does, and describe it, ***in your own words***. (This is important, you’re allowed to use found code, but you are not allowed to copy someone’s blog post or tutorial as your description of their code.)
 
 -   Finally, you should personalize the visualization with your own touch. You can do this in a myriad of ways, e.g., change colors, annotations, labels, etc. This change should be made to make the plot more like the original in some way. You need to explicitly call out what change you made and why you made it.
