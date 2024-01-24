@@ -3,7 +3,11 @@ title: "HW 1"
 subtitle: "Viz dat, wrangle dis!"
 ---
 
-For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk. Use a short and informative label. For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title. For any exercise where you’re including a description and/or interpretation, use full sentences. Make a commit at least after finishing each exercise, or better yet, more frequently. Push your work regularly to GitHub. Once you’re done, inspect your GitHub repo to make sure it has all the components you want to submit in the `hw-1.md` file, including the prose, the code, and all plots.
+For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk. Use a short and informative label. For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title. For any exercise where you’re including a description and/or interpretation, use full sentences. Make a commit at least after finishing each exercise, or better yet, more frequently. Push your work regularly to GitHub. Once you’re done, inspect your GitHub repo to make sure you've pushed all of your changes.
+
+::: callout-note
+Your homework repositories are set up to run a GitHub action every time you push to the repository checking for (1) any files that shouldn't be in your repository or that should be in a specific folder in your repository and (2) whether your Quarto document renders. If either of these checks fail, you'll see a red badge on your repository README and you'll get an email saying "check assignment" action has failed. If they pass, you'll see a green badge on your repository README and you won't get an email saying. Up until the deadline, it doesn't matter how many times these checks fail. Just make sure by the end the badge is green.
+:::
 
 ```{r}
 #| label: load-packages
@@ -65,8 +69,7 @@ ggplot(county |> filter(!is.na(median_edu))) +
 
 c\. Recreate the R code necessary to generate the following graphs. Note that wherever a categorical variable is used in the plot, it’s `metro`.
 
-::: {layout-ncol=2}
-
+::: {layout-ncol="2"}
 ![](images/county-recreate-1.png)
 
 ![](images/county-recreate-2.png)
@@ -77,14 +80,10 @@ c\. Recreate the R code necessary to generate the following graphs. Note that wh
 
 ![](images/county-recreate-5.png)
 
-![](images/county-recreate-6.png)
-![](images/county-recreate-7.png)
+![](images/county-recreate-6.png) ![](images/county-recreate-7.png)
 
 ![](images/county-recreate-8.png)
-
-
 :::
-
 
 ## Question 3
 
