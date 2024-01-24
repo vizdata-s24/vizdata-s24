@@ -78,6 +78,10 @@ c\. Recreate the R code necessary to generate the following graphs. Note that wh
 ![](images/county-recreate-5.png)
 
 ![](images/county-recreate-6.png)
+![](images/county-recreate-7.png)
+
+![](images/county-recreate-8.png)
+
 
 :::
 
