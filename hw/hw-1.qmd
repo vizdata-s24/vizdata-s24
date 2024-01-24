@@ -6,7 +6,17 @@ subtitle: "Viz dat, wrangle dis!"
 For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk. Use a short and informative label. For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title. For any exercise where you’re including a description and/or interpretation, use full sentences. Make a commit at least after finishing each exercise, or better yet, more frequently. Push your work regularly to GitHub. Once you’re done, inspect your GitHub repo to make sure you've pushed all of your changes.
 
 ::: callout-note
-Your homework repositories are set up to run a GitHub action every time you push to the repository checking for (1) any files that shouldn't be in your repository or that should be in a specific folder in your repository and (2) whether your Quarto document renders. If either of these checks fail, you'll see a red badge on your repository README and you'll get an email saying "check assignment" action has failed. If they pass, you'll see a green badge on your repository README and you won't get an email saying. Up until the deadline, it doesn't matter how many times these checks fail. Just make sure by the end the badge is green.
+Your homework repositories are set up to run a GitHub action every time you push to the repository checking for (1) any files that shouldn't be in your repository or that should be in a specific folder in your repository and (2) whether your Quarto document renders.
+
+![](images/badge-fail.svg){fig-align="left" style="float: left;" width="122" height="14"}
+
+If either of these checks fail, you'll see a red badge on your repository README and you'll get an email saying "check assignment" action has failed.
+
+![](images/badge-pass.svg){fig-align="left" style="float: left;" width="122" height="14"}
+
+If they pass, you'll see a green badge on your repository README and you won't get an email saying.
+
+Up until the deadline, it doesn't matter how many times these checks fail. Just make sure by the end the badge is green.
 :::
 
 ```{r}
