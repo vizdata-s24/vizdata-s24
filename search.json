@@ -376,308 +376,308 @@
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#check-in",
     "href": "slides/04/04-wrangling-tidying-II.html#check-in",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Check-in",
     "text": "Check-in\n\nAny high-level questions on HW 1?"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#setup",
     "href": "slides/04/04-wrangling-tidying-II.html#setup",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Setup",
     "text": "Setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(countdown)\nlibrary(scales)\nlibrary(ggthemes)\nlibrary(glue)\nlibrary(gt)         # For \"great\" tables\nlibrary(MoMAColors) # For color palettes inspired by artworks at MomA\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))\n\n# set width of code output\noptions(width = 65)\n\n# set figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 7, # 7\" width\n  fig.asp = 0.618, # the golden ratio\n  fig.retina = 3, # dpi multiplier for displaying HTML output on retina\n  fig.align = \"center\", # center align figures\n  dpi = 300 # higher dpi, sharper image\n)"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#from-last-time-monthly-bookings",
     "href": "slides/04/04-wrangling-tidying-II.html#from-last-time-monthly-bookings",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "From last time: Monthly bookings",
     "text": "From last time: Monthly bookings\n\nAny questions about recreating any aspect of this plot?"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#from-last-time-monthly-bookings-1",
     "href": "slides/04/04-wrangling-tidying-II.html#from-last-time-monthly-bookings-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "From last time: Monthly bookings",
     "text": "From last time: Monthly bookings\nReveal below for code for creating the previous plot.\n\n\nCode\nhotels &lt;- read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv\")\n\nhotels &lt;- hotels |&gt;\n  mutate(\n    arrival_date_month = fct_relevel(arrival_date_month, month.name),\n    season = case_when(\n      arrival_date_month %in% c(\"December\", \"January\", \"February\") ~ \"Winter\",\n      arrival_date_month %in% c(\"March\", \"April\", \"May\") ~ \"Spring\",\n      arrival_date_month %in% c(\"June\", \"July\", \"August\") ~ \"Summer\",\n      TRUE ~ \"Fall\"\n    ),\n    season = fct_relevel(season, \"Winter\", \"Spring\", \"Summer\", \"Fall\")\n  )\n\nhotels |&gt;\n  count(season, hotel, arrival_date_month) |&gt;\n  ggplot(aes(x = arrival_date_month, y = n, group = hotel, linetype = hotel)) +\n  geom_line(linewidth = 0.8, color = \"cornsilk4\") +\n  geom_point(aes(shape = season, color = season), size = 4, show.legend = FALSE) +\n  scale_x_discrete(labels = month.abb) +\n  scale_color_colorblind() +\n  scale_shape_manual(values = c(\"circle\", \"square\", \"diamond\", \"triangle\")) +\n  labs(\n    x = \"Arrival month\", y = \"Number of bookings\", linetype = NULL,\n    title = \"Number of monthly bookings\",\n    subtitle = \"July 2015 to August 2017\",\n    caption = \"Source: Antonio, Almeida and Nunes (2019) | TidyTuesday\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    legend.position = c(0.12, 0.9),\n    legend.box.background = element_rect(fill = \"white\", color = \"white\"),\n    plot.subtitle = element_text(color = \"cornsilk4\"),\n    plot.caption = element_text(color = \"cornsilk4\")\n  )"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#a-few-takeaways",
     "href": "slides/04/04-wrangling-tidying-II.html#a-few-takeaways",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "A few takeaways",
     "text": "A few takeaways\n\nforcats::fct_relevel() in a mutate() is useful for custom ordering of levels of a factor variable\nsummarize() after group_by() with multiple variables results in a message about the grouping structure of the resulting data frame – the message can be suppressed by defining .groups (e.g., .groups = \"drop\" or .groups = \"keep\")\nsummarize() also lets you get away with being sloppy and not naming your new column, but that’s not recommended!"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#rowwise-operations",
     "href": "slides/04/04-wrangling-tidying-II.html#rowwise-operations",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Rowwise operations",
     "text": "Rowwise operations\n\nWe want to calculate the total number of guests for each booking. Why does the following not work?\n\n\nhotels |&gt;\n  select(adults, children, babies) |&gt;\n  mutate(guests = sum(c(adults, children, babies)))\n\n# A tibble: 119,390 × 4\n   adults children babies guests\n    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1      2        0      0     NA\n 2      2        0      0     NA\n 3      1        0      0     NA\n 4      1        0      0     NA\n 5      2        0      0     NA\n 6      2        0      0     NA\n 7      2        0      0     NA\n 8      2        0      0     NA\n 9      2        0      0     NA\n10      2        0      0     NA\n# ℹ 119,380 more rows"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#rowwise-operations-1",
     "href": "slides/04/04-wrangling-tidying-II.html#rowwise-operations-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Rowwise operations",
     "text": "Rowwise operations\n\nhotels |&gt;\n  select(adults, children, babies) |&gt;\n  rowwise() |&gt;\n  mutate(guests = sum(c(adults, children, babies))) |&gt;\n  filter(adults &gt; 0, children &gt; 0, babies &gt; 0) # to show sum works\n\n# A tibble: 172 × 4\n# Rowwise: \n   adults children babies guests\n    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1      2        1      1      4\n 2      2        1      1      4\n 3      2        1      1      4\n 4      2        1      1      4\n 5      2        1      1      4\n 6      2        1      1      4\n 7      2        1      1      4\n 8      2        2      1      5\n 9      2        2      1      5\n10      1        2      1      4\n# ℹ 162 more rows"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#columnwise-operations",
     "href": "slides/04/04-wrangling-tidying-II.html#columnwise-operations",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Columnwise operations",
     "text": "Columnwise operations\nUse across() combined with summarise() to calculate summary statistics for multiple columns at once:\n\nhotels |&gt;\n  summarise(across(.cols = starts_with(\"stays\"), mean))\n\n# A tibble: 1 × 2\n  stays_in_weekend_nights stays_in_week_nights\n                    &lt;dbl&gt;                &lt;dbl&gt;\n1                   0.928                 2.50\n\nhotels |&gt;\n  summarise(across(.cols = starts_with(\"stays\"), list(mean, sd))) |&gt;\n  glimpse()\n\nRows: 1\nColumns: 4\n$ stays_in_weekend_nights_1 &lt;dbl&gt; 0.9275986\n$ stays_in_weekend_nights_2 &lt;dbl&gt; 0.9986135\n$ stays_in_week_nights_1    &lt;dbl&gt; 2.500302\n$ stays_in_week_nights_2    &lt;dbl&gt; 1.908286"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#select-helpers",
     "href": "slides/04/04-wrangling-tidying-II.html#select-helpers",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Select helpers",
     "text": "Select helpers\n\nstarts_with(): Starts with a prefix\nends_with(): Ends with a suffix\ncontains(): Contains a literal string\nnum_range(): Matches a numerical range like x01, x02, x03\none_of(): Matches variable names in a character vector\neverything(): Matches all variables\nlast_col(): Select last variable, possibly with an offset\nmatches(): Matches a regular expression (a sequence of symbols/characters expressing a string/pattern to be searched for within text)\n\n\n\nSee help for any of these functions for more info, e.g. ?everything."
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#columnwise-operations-1",
     "href": "slides/04/04-wrangling-tidying-II.html#columnwise-operations-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Columnwise operations",
     "text": "Columnwise operations\n\nhotels |&gt;\n  group_by(hotel, is_canceled) |&gt;\n  summarise(\n    across(.cols = starts_with(\"stays\"), list(mean = mean, sd = sd), .names = \"{.fn}_{.col}\")\n  ) |&gt;\n  glimpse()\n\nRows: 4\nColumns: 6\nGroups: hotel [2]\n$ hotel                        &lt;chr&gt; \"City Hotel\", \"City Hotel\", \"Resort Hotel\", \"Resort…\n$ is_canceled                  &lt;dbl&gt; 0, 1, 0, 1\n$ mean_stays_in_weekend_nights &lt;dbl&gt; 0.8006836, 0.7875053, 1.1339070, 1.3352814\n$ sd_stays_in_weekend_nights   &lt;dbl&gt; 0.8615080, 0.9168195, 1.1442298, 1.1444040\n$ mean_stays_in_week_nights    &lt;dbl&gt; 2.122934, 2.266781, 3.008985, 3.440299\n$ sd_stays_in_week_nights      &lt;dbl&gt; 1.400799, 1.526787, 2.450714, 2.461699"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#columnwise-operations-2",
     "href": "slides/04/04-wrangling-tidying-II.html#columnwise-operations-2",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Columnwise operations",
     "text": "Columnwise operations\n\nhotels |&gt;\n  group_by(hotel, is_canceled) |&gt;\n  summarise(\n    across(.cols = starts_with(\"stays\"), list(mean = mean, sd = sd), .names = \"{.fn}_{.col}\"),\n    .groups = \"drop\"\n  )\n\n# A tibble: 4 × 6\n  hotel   is_canceled mean_stays_in_weeken…¹ sd_stays_in_weekend_…² mean_stays_in_week_n…³\n  &lt;chr&gt;         &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;\n1 City H…           0                  0.801                  0.862                   2.12\n2 City H…           1                  0.788                  0.917                   2.27\n3 Resort…           0                  1.13                   1.14                    3.01\n4 Resort…           1                  1.34                   1.14                    3.44\n# ℹ abbreviated names: ¹​mean_stays_in_weekend_nights, ²​sd_stays_in_weekend_nights,\n#   ³​mean_stays_in_week_nights\n# ℹ 1 more variable: sd_stays_in_week_nights &lt;dbl&gt;"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#setup-for-next-example-hotel_summary",
     "href": "slides/04/04-wrangling-tidying-II.html#setup-for-next-example-hotel_summary",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Setup for next example: hotel_summary",
     "text": "Setup for next example: hotel_summary\n\nhotels_summary &lt;- hotels |&gt;\n  group_by(hotel, is_canceled) |&gt;\n  summarise(\n    across(\n      .cols = starts_with(\"stays\"),\n      list(mean = mean),\n      .names = \"{.fn}_{.col}\"\n    ),\n    .groups = \"drop\"\n  )\n\nhotels_summary\n\n# A tibble: 4 × 4\n  hotel        is_canceled mean_stays_in_weekend_nights mean_stays_in_week_nights\n  &lt;chr&gt;              &lt;dbl&gt;                        &lt;dbl&gt;                     &lt;dbl&gt;\n1 City Hotel             0                        0.801                      2.12\n2 City Hotel             1                        0.788                      2.27\n3 Resort Hotel           0                        1.13                       3.01\n4 Resort Hotel           1                        1.34                       3.44"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#mean-number-of-stays",
     "href": "slides/04/04-wrangling-tidying-II.html#mean-number-of-stays",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Mean number of stays",
     "text": "Mean number of stays\n\nQuestionSubmit\n\n\n\nWhich variables are plotted in the following visualization? Which aesthetics are they mapped to?"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#mean-number-of-stays-1",
     "href": "slides/04/04-wrangling-tidying-II.html#mean-number-of-stays-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Mean number of stays",
     "text": "Mean number of stays\n\nae-03 - Part 3: Let’s recreate this visualization!"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#livecoding",
     "href": "slides/04/04-wrangling-tidying-II.html#livecoding",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Livecoding",
     "text": "Livecoding\nReveal below for code developed during live coding session.\n\n\nCode\nhotels_summary |&gt;\n  mutate(is_canceled = if_else(is_canceled == 0, \"Not canceled\", \"Canceled\")) |&gt;\n  pivot_longer(\n    cols = starts_with(\"mean\"),\n    names_to = \"day_type\",\n    values_to = \"mean_stays\",\n    names_prefix = \"mean_stays_in_\"\n  ) |&gt;\n  mutate(\n    day_type = if_else(str_detect(day_type, \"weekend\"), \"Weekend\", \"Weekday\")\n  ) |&gt;\n  ggplot(aes(\n    x = str_wrap(is_canceled, 10), y = mean_stays,\n    group = hotel, color = hotel\n  )) +\n  geom_point(show.legend = FALSE) +\n  geom_line(aes(linetype = hotel), linewidth = 1) +\n  facet_wrap(~day_type) +\n  labs(\n    x = \"Booking status\",\n    y = \"Mean number of\\nnights of stay\",\n    color = NULL, linetype = NULL,\n    title = \"Mean number of stays\",\n    subtitle = \"By hotel type and booking status\",\n    caption = \"Source: Antonio, Almeida and Nunes (2019) | TidyTuesday\"\n  ) +\n  scale_color_manual(values = c(\"cornsilk4\", \"deepskyblue3\")) +\n  scale_y_continuous(limits = c(0, 4), breaks = 0:4) +\n  theme(legend.position = \"bottom\")"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#tidyr-101",
     "href": "slides/04/04-wrangling-tidying-II.html#tidyr-101",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "tidyr 101",
     "text": "tidyr 101\n\n\n\npivot_wider() and pivot_longer()\nIncredibly useful for reshaping for plotting\nLots of extra arguments to help with reshaping pain!\nRefer to pivoting vignette when needed"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#stats-geoms",
     "href": "slides/04/04-wrangling-tidying-II.html#stats-geoms",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Stats < > geoms",
     "text": "Stats &lt; &gt; geoms\n\nStatistical transformation (stat) transforms the data, typically by summarizing\nMany of ggplot2’s stats are used behind the scenes to generate many important geoms\n\n\n\n\n\n\n\n\nstat\ngeom\n\n\n\n\nstat_bin()\ngeom_bar(), geom_freqpoly(), geom_histogram()\n\n\nstat_bin2d()\ngeom_bin2d()\n\n\nstat_bindot()\ngeom_dotplot()\n\n\nstat_binhex()\ngeom_hex()\n\n\nstat_boxplot()\ngeom_boxplot()\n\n\nstat_contour()\ngeom_contour()\n\n\nstat_quantile()\ngeom_quantile()\n\n\nstat_smooth()\ngeom_smooth()\n\n\nstat_sum()\ngeom_count()"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#layering-with-stats",
     "href": "slides/04/04-wrangling-tidying-II.html#layering-with-stats",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Layering with stats",
     "text": "Layering with stats\n\nhotels |&gt;\n  filter(adr &lt; 4000) |&gt;\n  ggplot(aes(x = arrival_date_month, y = adr)) +\n  geom_point(alpha = 0.5) +\n  stat_summary(\n    geom = \"point\", fun = \"median\",\n    colour = \"red\", size = 5, pch = 4, stroke = 2\n  ) +\n  facet_wrap(~hotel, ncol = 1)"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#alternate-layering-with-stats",
     "href": "slides/04/04-wrangling-tidying-II.html#alternate-layering-with-stats",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Alternate: layering with stats",
     "text": "Alternate: layering with stats\n\nhotels |&gt;\n  filter(adr &lt; 4000) |&gt;\n  ggplot(aes(x = arrival_date_month, y = adr)) +\n  geom_point(alpha = 0.5) +\n  geom_point(\n    stat = \"summary\", fun = \"median\",\n    colour = \"red\", size = 5, pch = 4, stroke = 2\n  ) +\n  facet_wrap(~hotel, ncol = 1)"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#statistical-transformations",
     "href": "slides/04/04-wrangling-tidying-II.html#statistical-transformations",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Statistical transformations",
     "text": "Statistical transformations\n\nWhat can you say about the distribution of price from the following QQ plot?\n\n\nhotels |&gt;\n  filter(adr &lt; 4000) |&gt;\n  ggplot(aes(sample = adr)) +\n  stat_qq() +\n  stat_qq_line() +\n  labs(y = \"adr\")"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#scenario-2",
     "href": "slides/04/04-wrangling-tidying-II.html#scenario-2",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Scenario 2",
     "text": "Scenario 2\n\nWe…\nhave multiple data frames\nwant to want to bring them together so we can plot them\n\n\nprofessions &lt;- read_csv(\"data/professions.csv\")\ndates &lt;- read_csv(\"data/dates.csv\")\nworks &lt;- read_csv(\"data/works.csv\")"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#women-in-science-who-changed-the-world",
     "href": "slides/04/04-wrangling-tidying-II.html#women-in-science-who-changed-the-world",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "10 women in science who changed the world",
     "text": "10 women in science who changed the world\n\n\n\n\n\n\n\n\nname\n\n\n\n\nAda Lovelace\n\n\nMarie Curie\n\n\nJanaki Ammal\n\n\nChien-Shiung Wu\n\n\nKatherine Johnson\n\n\nRosalind Franklin\n\n\nVera Rubin\n\n\nGladys West\n\n\nFlossie Wong-Staal\n\n\nJennifer Doudna\n\n\n\n\n\n\n\n\n\nSource: Discover Magazine"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#inputs",
     "href": "slides/04/04-wrangling-tidying-II.html#inputs",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Inputs",
     "text": "Inputs\n\nprofessionsdatesworks\n\n\n\nprofessions\n\n# A tibble: 10 × 2\n   name               profession                        \n   &lt;chr&gt;              &lt;chr&gt;                             \n 1 Ada Lovelace       Mathematician                     \n 2 Marie Curie        Physicist and Chemist             \n 3 Janaki Ammal       Botanist                          \n 4 Chien-Shiung Wu    Physicist                         \n 5 Katherine Johnson  Mathematician                     \n 6 Rosalind Franklin  Chemist                           \n 7 Vera Rubin         Astronomer                        \n 8 Gladys West        Mathematician                     \n 9 Flossie Wong-Staal Virologist and Molecular Biologist\n10 Jennifer Doudna    Biochemist                        \n\n\n\n\n\ndates\n\n# A tibble: 8 × 3\n  name               birth_year death_year\n  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal             1897       1984\n2 Chien-Shiung Wu          1912       1997\n3 Katherine Johnson        1918       2020\n4 Rosalind Franklin        1920       1958\n5 Vera Rubin               1928       2016\n6 Gladys West              1930         NA\n7 Flossie Wong-Staal       1947         NA\n8 Jennifer Doudna          1964         NA\n\n\n\n\n\nworks\n\n# A tibble: 9 × 2\n  name               known_for                                                        \n  &lt;chr&gt;              &lt;chr&gt;                                                            \n1 Ada Lovelace       first computer algorithm                                         \n2 Marie Curie        theory of radioactivity,  first woman Nobel Prize win            \n3 Janaki Ammal       hybrid species, biodiversity protection                          \n4 Chien-Shiung Wu    experiment overturning theory of parity                          \n5 Katherine Johnson  orbital mechanics critical to sending first Americans into space \n6 Vera Rubin         existence of dark matter                                         \n7 Gladys West        mathematical modeling of the shape of the Earth                  \n8 Flossie Wong-Staal first to clone HIV and map its genes, which led to test for virus\n9 Jennifer Doudna    one of the primary developers of CRISPR"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#desired-output",
     "href": "slides/04/04-wrangling-tidying-II.html#desired-output",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Desired output",
     "text": "Desired output\n\n\n# A tibble: 10 × 5\n   name               profession                         birth_year death_year known_for  \n   &lt;chr&gt;              &lt;chr&gt;                                   &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;      \n 1 Ada Lovelace       Mathematician                              NA         NA first comp…\n 2 Marie Curie        Physicist and Chemist                      NA         NA theory of …\n 3 Janaki Ammal       Botanist                                 1897       1984 hybrid spe…\n 4 Chien-Shiung Wu    Physicist                                1912       1997 experiment…\n 5 Katherine Johnson  Mathematician                            1918       2020 orbital me…\n 6 Rosalind Franklin  Chemist                                  1920       1958 &lt;NA&gt;       \n 7 Vera Rubin         Astronomer                               1928       2016 existence …\n 8 Gladys West        Mathematician                            1930         NA mathematic…\n 9 Flossie Wong-Staal Virologist and Molecular Biologist       1947         NA first to c…\n10 Jennifer Doudna    Biochemist                               1964         NA one of the…"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#inputs-reminder",
     "href": "slides/04/04-wrangling-tidying-II.html#inputs-reminder",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Inputs, reminder",
     "text": "Inputs, reminder\n\n\n\nnames(professions)\n\n[1] \"name\"       \"profession\"\n\nnames(dates)\n\n[1] \"name\"       \"birth_year\" \"death_year\"\n\nnames(works)\n\n[1] \"name\"      \"known_for\"\n\n\n\n\nnrow(professions)\n\n[1] 10\n\nnrow(dates)\n\n[1] 8\n\nnrow(works)\n\n[1] 9"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#joining-data-frames",
     "href": "slides/04/04-wrangling-tidying-II.html#joining-data-frames",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Joining data frames",
     "text": "Joining data frames\n\nQuestionVote\n\n\n\nWhich, if any, *_join() function is unfamiliar?\n\n\nsomething_join(x, y)\n\n\nleft_join(): all rows from x\nright_join(): all rows from y\nfull_join(): all rows from both x and y\ninner_join(): all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches\nsemi_join(): all rows from x where there are matching values in y, keeping just columns from x\nanti_join(): return all rows from x where there are not matching values in y, never duplicate rows of x\n…"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#setup-1",
     "href": "slides/04/04-wrangling-tidying-II.html#setup-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Setup",
     "text": "Setup\nFor the next few slides…\n\n\n\nx &lt;- tibble(\n  id = c(1, 2, 3),\n  value_x = c(\"x1\", \"x2\", \"x3\")\n  )\n\nx\n\n# A tibble: 3 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2     \n3     3 x3     \n\n\n\n\ny &lt;- tibble(\n  id = c(1, 2, 4),\n  value_y = c(\"y1\", \"y2\", \"y4\")\n  )\n\ny\n\n# A tibble: 3 × 2\n     id value_y\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 y1     \n2     2 y2     \n3     4 y4"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#left_join",
     "href": "slides/04/04-wrangling-tidying-II.html#left_join",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "left_join()",
     "text": "left_join()\n\n\n\n\n\nleft_join(x, y)\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#left_join-1",
     "href": "slides/04/04-wrangling-tidying-II.html#left_join-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "left_join()",
     "text": "left_join()\n\nprofessions |&gt;\n  left_join(dates)\n\n# A tibble: 10 × 4\n   name               profession                         birth_year death_year\n   &lt;chr&gt;              &lt;chr&gt;                                   &lt;dbl&gt;      &lt;dbl&gt;\n 1 Ada Lovelace       Mathematician                              NA         NA\n 2 Marie Curie        Physicist and Chemist                      NA         NA\n 3 Janaki Ammal       Botanist                                 1897       1984\n 4 Chien-Shiung Wu    Physicist                                1912       1997\n 5 Katherine Johnson  Mathematician                            1918       2020\n 6 Rosalind Franklin  Chemist                                  1920       1958\n 7 Vera Rubin         Astronomer                               1928       2016\n 8 Gladys West        Mathematician                            1930         NA\n 9 Flossie Wong-Staal Virologist and Molecular Biologist       1947         NA\n10 Jennifer Doudna    Biochemist                               1964         NA"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#right_join",
     "href": "slides/04/04-wrangling-tidying-II.html#right_join",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "right_join()",
     "text": "right_join()\n\n\n\n\n\nright_join(x, y)\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     4 &lt;NA&gt;    y4"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#right_join-1",
     "href": "slides/04/04-wrangling-tidying-II.html#right_join-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "right_join()",
     "text": "right_join()\n\nprofessions |&gt;\n  right_join(dates)\n\n# A tibble: 8 × 4\n  name               profession                         birth_year death_year\n  &lt;chr&gt;              &lt;chr&gt;                                   &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal       Botanist                                 1897       1984\n2 Chien-Shiung Wu    Physicist                                1912       1997\n3 Katherine Johnson  Mathematician                            1918       2020\n4 Rosalind Franklin  Chemist                                  1920       1958\n5 Vera Rubin         Astronomer                               1928       2016\n6 Gladys West        Mathematician                            1930         NA\n7 Flossie Wong-Staal Virologist and Molecular Biologist       1947         NA\n8 Jennifer Doudna    Biochemist                               1964         NA"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#full_join",
     "href": "slides/04/04-wrangling-tidying-II.html#full_join",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "full_join()",
     "text": "full_join()\n\n\n\n\n\nfull_join(x, y)\n\n# A tibble: 4 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;   \n4     4 &lt;NA&gt;    y4"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#full_join-1",
     "href": "slides/04/04-wrangling-tidying-II.html#full_join-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "full_join()",
     "text": "full_join()\n\ndates |&gt;\n  full_join(works)\n\n# A tibble: 10 × 4\n   name               birth_year death_year known_for                                     \n   &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                                         \n 1 Janaki Ammal             1897       1984 hybrid species, biodiversity protection       \n 2 Chien-Shiung Wu          1912       1997 experiment overturning theory of parity       \n 3 Katherine Johnson        1918       2020 orbital mechanics critical to sending first A…\n 4 Rosalind Franklin        1920       1958 &lt;NA&gt;                                          \n 5 Vera Rubin               1928       2016 existence of dark matter                      \n 6 Gladys West              1930         NA mathematical modeling of the shape of the Ear…\n 7 Flossie Wong-Staal       1947         NA first to clone HIV and map its genes, which l…\n 8 Jennifer Doudna          1964         NA one of the primary developers of CRISPR       \n 9 Ada Lovelace               NA         NA first computer algorithm                      \n10 Marie Curie                NA         NA theory of radioactivity,  first woman Nobel P…"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#inner_join",
     "href": "slides/04/04-wrangling-tidying-II.html#inner_join",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "inner_join()",
     "text": "inner_join()\n\n\n\n\n\ninner_join(x, y)\n\n# A tibble: 2 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#inner_join-1",
     "href": "slides/04/04-wrangling-tidying-II.html#inner_join-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "inner_join()",
     "text": "inner_join()\n\ndates |&gt;\n  inner_join(works)\n\n# A tibble: 7 × 4\n  name               birth_year death_year known_for                                      \n  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                                          \n1 Janaki Ammal             1897       1984 hybrid species, biodiversity protection        \n2 Chien-Shiung Wu          1912       1997 experiment overturning theory of parity        \n3 Katherine Johnson        1918       2020 orbital mechanics critical to sending first Am…\n4 Vera Rubin               1928       2016 existence of dark matter                       \n5 Gladys West              1930         NA mathematical modeling of the shape of the Earth\n6 Flossie Wong-Staal       1947         NA first to clone HIV and map its genes, which le…\n7 Jennifer Doudna          1964         NA one of the primary developers of CRISPR"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#semi_join",
     "href": "slides/04/04-wrangling-tidying-II.html#semi_join",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "semi_join()",
     "text": "semi_join()\n\n\n\n\n\nsemi_join(x, y)\n\n# A tibble: 2 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#semi_join-1",
     "href": "slides/04/04-wrangling-tidying-II.html#semi_join-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "semi_join()",
     "text": "semi_join()\n\ndates |&gt;\n  semi_join(works)\n\n# A tibble: 7 × 3\n  name               birth_year death_year\n  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal             1897       1984\n2 Chien-Shiung Wu          1912       1997\n3 Katherine Johnson        1918       2020\n4 Vera Rubin               1928       2016\n5 Gladys West              1930         NA\n6 Flossie Wong-Staal       1947         NA\n7 Jennifer Doudna          1964         NA"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#anti_join",
     "href": "slides/04/04-wrangling-tidying-II.html#anti_join",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "anti_join()",
     "text": "anti_join()\n\n\n\n\n\nanti_join(x, y)\n\n# A tibble: 1 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     3 x3"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#anti_join-1",
     "href": "slides/04/04-wrangling-tidying-II.html#anti_join-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "anti_join()",
     "text": "anti_join()\n\ndates |&gt;\n  anti_join(works)\n\n# A tibble: 1 × 3\n  name              birth_year death_year\n  &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;\n1 Rosalind Franklin       1920       1958"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#putting-it-altogether",
     "href": "slides/04/04-wrangling-tidying-II.html#putting-it-altogether",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Putting it altogether",
     "text": "Putting it altogether\n\nscientists &lt;- professions |&gt;\n  left_join(dates) |&gt;\n  left_join(works)\n\nscientists\n\n# A tibble: 10 × 5\n   name               profession                         birth_year death_year known_for  \n   &lt;chr&gt;              &lt;chr&gt;                                   &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;      \n 1 Ada Lovelace       Mathematician                              NA         NA first comp…\n 2 Marie Curie        Physicist and Chemist                      NA         NA theory of …\n 3 Janaki Ammal       Botanist                                 1897       1984 hybrid spe…\n 4 Chien-Shiung Wu    Physicist                                1912       1997 experiment…\n 5 Katherine Johnson  Mathematician                            1918       2020 orbital me…\n 6 Rosalind Franklin  Chemist                                  1920       1958 &lt;NA&gt;       \n 7 Vera Rubin         Astronomer                               1928       2016 existence …\n 8 Gladys West        Mathematician                            1930         NA mathematic…\n 9 Flossie Wong-Staal Virologist and Molecular Biologist       1947         NA first to c…\n10 Jennifer Doudna    Biochemist                               1964         NA one of the…"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#join-functions",
     "href": "slides/04/04-wrangling-tidying-II.html#join-functions",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "*_join() functions",
     "text": "*_join() functions\n\nFrom dplyr\nIncredibly useful for bringing datasets with common information (e.g., unique identifier) together\nUse by argument when the names of the column containing the common information are not the same across datasets\nAlways check that the numbers of rows and columns of the result dataset makes sense\nRefer to two-table verbs vignette when needed"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#visualizing-joined-data",
     "href": "slides/04/04-wrangling-tidying-II.html#visualizing-joined-data",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Visualizing joined data",
     "text": "Visualizing joined data\nThe following plot displays some information from each of the three data frames:"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#but-first",
     "href": "slides/04/04-wrangling-tidying-II.html#but-first",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "But first…",
     "text": "But first…\n\nWhat is the plot in the previous slide called?"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#livecoding-1",
     "href": "slides/04/04-wrangling-tidying-II.html#livecoding-1",
-    "title": "Data wrangling + tidying - I",
+    "title": "Data wrangling + tidying - II",
     "section": "Livecoding",
     "text": "Livecoding\nReveal below for code developed during live coding session.\n\n\nTransform\nscientists_longer &lt;- scientists |&gt;\n  mutate(\n    birth_year = case_when(\n      name == \"Ada Lovelace\" ~ 1815,\n      name == \"Marie Curie\" ~ 1867,\n      TRUE ~ birth_year\n    ),\n    death_year = case_when(\n      name == \"Ada Lovelace\" ~ 1852,\n      name == \"Marie Curie\" ~ 1934,\n      name == \"Flossie Wong-Staal\" ~ 2020,\n      TRUE ~ death_year\n    ),\n    status = if_else(is.na(death_year), \"alive\", \"deceased\"),\n    death_year = if_else(is.na(death_year), 2021, death_year),\n    known_for = if_else(name == \"Rosalind Franklin\", \"understanding of the molecular structures of DNA \", known_for)\n  ) |&gt;\n  pivot_longer(\n    cols = contains(\"year\"),\n    names_to = \"year_type\",\n    values_to = \"year\"\n  ) |&gt;\n  mutate(death_year_fake = if_else(year == 2021, TRUE, FALSE))\n\n\n\n\nPlot\nggplot(scientists_longer, \n       aes(x = year, y = fct_reorder(name, as.numeric(factor(profession))), group = name, color = profession)) +\n  geom_point(aes(shape = death_year_fake), show.legend = FALSE) +\n  geom_line(aes(linetype = status), show.legend = FALSE) +\n  scale_shape_manual(values = c(\"circle\", NA)) +\n  scale_linetype_manual(values = c(\"dashed\", \"solid\")) +\n  scale_color_moma_d(\"Lupi\") +\n  scale_x_continuous(expand = c(0.01, 0), breaks = seq(1820, 2020, 50)) +\n  geom_text(aes(y = name, label = known_for), x = 2030, show.legend = FALSE, hjust = 0) +\n  geom_text(aes(label = profession), x = 1809, y = Inf, hjust = 1, vjust = 1, show.legend = FALSE) +\n  coord_cartesian(clip = \"off\") +\n  labs(\n    x = \"Year\", y = NULL,\n    title = \"10 women in science who changed the world\",\n    caption = \"Source: Discover magazine\"\n  ) +\n  facet_grid(profession ~ ., scales = \"free_y\", space = \"free_y\", switch = \"x\") +\n  theme(\n    plot.margin = unit(c(1, 24, 1, 5), \"lines\"),\n    plot.title.position = \"plot\",\n    plot.caption.position = \"plot\",\n    plot.caption = element_text(hjust = 2), # manual hack\n    strip.background = element_blank(),\n    strip.text = element_blank(),\n    axis.title.x = element_text(hjust = 0),\n    panel.background = element_rect(fill = \"#f0f0f0\", color = \"white\"),\n    panel.grid.major = element_line(color = \"white\", linewidth = 0.5)\n  )\n\n\n\n\n\n\n🔗 vizdata.org"
   },
