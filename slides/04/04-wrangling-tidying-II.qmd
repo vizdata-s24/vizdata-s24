@@ -1,6 +1,6 @@
 ---
-title: Data wrangling + tidying - I
-subtitle: Lecture 3
+title: Data wrangling + tidying - II
+subtitle: Lecture 4
 title-slide-attributes:
   data-background-image: ../vizdata-bg.png
   data-background-size: stretch
