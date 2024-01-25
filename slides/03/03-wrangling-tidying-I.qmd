@@ -18,21 +18,22 @@ format: revealjs
 ## From RQ reflections {.smaller}
 
 ::: incremental
-- More on the following upcoming in the class: 
-  - Scales (e.g., 400000 to 400K), themes and theme features (e.g., moving plot title), faceting
-  - Plot sizing for including in a report, slide deck, etc.
+-   More on the following upcoming in the class:
 
-- Which plots to use for numerical vs. categorical variables
+    -   Scales (e.g., 400000 to 400K), themes and theme features (e.g., moving plot title), faceting
+    -   Plot sizing for including in a report, slide deck, etc.
 
-- Strategies for figuring out which function to use
+-   Which plots to use for numerical vs. categorical variables
 
-- Why do we need to set a seed for `geom_jitter()`?
+-   Strategies for figuring out which function to use
 
-- How to choose between `fill` and `color`?
+-   Why do we need to set a seed for `geom_jitter()`?
 
-- Review more examples of "bad graphs" with less obvious reasons as to why they are bad -- bring your (good and bad) plots to school!
+-   How to choose between `fill` and `color`?
 
-- Suggestion: Time for random plotting/coding questions during/end of class
+-   Review more examples of "bad graphs" with less obvious reasons as to why they are bad -- bring your (good and bad) plots to school!
+
+-   Suggestion: Time for random plotting/coding questions during/end of class
 :::
 
 ## Today's focus
@@ -67,7 +68,6 @@ library(countdown)
 library(scales)
 library(ggthemes)
 library(glue)
-
 # set theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
 
@@ -247,275 +247,4 @@ Reveal below for code developed during live coding session.
 #| ref.label: monthly-bookings
 #| fig-show: hide
 #| code-fold: true
-```
-
-## A few takeaways
-
--   `forcats::fct_relevel()` in a `mutate()` is useful for custom ordering of levels of a factor variable
-
--   `summarize()` after `group_by()` with multiple variables results in a message about the grouping structure of the resulting data frame -- the message can be suppressed by defining `.groups` (e.g., `.groups = "drop"` or `.groups = "keep"`)
-
--   `summarize()` also lets you get away with being sloppy and not naming your new column, but that's not recommended!
-
-## Rowwise operations {.smaller}
-
-::: task
-We want to calculate the total number of guests for each booking. Why does the following not work?
-:::
-
-```{r}
-hotels |>
-  select(adults, children, babies) |>
-  mutate(guests = sum(c(adults, children, babies)))
-```
-
-## Rowwise operations {.smaller}
-
-```{r}
-#| code-line-numbers: "|3"
-
-hotels |>
-  select(adults, children, babies) |>
-  rowwise() |>
-  mutate(guests = sum(c(adults, children, babies))) |>
-  filter(adults > 0, children > 0, babies > 0) # to show sum works
-```
-
-## Columnwise operations {.smaller}
-
-Use `across()` combined with `summarise()` to calculate summary statistics for multiple columns at once:
-
-```{r}
-#| code-line-numbers: "|2|4"
-
-hotels |>
-  summarise(across(.cols = starts_with("stays"), mean))
-
-hotels |>
-  summarise(across(.cols = starts_with("stays"), list(mean, sd))) |>
-  glimpse()
-```
-
-## Select helpers {.smaller}
-
--   `starts_with()`: Starts with a prefix
--   `ends_with()`: Ends with a suffix
--   `contains()`: Contains a literal string
--   `num_range()`: Matches a numerical range like x01, x02, x03
--   `one_of()`: Matches variable names in a character vector
--   `everything()`: Matches all variables
--   `last_col()`: Select last variable, possibly with an offset
--   `matches()`: Matches a regular expression (a sequence of symbols/characters expressing a string/pattern to be searched for within text)
-
-::: aside
-See help for any of these functions for more info, e.g. `?everything`.
-:::
-
-## Columnwise operations {.smaller}
-
-```{r}
-#| code-line-numbers: "|4"
-
-hotels |>
-  group_by(hotel, is_canceled) |>
-  summarise(
-    across(.cols = starts_with("stays"), list(mean = mean, sd = sd), .names = "{.fn}_{.col}")
-  ) |>
-  glimpse()
-```
-
-## Columnwise operations {.smaller}
-
-```{r}
-#| code-line-numbers: "|4"
-
-hotels |>
-  group_by(hotel, is_canceled) |>
-  summarise(
-    across(.cols = starts_with("stays"), list(mean = mean, sd = sd), .names = "{.fn}_{.col}"),
-    .groups = "drop"
-  )
-```
-
-## Setup for next example: `hotel_summary` {.smaller}
-
-```{r}
-#| code-line-numbers: "|4-8|9"
-
-hotels_summary <- hotels |>
-  group_by(hotel, is_canceled) |>
-  summarise(
-    across(
-      .cols = starts_with("stays"),
-      list(mean = mean),
-      .names = "{.fn}_{.col}"
-    ),
-    .groups = "drop"
-  )
-
-hotels_summary
-```
-
-## Mean number of stays {.smaller}
-
-::: panel-tabset
-## Question
-
-::: task
-Which variables are plotted in the following visualization? Which aesthetics are they mapped to?
-:::
-
-```{r}
-#| label: stay-nights
-#| fig-asp: 0.5
-#| fig-width: 6
-#| echo: false
-
-hotels_summary |>
-  mutate(is_canceled = if_else(is_canceled == 0, "Not canceled", "Canceled")) |>
-  pivot_longer(
-    cols = starts_with("mean"),
-    names_to = "day_type",
-    values_to = "mean_stays",
-    names_prefix = "mean_stays_in_"
-  ) |>
-  mutate(
-    day_type = if_else(str_detect(day_type, "weekend"), "Weekend", "Weekday")
-  ) |>
-  ggplot(aes(
-    x = str_wrap(is_canceled, 10), y = mean_stays,
-    group = hotel, color = hotel
-  )) +
-  geom_point(show.legend = FALSE) +
-  geom_line(aes(linetype = hotel), linewidth = 1) +
-  facet_wrap(~day_type) +
-  labs(
-    x = "Booking status",
-    y = "Mean number of\nnights of stay",
-    color = NULL, linetype = NULL,
-    title = "Mean number of stays",
-    subtitle = "By hotel type and booking status",
-    caption = "Source: Antonio, Almeida and Nunes (2019) | TidyTuesday"
-  ) +
-  scale_color_manual(values = c("cornsilk4", "deepskyblue3")) +
-  scale_y_continuous(limits = c(0, 4), breaks = 0:4) +
-  theme(legend.position = "bottom")
-```
-
-## Submit
-
-```{=html}
-<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
-```
-:::
-
-## Mean number of stays
-
-::: task
-`ae-03` - Part 3: Let's recreate this visualization!
-:::
-
-```{r}
-#| ref.label: stay-nights
-#| fig-asp: 0.5
-#| echo: false
-```
-
-## Livecoding
-
-Reveal below for code developed during live coding session.
-
-```{r}
-#| ref.label: stay-nights
-#| fig-show: hide
-#| code-fold: true
-```
-
-## tidyr 101
-
-::: columns
-::: {.column width="50%"}
--   `pivot_wider()` and `pivot_longer()`
--   Incredibly useful for reshaping for plotting
--   Lots of extra arguments to help with reshaping pain!
--   Refer to [pivoting vignette](https://tidyr.tidyverse.org/articles/pivot.html) when needed
-:::
-
-::: {.column width="50%"}
-![](images/tidyr-longer-wider.gif){fig-alt="Animation showing what pivoting longer and wider look like" fig-align="center"}
-:::
-:::
-
-# Stats
-
-## Stats \< \> geoms {.smaller}
-
--   Statistical transformation (**stat**) transforms the data, typically by summarizing
--   Many of ggplot2's stats are used behind the scenes to generate many important geoms
-
-| `stat`            | geom                                                |
-|-------------------|-----------------------------------------------------|
-| `stat_bin()`      | `geom_bar()`, `geom_freqpoly()`, `geom_histogram()` |
-| `stat_bin2d()`    | `geom_bin2d()`                                      |
-| `stat_bindot()`   | `geom_dotplot()`                                    |
-| `stat_binhex()`   | `geom_hex()`                                        |
-| `stat_boxplot()`  | `geom_boxplot()`                                    |
-| `stat_contour()`  | `geom_contour()`                                    |
-| `stat_quantile()` | `geom_quantile()`                                   |
-| `stat_smooth()`   | `geom_smooth()`                                     |
-| `stat_sum()`      | `geom_count()`                                      |
-
-## Layering with stats {.smaller}
-
-```{r}
-#| code-line-numbers: "|5-8"
-#| fig-width: 8
-#| fig-asp: 0.4
-
-hotels |>
-  filter(adr < 4000) |>
-  ggplot(aes(x = arrival_date_month, y = adr)) +
-  geom_point(alpha = 0.5) +
-  stat_summary(
-    geom = "point", fun = "median",
-    colour = "red", size = 5, pch = 4, stroke = 2
-  ) +
-  facet_wrap(~hotel, ncol = 1)
-```
-
-## Alternate: layering with stats {.smaller}
-
-```{r}
-#| code-line-numbers: "|5-8"
-#| fig-width: 8
-#| fig-asp: 0.4
-
-hotels |>
-  filter(adr < 4000) |>
-  ggplot(aes(x = arrival_date_month, y = adr)) +
-  geom_point(alpha = 0.5) +
-  geom_point(
-    stat = "summary", fun = "median",
-    colour = "red", size = 5, pch = 4, stroke = 2
-  ) +
-  facet_wrap(~hotel, ncol = 1)
-```
-
-## Statistical transformations {.smaller}
-
-::: task
-What can you say about the distribution of price from the following QQ plot?
-:::
-
-```{r}
-#| code-line-numbers: "|4-5"
-#| fig-width: 8
-#| fig-asp: 0.4
-
-hotels |>
-  filter(adr < 4000) |>
-  ggplot(aes(sample = adr)) +
-  stat_qq() +
-  stat_qq_line() +
-  labs(y = "adr")
 ```
