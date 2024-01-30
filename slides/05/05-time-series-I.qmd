@@ -14,7 +14,7 @@ format: revealjs
 
 -   HW 1 due at 5 pm today
 
--   ?
+-   Let me know any requests for Project 1 teams by tonight, start work on Project 1 proposal in lab tomorrow
 
 ## Setup {.smaller}
 
