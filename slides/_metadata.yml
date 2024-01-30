@@ -17,4 +17,4 @@ engine: knitr
 knitr:
   opts_chunk: 
     R.options:
-      width: 90
+      width: 100
