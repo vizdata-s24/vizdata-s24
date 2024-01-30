@@ -100,20 +100,22 @@ Once you receive feedback from your peers, you should address them. You should d
 
 #### Peer review assignments
 
-The peer review assignments for **proposal peer reviews** are as follows:
+The peer review assignments for **proposal peer reviews** are **TO BE POSTED**:
 
 ```{r}
 #| echo: false
 #| message: false
+#| eval: false
 
 p2_pr <- read_csv("project-2-peer-review.csv")
 gt(p2_pr)
 ```
 
-The peer review assignments for **code peer reviews** are as follows:
+The peer review assignments for **code peer reviews** are **TO BE POSTED**:
 
 ```{r}
 #| echo: false
+#| eval: false
 
 p2_pr |>
   select(-reviewee_2) |>
