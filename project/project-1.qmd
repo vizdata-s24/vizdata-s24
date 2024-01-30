@@ -2,7 +2,7 @@
 title: "Project 1"
 ---
 
-For this project, you will be using a dataset from the TidyTuesday project. You can choose any dataset you want from the datasets released in 2022 as part of this project: <https://github.com/rfordatascience/tidytuesday/tree/master/data/2022#readme>. Your task for the project is to come up with two questions to answer, answer them with data visualizations, and write-up and present your method and findings. You will also get to peer review others' projects.
+For this project, you will be using a dataset from the TidyTuesday project. You can choose any dataset you want from the datasets released in 2023 as part of this project: <https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/readme.md>. Your task for the project is to come up with two questions to answer, answer them with data visualizations, and write-up and present your method and findings. You will also get to peer review others' projects.
 
 ## Dataset
 
@@ -18,19 +18,21 @@ Each of the two questions you come up with should involve more than two variable
 
 ## Workflow
 
--   Week 1 of project (week of January 30): Choose a dataset and write up your proposal in `proposal.qmd`.
+-   Week 1 of project (week of January 29): Choose a dataset and write up your proposal in `proposal.qmd`.
 
--   Week 2 of project (week of February 6): Provide peer review to two other teams in the form of issues in their GitHub repos, address the issues left on your team's project repo by closing them with explicit commits. Feel free to get started on your presentation as well.
+-   Week 2 of project (week of February 5): Provide peer review to two other teams in the form of issues in their GitHub repos, address the issues left on your team's project repo by closing them with explicit commits. Feel free to get started on your presentation as well.
 
--   Week 3 of project (week of February 13): Review feedback from me on your proposal and close any remaining issues. Work on your presentation in `presentation.qmd` and write-up in `index.qmd`.
+-   Week 3 of project (week of February 12): Review feedback from me on your proposal and close any remaining issues. Work on your presentation in `presentation.qmd` and write-up in `index.qmd`.
 
--   Week 4 of project (week of February 20): Finalize your write-up, presentation, and your project website. Present in lab on the Wednesday of this week.
+-   Week 4 of project (week of February 19): Continue to work on your presentation in `presentation.qmd` and write-up in `index.qmd`.
+
+-   Week 5 of project (week of February 26): Finalize your write-up, presentation, and your project website. Present in lab on the Wednesday of this week.
 
 ## Due dates
 
--   Proposals for peer review: due on Tuesday, February 7 at noon.
--   Revised proposals for teaching team review: due Friday, February 10 at 5pm.
--   Write-up and presentation: due Wednesday, February 22 at the **beginning** of your lab section.
+-   Proposals for peer review: due on Wednesday, February 7 at 1 pm.
+-   Revised proposals for teaching team review: due Friday, February 9 at 5 pm.
+-   Write-up and presentation: due Wednesday, February 28 at the **beginning** of your lab section.
 
 ## Deliverables
 
@@ -47,13 +49,15 @@ Your proposal should include:
 
 #### Reviewer tasks {.unnumbered}
 
-Each team will review the proposals of two other teams. The peer review will be completed during the lab session on Wednesday, February 8. On that day teams will have access to the project repos of the two teams whose work they're reviewing. Reviews should start by cloning the team's repo, re-rendering it locally to make sure you can reproduce their work, and then adding an issue to their repo with your peer review feedback.
+Each team will review the proposals of two other teams. The peer review will be completed during the lab session on Wednesday, February 7. On that day teams will have access to the project repos of the two teams whose work they're reviewing. Reviews should start by cloning the team's repo, re-rendering it locally to make sure you can reproduce their work, and then adding an issue to their repo with your peer review feedback.
 
-The reviewer / reviewee assignments can be found below:
+The reviewer / reviewee assignments will be posted below:
 
 ```{r}
 #| message: false
 #| echo: false
+#| eval: false
+
 library(tidyverse)
 library(gt)
 p1_pr <- read_csv("project-1-peer-review.csv")
@@ -98,7 +102,7 @@ Your presentation should generally follow the same structure as your write-up. E
 
 ### Website
 
-Each of your projects will have a website that looks like <https://vizdata-s23.github.io/project-01>. You are not expected to change the styling of the website, but if you want to, you'll need to edit the `_quarto.yml` file in your repo. Feel free to google your way around it or ask on the discussion forum / office hours!
+Each of your projects will have a website that looks like <https://vizdata-s24.github.io/project-1>. You are not expected to change the styling of the website, but if you want to, you'll need to edit the `_quarto.yml` file in your repo. Feel free to google your way around it or ask on the discussion forum / office hours!
 
 ## Repo organization
 
@@ -165,7 +169,7 @@ Some of the components are further detailed below.
 
 #### Teaching team (25 points)
 
--   Time management: Did the team divide the time well amongst themselves or got cut off going over time? (2 points)
+-   Time management: Did the team divide the time well among themselves or got cut off going over time? (2 points)
 
 -   Professionalism: How well did the team present? Does the presentation appear to be well practiced? Did everyone get a chance to say something meaningful about the project? (2 points)
 
