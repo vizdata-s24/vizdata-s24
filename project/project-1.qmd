@@ -14,7 +14,7 @@ It is also very important that the dataset you choose allows for two distinct qu
 
 ## Questions
 
-Each of the two questions you come up with should involve more than two variables two answer. You should phrase them in a way that the is within the scope of inference of your data. For example, if you have an observational dataset, you shouldn't phrase your question in a causal way.
+Each of the two questions you come up with should involve more than two variables to answer. You should phrase them in a way that the is within the scope of inference of your data. For example, if you have an observational dataset, you shouldn't phrase your question in a causal way.
 
 ## Workflow
 
@@ -40,7 +40,7 @@ Each of the two questions you come up with should involve more than two variable
 
 Your proposal should include:
 
--   A brief description of your dataset including its provenance, dimensions, etc. (Make sure to load the data and use inline code for some of this information.)
+-   A brief description of your dataset including its provenance (not simply TidyTuesday, but where they got the dataset from), dimensions, etc. (Make sure to load the data and use inline code for some of this information.)
 -   The reason why you chose this dataset.
 -   The two questions you want to answer.
 -   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
@@ -102,7 +102,7 @@ Your presentation should generally follow the same structure as your write-up. E
 
 ### Website
 
-Each of your projects will have a website that looks like <https://vizdata-s24.github.io/project-1> **(TO DO: MAKE REPO/WEBSITE)**. You are not expected to change the styling of the website, but if you want to, you'll need to edit the `_quarto.yml` file in your repo. Feel free to google your way around it or ask on the discussion forum / office hours!
+Each of your projects will have a website that looks like <https://vizdata-s24.github.io/project-1>. You are not expected to change the styling of the website, but if you want to, you'll need to edit the `_quarto.yml` file in your repo. Feel free to google your way around it or ask on the discussion forum / office hours!
 
 ## Repo organization
 
