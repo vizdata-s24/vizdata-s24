@@ -470,6 +470,12 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <section id="visualizing-joined-data" class="slide level2">
 <h2>Visualizing joined data</h2>
 <p>The following plot displays some information from each of the three data frames:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(name)`
+Joining with `by = join_by(name)`</code></pre>
+</div>
+</div>
 
 <img data-src="05-time-series-I_files/figure-revealjs/scientists-gantt-plot-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="livecoding" class="slide level2 smaller">
@@ -478,402 +484,74 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Transform</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>scientists <span class="ot">&lt;-</span> professions <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">left_join</span>(dates) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">left_join</span>(works)</span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a>scientists_longer <span class="ot">&lt;-</span> scientists <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-7"><a></a>    <span class="at">birth_year =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-8"><a></a>      name <span class="sc">==</span> <span class="st">"Ada Lovelace"</span> <span class="sc">~</span> <span class="dv">1815</span>,</span>
-<span id="cb3-9"><a></a>      name <span class="sc">==</span> <span class="st">"Marie Curie"</span> <span class="sc">~</span> <span class="dv">1867</span>,</span>
-<span id="cb3-10"><a></a>      <span class="cn">TRUE</span> <span class="sc">~</span> birth_year</span>
-<span id="cb3-11"><a></a>    ),</span>
-<span id="cb3-12"><a></a>    <span class="at">death_year =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-13"><a></a>      name <span class="sc">==</span> <span class="st">"Ada Lovelace"</span> <span class="sc">~</span> <span class="dv">1852</span>,</span>
-<span id="cb3-14"><a></a>      name <span class="sc">==</span> <span class="st">"Marie Curie"</span> <span class="sc">~</span> <span class="dv">1934</span>,</span>
-<span id="cb3-15"><a></a>      name <span class="sc">==</span> <span class="st">"Flossie Wong-Staal"</span> <span class="sc">~</span> <span class="dv">2020</span>,</span>
-<span id="cb3-16"><a></a>      <span class="cn">TRUE</span> <span class="sc">~</span> death_year</span>
-<span id="cb3-17"><a></a>    ),</span>
-<span id="cb3-18"><a></a>    <span class="at">status =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(death_year), <span class="st">"alive"</span>, <span class="st">"deceased"</span>),</span>
-<span id="cb3-19"><a></a>    <span class="at">death_year =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(death_year), <span class="dv">2021</span>, death_year),</span>
-<span id="cb3-20"><a></a>    <span class="at">known_for =</span> <span class="fu">if_else</span>(name <span class="sc">==</span> <span class="st">"Rosalind Franklin"</span>, <span class="st">"understanding of the molecular structures of DNA "</span>, known_for)</span>
-<span id="cb3-21"><a></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-22"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb3-23"><a></a>    <span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"year"</span>),</span>
-<span id="cb3-24"><a></a>    <span class="at">names_to =</span> <span class="st">"year_type"</span>,</span>
-<span id="cb3-25"><a></a>    <span class="at">values_to =</span> <span class="st">"year"</span></span>
-<span id="cb3-26"><a></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-27"><a></a>  <span class="fu">mutate</span>(<span class="at">death_year_fake =</span> <span class="fu">if_else</span>(year <span class="sc">==</span> <span class="dv">2021</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>scientists <span class="ot">&lt;-</span> professions <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">left_join</span>(dates) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">left_join</span>(works)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(name)`
+Joining with `by = join_by(name)`</code></pre>
+</div>
+<details class="code-fold">
+<summary>Transform</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>scientists_longer <span class="ot">&lt;-</span> scientists <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-3"><a></a>    <span class="at">birth_year =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-4"><a></a>      name <span class="sc">==</span> <span class="st">"Ada Lovelace"</span> <span class="sc">~</span> <span class="dv">1815</span>,</span>
+<span id="cb6-5"><a></a>      name <span class="sc">==</span> <span class="st">"Marie Curie"</span> <span class="sc">~</span> <span class="dv">1867</span>,</span>
+<span id="cb6-6"><a></a>      <span class="cn">TRUE</span> <span class="sc">~</span> birth_year</span>
+<span id="cb6-7"><a></a>    ),</span>
+<span id="cb6-8"><a></a>    <span class="at">death_year =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-9"><a></a>      name <span class="sc">==</span> <span class="st">"Ada Lovelace"</span> <span class="sc">~</span> <span class="dv">1852</span>,</span>
+<span id="cb6-10"><a></a>      name <span class="sc">==</span> <span class="st">"Marie Curie"</span> <span class="sc">~</span> <span class="dv">1934</span>,</span>
+<span id="cb6-11"><a></a>      name <span class="sc">==</span> <span class="st">"Flossie Wong-Staal"</span> <span class="sc">~</span> <span class="dv">2020</span>,</span>
+<span id="cb6-12"><a></a>      <span class="cn">TRUE</span> <span class="sc">~</span> death_year</span>
+<span id="cb6-13"><a></a>    ),</span>
+<span id="cb6-14"><a></a>    <span class="at">status =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(death_year), <span class="st">"alive"</span>, <span class="st">"deceased"</span>),</span>
+<span id="cb6-15"><a></a>    <span class="at">death_year =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(death_year), <span class="dv">2021</span>, death_year),</span>
+<span id="cb6-16"><a></a>    <span class="at">known_for =</span> <span class="fu">if_else</span>(name <span class="sc">==</span> <span class="st">"Rosalind Franklin"</span>, <span class="st">"understanding of the molecular structures of DNA "</span>, known_for)</span>
+<span id="cb6-17"><a></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-18"><a></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb6-19"><a></a>    <span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"year"</span>),</span>
+<span id="cb6-20"><a></a>    <span class="at">names_to =</span> <span class="st">"year_type"</span>,</span>
+<span id="cb6-21"><a></a>    <span class="at">values_to =</span> <span class="st">"year"</span></span>
+<span id="cb6-22"><a></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-23"><a></a>  <span class="fu">mutate</span>(<span class="at">death_year_fake =</span> <span class="fu">if_else</span>(year <span class="sc">==</span> <span class="dv">2021</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Plot</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(scientists_longer, </span>
-<span id="cb4-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> <span class="fu">fct_reorder</span>(name, <span class="fu">as.numeric</span>(<span class="fu">factor</span>(profession))), <span class="at">group =</span> name, <span class="at">color =</span> profession)) <span class="sc">+</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> death_year_fake), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb4-4"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> status), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"circle"</span>, <span class="cn">NA</span>)) <span class="sc">+</span></span>
-<span id="cb4-6"><a></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"dashed"</span>, <span class="st">"solid"</span>)) <span class="sc">+</span></span>
-<span id="cb4-7"><a></a>  <span class="fu">scale_color_moma_d</span>(<span class="st">"Lupi"</span>) <span class="sc">+</span></span>
-<span id="cb4-8"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="dv">0</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1820</span>, <span class="dv">2020</span>, <span class="dv">50</span>)) <span class="sc">+</span></span>
-<span id="cb4-9"><a></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> name, <span class="at">label =</span> known_for), <span class="at">x =</span> <span class="dv">2030</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb4-10"><a></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> profession), <span class="at">x =</span> <span class="dv">1809</span>, <span class="at">y =</span> <span class="cn">Inf</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb4-11"><a></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">"off"</span>) <span class="sc">+</span></span>
-<span id="cb4-12"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-13"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb4-14"><a></a>    <span class="at">title =</span> <span class="st">"10 women in science who changed the world"</span>,</span>
-<span id="cb4-15"><a></a>    <span class="at">caption =</span> <span class="st">"Source: Discover magazine"</span></span>
-<span id="cb4-16"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb4-17"><a></a>  <span class="fu">facet_grid</span>(profession <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">space =</span> <span class="st">"free_y"</span>, <span class="at">switch =</span> <span class="st">"x"</span>) <span class="sc">+</span></span>
-<span id="cb4-18"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb4-19"><a></a>    <span class="at">plot.margin =</span> <span class="fu">unit</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">24</span>, <span class="dv">1</span>, <span class="dv">5</span>), <span class="st">"lines"</span>),</span>
-<span id="cb4-20"><a></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
-<span id="cb4-21"><a></a>    <span class="at">plot.caption.position =</span> <span class="st">"plot"</span>,</span>
-<span id="cb4-22"><a></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">2</span>), <span class="co"># manual hack</span></span>
-<span id="cb4-23"><a></a>    <span class="at">strip.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-24"><a></a>    <span class="at">strip.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-25"><a></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>),</span>
-<span id="cb4-26"><a></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#f0f0f0"</span>, <span class="at">color =</span> <span class="st">"white"</span>),</span>
-<span id="cb4-27"><a></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>)</span>
-<span id="cb4-28"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(scientists_longer, </span>
+<span id="cb7-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> <span class="fu">fct_reorder</span>(name, <span class="fu">as.numeric</span>(<span class="fu">factor</span>(profession))), <span class="at">group =</span> name, <span class="at">color =</span> profession)) <span class="sc">+</span></span>
+<span id="cb7-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> death_year_fake), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> status), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"circle"</span>, <span class="cn">NA</span>)) <span class="sc">+</span></span>
+<span id="cb7-6"><a></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"dashed"</span>, <span class="st">"solid"</span>)) <span class="sc">+</span></span>
+<span id="cb7-7"><a></a>  <span class="fu">scale_color_moma_d</span>(<span class="st">"Lupi"</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="dv">0</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1820</span>, <span class="dv">2020</span>, <span class="dv">50</span>)) <span class="sc">+</span></span>
+<span id="cb7-9"><a></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> name, <span class="at">label =</span> known_for), <span class="at">x =</span> <span class="dv">2030</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> profession), <span class="at">x =</span> <span class="dv">1809</span>, <span class="at">y =</span> <span class="cn">Inf</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb7-11"><a></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">"off"</span>) <span class="sc">+</span></span>
+<span id="cb7-12"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-13"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb7-14"><a></a>    <span class="at">title =</span> <span class="st">"10 women in science who changed the world"</span>,</span>
+<span id="cb7-15"><a></a>    <span class="at">caption =</span> <span class="st">"Source: Discover magazine"</span></span>
+<span id="cb7-16"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb7-17"><a></a>  <span class="fu">facet_grid</span>(profession <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">space =</span> <span class="st">"free_y"</span>, <span class="at">switch =</span> <span class="st">"x"</span>) <span class="sc">+</span></span>
+<span id="cb7-18"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb7-19"><a></a>    <span class="at">plot.margin =</span> <span class="fu">unit</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">24</span>, <span class="dv">1</span>, <span class="dv">5</span>), <span class="st">"lines"</span>),</span>
+<span id="cb7-20"><a></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb7-21"><a></a>    <span class="at">plot.caption.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb7-22"><a></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">2</span>), <span class="co"># manual hack</span></span>
+<span id="cb7-23"><a></a>    <span class="at">strip.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-24"><a></a>    <span class="at">strip.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-25"><a></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>),</span>
+<span id="cb7-26"><a></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#f0f0f0"</span>, <span class="at">color =</span> <span class="st">"white"</span>),</span>
+<span id="cb7-27"><a></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>)</span>
+<span id="cb7-28"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section></section>
-<section>
-<section id="working-with-dates" class="title-slide slide level1 center">
-<h1>Working with dates</h1>
-
-</section>
-<section id="air-quality-index" class="slide level2">
-<h2>Air Quality Index</h2>
-<ul>
-<li><p>The AQI is the Environmental Protection Agency’s index for reporting air quality</p></li>
-<li><p>Higher values of AQI indicate worse air quality</p></li>
-</ul>
-<p><a href="https://www.airnow.gov/aqi-basics"><img data-src="images/aqi-levels.png" alt="AQI Basics for Ozone and Particle Pollution"></a></p>
-
-<aside><div>
-<p>Source: https://www.airnow.gov/aqi-basics</p>
-</div></aside></section>
-<section id="aqi-levels" class="slide level2">
-<h2>AQI levels</h2>
-<p>The previous graphic in tibble form, to be used later…</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>aqi_levels <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb5-2"><a></a>  <span class="sc">~</span>aqi_min, <span class="sc">~</span>aqi_max, <span class="sc">~</span>color,    <span class="sc">~</span>level,</span>
-<span id="cb5-3"><a></a>  <span class="dv">0</span>,        <span class="dv">50</span>,       <span class="st">"#D8EEDA"</span>, <span class="st">"Good"</span>,</span>
-<span id="cb5-4"><a></a>  <span class="dv">51</span>,       <span class="dv">100</span>,      <span class="st">"#F1E7D4"</span>, <span class="st">"Moderate"</span>,</span>
-<span id="cb5-5"><a></a>  <span class="dv">101</span>,      <span class="dv">150</span>,      <span class="st">"#F8E4D8"</span>, <span class="st">"Unhealthy for sensitive groups"</span>,</span>
-<span id="cb5-6"><a></a>  <span class="dv">151</span>,      <span class="dv">200</span>,      <span class="st">"#FEE2E1"</span>, <span class="st">"Unhealthy"</span>,</span>
-<span id="cb5-7"><a></a>  <span class="dv">201</span>,      <span class="dv">300</span>,      <span class="st">"#F4E3F7"</span>, <span class="st">"Very unhealthy"</span>,</span>
-<span id="cb5-8"><a></a>  <span class="dv">301</span>,      <span class="dv">400</span>,      <span class="st">"#F9D0D4"</span>, <span class="st">"Hazardous"</span></span>
-<span id="cb5-9"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="aqi-data" class="slide level2">
-<h2>AQI data</h2>
-<ul>
-<li><p>Source: <a href="https://www.epa.gov/outdoor-air-quality-data/air-data-daily-air-quality-tracker">EPA’s Daily Air Quality Tracker</a></p></li>
-<li><p>2016 - 2022 AQI (Ozone and PM2.5 combined) for Durham-Chapel Hill, NC core-based statistical area (CBSA), one file per year</p></li>
-<li><p>2016 - 2022 AQI (Ozone and PM2.5 combined) for San Francisco-Oakland-Hayward, CA CBSA, one file per year</p></li>
-</ul>
-</section>
-<section id="durham-chapel-hill" class="slide level2">
-<h2>2022 Durham-Chapel Hill</h2>
-<ul>
-<li>Load data</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>dch_2022 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/durham-chapel-hill/ad_aqi_tracker_data-2022.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<ul>
-<li>Metadata</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">dim</span>(dch_2022)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 365  11</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">names</span>(dch_2022)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "Date"                       "AQI Value"                  "Main Pollutant"            
- [4] "Site Name"                  "Site ID"                    "Source"                    
- [7] "20-year High (2000-2019)"   "20-year Low (2000-2019)"    "5-year Average (2015-2019)"
-[10] "Date of 20-year High"       "Date of 20-year Low"       </code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="clean-variable-names" class="slide level2">
-<h2>Clean variable names</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>dch_2022 <span class="ot">&lt;-</span> dch_2022 <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb11-3"><a></a></span>
-<span id="cb11-4"><a></a><span class="fu">names</span>(dch_2022)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "date"                      "aqi_value"                 "main_pollutant"           
- [4] "site_name"                 "site_id"                   "source"                   
- [7] "x20_year_high_2000_2019"   "x20_year_low_2000_2019"    "x5_year_average_2015_2019"
-[10] "date_of_20_year_high"      "date_of_20_year_low"      </code></pre>
-</div>
-</div>
-</section>
-<section id="first-look" class="slide level2">
-<h2>First look</h2>
-<div class="task">
-<p>This plot looks quite bizarre. What might be going on?</p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(dch_2022, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> aqi_value, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="05-time-series-I_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="peek-at-data" class="slide level2">
-<h2>Peek at data</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>dch_2022 <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">select</span>(date, aqi_value, site_name, site_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 365 × 4
-   date       aqi_value site_name     site_id    
-   &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;      
- 1 01/01/2022 22        Durham Armory 37-063-0015
- 2 01/02/2022 12        Durham Armory 37-063-0015
- 3 01/03/2022 10        Durham Armory 37-063-0015
- 4 01/04/2022 21        Durham Armory 37-063-0015
- 5 01/05/2022 35        Durham Armory 37-063-0015
- 6 01/06/2022 29        Durham Armory 37-063-0015
- 7 01/07/2022 15        Durham Armory 37-063-0015
- 8 01/08/2022 28        Durham Armory 37-063-0015
- 9 01/09/2022 28        Durham Armory 37-063-0015
-10 01/10/2022 15        Durham Armory 37-063-0015
-# ℹ 355 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="transforming-date" class="slide level2 smaller">
-<h2>Transforming date</h2>
-<p>Using <code>lubridate::mdy()</code>:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>dch_2022 <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">mdy</span>(date))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 365 × 11
-   date       aqi_value main_pollutant site_name     site_id     source x20_year_high_2000_2019
-   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;                    &lt;dbl&gt;
- 1 2022-01-01 22        PM2.5          Durham Armory 37-063-0015 AQS                        111
- 2 2022-01-02 12        PM2.5          Durham Armory 37-063-0015 AQS                         76
- 3 2022-01-03 10        PM2.5          Durham Armory 37-063-0015 AQS                         66
- 4 2022-01-04 21        PM2.5          Durham Armory 37-063-0015 AQS                         61
- 5 2022-01-05 35        PM2.5          Durham Armory 37-063-0015 AQS                         83
- 6 2022-01-06 29        PM2.5          Durham Armory 37-063-0015 AQS                         71
- 7 2022-01-07 15        PM2.5          Durham Armory 37-063-0015 AQS                         75
- 8 2022-01-08 28        PM2.5          Durham Armory 37-063-0015 AQS                         76
- 9 2022-01-09 28        PM2.5          Durham Armory 37-063-0015 AQS                         57
-10 2022-01-10 15        PM2.5          Durham Armory 37-063-0015 AQS                         71
-# ℹ 355 more rows
-# ℹ 4 more variables: x20_year_low_2000_2019 &lt;dbl&gt;, x5_year_average_2015_2019 &lt;dbl&gt;,
-#   date_of_20_year_high &lt;chr&gt;, date_of_20_year_low &lt;chr&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="transforming-aqi-values" class="slide level2 smaller">
-<h2>Transforming AQI values</h2>
-<div class="task">
-<p>What does this warning mean?</p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>dch_2022 <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a></a>  <span class="fu">mutate</span>(<span class="at">aqi_value =</span> <span class="fu">as.numeric</span>(aqi_value))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 365 × 11
-  date       aqi_value main_pollutant site_name     site_id     source x20_year_high_2000_2019
-  &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;                    &lt;dbl&gt;
-1 01/01/2022        22 PM2.5          Durham Armory 37-063-0015 AQS                        111
-2 01/02/2022        12 PM2.5          Durham Armory 37-063-0015 AQS                         76
-3 01/03/2022        10 PM2.5          Durham Armory 37-063-0015 AQS                         66
-# ℹ 362 more rows
-# ℹ 4 more variables: x20_year_low_2000_2019 &lt;dbl&gt;, x5_year_average_2015_2019 &lt;dbl&gt;,
-#   date_of_20_year_high &lt;chr&gt;, date_of_20_year_low &lt;chr&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="investigating-aqi-values" class="slide level2 smaller">
-<h2>Investigating AQI values</h2>
-<ul>
-<li>Take a peek at distinct values of AQI</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>dch_2022 <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a></a>  <span class="fu">distinct</span>(aqi_value) <span class="sc">|&gt;</span></span>
-<span id="cb20-3"><a></a>  <span class="fu">pull</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "22" "12" "10" "21" "35" "29" "15" "28" "25" "36" "49" "19" "24" "46" "38" "48" "34" "47" "57"
-[20] "26" "45" "42" "13" "31" "39" "62" "40" "30" "20" "18" "27" "67" "41" "56" "37" "32" "43" "51"
-[39] "50" "44" "33" "54" "52" "77" "74" "53" "58" "64" "61" "93" "16" "17" "23" "5"  "6"  "."  "9" 
-[58] "14" "59"</code></pre>
-</div>
-</div>
-<ul>
-<li><code>"."</code> likely indicates <code>NA</code>, and it’s causing the entire column to be read in as characters</li>
-</ul>
-</section>
-<section id="rewind-and-start-over" class="slide level2 smaller">
-<h2>Rewind, and start over</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>dch_2022 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
-<span id="cb22-2"><a></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/durham-chapel-hill/ad_aqi_tracker_data-2022.csv"</span>),</span>
-<span id="cb22-3"><a></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"."</span>, <span class="st">""</span>)</span>
-<span id="cb22-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">glimpse</span>(dch_2022)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 365
-Columns: 11
-$ Date                         &lt;chr&gt; "01/01/2022", "01/02/2022", "01/03/2022", "01/04/2022", "01/0…
-$ `AQI Value`                  &lt;dbl&gt; 22, 12, 10, 21, 35, 29, 15, 28, 28, 15, 25, 36, 49, 35, 28, 1…
-$ `Main Pollutant`             &lt;chr&gt; "PM2.5", "PM2.5", "PM2.5", "PM2.5", "PM2.5", "PM2.5", "PM2.5"…
-$ `Site Name`                  &lt;chr&gt; "Durham Armory", "Durham Armory", "Durham Armory", "Durham Ar…
-$ `Site ID`                    &lt;chr&gt; "37-063-0015", "37-063-0015", "37-063-0015", "37-063-0015", "…
-$ Source                       &lt;chr&gt; "AQS", "AQS", "AQS", "AQS", "AQS", "AQS", "AQS", "AQS", "AQS"…
-$ `20-year High (2000-2019)`   &lt;dbl&gt; 111, 76, 66, 61, 83, 71, 75, 76, 57, 71, 81, 77, 62, 63, 68, …
-$ `20-year Low (2000-2019)`    &lt;dbl&gt; 10, 8, 14, 9, 8, 15, 18, 15, 19, 20, 14, 5, 16, 15, 0, 6, 2, …
-$ `5-year Average (2015-2019)` &lt;dbl&gt; 39.2, 36.8, 38.2, 30.4, 26.0, 32.4, 37.0, 36.6, 35.0, 35.6, 4…
-$ `Date of 20-year High`       &lt;chr&gt; "01/01/2000", "01/02/2005", "01/03/2004", "01/04/2008", "01/0…
-$ `Date of 20-year Low`        &lt;chr&gt; "01/01/2007", "01/02/2012", "01/03/2012", "01/04/2007", "01/0…</code></pre>
-</div>
-</div>
-</section>
-<section id="data-cleaning" class="slide level2">
-<h2>Data cleaning</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>dch_2022 <span class="ot">&lt;-</span> dch_2022 <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
-<span id="cb25-3"><a></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">mdy</span>(date))</span>
-<span id="cb25-4"><a></a></span>
-<span id="cb25-5"><a></a>dch_2022</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 365 × 11
-   date       aqi_value main_pollutant site_name     site_id     source x20_year_high_2000_2019
-   &lt;date&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;                    &lt;dbl&gt;
- 1 2022-01-01        22 PM2.5          Durham Armory 37-063-0015 AQS                        111
- 2 2022-01-02        12 PM2.5          Durham Armory 37-063-0015 AQS                         76
- 3 2022-01-03        10 PM2.5          Durham Armory 37-063-0015 AQS                         66
- 4 2022-01-04        21 PM2.5          Durham Armory 37-063-0015 AQS                         61
- 5 2022-01-05        35 PM2.5          Durham Armory 37-063-0015 AQS                         83
- 6 2022-01-06        29 PM2.5          Durham Armory 37-063-0015 AQS                         71
- 7 2022-01-07        15 PM2.5          Durham Armory 37-063-0015 AQS                         75
- 8 2022-01-08        28 PM2.5          Durham Armory 37-063-0015 AQS                         76
- 9 2022-01-09        28 PM2.5          Durham Armory 37-063-0015 AQS                         57
-10 2022-01-10        15 PM2.5          Durham Armory 37-063-0015 AQS                         71
-# ℹ 355 more rows
-# ℹ 4 more variables: x20_year_low_2000_2019 &lt;dbl&gt;, x5_year_average_2015_2019 &lt;dbl&gt;,
-#   date_of_20_year_high &lt;chr&gt;, date_of_20_year_low &lt;chr&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="another-look" class="slide level2">
-<h2>Another look</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(dch_2022, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> aqi_value, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb27-2"><a></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="05-time-series-I_files/figure-revealjs/dch-2022-1-1.png" class="quarto-figure quarto-figure-center" width="2100"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="task">
-<p>How would you improve this visualization?</p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="05-time-series-I_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center" width="2100"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="visualizing-durham-aqi" class="slide level2">
-<h2>Visualizing Durham AQI</h2>
-<div class="task">
-<p>Recreate the following visualization.</p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="05-time-series-I_files/figure-revealjs/dch-2022-2-1.png" class="quarto-figure quarto-figure-center" width="2100"></p>
-</figure>
-</div>
-</div>
-</div>
-<!--
-
-## Livecoding {.smaller}
-
-Reveal below for code developed during live coding session.
-
-::: {.cell layout-align="center"}
-
-```{.r .cell-code  code-fold="true"}
-aqi_levels <- aqi_levels |>
-  mutate(aqi_mid = ((aqi_min + aqi_max) / 2))
-
-dch_2022 |>
-  filter(!is.na(aqi_value)) |>
-  ggplot(aes(x = date, y = aqi_value, group = 1)) +
-  geom_rect(
-    data = aqi_levels,
-    aes(
-      ymin = aqi_min, ymax = aqi_max,
-      xmin = as.Date(-Inf), xmax = as.Date(Inf),
-      fill = color, y = NULL, x = NULL
-    )
-  ) +
-  geom_line(linewidth = 1) +
-  scale_fill_identity() +
-  scale_x_date(
-    name = NULL, date_labels = "%b",
-    limits = c(ymd("2022-01-01"), ymd("2023-03-01"))
-  ) +
-  geom_text(
-    data = aqi_levels,
-    aes(x = ymd("2023-02-28"), y = aqi_mid, label = level),
-    hjust = 1, size = 6, fontface = "bold", color = "white"
-  ) +
-  annotate(
-    geom = "text",
-    x = c(ymd("2022-01-01"), ymd("2023-03-01")), y = -100,
-    label = c("2022", "2023"), size = 4
-  ) +
-  coord_cartesian(clip = "off", ylim = c(0, 400)) +
-  labs(
-    x = NULL, y = "AQI",
-    title = "Ozone and PM2.5 Daily AQI Values",
-    subtitle = "Durham-Chapel Hill, NC",
-    caption = "\nSource: EPA Daily Air Quality Tracker"
-  ) +
-  theme(
-    plot.title.position = "plot",
-    panel.grid.minor.y = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    plot.margin = unit(c(1, 1, 3, 1), "lines")
-  )
-```
-:::
-
--->
 
 <div class="quarto-auto-generated-content">
 <p><img src="../logo.png" class="slide-logo"></p>
