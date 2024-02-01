@@ -1,6 +1,6 @@
 ---
-title: Visualizing time series data - I
-subtitle: Lecture 5
+title: Visualizing time series data - II
+subtitle: Lecture 6
 title-slide-attributes:
   data-background-image: ../vizdata-bg.png
   data-background-size: stretch
@@ -415,7 +415,7 @@ dch_2022 |>
 #| label: fill-in-gaps-1
 #| echo: false
 #| fig-width: 8
-#| fig-asp: 0.45
+#| fig-asp: 0.3
 
 dch_2022 |>
   filter(!is.na(aqi_value)) |>
@@ -435,7 +435,7 @@ dch_2022 |>
 #| label: fill-in-gaps-2
 #| echo: false
 #| fig-width: 8
-#| fig-asp: 0.45
+#| fig-asp: 0.3
 
 dch_2022 |>
   mutate(
@@ -456,7 +456,6 @@ dch_2022 |>
     caption = "\nSource: EPA Daily Air Quality Tracker"
   )
 ```
-
 :::
 
 ## Filling in the gaps - Code
@@ -477,9 +476,7 @@ dch_2022 |>
 #| fig-show: hide
 #| code-line-numbers: "|2-6|9"
 ```
-
 :::
-
 
 # Calculating cumulatives
 
