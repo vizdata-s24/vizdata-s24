@@ -1248,287 +1248,287 @@
   {
     "objectID": "slides/06/06-time-series-II.html#announcements",
     "href": "slides/06/06-time-series-II.html#announcements",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Announcements",
     "text": "Announcements\n\nReading Quiz 2 is due at 10 am on Tuesday\nProject 1 proposals due at 1 pm on Wednesday"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#setup",
     "href": "slides/06/06-time-series-II.html#setup",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Setup",
     "text": "Setup\n\n# load packages\nlibrary(countdown)\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(colorspace)\nlibrary(broom)\nlibrary(fs)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))\n\n# set figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 7, # 7\" width\n  fig.asp = 0.618, # the golden ratio\n  fig.retina = 3, # dpi multiplier for displaying HTML output on retina\n  fig.align = \"center\", # center align figures\n  dpi = 300 # higher dpi, sharper image\n)"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#air-quality-index",
     "href": "slides/06/06-time-series-II.html#air-quality-index",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Air Quality Index",
     "text": "Air Quality Index\n\nThe AQI is the Environmental Protection Agency’s index for reporting air quality\nHigher values of AQI indicate worse air quality\n\n\n\n\nSource: https://www.airnow.gov/aqi-basics"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#aqi-levels",
     "href": "slides/06/06-time-series-II.html#aqi-levels",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "AQI levels",
     "text": "AQI levels\nThe previous graphic in tibble form, to be used later…\n\naqi_levels &lt;- tribble(\n  ~aqi_min, ~aqi_max, ~color,    ~level,\n  0,        50,       \"#D8EEDA\", \"Good\",\n  51,       100,      \"#F1E7D4\", \"Moderate\",\n  101,      150,      \"#F8E4D8\", \"Unhealthy for sensitive groups\",\n  151,      200,      \"#FEE2E1\", \"Unhealthy\",\n  201,      300,      \"#F4E3F7\", \"Very unhealthy\",\n  301,      400,      \"#F9D0D4\", \"Hazardous\"\n)"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#aqi-data",
     "href": "slides/06/06-time-series-II.html#aqi-data",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "AQI data",
     "text": "AQI data\n\nSource: EPA’s Daily Air Quality Tracker\n2016 - 2022 AQI (Ozone and PM2.5 combined) for Durham-Chapel Hill, NC core-based statistical area (CBSA), one file per year\n2016 - 2022 AQI (Ozone and PM2.5 combined) for San Francisco-Oakland-Hayward, CA CBSA, one file per year"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#durham-chapel-hill",
     "href": "slides/06/06-time-series-II.html#durham-chapel-hill",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "2022 Durham-Chapel Hill",
     "text": "2022 Durham-Chapel Hill\n\nLoad data\n\n\ndch_2022 &lt;- read_csv(here::here(\"data/durham-chapel-hill/ad_aqi_tracker_data-2022.csv\"))\n\n\n\nMetadata\n\n\ndim(dch_2022)\n\n[1] 365  11\n\nnames(dch_2022)\n\n [1] \"Date\"                       \"AQI Value\"                 \n [3] \"Main Pollutant\"             \"Site Name\"                 \n [5] \"Site ID\"                    \"Source\"                    \n [7] \"20-year High (2000-2019)\"   \"20-year Low (2000-2019)\"   \n [9] \"5-year Average (2015-2019)\" \"Date of 20-year High\"      \n[11] \"Date of 20-year Low\""
   },
   {
     "objectID": "slides/06/06-time-series-II.html#clean-variable-names",
     "href": "slides/06/06-time-series-II.html#clean-variable-names",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Clean variable names",
     "text": "Clean variable names\n\ndch_2022 &lt;- dch_2022 |&gt;\n  janitor::clean_names()\n\nnames(dch_2022)\n\n [1] \"date\"                      \"aqi_value\"                \n [3] \"main_pollutant\"            \"site_name\"                \n [5] \"site_id\"                   \"source\"                   \n [7] \"x20_year_high_2000_2019\"   \"x20_year_low_2000_2019\"   \n [9] \"x5_year_average_2015_2019\" \"date_of_20_year_high\"     \n[11] \"date_of_20_year_low\""
   },
   {
     "objectID": "slides/06/06-time-series-II.html#first-look",
     "href": "slides/06/06-time-series-II.html#first-look",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "First look",
     "text": "First look\n\nThis plot looks quite bizarre. What might be going on?\n\n\nggplot(dch_2022, aes(x = date, y = aqi_value, group = 1)) +\n  geom_line()"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#peek-at-data",
     "href": "slides/06/06-time-series-II.html#peek-at-data",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Peek at data",
     "text": "Peek at data\n\ndch_2022 |&gt;\n  select(date, aqi_value, site_name, site_id)\n\n# A tibble: 365 × 4\n   date       aqi_value site_name     site_id    \n   &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;      \n 1 01/01/2022 22        Durham Armory 37-063-0015\n 2 01/02/2022 12        Durham Armory 37-063-0015\n 3 01/03/2022 10        Durham Armory 37-063-0015\n 4 01/04/2022 21        Durham Armory 37-063-0015\n 5 01/05/2022 35        Durham Armory 37-063-0015\n 6 01/06/2022 29        Durham Armory 37-063-0015\n 7 01/07/2022 15        Durham Armory 37-063-0015\n 8 01/08/2022 28        Durham Armory 37-063-0015\n 9 01/09/2022 28        Durham Armory 37-063-0015\n10 01/10/2022 15        Durham Armory 37-063-0015\n# ℹ 355 more rows"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#transforming-date",
     "href": "slides/06/06-time-series-II.html#transforming-date",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Transforming date",
     "text": "Transforming date\nUsing lubridate::mdy():\n\ndch_2022 |&gt;\n  mutate(date = mdy(date))\n\n# A tibble: 365 × 11\n   date       aqi_value main_pollutant site_name     site_id     source\n   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt; \n 1 2022-01-01 22        PM2.5          Durham Armory 37-063-0015 AQS   \n 2 2022-01-02 12        PM2.5          Durham Armory 37-063-0015 AQS   \n 3 2022-01-03 10        PM2.5          Durham Armory 37-063-0015 AQS   \n 4 2022-01-04 21        PM2.5          Durham Armory 37-063-0015 AQS   \n 5 2022-01-05 35        PM2.5          Durham Armory 37-063-0015 AQS   \n 6 2022-01-06 29        PM2.5          Durham Armory 37-063-0015 AQS   \n 7 2022-01-07 15        PM2.5          Durham Armory 37-063-0015 AQS   \n 8 2022-01-08 28        PM2.5          Durham Armory 37-063-0015 AQS   \n 9 2022-01-09 28        PM2.5          Durham Armory 37-063-0015 AQS   \n10 2022-01-10 15        PM2.5          Durham Armory 37-063-0015 AQS   \n# ℹ 355 more rows\n# ℹ 5 more variables: x20_year_high_2000_2019 &lt;dbl&gt;,\n#   x20_year_low_2000_2019 &lt;dbl&gt;, x5_year_average_2015_2019 &lt;dbl&gt;,\n#   date_of_20_year_high &lt;chr&gt;, date_of_20_year_low &lt;chr&gt;"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#transforming-aqi-values",
     "href": "slides/06/06-time-series-II.html#transforming-aqi-values",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Transforming AQI values",
     "text": "Transforming AQI values\n\nWhat does this warning mean?\n\n\ndch_2022 |&gt;\n  mutate(aqi_value = as.numeric(aqi_value))\n\nWarning: There was 1 warning in `mutate()`.\nℹ In argument: `aqi_value = as.numeric(aqi_value)`.\nCaused by warning:\n! NAs introduced by coercion\n\n\n# A tibble: 365 × 11\n  date  aqi_value main_pollutant site_name site_id source x20_year_high_2000_2…¹\n  &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;                   &lt;dbl&gt;\n1 01/0…        22 PM2.5          Durham A… 37-063… AQS                       111\n2 01/0…        12 PM2.5          Durham A… 37-063… AQS                        76\n3 01/0…        10 PM2.5          Durham A… 37-063… AQS                        66\n# ℹ 362 more rows\n# ℹ abbreviated name: ¹​x20_year_high_2000_2019\n# ℹ 4 more variables: x20_year_low_2000_2019 &lt;dbl&gt;,\n#   x5_year_average_2015_2019 &lt;dbl&gt;, date_of_20_year_high &lt;chr&gt;,\n#   date_of_20_year_low &lt;chr&gt;"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#investigating-aqi-values",
     "href": "slides/06/06-time-series-II.html#investigating-aqi-values",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Investigating AQI values",
     "text": "Investigating AQI values\n\nTake a peek at distinct values of AQI\n\n\ndch_2022 |&gt;\n  distinct(aqi_value) |&gt;\n  pull()\n\n [1] \"22\" \"12\" \"10\" \"21\" \"35\" \"29\" \"15\" \"28\" \"25\" \"36\" \"49\" \"19\" \"24\" \"46\" \"38\"\n[16] \"48\" \"34\" \"47\" \"57\" \"26\" \"45\" \"42\" \"13\" \"31\" \"39\" \"62\" \"40\" \"30\" \"20\" \"18\"\n[31] \"27\" \"67\" \"41\" \"56\" \"37\" \"32\" \"43\" \"51\" \"50\" \"44\" \"33\" \"54\" \"52\" \"77\" \"74\"\n[46] \"53\" \"58\" \"64\" \"61\" \"93\" \"16\" \"17\" \"23\" \"5\"  \"6\"  \".\"  \"9\"  \"14\" \"59\"\n\n\n\n\".\" likely indicates NA, and it’s causing the entire column to be read in as characters"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#rewind-and-start-over",
     "href": "slides/06/06-time-series-II.html#rewind-and-start-over",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Rewind, and start over",
     "text": "Rewind, and start over\n\ndch_2022 &lt;- read_csv(\n  here::here(\"data/durham-chapel-hill/ad_aqi_tracker_data-2022.csv\"),\n  na = c(\".\", \"\")\n)\n\n\nglimpse(dch_2022)\n\nRows: 365\nColumns: 11\n$ Date                         &lt;chr&gt; \"01/01/2022\", \"01/02/2022\", \"01/03/2022\",…\n$ `AQI Value`                  &lt;dbl&gt; 22, 12, 10, 21, 35, 29, 15, 28, 28, 15, 2…\n$ `Main Pollutant`             &lt;chr&gt; \"PM2.5\", \"PM2.5\", \"PM2.5\", \"PM2.5\", \"PM2.…\n$ `Site Name`                  &lt;chr&gt; \"Durham Armory\", \"Durham Armory\", \"Durham…\n$ `Site ID`                    &lt;chr&gt; \"37-063-0015\", \"37-063-0015\", \"37-063-001…\n$ Source                       &lt;chr&gt; \"AQS\", \"AQS\", \"AQS\", \"AQS\", \"AQS\", \"AQS\",…\n$ `20-year High (2000-2019)`   &lt;dbl&gt; 111, 76, 66, 61, 83, 71, 75, 76, 57, 71, …\n$ `20-year Low (2000-2019)`    &lt;dbl&gt; 10, 8, 14, 9, 8, 15, 18, 15, 19, 20, 14, …\n$ `5-year Average (2015-2019)` &lt;dbl&gt; 39.2, 36.8, 38.2, 30.4, 26.0, 32.4, 37.0,…\n$ `Date of 20-year High`       &lt;chr&gt; \"01/01/2000\", \"01/02/2005\", \"01/03/2004\",…\n$ `Date of 20-year Low`        &lt;chr&gt; \"01/01/2007\", \"01/02/2012\", \"01/03/2012\",…"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#data-cleaning",
     "href": "slides/06/06-time-series-II.html#data-cleaning",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Data cleaning",
     "text": "Data cleaning\n\ndch_2022 &lt;- dch_2022 |&gt;\n  janitor::clean_names() |&gt;\n  mutate(date = mdy(date))\n\ndch_2022\n\n# A tibble: 365 × 11\n   date       aqi_value main_pollutant site_name     site_id     source\n   &lt;date&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt; \n 1 2022-01-01        22 PM2.5          Durham Armory 37-063-0015 AQS   \n 2 2022-01-02        12 PM2.5          Durham Armory 37-063-0015 AQS   \n 3 2022-01-03        10 PM2.5          Durham Armory 37-063-0015 AQS   \n 4 2022-01-04        21 PM2.5          Durham Armory 37-063-0015 AQS   \n 5 2022-01-05        35 PM2.5          Durham Armory 37-063-0015 AQS   \n 6 2022-01-06        29 PM2.5          Durham Armory 37-063-0015 AQS   \n 7 2022-01-07        15 PM2.5          Durham Armory 37-063-0015 AQS   \n 8 2022-01-08        28 PM2.5          Durham Armory 37-063-0015 AQS   \n 9 2022-01-09        28 PM2.5          Durham Armory 37-063-0015 AQS   \n10 2022-01-10        15 PM2.5          Durham Armory 37-063-0015 AQS   \n# ℹ 355 more rows\n# ℹ 5 more variables: x20_year_high_2000_2019 &lt;dbl&gt;,\n#   x20_year_low_2000_2019 &lt;dbl&gt;, x5_year_average_2015_2019 &lt;dbl&gt;,\n#   date_of_20_year_high &lt;chr&gt;, date_of_20_year_low &lt;chr&gt;"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#another-look",
     "href": "slides/06/06-time-series-II.html#another-look",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Another look",
     "text": "Another look\n\nggplot(dch_2022, aes(x = date, y = aqi_value, group = 1)) +\n  geom_line()"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#improve",
     "href": "slides/06/06-time-series-II.html#improve",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Improve",
     "text": "Improve\n\n\n\nHow would you improve this visualization?"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#visualizing-durham-aqi---v1",
     "href": "slides/06/06-time-series-II.html#visualizing-durham-aqi---v1",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Visualizing Durham AQI - v1",
     "text": "Visualizing Durham AQI - v1\n\nRecreate the following visualization."
   },
   {
     "objectID": "slides/06/06-time-series-II.html#visualizing-durham-aqi---v2",
     "href": "slides/06/06-time-series-II.html#visualizing-durham-aqi---v2",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Visualizing Durham AQI - v2",
     "text": "Visualizing Durham AQI - v2\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndch_2022 |&gt;\n  ggplot(aes(x = date, y = aqi_value, group = 1)) +\n  geom_line(linewidth = 0.8) +\n  scale_x_date(\n    name = NULL, date_labels = \"%b\",\n    limits = c(ymd(\"2022-01-01\"), ymd(\"2023-03-01\"))\n  ) +\n  scale_y_continuous(breaks = c(0, 50, 100, 150, 200, 300, 400)) +\n  geom_text(\n    data = aqi_levels,\n    aes(\n      x = ymd(\"2023-02-28\"), y = aqi_mid, \n      label = level, color = darken(color, 0.3)\n    ),\n    hjust = 1, size = 6, fontface = \"bold\"\n  ) +\n  scale_color_identity() +\n  annotate(\n    geom = \"text\",\n    x = c(ymd(\"2022-01-01\"), ymd(\"2023-01-01\")), y = -80,\n    label = c(\"2022\", \"2023\"), size = 4\n  ) +\n  coord_cartesian(clip = \"off\", ylim = c(0, 400)) +\n  labs(\n    x = NULL, y = \"AQI\",\n    title = \"Ozone and PM2.5 Daily AQI Values\",\n    subtitle = \"Durham-Chapel Hill, NC\",\n    caption = \"\\nSource: EPA Daily Air Quality Tracker\"\n  ) +\n  theme(\n    plot.title.position = \"plot\",\n    panel.grid.minor.y = element_blank(),\n    panel.grid.minor.x = element_blank()\n  )"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#highlights",
     "href": "slides/06/06-time-series-II.html#highlights",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Highlights",
     "text": "Highlights\n\n\nThe lubridate package is useful for converting to dates from character strings in a given format, e.g. mdy(), ymd(), etc.\nThe colorspace package is useful for programmatically darkening / lightening colors\nscale_x_date: Set date_labels as \"%b %y\" for month-2 digit year, \"%D\" for date format such as %m/%d/%y, etc. See help for strptime() for more.\nscale_color_identity() or scale_fill_identity() can be useful when your data already represents aesthetic values that ggplot2 can handle directly. By default doesn’t produce a legend."
   },
   {
     "objectID": "slides/06/06-time-series-II.html#whats-missing",
     "href": "slides/06/06-time-series-II.html#whats-missing",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "What’s missing?",
     "text": "What’s missing?\n\nWhat’s missing in this plot?"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#filling-in-the-gaps",
     "href": "slides/06/06-time-series-II.html#filling-in-the-gaps",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Filling in the gaps",
     "text": "Filling in the gaps\n\nOption 1Option 2"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#filling-in-the-gaps---code",
     "href": "slides/06/06-time-series-II.html#filling-in-the-gaps---code",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Filling in the gaps - Code",
     "text": "Filling in the gaps - Code\n\nOption 1Option 2\n\n\n\ndch_2022 |&gt;\n  filter(!is.na(aqi_value)) |&gt;\n  ggplot(aes(x = date, y = aqi_value, group = 1)) +\n  geom_line(linewidth = 0.8) +\n  labs(\n    x = NULL, y = \"AQI\",\n    title = \"Ozone and PM2.5 Daily AQI Values\",\n    subtitle = \"Durham-Chapel Hill, NC\",\n    caption = \"\\nSource: EPA Daily Air Quality Tracker\"\n  )\n\n\n\n\ndch_2022 |&gt;\n  mutate(\n    impute = if_else(is.na(aqi_value), TRUE, FALSE),\n    impute = if_else(is.na(lead(aqi_value)), TRUE, impute),\n    aqi_value = if_else(is.na(aqi_value), (lag(aqi_value) + lead(aqi_value))/2, aqi_value)\n  ) |&gt;\n  ggplot(aes(x = date, y = aqi_value, group = 1)) +\n  geom_line(\n    aes(color = impute), show.legend = FALSE,\n    linewidth = 0.8\n  ) +\n  scale_color_manual(values = c(\"black\", \"cornflowerblue\")) +\n  labs(\n    x = NULL, y = \"AQI\",\n    title = \"Ozone and PM2.5 Daily AQI Values\",\n    subtitle = \"Durham-Chapel Hill, NC\",\n    caption = \"\\nSource: EPA Daily Air Quality Tracker\"\n  )"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#cumulatives-over-time",
     "href": "slides/06/06-time-series-II.html#cumulatives-over-time",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Cumulatives over time",
     "text": "Cumulatives over time\n\nWhen visualizing time series data, a somewhat common task is to calculate cumulatives over time and plot them\nIn our example we’ll calculate the number of days with “good” AQI (\\(\\le\\) 50) and plot that value on the y-axis and the date on the x-axis"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#calculating-cumulatives-1",
     "href": "slides/06/06-time-series-II.html#calculating-cumulatives-1",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Calculating cumulatives",
     "text": "Calculating cumulatives\nStep 1. Arrange your data\n\ndch_2022 |&gt;\n  select(date, aqi_value) |&gt;\n  filter(!is.na(aqi_value)) |&gt;\n  arrange(date)\n\n# A tibble: 364 × 2\n  date       aqi_value\n  &lt;date&gt;         &lt;dbl&gt;\n1 2022-01-01        22\n2 2022-01-02        12\n3 2022-01-03        10\n4 2022-01-04        21\n5 2022-01-05        35\n# ℹ 359 more rows"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#calculating-cumulatives-2",
     "href": "slides/06/06-time-series-II.html#calculating-cumulatives-2",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Calculating cumulatives",
     "text": "Calculating cumulatives\nStep 2. Identify good days\n\ndch_2022 |&gt;\n  select(date, aqi_value) |&gt;\n  filter(!is.na(aqi_value)) |&gt;\n  arrange(date) |&gt;\n  mutate(good_aqi = if_else(aqi_value &lt;= 50, 1, 0))\n\n# A tibble: 364 × 3\n  date       aqi_value good_aqi\n  &lt;date&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n1 2022-01-01        22        1\n2 2022-01-02        12        1\n3 2022-01-03        10        1\n4 2022-01-04        21        1\n5 2022-01-05        35        1\n# ℹ 359 more rows"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#calculating-cumulatives-3",
     "href": "slides/06/06-time-series-II.html#calculating-cumulatives-3",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Calculating cumulatives",
     "text": "Calculating cumulatives\nStep 3. Sum over time\n\ndch_2022 |&gt;\n  select(date, aqi_value) |&gt;\n  filter(!is.na(aqi_value)) |&gt;\n  arrange(date) |&gt;\n  mutate(\n    good_aqi = if_else(aqi_value &lt;= 50, 1, 0),\n    cumsum_good_aqi = cumsum(good_aqi)\n  )\n\n# A tibble: 364 × 4\n  date       aqi_value good_aqi cumsum_good_aqi\n  &lt;date&gt;         &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;\n1 2022-01-01        22        1               1\n2 2022-01-02        12        1               2\n3 2022-01-03        10        1               3\n4 2022-01-04        21        1               4\n5 2022-01-05        35        1               5\n# ℹ 359 more rows"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#plotting-cumulatives",
     "href": "slides/06/06-time-series-II.html#plotting-cumulatives",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Plotting cumulatives",
     "text": "Plotting cumulatives\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndch_2022 |&gt;\n  select(date, aqi_value) |&gt;\n  filter(!is.na(aqi_value)) |&gt;\n  arrange(date) |&gt;\n  mutate(\n    good_aqi = if_else(aqi_value &lt;= 50, 1, 0),\n    cumsum_good_aqi = cumsum(good_aqi)\n  ) |&gt;\n  ggplot(aes(x = date, y = cumsum_good_aqi, group = 1)) +\n  geom_line() +\n  scale_x_date(date_labels = \"%b %Y\") +\n  labs(\n    x = NULL, y = \"Number of days\",\n    title = \"Cumulative number of good AQI days (AQI &lt; 50)\",\n    subtitle = \"Durham-Chapel Hill, NC\",\n    caption = \"\\nSource: EPA Daily Air Quality Tracker\"\n  ) +\n  theme(plot.title.position = \"plot\")"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#detrending-1",
     "href": "slides/06/06-time-series-II.html#detrending-1",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Detrending",
     "text": "Detrending\n\nDetrending is removing prominent long-term trend in time series to specifically highlight any notable deviations\nLet’s demonstrate using multiple years of AQI data"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#multiple-years-of-durham-chapel-hill-data",
     "href": "slides/06/06-time-series-II.html#multiple-years-of-durham-chapel-hill-data",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Multiple years of Durham-Chapel Hill data",
     "text": "Multiple years of Durham-Chapel Hill data\n\ndch_files &lt;- fs::dir_ls(here::here(\"data/durham-chapel-hill\"))\ndch_files\n\n\n\n/Users/mine/Desktop/teaching/Duke/sta313-s24/vizdata-s24/slides/06/data/durham-chapel-hill/ad_aqi_tracker_data-2016.csv\n/Users/mine/Desktop/teaching/Duke/sta313-s24/vizdata-s24/slides/06/data/durham-chapel-hill/ad_aqi_tracker_data-2017.csv\n/Users/mine/Desktop/teaching/Duke/sta313-s24/vizdata-s24/slides/06/data/durham-chapel-hill/ad_aqi_tracker_data-2018.csv\n/Users/mine/Desktop/teaching/Duke/sta313-s24/vizdata-s24/slides/06/data/durham-chapel-hill/ad_aqi_tracker_data-2019.csv\n/Users/mine/Desktop/teaching/Duke/sta313-s24/vizdata-s24/slides/06/data/durham-chapel-hill/ad_aqi_tracker_data-2020.csv\n/Users/mine/Desktop/teaching/Duke/sta313-s24/vizdata-s24/slides/06/data/durham-chapel-hill/ad_aqi_tracker_data-2021.csv\n/Users/mine/Desktop/teaching/Duke/sta313-s24/vizdata-s24/slides/06/data/durham-chapel-hill/ad_aqi_tracker_data-2022.csv"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#reading-multiple-files",
     "href": "slides/06/06-time-series-II.html#reading-multiple-files",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Reading multiple files",
     "text": "Reading multiple files\n\ndch &lt;- read_csv(dch_files, na = c(\".\", \"\"))\n\ndch &lt;- dch |&gt;\n  janitor::clean_names() |&gt;\n  mutate(\n    date = mdy(date),\n    good_aqi = if_else(aqi_value &lt;= 50, 1, 0)\n  ) |&gt;\n  filter(!is.na(aqi_value)) |&gt;\n  arrange(date) |&gt;\n  mutate(cumsum_good_aqi = cumsum(good_aqi), .after = aqi_value)\n\ndch\n\n# A tibble: 2,547 × 13\n  date       aqi_value cumsum_good_aqi main_pollutant site_name   site_id source\n  &lt;date&gt;         &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; \n1 2016-01-01        32               1 PM2.5          Durham Arm… 37-063… AQS   \n2 2016-01-02        37               2 PM2.5          Durham Arm… 37-063… AQS   \n3 2016-01-03        45               3 PM2.5          Durham Arm… 37-063… AQS   \n4 2016-01-04        33               4 PM2.5          Durham Arm… 37-063… AQS   \n5 2016-01-05        27               5 PM2.5          Durham Arm… 37-063… AQS   \n# ℹ 2,542 more rows\n# ℹ 6 more variables: x20_year_high_2000_2019 &lt;dbl&gt;,\n#   x20_year_low_2000_2019 &lt;dbl&gt;, x5_year_average_2015_2019 &lt;dbl&gt;,\n#   date_of_20_year_high &lt;chr&gt;, date_of_20_year_low &lt;chr&gt;, good_aqi &lt;dbl&gt;"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#plot-trend-since-2016",
     "href": "slides/06/06-time-series-II.html#plot-trend-since-2016",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Plot trend since 2016",
     "text": "Plot trend since 2016\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndch |&gt;\n  ggplot(aes(x = date, y = cumsum_good_aqi, group = 1)) +\n  geom_smooth(method = \"lm\", color = \"pink\") +\n  geom_line() +\n  scale_x_date(\n    expand = expansion(mult = 0.07),\n    date_labels = \"%Y\"\n  ) +\n  labs(\n    x = NULL, y = \"Number of days\",\n    title = \"Cumulative number of good AQI days (AQI &lt; 50)\",\n    subtitle = \"Durham-Chapel Hill, NC\",\n    caption = \"\\nSource: EPA Daily Air Quality Tracker\"\n  ) +\n  theme(plot.title.position = \"plot\")\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#detrend",
     "href": "slides/06/06-time-series-II.html#detrend",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Detrend",
     "text": "Detrend\nStep 1. Fit a simple linear regression\n\nm &lt;- lm(cumsum_good_aqi ~ date, data = dch)\n\nm\n\n\nCall:\nlm(formula = cumsum_good_aqi ~ date, data = dch)\n\nCoefficients:\n(Intercept)         date  \n -1.341e+04    7.954e-01"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#detrend-1",
     "href": "slides/06/06-time-series-II.html#detrend-1",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Detrend",
     "text": "Detrend\nStep 2. Augment the data with model results (using broom::augment())\n\ndch_aug &lt;- augment(m)\n\ndch_aug\n\n# A tibble: 2,547 × 8\n  cumsum_good_aqi date       .fitted .resid    .hat .sigma .cooksd .std.resid\n            &lt;dbl&gt; &lt;date&gt;       &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;\n1               1 2016-01-01   -42.8   43.8 0.00157   25.4 0.00234       1.73\n2               2 2016-01-02   -42.0   44.0 0.00157   25.4 0.00236       1.74\n3               3 2016-01-03   -41.3   44.3 0.00156   25.4 0.00238       1.74\n4               4 2016-01-04   -40.5   44.5 0.00156   25.4 0.00240       1.75\n5               5 2016-01-05   -39.7   44.7 0.00156   25.4 0.00242       1.76\n# ℹ 2,542 more rows"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#detrend-2",
     "href": "slides/06/06-time-series-II.html#detrend-2",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Detrend",
     "text": "Detrend\nStep 3. Divide the observed value of cumsum_good_aqi by the respective value in the long-term trend (i.e., .fitted)\n\ndch_aug &lt;- dch_aug |&gt;\n  mutate(ratio = cumsum_good_aqi / .fitted, .after = .fitted)\n\n\ndch_aug\n\n# A tibble: 2,547 × 9\n  cumsum_good_aqi date       .fitted   ratio .resid    .hat .sigma .cooksd\n            &lt;dbl&gt; &lt;date&gt;       &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;\n1               1 2016-01-01   -42.8 -0.0233   43.8 0.00157   25.4 0.00234\n2               2 2016-01-02   -42.0 -0.0476   44.0 0.00157   25.4 0.00236\n3               3 2016-01-03   -41.3 -0.0727   44.3 0.00156   25.4 0.00238\n4               4 2016-01-04   -40.5 -0.0989   44.5 0.00156   25.4 0.00240\n5               5 2016-01-05   -39.7 -0.126    44.7 0.00156   25.4 0.00242\n# ℹ 2,542 more rows\n# ℹ 1 more variable: .std.resid &lt;dbl&gt;"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#visualize-detrended-data",
     "href": "slides/06/06-time-series-II.html#visualize-detrended-data",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Visualize detrended data",
     "text": "Visualize detrended data\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndch_aug |&gt;\n  ggplot(aes(x = date, y = ratio, group = 1)) +\n  geom_hline(yintercept = 1, color = \"gray\") +\n  geom_line() +\n  scale_x_date(\n    expand = expansion(mult = 0.07),\n    date_labels = \"%Y\"\n  ) +\n  labs(\n    x = NULL, y = \"Number of days\\n(detrended)\",\n    title = \"Cumulative number of good AQI days (AQI &lt; 50)\",\n    subtitle = \"Durham-Chapel Hill, NC\",\n    caption = \"\\nSource: EPA Daily Air Quality Tracker\"\n  ) +\n  theme(plot.title.position = \"plot\")"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#air-quality-in-durham",
     "href": "slides/06/06-time-series-II.html#air-quality-in-durham",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Air Quality in Durham",
     "text": "Air Quality in Durham\n\n\nbarely anything interesting happening!\n\n\n\nlet’s look at data from somewhere with a bit more “interesting” air quality data…"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#read-in-multiple-years-of-sf-data",
     "href": "slides/06/06-time-series-II.html#read-in-multiple-years-of-sf-data",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Read in multiple years of SF data",
     "text": "Read in multiple years of SF data\n\nsf_files &lt;- fs::dir_ls(here::here(\"data/san-francisco\"))\n\n\nsf &lt;- read_csv(sf_files, na = c(\".\", \"\"))\n\nsf &lt;- sf |&gt;\n  janitor::clean_names() |&gt;\n  mutate(\n    date = mdy(date),\n    good_aqi = if_else(aqi_value &lt;= 50, 1, 0)\n  ) |&gt;\n  filter(!is.na(aqi_value)) |&gt;\n  arrange(date) |&gt;\n  mutate(cumsum_good_aqi = cumsum(good_aqi), .after = aqi_value)\n\nsf\n\n# A tibble: 2,557 × 13\n  date       aqi_value cumsum_good_aqi main_pollutant site_name   site_id source\n  &lt;date&gt;         &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; \n1 2016-01-01        32               1 PM2.5          Durham Arm… 37-063… AQS   \n2 2016-01-02        37               2 PM2.5          Durham Arm… 37-063… AQS   \n3 2016-01-03        45               3 PM2.5          Durham Arm… 37-063… AQS   \n4 2016-01-04        33               4 PM2.5          Durham Arm… 37-063… AQS   \n5 2016-01-05        27               5 PM2.5          Durham Arm… 37-063… AQS   \n# ℹ 2,552 more rows\n# ℹ 6 more variables: x20_year_high_2000_2019 &lt;dbl&gt;,\n#   x20_year_low_2000_2019 &lt;dbl&gt;, x5_year_average_2015_2019 &lt;dbl&gt;,\n#   date_of_20_year_high &lt;chr&gt;, date_of_20_year_low &lt;chr&gt;, good_aqi &lt;dbl&gt;"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#plot-trend-since-2016-1",
     "href": "slides/06/06-time-series-II.html#plot-trend-since-2016-1",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Plot trend since 2016",
     "text": "Plot trend since 2016\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsf |&gt;\n  ggplot(aes(x = date, y = cumsum_good_aqi, group = 1)) +\n  geom_smooth(method = \"lm\", color = \"pink\") +\n  geom_line() +\n  scale_x_date(\n    expand = expansion(mult = 0.07),\n    date_labels = \"%Y\"\n  ) +\n  labs(\n    x = NULL, y = \"Number of days\",\n    title = \"Cumulative number of good AQI days (AQI &lt; 50)\",\n    subtitle = \"San Francisco-Oakland-Hayward, CA\",\n    caption = \"\\nSource: EPA Daily Air Quality Tracker\"\n  ) +\n  theme(plot.title.position = \"plot\")\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#detrend-3",
     "href": "slides/06/06-time-series-II.html#detrend-3",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Detrend",
     "text": "Detrend\n\nFit a simple linear regression\n\n\nm_sf &lt;- lm(cumsum_good_aqi ~ date, data = sf)\n\n\n\nAugment the data with model results\n\n\nsf_aug &lt;- augment(m_sf)\n\n\n\n\nDivide the observed value of cumsum_good_aqi by the respective value in the long-term trend (i.e., .fitted)\n\n\nsf_aug &lt;- sf_aug |&gt;\n  mutate(ratio = cumsum_good_aqi / .fitted, .after = .fitted)"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#visualize-detrended-data-1",
     "href": "slides/06/06-time-series-II.html#visualize-detrended-data-1",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Visualize detrended data",
     "text": "Visualize detrended data\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsf_aug |&gt;\n  ggplot(aes(x = date, y = ratio, group = 1)) +\n  geom_hline(yintercept = 1, color = \"gray\") +\n  geom_line() +\n  scale_x_date(\n    expand = expansion(mult = 0.07),\n    date_labels = \"%Y\"\n  ) +\n  labs(\n    x = NULL, y = \"Number of days\\n(detrended)\",\n    title = \"Cumulative number of good AQI days (AQI &lt; 50)\",\n    subtitle = \"San Francisco-Oakland-Hayward, CA\",\n    caption = \"\\nSource: EPA Daily Air Quality Tracker\"\n  ) +\n  theme(plot.title.position = \"plot\")"
   },
   {
     "objectID": "slides/06/06-time-series-II.html#detrending-2",
     "href": "slides/06/06-time-series-II.html#detrending-2",
-    "title": "Visualizing time series data - I",
+    "title": "Visualizing time series data - II",
     "section": "Detrending",
     "text": "Detrending\n\nIn step 2 we fit a very simple model\nDepending on the complexity you’re trying to capture you might choose to fit a much more complex model\nYou can also decompose the trend into multiple trends, e.g. monthly, long-term, seasonal, etc.\n\n\n\n\n\n\n🔗 vizdata.org\n\n\n\nInterested in learning more? Take STA 344 - Spatio-temporal analysis!"
   },
