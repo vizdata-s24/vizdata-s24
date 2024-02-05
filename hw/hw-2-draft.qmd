@@ -1,0 +1,105 @@
+---
+title: "HW 2"
+subtitle: "Add title"
+---
+
+For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk. Use a short and informative label. For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title. For any exercise where you’re including a description and/or interpretation, use full sentences. Make a commit at least after finishing each exercise, or better yet, more frequently. Push your work regularly to GitHub. Once you’re done, inspect your GitHub repo to make sure you've pushed all of your changes.
+
+::: callout-note
+Your homework repositories are set up to run a GitHub action every time you push to the repository checking for (1) any files that shouldn't be in your repository or that should be in a specific folder in your repository and (2) whether your Quarto document renders.
+
+![](images/badge-fail.svg){fig-align="left" style="float: left;" width="122" height="14"}
+
+If either of these checks fail, you'll see a red badge on your repository README and you'll get an email saying "check assignment" action has failed.
+
+![](images/badge-pass.svg){fig-align="left" style="float: left;" width="122" height="14"}
+
+If they pass, you'll see a green badge on your repository README and you won't get an email saying.
+
+Up until the deadline, it doesn't matter how many times these checks fail. Just make sure by the end the badge is green.
+:::
+
+```{r}
+#| label: load-packages
+#| include: false
+
+library(tidyverse)
+library(openintro)
+```
+
+## Question 1
+
+**A new day, a new plot, a new geom.** The goal of this exercise is to learn about a new type of plot (ridgeline plot) and to learn how to make it.
+
+Use the `geom_density_ridges()` function from the **ggridges** package to make a ridge plot of of Airbnb review scores of Edinburgh neighborhoods. The neighborhoods should be ordered by their median review scores. The data can be found in the **dsbox** package, and it’s called `edibnb`. Also include an interpretation for your visualization. You should review feedback from your Homework 1 to make sure you capture anything you may have missed previously.
+
+*(Note:* This is not a geom we introduced in class, so seeing an example of it in action will be helpful. Read the package README at <https://wilkelab.org/ggridges> and/or the introduction vignette at <https://wilkelab.org/ggridges/articles/introduction.html>. There is more information than you need for this question in the vignette; the first section on Geoms should be sufficient to help you get started.)
+
+## Question 2
+
+**Foreign Connected PACs.** Only American citizens (and immigrants with green cards) can contribute to federal politics, but the American divisions of foreign companies can form political action committees (PACs) and collect contributions from their American employees. (Source: <https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2024>).
+
+In this exercise you will work with data from contributions to US political parties from foreign-connected PACs. The data is stored in CSV files in the `data` directory of your repository/project. There are 11 files, each for an election cycle between 2000 and 2024. You can load all of the data at once using the code below.
+
+```{r}
+# get a list of files with "Foreign Connected PAC" in their names
+list_of_files <- dir_ls(path = "data", regexp = "Foreign Connected PAC")
+
+# read all files and row bind them
+# keeping track of the file name in a new column called year
+pac <- read_csv(list_of_files, id = "year")
+```
+
+The ultimate goal of this exercise is to recreate yet another plot. But there is a nontrivial amount of data wrangling and tidying that needs to happen before you can do that. Below are the steps you should follow so that you can obtain the necessary interim objects we will be looking for as we review your work.
+
+-   First, clean the names of the variables in the dataset with a new function from the [**janitor**](http://sfirke.github.io/janitor/) package: [`clean_names()`](http://sfirke.github.io/janitor/reference/clean_names.html). Then clean and transform the data such that you have something like the following at the end.
+
+TO DO: ADD OUTPUT
+
+-   Then, pivot the data longer such that instead of `dems` and `repubs` columns you have a column called `party` with levels `Democrat` and `Republican` and another column called `amount` that contains the amount of contribution.
+
+-   Then, For each election cycle (`year`) calculate the total amount of contributions to Democrat and Republican parties from PACs with `country_of_origin` UK. The resulting summary table should have two rows for each year of data, one for Democrat and one for Republican contributions.
+
+-   Then, recreate the following visualization.
+
+TO DO: ADD IMAGE
+
+-   Finally, remake the same visualization, but for a different country. I recommend you choose a country with a substantial number of contributions to US politics. Interpret the new visualization that you make.
+
+## Question 3
+
+## Question 4
+
+**Median housing prices in the US.** The inspiration and the data for this exercise comes from <https://fred.stlouisfed.org/series/MSPUS>. The two datasets you’ll use are median_housing and recessions, both of which are in the data folder of your repository.
+
+-   Load the two datasets using `read_csv()`.
+
+-   Rename the variables as date and price.
+
+-   Create the following visualization.
+
+TO DO: ADD PLOT
+
+-   Identify recessions that happened during the time frame of the `median_housing` dataset. Do this by adding a new variable to recessions that takes the value TRUE if the recession happened during this time frame and FALSE if not.
+
+-   Now recreate the following visualization. The shaded areas are recessions that happened during the time frame of the `median_housing` dataset. Hint: The shaded areas are “behind” the line.
+
+TO DO: ADD PLOT
+
+-   Create a subset of the `median_housing` dataset for data from 2019 and 2020 early. Add two columns: `year` and `quarter`. `year` is the year of the `date` and `quarter` takes the values Q1, Q2, Q3, or Q4 based on `date`.
+
+-   Create the following visualization.
+
+## Question 4
+
+**That’s what our guest said.**
+
+We had a guest lecture by Dr. Matthew Kay on Thu, Feb 23. This question as about what you learned in the guest lecture as well as the reading assigned for the lecture:
+
+a\. You’ve either attended that guest lecture in person or you should have watched the recording on Panopto by now. Write a one paragraph summary of the guest lecture. Make sure your summary includes at least one thing that you didn’t know before. This can be a tip for better visualization, a tool/package, or a workflow. Your answer can be just text or also include code.
+
+b\. Using the `openintro::loans_full_schema` dataset, fit a linear model predicting `interest_rate` from `loan_purpose`. Print out the regression output with `broom::tidy()`. Then, using half-eye plots, plot the confidence intervals around each of the slope coefficients and the intercept. Based on your plot, (1) comment on how the variability of the slope coefficient for various levels of `loan_purpose` varies and (2) describe in one or two sentences how the p-values in the regression output correspond to the widths of the confidence intervals. Hints: (1) Take a look at how many loans per each type of loan purpose. Does that help explain why some curves are very wide while others are much narrower? (2) Which 95% confidence intervals include 0 and which don't? How does that correspond to which p-values are less than 0.05 and which are not?
+
+## Question 5
+
+**Mirror, mirror on the wall, who’s the ugliest of them all?** Make a plot of the variables in the `penguins` dataset from the **palmerpenguins** package. Your plot should use at least two variables, but more is fine too. First, make the plot using the default theme and color scales. Then, update the plot to be as ugly as possible. You will probably want to play around with theme options, colors, fonts, etc. The ultimate goal is the ugliest possible plot, and the sky is the limit!
