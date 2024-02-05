@@ -13,8 +13,9 @@ editor: visual
 execute:
   freeze: auto
   echo: true
+  warning: true
 engine: knitr
 knitr:
   opts_chunk: 
     R.options:
-      width: 100
+      width: 80
