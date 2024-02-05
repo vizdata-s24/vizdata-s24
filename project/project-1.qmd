@@ -56,7 +56,7 @@ The reviewer / reviewee assignments will be posted below:
 ```{r}
 #| message: false
 #| echo: false
-#| eval: false
+#| eval: true
 
 library(tidyverse)
 library(gt)
