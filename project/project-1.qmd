@@ -56,11 +56,11 @@ The reviewer / reviewee assignments will be posted below:
 ```{r}
 #| message: false
 #| echo: false
-#| eval: false
+#| eval: true
 
 library(tidyverse)
 library(gt)
-p1_pr <- read_csv("project-1-peer-review.csv")
+p1_pr <- read_csv("project_1_peer_review_teams.csv")
 gt(p1_pr)
 ```
 
