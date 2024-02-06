@@ -2,7 +2,8 @@
 title: "HW 2"
 subtitle: "Add title"
 execute: 
-  eval: false
+  echo: false
+  message: false
 ---
 
 For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk. Use a short and informative label. For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title. For any exercise where you’re including a description and/or interpretation, use full sentences. Make a commit at least after finishing each exercise, or better yet, more frequently. Push your work regularly to GitHub. Once you’re done, inspect your GitHub repo to make sure you've pushed all of your changes.
@@ -25,6 +26,10 @@ Up until the deadline, it doesn't matter how many times these checks fail. Just 
 #| label: load-packages
 #| include: false
 
+library(fs)
+library(ggridges)
+library(dsbox)
+library(ggthemes)
 library(tidyverse)
 library(openintro)
 ```
@@ -33,11 +38,94 @@ library(openintro)
 
 **A new day, a new plot, a new geom.** The goal of this exercise is to learn about a new type of plot (ridgeline plot) and to learn how to make it.
 
-Use the `geom_density_ridges()` function from the **ggridges** package to make a ridge plot of of Airbnb review scores of Edinburgh neighborhoods. The neighborhoods should be ordered by their median review scores. The data can be found in the **dsbox** package, and it’s called `edibnb`. Also include an interpretation for your visualization. You should review feedback from your Homework 1 to make sure you capture anything you may have missed previously.
+::: callout-note
+This is not a geom we introduced in class, so seeing an example of it in action will be helpful. Read the package README at <https://wilkelab.org/ggridges> and/or the introduction vignette at <https://wilkelab.org/ggridges/articles/introduction.html>. There is more information than you need for this question in the vignette; the first section on Geoms should be sufficient to help you get started.
+:::
 
-*(Note:* This is not a geom we introduced in class, so seeing an example of it in action will be helpful. Read the package README at <https://wilkelab.org/ggridges> and/or the introduction vignette at <https://wilkelab.org/ggridges/articles/introduction.html>. There is more information than you need for this question in the vignette; the first section on Geoms should be sufficient to help you get started.)
+Use the `geom_density_ridges()` function from the **ggridges** package to make a ridge plot of of Airbnb review scores of Edinburgh neighborhoods. The neighborhoods should be ordered by their median review scores. The data can be found in the **dsbox** package, and it’s called `edibnb`. Also include an interpretation for your visualization.
+
+a\. **Prep.** The data we will use for this exercise is `epa2021` from the **openintro** package. First, you're asked to prepare this data for plotting in a very specific way. Fill in the blanks below.
+
+```{r}
+#| eval: false
+#| echo: true
+
+epa2021_longer <- epa2021 |> 
+  pivot_longer(
+    cols = ___, # must use a selection helper: https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html#overview-of-selection-features 
+    names_to = "mpg_type",
+    values_to = "mpg_value",
+    names_pattern = "___"
+  ) |>
+  mutate(
+    # reorder values of mpg_type to be in the order cty, hwy, comb
+    mpg_type = fct_relevel(___),
+    # recode levels of mpg_type to be City (instead of city), Highway (Hwy), Combined (comb)
+    mpg_type = fct_recode(___),
+    # reorder values of transmission based on median value of mpg_value
+    transmission = fct_reorder(___)
+  )
+```
+
+```{r}
+#| include: false
+
+epa2021_longer <- epa2021 |> 
+  pivot_longer(
+    cols = contains("mpg"),
+    names_to = "mpg_type",
+    values_to = "mpg_value",
+    names_pattern = "(.*)_mpg"
+  ) |>
+  mutate(
+    mpg_type = fct_relevel(mpg_type, "city", "hwy", "comb"),
+    mpg_type = fct_recode(mpg_type, City = "city", Highway = "hwy", Combined = "comb"),
+    transmission = fct_reorder(transmission, mpg_value, median)
+  )
+```
+
+b\. **Visualize.** Recreate the following visualization using the `epa2021_longer` data frame you created in part (a). Some notes:
+
+-   This uses a colorblind-friendly color scale from ggthemes.
+
+-   The theme is `theme_bw()` but the background color of facet titles and the text color and font face for the them are modified. You don't have to match the exact shade of gray, but your code should be modifying these elements to look similar to the desired output.
+
+```{r}
+#| eval: true
+#| message: false
+#| fig-asp: 0.9
+
+ggplot(epa2021_longer, aes(x = mpg_value, y = transmission, fill = transmission)) +
+  geom_density_ridges(alpha = 0.5, show.legend = FALSE) +
+  scale_fill_colorblind() +
+  scale_x_continuous(breaks = seq(0, 60, 10)) +
+  labs(
+    x = "MPG",
+    y = "Transmission",
+    title = "MPG by transmission",
+    caption = "Source: Environmental Protection Agency, 2021"
+  ) +
+  facet_wrap(~mpg_type, ncol = 1) +
+  theme_bw() +
+  theme(
+    strip.background = element_rect(fill = "gray25"),
+    strip.text = element_text(color = "white", face = "bold")
+  )
+```
 
 ## Question 2
+
+**Another look at MPGs.**
+
+a\. Redo part (a) of Question 1 with an alternate pipeline. You should still use `pivot_longer()` but might use a different set of arguments. You will still likely do some additional data wrangling after, but can use a different set of argument and functions. Make sure your resulting data frame is the same as `epa2021_longer` you created above.
+
+b\. Redo part (b) of Question 1, sort of. Use any other plot do visualize the distribution of MPGs for the three types recorded (city, highway, and combined) across transmissions. You can decide whether you want to use `transmission` or `transmission_desc`. Customize scales, geoms, etc. to your heart's desire.
+
+c\. In a few sentences explain why you made the choices you made in part (b).
+
+d\. Interpret the visualization you created in part (b) in context of the data, i.e., what does it say about MPGs and transmission types?
+
+## Question 3
 
 **Foreign Connected PACs.** Only American citizens (and immigrants with green cards) can contribute to federal politics, but the American divisions of foreign companies can form political action committees (PACs) and collect contributions from their American employees. (Source: <https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2024>).
 
@@ -45,6 +133,8 @@ In this exercise you will work with data from contributions to US political part
 
 ```{r}
 # get a list of files with "Foreign Connected PAC" in their names
+library(fs)
+library(tidyverse)
 list_of_files <- dir_ls(path = "data", regexp = "Foreign Connected PAC")
 
 # read all files and row bind them
@@ -56,7 +146,9 @@ The ultimate goal of this exercise is to recreate yet another plot. But there is
 
 -   First, clean the names of the variables in the dataset with a new function from the [**janitor**](http://sfirke.github.io/janitor/) package: [`clean_names()`](http://sfirke.github.io/janitor/reference/clean_names.html). Then clean and transform the data such that you have something like the following at the end.
 
-TO DO: ADD OUTPUT
+```{r}
+
+```
 
 -   Then, pivot the data longer such that instead of `dems` and `repubs` columns you have a column called `party` with levels `Democrat` and `Republican` and another column called `amount` that contains the amount of contribution.
 
@@ -67,8 +159,6 @@ TO DO: ADD OUTPUT
 TO DO: ADD IMAGE
 
 -   Finally, remake the same visualization, but for a different country. I recommend you choose a country with a substantial number of contributions to US politics. Interpret the new visualization that you make.
-
-## Question 3
 
 ## Question 4
 
@@ -92,16 +182,6 @@ TO DO: ADD PLOT
 
 -   Create the following visualization.
 
-## Question 4
-
-**That’s what our guest said.**
-
-We had a guest lecture by Dr. Matthew Kay on Thu, Feb 23. This question as about what you learned in the guest lecture as well as the reading assigned for the lecture:
-
-a\. You’ve either attended that guest lecture in person or you should have watched the recording on Panopto by now. Write a one paragraph summary of the guest lecture. Make sure your summary includes at least one thing that you didn’t know before. This can be a tip for better visualization, a tool/package, or a workflow. Your answer can be just text or also include code.
-
-b\. Using the `openintro::loans_full_schema` dataset, fit a linear model predicting `interest_rate` from `loan_purpose`. Print out the regression output with `broom::tidy()`. Then, using half-eye plots, plot the confidence intervals around each of the slope coefficients and the intercept. Based on your plot, (1) comment on how the variability of the slope coefficient for various levels of `loan_purpose` varies and (2) describe in one or two sentences how the p-values in the regression output correspond to the widths of the confidence intervals. Hints: (1) Take a look at how many loans per each type of loan purpose. Does that help explain why some curves are very wide while others are much narrower? (2) Which 95% confidence intervals include 0 and which don't? How does that correspond to which p-values are less than 0.05 and which are not?
-
 ## Question 5
 
-**Mirror, mirror on the wall, who’s the ugliest of them all?** Make a plot of the variables in the `penguins` dataset from the **palmerpenguins** package. Your plot should use at least two variables, but more is fine too. First, make the plot using the default theme and color scales. Then, update the plot to be as ugly as possible. You will probably want to play around with theme options, colors, fonts, etc. The ultimate goal is the ugliest possible plot, and the sky is the limit!
+**Thank you.** Make a plot that says “Thank you” on it. Get creative! You can make it however you like, e.g., annotation, geoms, fake data, etc. There will be points assigned to creativity for this exercise. So just annotating the plot with the letters would earn fewer points than a more creative approach. Also, use as little as defaults as possible, in terms of color scales, themes, etc. The plots you make will be shared with our guest speakers as part of a “thank you” note. If you would like your name shown on the plots shared with them, you should add your name somewhere on the plot, e.g., the caption. If you don’t want your name shown, just leave it out and the plot will be shared anonymously. (There are no points attached to adding your name to them, you can choose to share with your name or anonymously.)

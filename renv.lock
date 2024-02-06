@@ -486,6 +486,22 @@
       ],
       "Hash": "fedd9d00c2944ff00a0e2696ccf048ec"
     },
+    "dsbox": {
+      "Package": "dsbox",
+      "Version": "0.1.1",
+      "Source": "GitHub",
+      "Remotes": "rstudio/gradethis",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "dsbox",
+      "RemoteUsername": "tidyverse",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "244ecdfe3c8d68b25db3024d9fdd0465ae991059",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "d5bbb6085f11a772331eea1eac97e64c"
+    },
     "dtplyr": {
       "Package": "dtplyr",
       "Version": "1.3.1",
@@ -649,6 +665,20 @@
         "withr"
       ],
       "Hash": "313d31eff2274ecf4c1d3581db7241f9"
+    },
+    "ggridges": {
+      "Package": "ggridges",
+      "Version": "0.5.6",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "ggplot2",
+        "grid",
+        "scales",
+        "withr"
+      ],
+      "Hash": "66488692cb8621bc78df1b9b819497a6"
     },
     "ggstream": {
       "Package": "ggstream",
@@ -1164,8 +1194,13 @@
     "openintro": {
       "Package": "openintro",
       "Version": "2.4.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "openintro",
+      "RemoteUsername": "OpenIntroStat",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "6f28a60a59280f2d4849d1cbc8239a9ff58b1e76",
       "Requirements": [
         "R",
         "airports",
@@ -1177,7 +1212,7 @@
         "tibble",
         "usdata"
       ],
-      "Hash": "b392256e8a002162618cd58dc0381b67"
+      "Hash": "841713746218ad8cb9bd2e97dc2f2ecf"
     },
     "openssl": {
       "Package": "openssl",
