@@ -1,0 +1,2 @@
+- `median_housing.csv`: https://fred.stlouisfed.org/series/MSPUS
+- `recessions.csv`: https://fredhelp.stlouisfed.org/fred/data/understanding-the-data/recession-bars/
