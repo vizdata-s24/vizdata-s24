@@ -488,9 +488,7 @@ Note
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>pac_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(list_of_files, <span class="at">id =</span> <span class="st">"year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The ultimate goal of this exercise is to recreate yet another plot. But there is a nontrivial amount of data wrangling and tidying that needs to happen before you can do that. Below are the steps you should follow so that you can obtain the necessary interim objects we will be looking for as we review your work.</p>
-<ul>
-<li>First, clean the names of the variables in the dataset with a new function from the <a href="http://sfirke.github.io/janitor/"><strong>janitor</strong></a> package: <a href="http://sfirke.github.io/janitor/reference/clean_names.html"><code>clean_names()</code></a>. Then clean and transform the data such that you have something like the following at the end. Save the resulting data frame with a the name <code>pac</code> (don’t overwrite <code>pac_raw</code>) and print the top 10 rows of the result.</li>
-</ul>
+<p>a. First, clean the names of the variables in the dataset with a new function from the <a href="http://sfirke.github.io/janitor/"><strong>janitor</strong></a> package: <a href="http://sfirke.github.io/janitor/reference/clean_names.html"><code>clean_names()</code></a>. Then clean and transform the data such that you have something like the following at the end. Save the resulting data frame with a the name <code>pac</code> (don’t overwrite <code>pac_raw</code>) and print the top 10 rows of the result.</p>
 <pre><code># A tibble: 2,427 × 6
     year pac_name_affiliate                    country_of_origin parent_company      dems repubs
    &lt;dbl&gt; &lt;chr&gt;                                 &lt;chr&gt;             &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;
@@ -506,56 +504,30 @@ Note
 10  2000 Air Liquide America                   France            L'Air Liquide SA       0      0
 # ℹ 2,417 more rows
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
-<ul>
-<li>Then, pivot the data longer such that instead of <code>dems</code> and <code>repubs</code> columns you have a column called <code>party</code> with levels <code>Democrat</code> and <code>Republican</code> and another column called <code>amount</code> that contains the amount of contribution. Save the resulting data frame with a new name (don’t overwrite <code>pac</code>) and print the top 10 rows of the result.</li>
-</ul>
-<!-- -->
-<ul>
-<li>Then, For each election cycle (<code>year</code>) calculate the total amount of contributions to Democrat and Republican parties from PACs with <code>country_of_origin</code> UK. The resulting summary table should have two rows for each year of data, one for Democrat and one for Republican contributions. Save the resulting data frame with a new name (don’t overwrite the input data) and print the top 10 rows of the result.</li>
-</ul>
-<!-- -->
-<ul>
-<li>Then, recreate the following visualization. <strong>Hint:</strong> The points are filled plotting characters with <code>color = "white"</code> overlaid on the lines.</li>
-</ul>
-<!-- -->
-<ul>
-<li>Finally, remake the same visualization, but for a different country. I recommend you choose a country with a substantial number of contributions to US politics. Interpret the new visualization that you make. Depending on the trajectory of contributions from this country, you might need to move the legend out of the way.</li>
-</ul>
+<p>b. Then, pivot the data longer such that instead of <code>dems</code> and <code>repubs</code> columns you have a column called <code>party</code> with levels <code>Democrat</code> and <code>Republican</code> and another column called <code>amount</code> that contains the amount of contribution. Save the resulting data frame with a new name (don’t overwrite <code>pac</code>) and print the top 10 rows of the result.</p>
+<p>c. Then, For each election cycle (<code>year</code>) calculate the total amount of contributions to Democrat and Republican parties from PACs with <code>country_of_origin</code> UK. The resulting summary table should have two rows for each year of data, one for Democrat and one for Republican contributions. Save the resulting data frame with a new name (don’t overwrite the input data) and print the top 10 rows of the result.</p>
+<p>d. Then, recreate the following visualization. <strong>Hint:</strong> The points are filled plotting characters with <code>color = "white"</code> overlaid on the lines.</p>
+<p>e. Finally, remake the same visualization, but for a different country. I recommend you choose a country with a substantial number of contributions to US politics. Interpret the new visualization that you make. Depending on the trajectory of contributions from this country, you might need to move the legend out of the way.</p>
 </section>
 <section id="question-4" class="level2">
 <h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
 <p><strong>Median housing prices in the US.</strong> The inspiration and the data for this exercise comes from <a href="https://fred.stlouisfed.org/series/MSPUS" class="uri">https://fred.stlouisfed.org/series/MSPUS</a>. The two datasets you’ll use are median_housing and recessions, both of which are in the data folder of your repository.</p>
-<ul>
-<li>Load the two datasets using <code>read_csv()</code>.</li>
-</ul>
-<!-- -->
-<ul>
-<li>Create the following visualization.</li>
-</ul>
+<p>a. Load the two datasets using <code>read_csv()</code>.</p>
+<p>b. Create the following visualization.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/median-housing-recreate-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="700"></p>
 </figure>
 </div>
-<ul>
-<li>Identify recessions that happened during the time frame of the <code>median_housing</code> dataset. Do this by adding a new variable to recessions that takes the value TRUE if the recession happened during this time frame and FALSE if not.</li>
-</ul>
-<!-- -->
-<ul>
-<li>Now recreate the following visualization. The shaded areas are recessions that happened during the time frame of the <code>median_housing</code> dataset. Hint: The shaded areas are “behind” the line.</li>
-</ul>
+<p>c. Identify recessions that happened during the time frame of the <code>median_housing</code> dataset. Do this by adding a new variable to recessions that takes the value TRUE if the recession happened during this time frame and FALSE if not.</p>
+<p>d. Now recreate the following visualization. The shaded areas are recessions that happened during the time frame of the <code>median_housing</code> dataset. Hint: The shaded areas are “behind” the line.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/median-housing-recreate-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="700"></p>
 </figure>
 </div>
-<ul>
-<li>Create a subset of the <code>median_housing</code> dataset for data from 2021 and 2022. Add two columns: <code>year</code> and <code>quarter</code>. <code>year</code> is the year of the <code>date</code> and <code>quarter</code> takes the values Q1, Q2, Q3, or Q4 based on <code>date</code>.</li>
-</ul>
-<!-- -->
-<ul>
-<li>Create the following visualization.</li>
-</ul>
+<p>e. Create a subset of the <code>median_housing</code> dataset for data from 2021 and 2022. Add two columns: <code>year</code> and <code>quarter</code>. <code>year</code> is the year of the <code>date</code> and <code>quarter</code> takes the values Q1, Q2, Q3, or Q4 based on <code>date</code>.</p>
+<p>f. Create the following visualization.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/median-housing-recreate-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="700"></p>
