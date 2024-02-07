@@ -22,7 +22,7 @@ d <- read_sheet("https://docs.google.com/spreadsheets/d/1-xWfswYsaEwoIy5NzIiC6MK
 #| echo: false
 
 d |>
-  filter(!is.na(session)) |>
+  #filter(!is.na(session)) |>
   select(-dow, -session) |>
   mutate(date = as.Date(date)) |>
   relocate(due, .after = materials) |>
