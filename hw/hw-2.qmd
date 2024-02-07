@@ -105,7 +105,7 @@ pac_raw <- read_csv(list_of_files, id = "year")
 
 The ultimate goal of this exercise is to recreate yet another plot. But there is a nontrivial amount of data wrangling and tidying that needs to happen before you can do that. Below are the steps you should follow so that you can obtain the necessary interim objects we will be looking for as we review your work.
 
--   First, clean the names of the variables in the dataset with a new function from the [**janitor**](http://sfirke.github.io/janitor/) package: [`clean_names()`](http://sfirke.github.io/janitor/reference/clean_names.html). Then clean and transform the data such that you have something like the following at the end. Save the resulting data frame with a the name `pac` (don't overwrite `pac_raw`) and print the top 10 rows of the result.
+a\. First, clean the names of the variables in the dataset with a new function from the [**janitor**](http://sfirke.github.io/janitor/) package: [`clean_names()`](http://sfirke.github.io/janitor/reference/clean_names.html). Then clean and transform the data such that you have something like the following at the end. Save the resulting data frame with a the name `pac` (don't overwrite `pac_raw`) and print the top 10 rows of the result.
 
 ```         
 # A tibble: 2,427 × 6
@@ -125,51 +125,33 @@ The ultimate goal of this exercise is to recreate yet another plot. But there is
 # ℹ Use `print(n = ...)` to see more rows
 ```
 
--   Then, pivot the data longer such that instead of `dems` and `repubs` columns you have a column called `party` with levels `Democrat` and `Republican` and another column called `amount` that contains the amount of contribution. Save the resulting data frame with a new name (don't overwrite `pac`) and print the top 10 rows of the result.
+b\. Then, pivot the data longer such that instead of `dems` and `repubs` columns you have a column called `party` with levels `Democrat` and `Republican` and another column called `amount` that contains the amount of contribution. Save the resulting data frame with a new name (don't overwrite `pac`) and print the top 10 rows of the result.
 
-```{=html}
-<!-- -->
-```
--   Then, For each election cycle (`year`) calculate the total amount of contributions to Democrat and Republican parties from PACs with `country_of_origin` UK. The resulting summary table should have two rows for each year of data, one for Democrat and one for Republican contributions. Save the resulting data frame with a new name (don't overwrite the input data) and print the top 10 rows of the result.
+c\. Then, For each election cycle (`year`) calculate the total amount of contributions to Democrat and Republican parties from PACs with `country_of_origin` UK. The resulting summary table should have two rows for each year of data, one for Democrat and one for Republican contributions. Save the resulting data frame with a new name (don't overwrite the input data) and print the top 10 rows of the result.
 
-```{=html}
-<!-- -->
-```
--   Then, recreate the following visualization. **Hint:** The points are filled plotting characters with `color = "white"` overlaid on the lines.
+d\. Then, recreate the following visualization. **Hint:** The points are filled plotting characters with `color = "white"` overlaid on the lines.
 
-```{=html}
-<!-- -->
-```
--   Finally, remake the same visualization, but for a different country. I recommend you choose a country with a substantial number of contributions to US politics. Interpret the new visualization that you make. Depending on the trajectory of contributions from this country, you might need to move the legend out of the way.
+e\. Finally, remake the same visualization, but for a different country. I recommend you choose a country with a substantial number of contributions to US politics. Interpret the new visualization that you make. Depending on the trajectory of contributions from this country, you might need to move the legend out of the way.
 
 ## Question 4
 
 **Median housing prices in the US.** The inspiration and the data for this exercise comes from <https://fred.stlouisfed.org/series/MSPUS>. The two datasets you’ll use are median_housing and recessions, both of which are in the data folder of your repository.
 
--   Load the two datasets using `read_csv()`.
+a\. Load the two datasets using `read_csv()`.
 
-```{=html}
-<!-- -->
-```
--   Create the following visualization.
+b\. Create the following visualization.
 
 ![](images/median-housing-recreate-1.png){fig-align="center" width="700"}
 
--   Identify recessions that happened during the time frame of the `median_housing` dataset. Do this by adding a new variable to recessions that takes the value TRUE if the recession happened during this time frame and FALSE if not.
+c\. Identify recessions that happened during the time frame of the `median_housing` dataset. Do this by adding a new variable to recessions that takes the value TRUE if the recession happened during this time frame and FALSE if not.
 
-```{=html}
-<!-- -->
-```
--   Now recreate the following visualization. The shaded areas are recessions that happened during the time frame of the `median_housing` dataset. Hint: The shaded areas are “behind” the line.
+d\. Now recreate the following visualization. The shaded areas are recessions that happened during the time frame of the `median_housing` dataset. Hint: The shaded areas are “behind” the line.
 
 ![](images/median-housing-recreate-2.png){fig-align="center" width="700"}
 
--   Create a subset of the `median_housing` dataset for data from 2021 and 2022. Add two columns: `year` and `quarter`. `year` is the year of the `date` and `quarter` takes the values Q1, Q2, Q3, or Q4 based on `date`.
+e\. Create a subset of the `median_housing` dataset for data from 2021 and 2022. Add two columns: `year` and `quarter`. `year` is the year of the `date` and `quarter` takes the values Q1, Q2, Q3, or Q4 based on `date`.
 
-```{=html}
-<!-- -->
-```
--   Create the following visualization.
+f\. Create the following visualization.
 
 ![](images/median-housing-recreate-3.png){fig-align="center" width="700"}
 
