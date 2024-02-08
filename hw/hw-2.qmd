@@ -131,7 +131,7 @@ c\. Then, For each election cycle (`year`) calculate the total amount of contrib
 
 d\. Then, recreate the following visualization. **Hint:** The points are filled plotting characters with `color = "white"` overlaid on the lines.
 
-![](images/pac-other-plot-1.png){fig-align="center" width="700"}
+![](images/pac-uk-plot-1.png){fig-align="center" width="700"}
 
 e\. Finally, remake the same visualization, but for a different country. I recommend you choose a country with a substantial number of contributions to US politics. Interpret the new visualization that you make. Depending on the trajectory of contributions from this country, you might need to move the legend out of the way.
 
