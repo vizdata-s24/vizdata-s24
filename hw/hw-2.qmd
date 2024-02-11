@@ -55,7 +55,7 @@ epa2021_longer <- epa2021 |>
     names_pattern = "___"
   ) |>
   mutate(
-    # reorder values of mpg_type to be in the order cty, hwy, comb
+    # reorder values of mpg_type to be in the order city, hwy, comb
     mpg_type = fct_relevel(___),
     # recode levels of mpg_type to be City (instead of city), Highway (Hwy), Combined (comb)
     mpg_type = fct_recode(___),
