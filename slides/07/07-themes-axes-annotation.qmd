@@ -1,6 +1,6 @@
 ---
-title: Visualizing time series data - II
-subtitle: Lecture 6
+title: Themes + axes + annotation
+subtitle: Lecture 7
 title-slide-attributes:
   data-background-image: ../vizdata-bg.png
   data-background-size: stretch
@@ -225,7 +225,6 @@ kids_plot +
 ```{=html}
 <iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
 ```
-
 ```{r}
 #| echo: false
 
@@ -257,7 +256,6 @@ ggplot(state_stats, aes(x = homeownership, y = pop2010)) +
 ```{=html}
 <iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
 ```
-
 ```{r}
 #| echo: false
 
@@ -528,8 +526,6 @@ ggplot(sf, aes(x = day_of_year, y = aqi_value, group = year)) +
 
 ## Highlight with gghighlight
 
-Time permitting!
-
 ::: task
-Highlight years using **gghighlight** instead in Part 3 of `ae-09`.
+Highlight years where maximum observed AQI value exceeds 200 using **gghighlight**.
 :::
