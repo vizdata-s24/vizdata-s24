@@ -14,9 +14,11 @@ editor_options:
 
 ## Announcements
 
--   Reading Quiz 2 is due at 10 am on Tuesday
+-   HW 2 is due today at 5 pm
 
--   Project 1 proposals due at 1 pm on Wednesday
+-   Lab tomorrow: Rubenstein Library visit for Duke's collection of historical data visualizations
+
+-   Thursday: Du Bois visualizations + reading
 
 ## Setup {.smaller}
 
