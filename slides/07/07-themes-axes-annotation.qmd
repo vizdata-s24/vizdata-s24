@@ -1,0 +1,535 @@
+---
+title: Visualizing time series data - II
+subtitle: Lecture 6
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+editor_options: 
+  chunk_output_type: console
+---
+
+# Warm up
+
+## Announcements
+
+-   Reading Quiz 2 is due at 10 am on Tuesday
+
+-   Project 1 proposals due at 1 pm on Wednesday
+
+## Setup {.smaller}
+
+```{r}
+#| label: setup
+#| message: false
+
+# load packages
+library(countdown)
+library(tidyverse)
+library(janitor)
+library(colorspace)
+library(fs)
+library(palmerpenguins)
+library(ThemePark)
+library(ggthemes)
+library(duke)
+library(tidykids)
+library(openintro)
+library(glue)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7, # 7" width
+  fig.asp = 0.618, # the golden ratio
+  fig.retina = 3, # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300 # higher dpi, sharper image
+)
+```
+
+# Themes
+
+## Complete themes {.smaller}
+
+```{r}
+#| message: false
+#| warning: false
+#| layout-ncol: 3
+
+p <- ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+
+p + theme_gray() + labs(title = "Gray")
+p + theme_void() + labs(title = "Void")
+p + theme_dark() + labs(title = "Dark")
+```
+
+## Themes from ggthemes {.smaller}
+
+```{r}
+#| message: false
+#| warning: false
+#| layout-ncol: 3
+
+p + theme_fivethirtyeight() + labs(title = "FiveThirtyEight")
+p + theme_economist() + labs(title = "Economist")
+p + theme_wsj() + labs(title = "Wall Street Journal")
+```
+
+## Themes and color scales from **ggthemes**
+
+```{r}
+#| message: false
+#| warning: false
+
+p + 
+  aes(color = species) +
+  scale_color_wsj() +
+  theme_wsj() + 
+  labs(title = "Wall Street Journal")
+```
+
+## Themes from **ThemePark** {.smaller}
+
+```{r}
+#| message: false
+#| warning: false
+#| layout-ncol: 2
+
+p + 
+  geom_point(color = barbie_theme_colors["medium"]) +
+  theme_barbie()
+p + 
+  geom_point(color = gameofthrones_theme_colors["medium"]) +
+  theme_gameofthrones(gameofthrones_font = TRUE)
+```
+
+## Duke theme! {.smaller}
+
+```{r}
+#| fig-asp: 0.5
+#| fig-width: 6
+
+p + 
+  aes(color = species) +
+  theme_duke() +
+  scale_duke_color_discrete()
+```
+
+## Modifying theme elements {.smaller}
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-asp: 0.5
+
+p + 
+  labs(title = "Palmer Penguins") +
+  theme(
+    plot.title = element_text(color = "red", face = "bold"),
+    plot.background = element_rect(color = "red", fill = "mistyrose")
+  )
+```
+
+# Axes
+
+## Axis breaks {.smaller}
+
+::: task
+How can the following figure be improved with custom breaks in axes, if at all?
+:::
+
+::: panel-tabset
+## Plot
+
+```{r}
+#| ref.label: kids-plot
+#| echo: false
+#| fig-asp: 0.4
+```
+
+## Code
+
+```{r}
+#| label: kids-plot
+#| fig-show: hide
+
+kids_plot <- tidykids |>
+  mutate(year = as.numeric(year)) |>
+  filter(
+    state %in% c("North Carolina", "California", "Florida"),
+    variable == "pubhealth"
+  ) |>
+  ggplot(aes(x = year, y = inf_adj_perchild, color = state, linetype = state)) +
+  geom_smooth(se = FALSE) +
+  scale_color_colorblind() +
+  theme(legend.position = c(0.15, 0.8))
+
+kids_plot
+```
+:::
+
+## Context matters
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-asp: 0.5
+#| code-line-numbers: "2"
+
+kids_plot +
+  scale_x_continuous(breaks = seq(from = 1996, to = 2016, by = 2))
+```
+
+## Conciseness matters
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-asp: 0.5
+#| code-line-numbers: "2"
+
+kids_plot +
+  scale_x_continuous(breaks = seq(from = 1996, to = 2016, by = 4))
+```
+
+## Precision matters
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-asp: 0.5
+#| code-line-numbers: "3"
+
+kids_plot +
+  scale_x_continuous(breaks = seq(2000, 2022, 4)) +
+  labs(x = "Election year")
+```
+
+# Annotation
+
+## Why annotate?
+
+![](images/stocks.png)
+
+::: aside
+<https://bl.ocks.org/susielu/23dc3082669ee026c552b85081d90976>
+:::
+
+## Video recap
+
+```{=html}
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
+```
+
+```{r}
+#| echo: false
+
+countdown(minutes = 3)
+```
+
+## `geom_text()` {.smaller}
+
+Can be useful when individual observations are identifiable, but can also get overwhelming...
+
+::: columns
+::: {.column width="50%"}
+```{r}
+ggplot(state_stats, aes(x = homeownership, y = pop2010)) + 
+  geom_point()
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+ggplot(state_stats, aes(x = homeownership, y = pop2010)) + 
+  geom_text(aes(label = abbr))
+```
+:::
+:::
+
+## `geom_text()`
+
+```{=html}
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
+```
+
+```{r}
+#| echo: false
+
+countdown(minutes = 3)
+```
+
+## Now go ahead and improve it!
+
+::: task
+Open `ae-06` and implement the improvements you came up with in Part 1.
+:::
+
+## Revisit Durham AQI
+
+::: task
+Recreate the following visualization, in Part 2 of `ae-06`.
+:::
+
+```{r}
+#| label: dch-2022-3-data-prep
+#| echo: false
+#| message: false
+
+aqi_levels <- tribble(
+  ~aqi_min, ~aqi_max, ~color,    ~level,
+  0,        50,       "#D8EEDA", "Good",
+  51,       100,      "#F1E7D4", "Moderate",
+  101,      150,      "#F8E4D8", "Unhealthy for sensitive groups",
+  151,      200,      "#FEE2E1", "Unhealthy",
+  201,      300,      "#F4E3F7", "Very unhealthy",
+  301,      400,      "#F9D0D4", "Hazardous"
+) |>
+  mutate(aqi_mid = ((aqi_min + aqi_max) / 2))
+
+dch_2022 <- read_csv(
+  here::here("slides/07/", "data/durham-chapel-hill/ad_aqi_tracker_data-2022.csv"),
+  na = c(".", "")
+) |>
+  janitor::clean_names() |>
+  mutate(date = mdy(date))
+```
+
+```{r}
+#| label: dch-2022-3-data-viz
+#| echo: false
+
+dch_2022 |>
+  filter(!is.na(aqi_value)) |>
+  ggplot(aes(x = date, y = aqi_value, group = 1)) +
+  geom_line(linewidth = 1) +
+  scale_x_date(
+    name = NULL, date_labels = "%b",
+    limits = c(ymd("2022-01-01"), ymd("2023-03-01"))
+  ) +
+  scale_y_continuous(breaks = c(0, 50, 100, 150, 200, 300, 400)) +
+  geom_text(
+    data = aqi_levels,
+    aes(x = ymd("2023-02-28"), y = aqi_mid, label = level, color = darken(color, 0.3)),
+    hjust = 1, size = 6, fontface = "bold"
+  ) +
+  scale_color_identity() +
+  annotate(
+    geom = "text",
+    x = c(ymd("2022-01-01"), ymd("2023-01-01")), y = -80,
+    label = c("2022", "2023"), size = 4
+  ) +
+  coord_cartesian(clip = "off", ylim = c(0, 400)) +
+  labs(
+    x = NULL, y = "AQI",
+    title = "Ozone and PM2.5 Daily AQI Values",
+    subtitle = "Durham-Chapel Hill, NC",
+    caption = "\nSource: EPA Daily Air Quality Tracker"
+  ) +
+  theme(
+    plot.title.position = "plot",
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank()
+  )
+```
+
+````{=html}
+<!--
+
+## Livecoding {.smaller}
+
+Reveal below for code developed during live coding session.
+
+-   Prep
+
+```{r}
+#| ref.label: dch-2022-3-data-prep
+#| fig-show: hide
+#| code-fold: true
+#| message: false
+```
+
+-   Plot
+
+```{r}
+#| ref.label: dch-2022-3-data-viz
+#| fig-show: hide
+#| code-fold: true
+```
+
+-->
+````
+
+## All of the data doesn't tell a story
+
+![](images/recession-1.png){fig-align="center" width="900"}
+
+::: aside
+[How the Recession Reshaped the Economy, in 255 Charts](https://www.nytimes.com/interactive/2014/06/05/upshot/how-the-recession-reshaped-the-economy-in-255-charts.html), NY Times (2014)
+:::
+
+## 
+
+![](images/recession-2.png){fig-align="center" width="900"}
+
+::: aside
+[How the Recession Reshaped the Economy, in 255 Charts](https://www.nytimes.com/interactive/2014/06/05/upshot/how-the-recession-reshaped-the-economy-in-255-charts.html), NY Times (2014)
+:::
+
+## 
+
+![](images/recession-3.png){fig-align="center" width="900"}
+
+::: aside
+[How the Recession Reshaped the Economy, in 255 Charts](https://www.nytimes.com/interactive/2014/06/05/upshot/how-the-recession-reshaped-the-economy-in-255-charts.html), NY Times (2014)
+:::
+
+## Highlighting in ggplot2
+
+We have (at least) two options:
+
+1.  Native ggplot2 -- use layers
+
+2.  gghighlight: <https://yutannihilation.github.io/gghighlight/articles/gghighlight.html>
+
+## Data: SF AQI {.smaller}
+
+```{r}
+#| include: false
+sf_files <- fs::dir_ls(here::here("slides/07/", "data/san-francisco"))
+```
+
+```{r}
+#| eval: false
+
+sf_files <- fs::dir_ls(here::here("data/san-francisco"))
+```
+
+```{r}
+#| message: false
+
+sf <- read_csv(sf_files, na = c(".", ""))
+
+sf <- sf |>
+  janitor::clean_names() |>
+  mutate(date = mdy(date)) |>
+  arrange(date) |>
+  select(date, aqi_value)
+
+sf
+```
+
+## Data prep {.smaller}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| code-line-numbers: "|3|4"
+sf <- sf |>
+  mutate(
+    year = year(date),
+    day_of_year = yday(date)
+  )
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+# check
+sf |>
+  filter(day_of_year < 3)
+```
+:::
+:::
+
+## Plot AQI over years
+
+```{r}
+ggplot(sf, aes(x = day_of_year, y = aqi_value, group = year)) +
+  geom_line()
+```
+
+## Plot AQI over years
+
+```{r}
+ggplot(sf, aes(x = day_of_year, y = aqi_value, group = year, color = year)) +
+  geom_line()
+```
+
+## Plot AQI over years
+
+```{r}
+ggplot(sf, aes(x = day_of_year, y = aqi_value, group = year, color = factor(year))) +
+  geom_line()
+```
+
+## Highlight 2016 {.smaller}
+
+```{r}
+#| code-line-numbers: "|3"
+
+ggplot(sf, aes(x = day_of_year, y = aqi_value, group = year)) +
+  geom_line(color = "gray") +
+  geom_line(data = sf |> filter(year == 2016), color = "red") +
+  labs(
+    title = "AQI levels in SF in 2016",
+    subtitle = "Versus all years 2016 - 2022",
+    x = "Day of year", y = "AQI value"
+  )
+```
+
+## Highlight 2017 {.smaller}
+
+```{r}
+ggplot(sf, aes(x = day_of_year, y = aqi_value, group = year)) +
+  geom_line(color = "gray") +
+  geom_line(data = sf |> filter(year == 2017), color = "red") +
+  labs(
+    title = "AQI levels in SF in 2017",
+    subtitle = "Versus all years 2016 - 2022",
+    x = "Day of year", y = "AQI value"
+  )
+```
+
+## Highlight 2018 {.smaller}
+
+```{r}
+ggplot(sf, aes(x = day_of_year, y = aqi_value, group = year)) +
+  geom_line(color = "gray") +
+  geom_line(data = sf |> filter(year == 2018), color = "red") +
+  labs(
+    title = "AQI levels in SF in 2018",
+    subtitle = "Versus all years 2016 - 2022",
+    x = "Day of year", y = "AQI value"
+  )
+```
+
+## Highlight any year {.smaller}
+
+```{r}
+#| code-line-numbers: "|1|5|7"
+
+year_to_highlight <- 2018
+
+ggplot(sf, aes(x = day_of_year, y = aqi_value, group = year)) +
+  geom_line(color = "gray") +
+  geom_line(data = sf |> filter(year == year_to_highlight), color = "red") +
+  labs(
+    title = glue("AQI levels in SF in {year_to_highlight}"),
+    subtitle = "Versus all years 2016 - 2022",
+    x = "Day of year", y = "AQI value"
+  )
+```
+
+## Highlight with gghighlight
+
+Time permitting!
+
+::: task
+Highlight years using **gghighlight** instead in Part 3 of `ae-09`.
+:::
