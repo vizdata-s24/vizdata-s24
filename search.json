@@ -2210,226 +2210,226 @@
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#announcements",
     "href": "slides/07/07-themes-axes-annotation.html#announcements",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Announcements",
     "text": "Announcements\n\nReading Quiz 2 is due at 10 am on Tuesday\nProject 1 proposals due at 1 pm on Wednesday"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#setup",
     "href": "slides/07/07-themes-axes-annotation.html#setup",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Setup",
     "text": "Setup\n\n# load packages\nlibrary(countdown)\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(colorspace)\nlibrary(fs)\nlibrary(palmerpenguins)\nlibrary(ThemePark)\nlibrary(ggthemes)\nlibrary(duke)\nlibrary(tidykids)\nlibrary(openintro)\nlibrary(glue)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 7, # 7\" width\n  fig.asp = 0.618, # the golden ratio\n  fig.retina = 3, # dpi multiplier for displaying HTML output on retina\n  fig.align = \"center\", # center align figures\n  dpi = 300 # higher dpi, sharper image\n)"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#complete-themes",
     "href": "slides/07/07-themes-axes-annotation.html#complete-themes",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Complete themes",
     "text": "Complete themes\np &lt;- ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +\n  geom_point()\n\np + theme_gray() + labs(title = \"Gray\")\np + theme_void() + labs(title = \"Void\")\np + theme_dark() + labs(title = \"Dark\")"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#themes-from-ggthemes",
     "href": "slides/07/07-themes-axes-annotation.html#themes-from-ggthemes",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Themes from ggthemes",
     "text": "Themes from ggthemes\np + theme_fivethirtyeight() + labs(title = \"FiveThirtyEight\")\np + theme_economist() + labs(title = \"Economist\")\np + theme_wsj() + labs(title = \"Wall Street Journal\")"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#themes-and-color-scales-from-ggthemes",
     "href": "slides/07/07-themes-axes-annotation.html#themes-and-color-scales-from-ggthemes",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Themes and color scales from ggthemes",
     "text": "Themes and color scales from ggthemes\n\np + \n  aes(color = species) +\n  scale_color_wsj() +\n  theme_wsj() + \n  labs(title = \"Wall Street Journal\")"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#themes-from-themepark",
     "href": "slides/07/07-themes-axes-annotation.html#themes-from-themepark",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Themes from ThemePark",
     "text": "Themes from ThemePark\np + \n  geom_point(color = barbie_theme_colors[\"medium\"]) +\n  theme_barbie()\np + \n  geom_point(color = gameofthrones_theme_colors[\"medium\"]) +\n  theme_gameofthrones(gameofthrones_font = TRUE)"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#duke-theme",
     "href": "slides/07/07-themes-axes-annotation.html#duke-theme",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Duke theme!",
     "text": "Duke theme!\n\np + \n  aes(color = species) +\n  theme_duke() +\n  scale_duke_color_discrete()\n\nWarning: Removed 2 rows containing missing values (`geom_point()`)."
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#modifying-theme-elements",
     "href": "slides/07/07-themes-axes-annotation.html#modifying-theme-elements",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Modifying theme elements",
     "text": "Modifying theme elements\n\np + \n  labs(title = \"Palmer Penguins\") +\n  theme(\n    plot.title = element_text(color = \"red\", face = \"bold\"),\n    plot.background = element_rect(color = \"red\", fill = \"mistyrose\")\n  )"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#axis-breaks",
     "href": "slides/07/07-themes-axes-annotation.html#axis-breaks",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Axis breaks",
     "text": "Axis breaks\n\nHow can the following figure be improved with custom breaks in axes, if at all?\n\n\nPlotCode\n\n\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\nkids_plot &lt;- tidykids |&gt;\n  mutate(year = as.numeric(year)) |&gt;\n  filter(\n    state %in% c(\"North Carolina\", \"California\", \"Florida\"),\n    variable == \"pubhealth\"\n  ) |&gt;\n  ggplot(aes(x = year, y = inf_adj_perchild, color = state, linetype = state)) +\n  geom_smooth(se = FALSE) +\n  scale_color_colorblind() +\n  theme(legend.position = c(0.15, 0.8))\n\nkids_plot\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#context-matters",
     "href": "slides/07/07-themes-axes-annotation.html#context-matters",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Context matters",
     "text": "Context matters\n\nkids_plot +\n  scale_x_continuous(breaks = seq(from = 1996, to = 2016, by = 2))"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#conciseness-matters",
     "href": "slides/07/07-themes-axes-annotation.html#conciseness-matters",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Conciseness matters",
     "text": "Conciseness matters\n\nkids_plot +\n  scale_x_continuous(breaks = seq(from = 1996, to = 2016, by = 4))"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#precision-matters",
     "href": "slides/07/07-themes-axes-annotation.html#precision-matters",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Precision matters",
     "text": "Precision matters\n\nkids_plot +\n  scale_x_continuous(breaks = seq(2000, 2022, 4)) +\n  labs(x = \"Election year\")"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#why-annotate",
     "href": "slides/07/07-themes-axes-annotation.html#why-annotate",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Why annotate?",
     "text": "Why annotate?\n\n\n\nhttps://bl.ocks.org/susielu/23dc3082669ee026c552b85081d90976"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#video-recap",
     "href": "slides/07/07-themes-axes-annotation.html#video-recap",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Video recap",
     "text": "Video recap\n\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#geom_text",
     "href": "slides/07/07-themes-axes-annotation.html#geom_text",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "geom_text()",
     "text": "geom_text()\nCan be useful when individual observations are identifiable, but can also get overwhelming…\n\n\n\nggplot(state_stats, aes(x = homeownership, y = pop2010)) + \n  geom_point()\n\n\n\n\n\n\n\n\n\n\nggplot(state_stats, aes(x = homeownership, y = pop2010)) + \n  geom_text(aes(label = abbr))"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#geom_text-1",
     "href": "slides/07/07-themes-axes-annotation.html#geom_text-1",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "geom_text()",
     "text": "geom_text()\n\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#now-go-ahead-and-improve-it",
     "href": "slides/07/07-themes-axes-annotation.html#now-go-ahead-and-improve-it",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Now go ahead and improve it!",
     "text": "Now go ahead and improve it!\n\nOpen ae-06 and implement the improvements you came up with in Part 1."
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#revisit-durham-aqi",
     "href": "slides/07/07-themes-axes-annotation.html#revisit-durham-aqi",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Revisit Durham AQI",
     "text": "Revisit Durham AQI\n\nRecreate the following visualization, in Part 2 of ae-06."
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#all-of-the-data-doesnt-tell-a-story",
     "href": "slides/07/07-themes-axes-annotation.html#all-of-the-data-doesnt-tell-a-story",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "All of the data doesn’t tell a story",
     "text": "All of the data doesn’t tell a story\n\n\n\n\n\n\n\nHow the Recession Reshaped the Economy, in 255 Charts, NY Times (2014)"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#section",
     "href": "slides/07/07-themes-axes-annotation.html#section",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "",
     "text": "How the Recession Reshaped the Economy, in 255 Charts, NY Times (2014)"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#section-1",
     "href": "slides/07/07-themes-axes-annotation.html#section-1",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "",
     "text": "How the Recession Reshaped the Economy, in 255 Charts, NY Times (2014)"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#highlighting-in-ggplot2",
     "href": "slides/07/07-themes-axes-annotation.html#highlighting-in-ggplot2",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Highlighting in ggplot2",
     "text": "Highlighting in ggplot2\nWe have (at least) two options:\n\nNative ggplot2 – use layers\ngghighlight: https://yutannihilation.github.io/gghighlight/articles/gghighlight.html"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#data-sf-aqi",
     "href": "slides/07/07-themes-axes-annotation.html#data-sf-aqi",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Data: SF AQI",
     "text": "Data: SF AQI\n\nsf_files &lt;- fs::dir_ls(here::here(\"data/san-francisco\"))\n\n\nsf &lt;- read_csv(sf_files, na = c(\".\", \"\"))\n\nsf &lt;- sf |&gt;\n  janitor::clean_names() |&gt;\n  mutate(date = mdy(date)) |&gt;\n  arrange(date) |&gt;\n  select(date, aqi_value)\n\nsf\n\n# A tibble: 2,557 × 2\n   date       aqi_value\n   &lt;date&gt;         &lt;dbl&gt;\n 1 2016-01-01        32\n 2 2016-01-02        37\n 3 2016-01-03        45\n 4 2016-01-04        33\n 5 2016-01-05        27\n 6 2016-01-06        39\n 7 2016-01-07        39\n 8 2016-01-08        31\n 9 2016-01-09        20\n10 2016-01-10        20\n# ℹ 2,547 more rows"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#data-prep",
     "href": "slides/07/07-themes-axes-annotation.html#data-prep",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Data prep",
     "text": "Data prep\n\n\n\nsf &lt;- sf |&gt;\n  mutate(\n    year = year(date),\n    day_of_year = yday(date)\n  )\n\n\n\n# check\nsf |&gt;\n  filter(day_of_year &lt; 3)\n\n# A tibble: 14 × 4\n   date       aqi_value  year day_of_year\n   &lt;date&gt;         &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;\n 1 2016-01-01        32  2016           1\n 2 2016-01-02        37  2016           2\n 3 2017-01-01        55  2017           1\n 4 2017-01-02        36  2017           2\n 5 2018-01-01        87  2018           1\n 6 2018-01-02        95  2018           2\n 7 2019-01-01        33  2019           1\n 8 2019-01-02        50  2019           2\n 9 2020-01-01        53  2020           1\n10 2020-01-02        43  2020           2\n11 2021-01-01        79  2021           1\n12 2021-01-02        57  2021           2\n13 2022-01-01        53  2022           1\n14 2022-01-02        55  2022           2"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#plot-aqi-over-years",
     "href": "slides/07/07-themes-axes-annotation.html#plot-aqi-over-years",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Plot AQI over years",
     "text": "Plot AQI over years\n\nggplot(sf, aes(x = day_of_year, y = aqi_value, group = year)) +\n  geom_line()"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#plot-aqi-over-years-1",
     "href": "slides/07/07-themes-axes-annotation.html#plot-aqi-over-years-1",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Plot AQI over years",
     "text": "Plot AQI over years\n\nggplot(sf, aes(x = day_of_year, y = aqi_value, group = year, color = year)) +\n  geom_line()"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#plot-aqi-over-years-2",
     "href": "slides/07/07-themes-axes-annotation.html#plot-aqi-over-years-2",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Plot AQI over years",
     "text": "Plot AQI over years\n\nggplot(sf, aes(x = day_of_year, y = aqi_value, group = year, color = factor(year))) +\n  geom_line()"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#highlight-2016",
     "href": "slides/07/07-themes-axes-annotation.html#highlight-2016",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Highlight 2016",
     "text": "Highlight 2016\n\nggplot(sf, aes(x = day_of_year, y = aqi_value, group = year)) +\n  geom_line(color = \"gray\") +\n  geom_line(data = sf |&gt; filter(year == 2016), color = \"red\") +\n  labs(\n    title = \"AQI levels in SF in 2016\",\n    subtitle = \"Versus all years 2016 - 2022\",\n    x = \"Day of year\", y = \"AQI value\"\n  )"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#highlight-2017",
     "href": "slides/07/07-themes-axes-annotation.html#highlight-2017",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Highlight 2017",
     "text": "Highlight 2017\n\nggplot(sf, aes(x = day_of_year, y = aqi_value, group = year)) +\n  geom_line(color = \"gray\") +\n  geom_line(data = sf |&gt; filter(year == 2017), color = \"red\") +\n  labs(\n    title = \"AQI levels in SF in 2017\",\n    subtitle = \"Versus all years 2016 - 2022\",\n    x = \"Day of year\", y = \"AQI value\"\n  )"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#highlight-2018",
     "href": "slides/07/07-themes-axes-annotation.html#highlight-2018",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Highlight 2018",
     "text": "Highlight 2018\n\nggplot(sf, aes(x = day_of_year, y = aqi_value, group = year)) +\n  geom_line(color = \"gray\") +\n  geom_line(data = sf |&gt; filter(year == 2018), color = \"red\") +\n  labs(\n    title = \"AQI levels in SF in 2018\",\n    subtitle = \"Versus all years 2016 - 2022\",\n    x = \"Day of year\", y = \"AQI value\"\n  )"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#highlight-any-year",
     "href": "slides/07/07-themes-axes-annotation.html#highlight-any-year",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Highlight any year",
     "text": "Highlight any year\n\nyear_to_highlight &lt;- 2018\n\nggplot(sf, aes(x = day_of_year, y = aqi_value, group = year)) +\n  geom_line(color = \"gray\") +\n  geom_line(data = sf |&gt; filter(year == year_to_highlight), color = \"red\") +\n  labs(\n    title = glue(\"AQI levels in SF in {year_to_highlight}\"),\n    subtitle = \"Versus all years 2016 - 2022\",\n    x = \"Day of year\", y = \"AQI value\"\n  )"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#highlight-with-gghighlight",
     "href": "slides/07/07-themes-axes-annotation.html#highlight-with-gghighlight",
-    "title": "Visualizing time series data - II",
+    "title": "Themes + axes + annotation",
     "section": "Highlight with gghighlight",
-    "text": "Highlight with gghighlight\nTime permitting!\n\nHighlight years using gghighlight instead in Part 3 of ae-09.\n\n\n\n\n\n🔗 vizdata.org"
+    "text": "Highlight with gghighlight\n\nHighlight years where maximum observed AQI value exceeds 200 using gghighlight.\n\n\n\n\n\n🔗 vizdata.org"
   },
   {
     "objectID": "hw/hw-3.html",
