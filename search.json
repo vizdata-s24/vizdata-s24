@@ -1814,7 +1814,7 @@
     "href": "slides/07/07-themes-axes-annotation.html#setup",
     "title": "Themes + axes + annotation",
     "section": "Setup",
-    "text": "Setup\n\n# load packages\nlibrary(countdown)\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(colorspace)\nlibrary(fs)\nlibrary(palmerpenguins)\nlibrary(ThemePark)\nlibrary(ggthemes)\nlibrary(duke)\nlibrary(tidykids)\nlibrary(openintro)\nlibrary(glue)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 7, # 7\" width\n  fig.asp = 0.618, # the golden ratio\n  fig.retina = 3, # dpi multiplier for displaying HTML output on retina\n  fig.align = \"center\", # center align figures\n  dpi = 300 # higher dpi, sharper image\n)"
+    "text": "Setup\n\n# load packages\nlibrary(countdown)\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(colorspace)\nlibrary(fs)\nlibrary(palmerpenguins)\nlibrary(ThemePark)\nlibrary(ggthemes)\nlibrary(duke)\nlibrary(tidykids)\nlibrary(openintro)\nlibrary(glue)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))\n\n# set figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 7, # 7\" width\n  fig.asp = 0.618, # the golden ratio\n  fig.retina = 3, # dpi multiplier for displaying HTML output on retina\n  fig.align = \"center\", # center align figures\n  dpi = 300 # higher dpi, sharper image\n)"
   },
   {
     "objectID": "slides/07/07-themes-axes-annotation.html#complete-themes",
