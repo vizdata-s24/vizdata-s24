@@ -15,7 +15,7 @@ editor_options:
 ## Announcements {.smaller}
 
 -   Project 1 proposal feedback and scores are posted as a GitHub issue in your project repo.
--   If you'd like to improve your project proposal score, you can resubmit by Friday at 5 pm:
+-   If you'd like to improve your project proposal score, you can resubmit by 9 am on Monday (2/19):
     -   Address all outstanding issues and close them with specific commits
     -   Improve the proposal based on suggestions in your feedback
     -   DM me on Slack by 9 am on Monday (2/19) to say your proposal is ready for re-review. I will not review proposals I have not explicitly received a ping about.
