@@ -12,13 +12,22 @@ editor_options:
 
 # Warm up
 
-## Announcements
+## Announcements {.smaller}
 
--   ...
+-   Project 1 proposal feedback and scores are posted as a GitHub issue in your project repo.
+-   If you'd like to improve your project proposal score, you can resubmit by Friday at 5 pm:
+    -   Address all outstanding issues and close them with specific commits
+    -   Improve the proposal based on suggestions in your feedback
+    -   DM me on Slack by 9 am on Monday (2/19) to say your proposal is ready for re-review. I will not review proposals I have not explicitly received a ping about.
+    -   Your proposal score will then be updated to be the average of your original and revised proposal score.
+
+## Next steps for the project
+
+::: task
+Are there any questions about the project logistics / expectations / best practices / etc.?
+:::
 
 # W.E.B. Du Bois
-
-# 
 
 ::: callout-important
 The visualizations presented in this lecture are original data visualizations by W.E.B. Du Bois and the captions reflect the language of the time in history.
