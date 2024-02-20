@@ -2717,14 +2717,14 @@
     "href": "slides/09/09-accessibility.html#alt-text-for-line-graphs",
     "title": "Accessibility",
     "section": "Alt text for line graphs",
-    "text": "Alt text for line graphs\n\n\n\n\n\n\n\n\n\n\n\n\nWrite alt text for the line graph above.\n\n\n\nProvide title and axis labels\nBriefly describe the graph and give a summary of any trends it displays\nConvert data represented in lines to accessible tables or lists where feasible\nAvoid describing visual attributes of the lines (e.g., purple, pink) unless there’s an explicit need to do so"
+    "text": "Alt text for line graphs\n\n\n\n\n\n\n\n\n\n\n\n\nWrite alt text for the line graph.\n\n\n\nProvide title and axis labels\nBriefly describe the graph and give a summary of any trends it displays\nConvert data represented in lines to accessible tables or lists where feasible\nAvoid describing visual attributes of the lines (e.g., purple, pink) unless there’s an explicit need to do so"
   },
   {
     "objectID": "slides/09/09-accessibility.html#alt-text-for-scatter-plots",
     "href": "slides/09/09-accessibility.html#alt-text-for-scatter-plots",
     "title": "Accessibility",
     "section": "Alt text for scatter plots",
-    "text": "Alt text for scatter plots\n\n\n\n\n\n\n\n\n\n\n\n\nWrite alt text for the scatter plot above.\n\n\nScatter plots are among the more difficult graphs to describe, especially if there is a need to make specific data point accessible.\n\nIdentify the image as a scatter plot\nProvide the title and axis labels\nFocus on the overall trend\nIf it’s necessary to be more specific, convert the data into an accessible table"
+    "text": "Alt text for scatter plots\n\n\n\n\n\n\n\n\n\n\n\n\nWrite alt text for the scatter plot.\n\n\nScatter plots are among the more difficult graphs to describe, especially if there is a need to make specific data point accessible.\n\nIdentify the image as a scatter plot\nProvide the title and axis labels\nFocus on the overall trend\nIf it’s necessary to be more specific, convert the data into an accessible table"
   },
   {
     "objectID": "slides/09/09-accessibility.html#recommended-reading",
