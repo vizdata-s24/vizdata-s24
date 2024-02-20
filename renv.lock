@@ -352,6 +352,22 @@
       ],
       "Hash": "3f038e5ac7f41d4ac41ce658c85e3042"
     },
+    "coloratio": {
+      "Package": "coloratio",
+      "Version": "0.0.0.9004",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "coloratio",
+      "RemoteUsername": "matt-dray",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "852ac493f1dcee179d462d083aeb072082107da0",
+      "Requirements": [
+        "grDevices",
+        "graphics"
+      ],
+      "Hash": "76cdc0c4274718ad1374370977b8090f"
+    },
     "colorspace": {
       "Package": "colorspace",
       "Version": "2.1-0",
