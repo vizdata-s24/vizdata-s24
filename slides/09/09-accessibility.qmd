@@ -188,7 +188,7 @@ nurses_subset |>
 
 -   The figure is a bar chart titled "Total employed Registered Nurses" that displays the numbers of registered nurses in three states (California, New York, and North Carolina) over a 20 year period, with data recorded in three time points (2000, 2010, and 2020). In each state, the numbers of registered nurses increase over time. The following numbers are all approximate. California started off with 200K registered nurses in 2000, 240K in 2010, and 300K in 2020. New York had 150K in 2000, 160K in 2010, and 170K in 2020. Finally North Carolina had 60K in 2000, 90K in 2010, and 100K in 2020.
 
-## Alt text for line graphs
+## Alt text for line graphs {.smaller}
 
 ::: columns
 ::: {.column width="50%"}
@@ -210,11 +210,11 @@ nurses_subset |>
   coord_cartesian(clip = "off") +
   theme(
     plot.margin = margin(0.1, 0.9, 0.1, 0.1, "in")
-    )
+  )
 ```
 
 ::: task
-Write alt text for the line graph above.
+Write alt text for the line graph.
 :::
 :::
 
@@ -226,6 +226,9 @@ Write alt text for the line graph above.
 :::
 :::
 
+```{=html}
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
+```
 ```{=html}
 <!--
 The figure is titled "Annual median salary of Registered Nurses". There are three lines on the plot: the top labelled California, the middle New York, the bottom North Carolina. The vertical axis is labelled "Annual median salary", beginning with $40K, up to $120K. The horizontal axis is labelled "Year", beginning with couple years before 2000 up to 2020. The following numbers are all approximate. In the graph, the California line begins around $50K in 1998 and goes up to  $120K in 2020. The increase is steady, except for stalling for about couple years between 2015 to 2017. The New York line also starts around $50K, just below where the California line starts, and steadily goes up to $90K. And the North Carolina line starts around $40K and steadily goes up to $70K.
@@ -252,7 +255,7 @@ nurses_subset |>
 ```
 
 ::: task
-Write alt text for the scatter plot above.
+Write alt text for the scatter plot.
 :::
 :::
 
@@ -266,6 +269,9 @@ Scatter plots are among the more difficult graphs to describe, especially if the
 :::
 :::
 
+```{=html}
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
+```
 ## Recommended reading {.smaller}
 
 [Accessible Visualization via Natural Language Descriptions: A Four-Level Model of Semantic Content](http://vis.csail.mit.edu/pubs/vis-text-model/)
