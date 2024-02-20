@@ -14,7 +14,11 @@ editor_options:
 
 ## Announcements {.smaller}
 
--   ...
+-   Projects:
+    -   Peer evaluations – Look out for email from TEAMMATES
+    -   Work on projects in lab tomorrow
+-   Use of external resources / cohesive coding style
+-   Reminder: Duke Community Standard
 
 ## Setup {.smaller}
 
@@ -137,16 +141,31 @@ nurses <- read_csv("data/nurses.csv") |> janitor::clean_names()
 names(nurses)
 ```
 
-## Alt text for bar charts
+## Alt text for bar charts {.smaller}
 
-```{r echo = FALSE}
+```{r}
+#| echo: false
 nurses_subset <- nurses |>
   filter(state %in% c("California", "New York", "North Carolina"))
 ```
 
-::: columns
-::: {.column width="50%"}
-```{r echo = FALSE, out.width = "100%"}
+-   Provide title and axis labels
+-   Briefly describe the chart and give a summary of any trends it displays
+-   Convert bar charts to accessible tables or lists
+-   Avoid describing visual attributes of the bars (e.g., dark blue, gray, yellow) unless there's an explicit need to do so
+
+```{r}
+#| echo: false
+#| out-width: "50%"
+#| fig-alt: |
+#|   The figure is a bar chart titled "Total employed Registered Nurses" that 
+#|   displays the numbers of registered nurses in three states (California, New 
+#|   York, and North Carolina) over a 20 year period, with data recorded in three 
+#|   time points (2000, 2010, and 2020). In each state, the numbers of registered 
+#|   nurses increase over time. The following numbers are all approximate. 
+#|   California started off with 200K registered nurses in 2000, 240K in 2010, 
+#|   and 300K in 2020. New York had 150K in 2000, 160K in 2010, and 170K in 2020.
+#|   Finally North Carolina had 60K in 2000, 90K in 2010, and 100K in 2020.
 nurses_subset |>
   filter(year %in% c(2000, 2010, 2020)) |>
   ggplot(aes(x = state, y = total_employed_rn, fill = factor(year))) +
@@ -162,15 +181,6 @@ nurses_subset |>
     legend.position = c(0.85, 0.75)
     )
 ```
-:::
-
-::: {.column width="50%"}
--   Provide title and axis labels
--   Briefly describe the chart and give a summary of any trends it displays
--   Convert bar charts to accessible tables or lists
--   Avoid describing visual attributes of the bars (e.g., dark blue, gray, yellow) unless there's an explicit need to do so
-:::
-:::
 
 ## Developing the alt text {.smaller}
 
@@ -186,13 +196,29 @@ nurses_subset |>
 
 . . .
 
--   The figure is a bar chart titled "Total employed Registered Nurses" that displays the numbers of registered nurses in three states (California, New York, and North Carolina) over a 20 year period, with data recorded in three time points (2000, 2010, and 2020). In each state, the numbers of registered nurses increase over time. The following numbers are all approximate. California started off with 200K registered nurses in 2000, 240K in 2010, and 300K in 2020. New York had 150K in 2000, 160K in 2010, and 170K in 2020. Finally North Carolina had 60K in 2000, 90K in 2010, and 100K in 2020.
+-   The figure is a bar chart titled "Total employed Registered Nurses" that displays the numbers of registered nurses in three states (California, New York, and North Carolina) over a 20 year period, with data recorded in three time points (2000, 2010, and 2020). In each state, the numbers of registered nurses increase over time. The following numbers are all approximate. California started off with 200K registered nurses in 2000, 240K in 2010, and 300K in 2020. New York had 150K in 2000, 160K in 2010, and 170K in 2020. Finally North Carolina had 60K in 2000, 90K in 2010, and 100K in 2020."
 
 ## Alt text for line graphs {.smaller}
 
-::: columns
-::: {.column width="50%"}
-```{r echo = FALSE, out.width = "100%"}
+-   Provide title and axis labels
+-   Briefly describe the graph and give a summary of any trends it displays
+-   Convert data represented in lines to accessible tables or lists where feasible
+-   Avoid describing visual attributes of the lines (e.g., purple, pink) unless there's an explicit need to do so
+
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-alt: |
+#|   The figure is titled "Annual median salary of Registered Nurses". There are 
+#|   three lines on the plot: the top labelled California, the middle New York, 
+#|   the bottom North Carolina. The vertical axis is labelled "Annual median salary", 
+#|   beginning with $40K, up to $120K. The horizontal axis is labelled "Year", 
+#|   beginning with couple years before 2000 up to 2020. The following numbers are 
+#|   all approximate. In the graph, the California line begins around $50K in 1998 
+#|   and goes up to  $120K in 2020. The increase is steady, except for stalling for 
+#|   about couple years between 2015 to 2017. The New York line also starts around 
+#|   $50K, just below where the California line starts, and steadily goes up to $90K.
+#|   And the North Carolina line starts around $40K and steadily goes up to $70K.
 nurses_subset |>
   ggplot(aes(x = year, y = annual_salary_median, color = state)) +
   geom_line(show.legend = FALSE) +
@@ -213,27 +239,16 @@ nurses_subset |>
   )
 ```
 
+## Writing the alt text
+
 ::: task
 Write alt text for the line graph.
-:::
-:::
-
-::: {.column width="50%"}
--   Provide title and axis labels
--   Briefly describe the graph and give a summary of any trends it displays
--   Convert data represented in lines to accessible tables or lists where feasible
--   Avoid describing visual attributes of the lines (e.g., purple, pink) unless there's an explicit need to do so
-:::
 :::
 
 ```{=html}
 <iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
 ```
-```{=html}
-<!--
-The figure is titled "Annual median salary of Registered Nurses". There are three lines on the plot: the top labelled California, the middle New York, the bottom North Carolina. The vertical axis is labelled "Annual median salary", beginning with $40K, up to $120K. The horizontal axis is labelled "Year", beginning with couple years before 2000 up to 2020. The following numbers are all approximate. In the graph, the California line begins around $50K in 1998 and goes up to  $120K in 2020. The increase is steady, except for stalling for about couple years between 2015 to 2017. The New York line also starts around $50K, just below where the California line starts, and steadily goes up to $90K. And the North Carolina line starts around $40K and steadily goes up to $70K.
--->
-```
+
 ## Alt text for scatter plots {.smaller}
 
 ::: columns
@@ -253,10 +268,6 @@ nurses_subset |>
     legend.background = element_rect(fill = "white", color = "white")
     )
 ```
-
-::: task
-Write alt text for the scatter plot.
-:::
 :::
 
 ::: {.column width="50%"}
@@ -267,6 +278,12 @@ Scatter plots are among the more difficult graphs to describe, especially if the
 -   Focus on the overall trend
 -   If it's necessary to be more specific, convert the data into an accessible table
 :::
+:::
+
+## Writing the alt text
+
+::: task
+Write alt text for the scatter plot.
 :::
 
 ```{=html}
@@ -588,12 +605,6 @@ Find a colorblind friendly color palette other than viridis and those in the ggt
 -   Use a font that has been tested for accessibility (e.g., [Atkinson Hyperlegible](https://fonts.google.com/specimen/Atkinson+Hyperlegible))
 
 -   Keep plot labels and annotations similarly sized as the rest of your text (e.g., `ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))`)
-
-. . .
-
-::: task
-Demo: Using custom fonts in ggplots!
-:::
 
 ##  {.center}
 
