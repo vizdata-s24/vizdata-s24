@@ -359,8 +359,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link active" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a></li>
+  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/vizdata-s24/vizdata-s24/edit/main/hw/hw-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vizdata-s24/vizdata-s24/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -412,8 +422,9 @@ Note
 <p>Up until the deadline, it doesn’t matter how many times these checks fail. Just make sure by the end the badge is green.</p>
 </div>
 </div>
-<ol type="1">
-<li><p><strong>Du Bois challenge.</strong> Recreate the following visualization by W.E.B. Du Bois on family budgets split by income classes for 150 families in Atlanta, Georgia. This visualization was originally created using ink and watercolors.</p>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<p><strong>Du Bois challenge.</strong> Recreate the following visualization by W.E.B. Du Bois on family budgets split by income classes for 150 families in Atlanta, Georgia. This visualization was originally created using ink and watercolors.</p>
 <p><img src="images/income-expenditures-orig.jpg" class="img-fluid"></p>
 <p>Notes for recreation:</p>
 <ul>
@@ -422,14 +433,19 @@ Note
 <li><p>It is also ok if your y-axis isn’t a table like the one shown on the plot, but you want to make sure you do have the income ranges styled as closely as possible to the plot.</p></li>
 <li><p>To change the background of the plot to match the background of the original visualization, look for an image of a “parchment paper” on a free image site like Pixabay (<a href="https://pixabay.com/">https://pixabay.com</a>) and place the image file in your <code>images/</code> folder and the image in the background of the plot.</p></li>
 <li><p>You are welcomed to use the steps outlined in <code>ae-07</code> to recreate this, but you do not have to. You can do it all in one step as well. Note that the steps contain good hints though, so if you’re struggling, make sure to look there first.</p></li>
-</ul></li>
-<li><p><strong>COVID survey - interpret.</strong> A survey was conducted on the attitudes and opinions towards COVID-19 vaccination held by medical and nursing students across the US. The data were collected by Pavan Shah, Giorgio Caturegli, Galen Shi, and Joshua Materi at Johns Hopkins School of Medicine. Huge thanks to Giorgio Caturegli for sharing the data with us! The following visualization was created based on the survey results.</p>
+</ul>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<p><strong>COVID survey - interpret.</strong> A survey was conducted on the attitudes and opinions towards COVID-19 vaccination held by medical and nursing students across the US. The data were collected by Pavan Shah, Giorgio Caturegli, Galen Shi, and Joshua Materi at Johns Hopkins School of Medicine. Huge thanks to Giorgio Caturegli for sharing the data with us! The following visualization was created based on the survey results.</p>
 <p>Each facet in the visualization represents a response-explanatory variable combination. The response variables are in the columns and the explanatory variables are in the rows of the grid. For each response variable the survey takers indicated their level of agreement with the given statement. The responses were on a Likert scale: 1 - Strongly Agree, 2 - Somewhat Agree , 3 - Neither Agree Nor Disagree, 4 - Somewhat Disagree, 5 - Strongly Disagree.</p>
 <p>Within each facet the data are represented with points (indicating the mean Likert score) and error bars spanning from 10th to 90th percentiles of the values of the response variable for each level of the explanatory variable. The first row is the only exception to this. This row of panes is noted as “All”, meaning that the it’s the distribution of each of the response variables without conditioning on any of the explanatory variables.</p>
 <p>Your task for this question is to take a close look at this plot and interpret it. There is a lot going on here, which is customary for plots that go into scientific publications – they tend to be very information dense, for better or worse… As you interpret it, discuss if there are any results that agree or disagree with your intuition. There is a lot you can say, but we don’t need you to be exhaustive. Please provide three concrete examples.</p>
-<p><img src="images/plot-10-90-1.png" class="img-fluid"></p></li>
-<li><p><strong>COVID survey - reconstruct.</strong> In this exercise you will reconstruct the plot provided in Exercise 2. You can find the raw data in <code>data/survey.csv</code>. Additional information on the survey can be found in <code>data/covid_survey.pdf</code>.</p></li>
-</ol>
+<p><img src="images/plot-10-90-1.png" class="img-fluid"></p>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<p><strong>COVID survey - reconstruct.</strong> In this exercise you will reconstruct the plot provided in Exercise 2. You can find the raw data in <code>data/survey.csv</code>. Additional information on the survey can be found in <code>data/covid_survey.pdf</code>.</p>
 <ul>
 <li><p>Load the data using <code>read_csv()</code>. View the result and decide if any rows on top need to be <code>skip</code>ped. If so, reload again with the <code>skip</code> argument. Print the dimensions of the resulting data frame with <code>dim()</code>.</p></li>
 <li><p>Next, you’ll do a bit of data cleanup. Eliminate any rows where <strong>all</strong> values aside from <code>response_id</code> are missing; these do not contain any useful information. <em>Hint:</em> There are many ways you can do this. One succinct way is using a combination of <code>filter()</code> and <code>if_any()</code> or <code>if_all()</code>. But feel free to use whatever works for your intuition, just make sure you’re only eliminating rows where <strong>all</strong> values (not <em>any</em> values!) aside from <code>response_id</code> are missing. Print the dimensions of the resulting data frame with <code>dim()</code>.</p></li>
@@ -555,17 +571,22 @@ We provide you with the code for this task, you need to run the code and confirm
 <li>Don’t worry about matching the exact color for the background of the facet labels. But, if you want to match, the color is <code>gray90</code>.</li>
 </ul></li>
 </ul>
-<ol start="4" type="1">
-<li><p><strong>COVID survey - re-reconstruct.</strong> One way to evaluate if there’s anything misleading in the following plot would be to reconstruct it using quartiles different than the 10th and the 90th percentile. Repeating as little of the code you developed so far as possible, reconstruct the same plot where the ends of the error bars are the 25th and 75th percentiles of the distributions of each of the response variables conditioned on the levels of each of the explanatory variables. How does this plot compare to the plot you constructed in Exercise 2? Does it change any of your conclusions about the data? Explain your reasoning.</p></li>
-<li><p><strong>COVID survey - another view.</strong> Create two bar charts of the Likert data for the six survey questions in from the plot in Exercise 2. This should be a single plot visualizing the percentages of each possible answer, with different questions on the y-axis. Use an appropriate color scale.</p>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<p><strong>COVID survey - re-reconstruct.</strong> One way to evaluate if there’s anything misleading in the following plot would be to reconstruct it using quartiles different than the 10th and the 90th percentile. Repeating as little of the code you developed so far as possible, reconstruct the same plot where the ends of the error bars are the 25th and 75th percentiles of the distributions of each of the response variables conditioned on the levels of each of the explanatory variables. How does this plot compare to the plot you constructed in Exercise 2? Does it change any of your conclusions about the data? Explain your reasoning.</p>
+</section>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<p><strong>COVID survey - another view.</strong> Create two bar charts of the Likert data for the six survey questions in from the plot in Exercise 2. This should be a single plot visualizing the percentages of each possible answer, with different questions on the y-axis. Use an appropriate color scale.</p>
 <ol type="a">
 <li><p>Create a diverging bar chart. Write alt text for your visualization as well.</p></li>
 <li><p>Create a 100% bar chart. Write alt text for your visualization as well.</p></li>
 <li><p>Comment on how the two charts from parts (a) and (b) compare with regards to comparability.</p></li>
-</ol></li>
 </ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1119,7 +1140,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/vizdata-s24/vizdata-s24/edit/main/hw/hw-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vizdata-s24/vizdata-s24/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vizdata-s24/vizdata-s24/edit/main/hw/hw-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vizdata-s24/vizdata-s24/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with 💛 and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
