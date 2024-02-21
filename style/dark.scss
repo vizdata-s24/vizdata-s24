@@ -53,3 +53,8 @@ $input-bg: #242424;
 #quarto-content > #quarto-sidebar-glass {
   padding-top: 0px;
 }
+
+p pre code:not(.sourceCode), li pre code:not(.sourceCode), pre code:not(.sourceCode) {
+    background-color: initial;
+    color: #f8f8f2;
+}
