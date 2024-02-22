@@ -193,7 +193,7 @@
     "href": "slides/10/10-pres-ready-plots-I.html#setup",
     "title": "Presentation ready plots I",
     "section": "Setup",
-    "text": "Setup\n\n# load packages\nlibrary(countdown)\nlibrary(tidyverse)\nlibrary(ggrepel)\nlibrary(patchwork)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))\n\n# no plot sizing defaults for this slide deck"
+    "text": "Setup\n\n# load packages\nlibrary(countdown)\nlibrary(tidyverse)\nlibrary(ggrepel)\nlibrary(patchwork)\nlibrary(tidytext)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))\n\n# no plot sizing defaults for this slide deck"
   },
   {
     "objectID": "slides/10/10-pres-ready-plots-I.html#multiple-ways-of-telling-a-story",
@@ -410,7 +410,98 @@
     "href": "slides/10/10-pres-ready-plots-I.html#want-to-replicate-something-you-saw-in-my-slides",
     "title": "Presentation ready plots I",
     "section": "Want to replicate something you saw in my slides?",
-    "text": "Want to replicate something you saw in my slides?\n\nLook into the source code at https://github.com/vizdata-s24/vizdata-s24/tree/main/slides.\n\n\n\n\n🔗 vizdata.org"
+    "text": "Want to replicate something you saw in my slides?\n\nLook into the source code at https://github.com/vizdata-s24/vizdata-s24/tree/main/slides."
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#opinion-pieces-from-the-chronicle",
+    "href": "slides/10/10-pres-ready-plots-I.html#opinion-pieces-from-the-chronicle",
+    "title": "Presentation ready plots I",
+    "section": "Opinion pieces from The Chronicle",
+    "text": "Opinion pieces from The Chronicle\n\nchronicle &lt;- read_csv(\"data/chronicle.csv\")\n\nRows: 500 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (5): title, author, abstract, column, url\ndate (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nchronicle\n\n# A tibble: 500 × 6\n   title                                 author date       abstract column url  \n   &lt;chr&gt;                                 &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;\n 1 All the world’s a stage               Anna … 2024-02-22 If we a… STUDE… http…\n 2 Words that matter: For Alexei Navalny Carol… 2024-02-22 In some… STUDE… http…\n 3 Which would you save: Friend or roma… Jess … 2024-02-22 Love sh… STUDE… http…\n 4 Happiness is not what you’re looking… Paul … 2024-02-21 We hing… STUDE… http…\n 5 Closing Duke's Herbarium: A fear of … Matth… 2024-02-21 Without… LETTE… http…\n 6 CS Majors launch 'ambiguous and labe… Monda… 2024-02-20 Unlike … STUDE… http…\n 7 The fear of being single              Heidi… 2024-02-20 But it … STUDE… http…\n 8 Save the Duke Herbarium               Henry… 2024-02-17 The Duk… LETTE… http…\n 9 What Duke can learn from retiring ex… Rober… 2024-02-17 In Duke… GUEST… http…\n10 Love, love                            Gabri… 2024-02-16 Somehow… STUDE… http…\n# ℹ 490 more rows"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-1",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-1",
+    "title": "Presentation ready plots I",
+    "section": "Step 1",
+    "text": "Step 1\n\n\nchronicle_to_plot &lt;- chronicle |&gt;\n  tidytext::unnest_tokens(word, abstract) |&gt;\n  anti_join(tidytext::stop_words) |&gt;\n  left_join(tidytext::get_sentiments(\"afinn\")) |&gt; \n  group_by(author, title) |&gt;\n  summarize(total_sentiment = sum(value, na.rm = TRUE), .groups = \"drop\") |&gt;\n  group_by(author) |&gt;\n  summarize(\n    n_articles = n(),\n    avg_sentiment = mean(total_sentiment, na.rm = TRUE),\n  ) |&gt;\n  filter(n_articles &gt; 1 & !is.na(author)) |&gt;\n  arrange(desc(avg_sentiment)) |&gt;\n  slice(c(1:10, 49:58)) |&gt;\n  mutate(\n    author = fct_reorder(author, avg_sentiment),\n    neg_pos = if_else(avg_sentiment &lt; 0, \"neg\", \"pos\"),\n    label_position = if_else(neg_pos == \"neg\", 0.25, -0.25)\n  )\n\n\nJoining with `by = join_by(word)`\nJoining with `by = join_by(word)`\n\nchronicle_to_plot\n\n# A tibble: 20 × 5\n   author                  n_articles avg_sentiment neg_pos label_position\n   &lt;fct&gt;                        &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;\n 1 Alex Berkman                     2          5.5  pos              -0.25\n 2 Amy Unell                        2          4    pos              -0.25\n 3 Gabrielle Mollin                 2          2.5  pos              -0.25\n 4 Miranda Straubel                 2          2.5  pos              -0.25\n 5 Anna Sorensen                    4          2.25 pos              -0.25\n 6 Monday Monday                   17          1.53 pos              -0.25\n 7 Duke Climate Coalition           2          1.5  pos              -0.25\n 8 Susan Chemmanoor                 6          1.5  pos              -0.25\n 9 Jess Jiang                       5          1.4  pos              -0.25\n10 Angikar Ghosal                   9          1.33 pos              -0.25\n11 Viktoria Wulff-Andersen          7         -1    neg               0.25\n12 Pilar Kelly                      9         -1.22 neg               0.25\n13 Billy Cao                        5         -1.4  neg               0.25\n14 Valerie Tan                     11         -1.45 neg               0.25\n15 Dan Reznichenko                  3         -1.67 neg               0.25\n16 Matthew Arakaky                  3         -1.67 neg               0.25\n17 Sydney Brown                     2         -2    neg               0.25\n18 Spencer Chang                    3         -2.33 neg               0.25\n19 Ayesham Khan                     2         -4    neg               0.25\n20 Carol Apollonio                  3         -4    neg               0.25"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-2",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-2",
+    "title": "Presentation ready plots I",
+    "section": "Step 2",
+    "text": "Step 2\n\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col()"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-3",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-3",
+    "title": "Presentation ready plots I",
+    "section": "Step 3",
+    "text": "Step 3\n\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col(aes(fill = neg_pos))"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-4",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-4",
+    "title": "Presentation ready plots I",
+    "section": "Step 4",
+    "text": "Step 4\n\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col(aes(fill = neg_pos), show.legend = FALSE)"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-5",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-5",
+    "title": "Presentation ready plots I",
+    "section": "Step 5",
+    "text": "Step 5\n\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col(aes(fill = neg_pos), show.legend = FALSE) +\n  scale_fill_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\"))"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-6",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-6",
+    "title": "Presentation ready plots I",
+    "section": "Step 6",
+    "text": "Step 6\n\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col(aes(fill = neg_pos), show.legend = FALSE) +\n  geom_text(\n    aes(x = label_position, label = author, color = neg_pos),\n    hjust = c(rep(1,10), rep(0, 10)),\n    show.legend = FALSE,\n    fontface = \"bold\"\n  ) +\n  scale_fill_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\")) +\n  scale_color_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\"))"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-7",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-7",
+    "title": "Presentation ready plots I",
+    "section": "Step 7",
+    "text": "Step 7\n\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col(aes(fill = neg_pos), show.legend = FALSE) +\n  geom_text(\n    aes(x = label_position, label = author, color = neg_pos),\n    hjust = c(rep(1,10), rep(0, 10)),\n    show.legend = FALSE,\n    fontface = \"bold\"\n  ) +\n  geom_text(\n    aes(label = round(avg_sentiment, 1)),\n    hjust = c(rep(1.25,10), rep(-0.25, 10)),\n    color = \"white\",\n    fontface = \"bold\"\n  ) +\n  scale_fill_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\")) +\n  scale_color_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\"))"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-8",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-8",
+    "title": "Presentation ready plots I",
+    "section": "Step 8",
+    "text": "Step 8\n\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col(aes(fill = neg_pos), show.legend = FALSE) +\n  geom_text(\n    aes(x = label_position, label = author, color = neg_pos),\n    hjust = c(rep(1,10), rep(0, 10)),\n    show.legend = FALSE,\n    fontface = \"bold\"\n  ) +\n  geom_text(\n    aes(label = round(avg_sentiment, 1)),\n    hjust = c(rep(1.25,10), rep(-0.25, 10)),\n    color = \"white\",\n    fontface = \"bold\"\n  ) +\n  scale_fill_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\")) +\n  scale_color_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\")) +\n  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +\n  scale_y_discrete(breaks = NULL) +\n  coord_cartesian(xlim = c(-5, 5))"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-9",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-9",
+    "title": "Presentation ready plots I",
+    "section": "Step 9",
+    "text": "Step 9\n\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col(aes(fill = neg_pos), show.legend = FALSE) +\n  geom_text(\n    aes(x = label_position, label = author, color = neg_pos),\n    hjust = c(rep(1,10), rep(0, 10)),\n    show.legend = FALSE,\n    fontface = \"bold\"\n  ) +\n  geom_text(\n    aes(label = round(avg_sentiment, 1)),\n    hjust = c(rep(1.25,10), rep(-0.25, 10)),\n    color = \"white\",\n    fontface = \"bold\"\n  ) +\n  scale_fill_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\")) +\n  scale_color_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\")) +\n  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +\n  scale_y_discrete(breaks = NULL) +\n  coord_cartesian(xlim = c(-5, 5)) +\n  labs(\n    x = \"negative  ←     Average sentiment score (AFINN)     →  positive\",\n    y = NULL,\n    title = \"The Chronicle - Opinion pieces\\nAverage sentiment scores of abstracts by author\",\n    subtitle = \"Top 10 average positive and negative scores\",\n    caption = \"Source: Data scraped from The Chronicle on Feb 21, 2024\"\n  )"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-10",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-10",
+    "title": "Presentation ready plots I",
+    "section": "Step 10",
+    "text": "Step 10\n\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col(aes(fill = neg_pos), show.legend = FALSE) +\n  geom_text(\n    aes(x = label_position, label = author, color = neg_pos),\n    hjust = c(rep(1,10), rep(0, 10)),\n    show.legend = FALSE,\n    fontface = \"bold\"\n  ) +\n  geom_text(\n    aes(label = round(avg_sentiment, 1)),\n    hjust = c(rep(1.25,10), rep(-0.25, 10)),\n    color = \"white\",\n    fontface = \"bold\"\n  ) +\n  scale_fill_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\")) +\n  scale_color_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\")) +\n  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +\n  scale_y_discrete(breaks = NULL) +\n  coord_cartesian(xlim = c(-5, 5)) +\n  labs(\n    x = \"negative  ←     Average sentiment score (AFINN)     →  positive\",\n    y = NULL,\n    title = \"The Chronicle - Opinion pieces\\nAverage sentiment scores of abstracts by author\",\n    subtitle = \"Top 10 average positive and negative scores\",\n    caption = \"Source: Data scraped from The Chronicle on Feb 21, 2024\"\n  ) +\n  theme_void(base_size = 16) +\n  theme(\n    plot.title = element_text(hjust = 0.5),\n    plot.subtitle = element_text(hjust = 0.5, margin = unit(c(0.5, 0, 1, 0), \"lines\")),\n    axis.text.y = element_blank(),\n    plot.caption = element_text(color = \"gray30\")\n  )"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-11",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-11",
+    "title": "Presentation ready plots I",
+    "section": "Step 11",
+    "text": "Step 11\n\n```{r}\n#| output-location: slide\n#| fig-width: 8\n#| fig-asp: 0.75\n#| fig-align: center\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col(aes(fill = neg_pos), show.legend = FALSE) +\n  geom_text(\n    aes(x = label_position, label = author, color = neg_pos),\n    hjust = c(rep(1,10), rep(0, 10)),\n    show.legend = FALSE,\n    fontface = \"bold\"\n  ) +\n  geom_text(\n    aes(label = round(avg_sentiment, 1)),\n    hjust = c(rep(1.25,10), rep(-0.25, 10)),\n    color = \"white\",\n    fontface = \"bold\"\n  ) +\n  scale_fill_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\")) +\n  scale_color_manual(values = c(\"neg\" = \"#4d4009\", \"pos\" = \"#FF4B91\")) +\n  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +\n  scale_y_discrete(breaks = NULL) +\n  coord_cartesian(xlim = c(-5, 5)) +\n  labs(\n    x = \"negative  ←     Average sentiment score (AFINN)     →  positive\",\n    y = NULL,\n    title = \"The Chronicle - Opinion pieces\\nAverage sentiment scores of abstracts by author\",\n    subtitle = \"Top 10 average positive and negative scores\",\n    caption = \"Source: Data scraped from The Chronicle on Feb 21, 2024\"\n  ) +\n  theme_void(base_size = 16) +\n  theme(\n    plot.title = element_text(hjust = 0.5),\n    plot.subtitle = element_text(hjust = 0.5, margin = unit(c(0.5, 0, 1, 0), \"lines\")),\n    axis.text.y = element_blank(),\n    plot.caption = element_text(color = \"gray30\")\n  )\n```\n\n\n\n\n\n\n🔗 vizdata.org"
+  },
+  {
+    "objectID": "slides/10/10-pres-ready-plots-I.html#step-11-output",
+    "href": "slides/10/10-pres-ready-plots-I.html#step-11-output",
+    "title": "Presentation ready plots I",
+    "section": "Step 11",
+    "text": "Step 11"
   },
   {
     "objectID": "slides/04/04-wrangling-tidying-II.html#check-in",

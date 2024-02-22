@@ -435,11 +435,12 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-4"><a></a><span class="fu">library</span>(ggrepel)</span>
 <span id="cb1-5"><a></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a><span class="co"># set theme for ggplot2</span></span>
-<span id="cb1-8"><a></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>))</span>
-<span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a><span class="co"># no plot sizing defaults for this slide deck</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb1-7"><a></a></span>
+<span id="cb1-8"><a></a><span class="co"># set theme for ggplot2</span></span>
+<span id="cb1-9"><a></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>))</span>
+<span id="cb1-10"><a></a></span>
+<span id="cb1-11"><a></a><span class="co"># no plot sizing defaults for this slide deck</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -934,6 +935,405 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <h2>Want to replicate something you saw in my slides?</h2>
 <p><br></p>
 <p>Look into the source code at <a href="https://github.com/vizdata-s24/vizdata-s24/tree/main/slides" class="uri">https://github.com/vizdata-s24/vizdata-s24/tree/main/slides</a>.</p>
+</section></section>
+<section>
+<section id="take-a-sad-plot-and-make-it-better" class="title-slide slide level1 center">
+<h1>Take a sad plot, and make it better</h1>
+
+</section>
+<section id="opinion-pieces-from-the-chronicle" class="slide level2">
+<h2>Opinion pieces from The Chronicle</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>chronicle <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/chronicle.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 500 Columns: 6
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (5): title, author, abstract, column, url
+date (1): date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>chronicle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 500 × 6
+   title                                 author date       abstract column url  
+   &lt;chr&gt;                                 &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;
+ 1 All the world’s a stage               Anna … 2024-02-22 If we a… STUDE… http…
+ 2 Words that matter: For Alexei Navalny Carol… 2024-02-22 In some… STUDE… http…
+ 3 Which would you save: Friend or roma… Jess … 2024-02-22 Love sh… STUDE… http…
+ 4 Happiness is not what you’re looking… Paul … 2024-02-21 We hing… STUDE… http…
+ 5 Closing Duke's Herbarium: A fear of … Matth… 2024-02-21 Without… LETTE… http…
+ 6 CS Majors launch 'ambiguous and labe… Monda… 2024-02-20 Unlike … STUDE… http…
+ 7 The fear of being single              Heidi… 2024-02-20 But it … STUDE… http…
+ 8 Save the Duke Herbarium               Henry… 2024-02-17 The Duk… LETTE… http…
+ 9 What Duke can learn from retiring ex… Rober… 2024-02-17 In Duke… GUEST… http…
+10 Love, love                            Gabri… 2024-02-16 Somehow… STUDE… http…
+# ℹ 490 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="step-1" class="slide level2 smaller">
+<h2>Step 1</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>chronicle_to_plot <span class="ot">&lt;-</span> chronicle <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a></a>  tidytext<span class="sc">::</span><span class="fu">unnest_tokens</span>(word, abstract) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a></a>  <span class="fu">anti_join</span>(tidytext<span class="sc">::</span>stop_words) <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a></a>  <span class="fu">left_join</span>(tidytext<span class="sc">::</span><span class="fu">get_sentiments</span>(<span class="st">"afinn"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb17-5"><a></a>  <span class="fu">group_by</span>(author, title) <span class="sc">|&gt;</span></span>
+<span id="cb17-6"><a></a>  <span class="fu">summarize</span>(<span class="at">total_sentiment =</span> <span class="fu">sum</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-7"><a></a>  <span class="fu">group_by</span>(author) <span class="sc">|&gt;</span></span>
+<span id="cb17-8"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb17-9"><a></a>    <span class="at">n_articles =</span> <span class="fu">n</span>(),</span>
+<span id="cb17-10"><a></a>    <span class="at">avg_sentiment =</span> <span class="fu">mean</span>(total_sentiment, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-11"><a></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb17-12"><a></a>  <span class="fu">filter</span>(n_articles <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(author)) <span class="sc">|&gt;</span></span>
+<span id="cb17-13"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_sentiment)) <span class="sc">|&gt;</span></span>
+<span id="cb17-14"><a></a>  <span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">49</span><span class="sc">:</span><span class="dv">58</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb17-15"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb17-16"><a></a>    <span class="at">author =</span> <span class="fu">fct_reorder</span>(author, avg_sentiment),</span>
+<span id="cb17-17"><a></a>    <span class="at">neg_pos =</span> <span class="fu">if_else</span>(avg_sentiment <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"neg"</span>, <span class="st">"pos"</span>),</span>
+<span id="cb17-18"><a></a>    <span class="at">label_position =</span> <span class="fu">if_else</span>(neg_pos <span class="sc">==</span> <span class="st">"neg"</span>, <span class="fl">0.25</span>, <span class="sc">-</span><span class="fl">0.25</span>)</span>
+<span id="cb17-19"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(word)`
+Joining with `by = join_by(word)`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>chronicle_to_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 5
+   author                  n_articles avg_sentiment neg_pos label_position
+   &lt;fct&gt;                        &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+ 1 Alex Berkman                     2          5.5  pos              -0.25
+ 2 Amy Unell                        2          4    pos              -0.25
+ 3 Gabrielle Mollin                 2          2.5  pos              -0.25
+ 4 Miranda Straubel                 2          2.5  pos              -0.25
+ 5 Anna Sorensen                    4          2.25 pos              -0.25
+ 6 Monday Monday                   17          1.53 pos              -0.25
+ 7 Duke Climate Coalition           2          1.5  pos              -0.25
+ 8 Susan Chemmanoor                 6          1.5  pos              -0.25
+ 9 Jess Jiang                       5          1.4  pos              -0.25
+10 Angikar Ghosal                   9          1.33 pos              -0.25
+11 Viktoria Wulff-Andersen          7         -1    neg               0.25
+12 Pilar Kelly                      9         -1.22 neg               0.25
+13 Billy Cao                        5         -1.4  neg               0.25
+14 Valerie Tan                     11         -1.45 neg               0.25
+15 Dan Reznichenko                  3         -1.67 neg               0.25
+16 Matthew Arakaky                  3         -1.67 neg               0.25
+17 Sydney Brown                     2         -2    neg               0.25
+18 Spencer Chang                    3         -2.33 neg               0.25
+19 Ayesham Khan                     2         -4    neg               0.25
+20 Carol Apollonio                  3         -4    neg               0.25</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2" class="slide level2 smaller">
+<h2>Step 2</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>chronicle_to_plot <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> author, <span class="at">x =</span> avg_sentiment)) <span class="sc">+</span></span>
+<span id="cb21-3"><a></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="10-pres-ready-plots-I_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3" class="slide level2 smaller">
+<h2>Step 3</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>chronicle_to_plot <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> author, <span class="at">x =</span> avg_sentiment)) <span class="sc">+</span></span>
+<span id="cb22-3"><a></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> neg_pos))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="10-pres-ready-plots-I_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4" class="slide level2 smaller">
+<h2>Step 4</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>chronicle_to_plot <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> author, <span class="at">x =</span> avg_sentiment)) <span class="sc">+</span></span>
+<span id="cb23-3"><a></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> neg_pos), <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="10-pres-ready-plots-I_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-5" class="slide level2 smaller">
+<h2>Step 5</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>chronicle_to_plot <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> author, <span class="at">x =</span> avg_sentiment)) <span class="sc">+</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> neg_pos), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb24-4"><a></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"neg"</span> <span class="ot">=</span> <span class="st">"#4d4009"</span>, <span class="st">"pos"</span> <span class="ot">=</span> <span class="st">"#FF4B91"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="10-pres-ready-plots-I_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-6" class="slide level2 smaller">
+<h2>Step 6</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>chronicle_to_plot <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> author, <span class="at">x =</span> avg_sentiment)) <span class="sc">+</span></span>
+<span id="cb25-3"><a></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> neg_pos), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb25-4"><a></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb25-5"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> label_position, <span class="at">label =</span> author, <span class="at">color =</span> neg_pos),</span>
+<span id="cb25-6"><a></a>    <span class="at">hjust =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>)),</span>
+<span id="cb25-7"><a></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb25-8"><a></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb25-9"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb25-10"><a></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"neg"</span> <span class="ot">=</span> <span class="st">"#4d4009"</span>, <span class="st">"pos"</span> <span class="ot">=</span> <span class="st">"#FF4B91"</span>)) <span class="sc">+</span></span>
+<span id="cb25-11"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"neg"</span> <span class="ot">=</span> <span class="st">"#4d4009"</span>, <span class="st">"pos"</span> <span class="ot">=</span> <span class="st">"#FF4B91"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="10-pres-ready-plots-I_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-7" class="slide level2 smaller">
+<h2>Step 7</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>chronicle_to_plot <span class="sc">|&gt;</span></span>
+<span id="cb26-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> author, <span class="at">x =</span> avg_sentiment)) <span class="sc">+</span></span>
+<span id="cb26-3"><a></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> neg_pos), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb26-4"><a></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb26-5"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> label_position, <span class="at">label =</span> author, <span class="at">color =</span> neg_pos),</span>
+<span id="cb26-6"><a></a>    <span class="at">hjust =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>)),</span>
+<span id="cb26-7"><a></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb26-8"><a></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb26-9"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb26-10"><a></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb26-11"><a></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(avg_sentiment, <span class="dv">1</span>)),</span>
+<span id="cb26-12"><a></a>    <span class="at">hjust =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fl">1.25</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="sc">-</span><span class="fl">0.25</span>, <span class="dv">10</span>)),</span>
+<span id="cb26-13"><a></a>    <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb26-14"><a></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb26-15"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb26-16"><a></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"neg"</span> <span class="ot">=</span> <span class="st">"#4d4009"</span>, <span class="st">"pos"</span> <span class="ot">=</span> <span class="st">"#FF4B91"</span>)) <span class="sc">+</span></span>
+<span id="cb26-17"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"neg"</span> <span class="ot">=</span> <span class="st">"#4d4009"</span>, <span class="st">"pos"</span> <span class="ot">=</span> <span class="st">"#FF4B91"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="10-pres-ready-plots-I_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-8" class="slide level2 smaller">
+<h2>Step 8</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>chronicle_to_plot <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> author, <span class="at">x =</span> avg_sentiment)) <span class="sc">+</span></span>
+<span id="cb27-3"><a></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> neg_pos), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb27-4"><a></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb27-5"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> label_position, <span class="at">label =</span> author, <span class="at">color =</span> neg_pos),</span>
+<span id="cb27-6"><a></a>    <span class="at">hjust =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>)),</span>
+<span id="cb27-7"><a></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb27-8"><a></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb27-9"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb27-10"><a></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb27-11"><a></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(avg_sentiment, <span class="dv">1</span>)),</span>
+<span id="cb27-12"><a></a>    <span class="at">hjust =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fl">1.25</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="sc">-</span><span class="fl">0.25</span>, <span class="dv">10</span>)),</span>
+<span id="cb27-13"><a></a>    <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb27-14"><a></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb27-15"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb27-16"><a></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"neg"</span> <span class="ot">=</span> <span class="st">"#4d4009"</span>, <span class="st">"pos"</span> <span class="ot">=</span> <span class="st">"#FF4B91"</span>)) <span class="sc">+</span></span>
+<span id="cb27-17"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"neg"</span> <span class="ot">=</span> <span class="st">"#4d4009"</span>, <span class="st">"pos"</span> <span class="ot">=</span> <span class="st">"#FF4B91"</span>)) <span class="sc">+</span></span>
+<span id="cb27-18"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">minor_breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb27-19"><a></a>  <span class="fu">scale_y_discrete</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb27-20"><a></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="10-pres-ready-plots-I_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-9" class="slide level2 smaller">
+<h2>Step 9</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>chronicle_to_plot <span class="sc">|&gt;</span></span>
+<span id="cb28-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> author, <span class="at">x =</span> avg_sentiment)) <span class="sc">+</span></span>
+<span id="cb28-3"><a></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> neg_pos), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb28-4"><a></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb28-5"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> label_position, <span class="at">label =</span> author, <span class="at">color =</span> neg_pos),</span>
+<span id="cb28-6"><a></a>    <span class="at">hjust =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>)),</span>
+<span id="cb28-7"><a></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb28-8"><a></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb28-9"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb28-10"><a></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb28-11"><a></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(avg_sentiment, <span class="dv">1</span>)),</span>
+<span id="cb28-12"><a></a>    <span class="at">hjust =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fl">1.25</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="sc">-</span><span class="fl">0.25</span>, <span class="dv">10</span>)),</span>
+<span id="cb28-13"><a></a>    <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb28-14"><a></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb28-15"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb28-16"><a></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"neg"</span> <span class="ot">=</span> <span class="st">"#4d4009"</span>, <span class="st">"pos"</span> <span class="ot">=</span> <span class="st">"#FF4B91"</span>)) <span class="sc">+</span></span>
+<span id="cb28-17"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"neg"</span> <span class="ot">=</span> <span class="st">"#4d4009"</span>, <span class="st">"pos"</span> <span class="ot">=</span> <span class="st">"#FF4B91"</span>)) <span class="sc">+</span></span>
+<span id="cb28-18"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">minor_breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb28-19"><a></a>  <span class="fu">scale_y_discrete</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb28-20"><a></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>)) <span class="sc">+</span></span>
+<span id="cb28-21"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-22"><a></a>    <span class="at">x =</span> <span class="st">"negative  ←     Average sentiment score (AFINN)     →  positive"</span>,</span>
+<span id="cb28-23"><a></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb28-24"><a></a>    <span class="at">title =</span> <span class="st">"The Chronicle - Opinion pieces</span><span class="sc">\n</span><span class="st">Average sentiment scores of abstracts by author"</span>,</span>
+<span id="cb28-25"><a></a>    <span class="at">subtitle =</span> <span class="st">"Top 10 average positive and negative scores"</span>,</span>
+<span id="cb28-26"><a></a>    <span class="at">caption =</span> <span class="st">"Source: Data scraped from The Chronicle on Feb 21, 2024"</span></span>
+<span id="cb28-27"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="10-pres-ready-plots-I_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-10" class="slide level2 smaller">
+<h2>Step 10</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>chronicle_to_plot <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> author, <span class="at">x =</span> avg_sentiment)) <span class="sc">+</span></span>
+<span id="cb29-3"><a></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> neg_pos), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb29-4"><a></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb29-5"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> label_position, <span class="at">label =</span> author, <span class="at">color =</span> neg_pos),</span>
+<span id="cb29-6"><a></a>    <span class="at">hjust =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>)),</span>
+<span id="cb29-7"><a></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb29-8"><a></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb29-9"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb29-10"><a></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb29-11"><a></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(avg_sentiment, <span class="dv">1</span>)),</span>
+<span id="cb29-12"><a></a>    <span class="at">hjust =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fl">1.25</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="sc">-</span><span class="fl">0.25</span>, <span class="dv">10</span>)),</span>
+<span id="cb29-13"><a></a>    <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb29-14"><a></a>    <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb29-15"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb29-16"><a></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"neg"</span> <span class="ot">=</span> <span class="st">"#4d4009"</span>, <span class="st">"pos"</span> <span class="ot">=</span> <span class="st">"#FF4B91"</span>)) <span class="sc">+</span></span>
+<span id="cb29-17"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"neg"</span> <span class="ot">=</span> <span class="st">"#4d4009"</span>, <span class="st">"pos"</span> <span class="ot">=</span> <span class="st">"#FF4B91"</span>)) <span class="sc">+</span></span>
+<span id="cb29-18"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">minor_breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb29-19"><a></a>  <span class="fu">scale_y_discrete</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb29-20"><a></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>)) <span class="sc">+</span></span>
+<span id="cb29-21"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb29-22"><a></a>    <span class="at">x =</span> <span class="st">"negative  ←     Average sentiment score (AFINN)     →  positive"</span>,</span>
+<span id="cb29-23"><a></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb29-24"><a></a>    <span class="at">title =</span> <span class="st">"The Chronicle - Opinion pieces</span><span class="sc">\n</span><span class="st">Average sentiment scores of abstracts by author"</span>,</span>
+<span id="cb29-25"><a></a>    <span class="at">subtitle =</span> <span class="st">"Top 10 average positive and negative scores"</span>,</span>
+<span id="cb29-26"><a></a>    <span class="at">caption =</span> <span class="st">"Source: Data scraped from The Chronicle on Feb 21, 2024"</span></span>
+<span id="cb29-27"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb29-28"><a></a>  <span class="fu">theme_void</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb29-29"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb29-30"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb29-31"><a></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">margin =</span> <span class="fu">unit</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>), <span class="st">"lines"</span>)),</span>
+<span id="cb29-32"><a></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb29-33"><a></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"gray30"</span>)</span>
+<span id="cb29-34"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="10-pres-ready-plots-I_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-11" class="slide level2 smaller">
+<h2>Step 11</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb30-2"><a></a><span class="in">#| output-location: slide</span></span>
+<span id="cb30-3"><a></a><span class="in">#| fig-width: 8</span></span>
+<span id="cb30-4"><a></a><span class="in">#| fig-asp: 0.75</span></span>
+<span id="cb30-5"><a></a><span class="in">#| fig-align: center</span></span>
+<span id="cb30-6"><a></a></span>
+<span id="cb30-7"><a></a><span class="in">chronicle_to_plot |&gt;</span></span>
+<span id="cb30-8"><a></a><span class="in">  ggplot(aes(y = author, x = avg_sentiment)) +</span></span>
+<span id="cb30-9"><a></a><span class="in">  geom_col(aes(fill = neg_pos), show.legend = FALSE) +</span></span>
+<span id="cb30-10"><a></a><span class="in">  geom_text(</span></span>
+<span id="cb30-11"><a></a><span class="in">    aes(x = label_position, label = author, color = neg_pos),</span></span>
+<span id="cb30-12"><a></a><span class="in">    hjust = c(rep(1,10), rep(0, 10)),</span></span>
+<span id="cb30-13"><a></a><span class="in">    show.legend = FALSE,</span></span>
+<span id="cb30-14"><a></a><span class="in">    fontface = "bold"</span></span>
+<span id="cb30-15"><a></a><span class="in">  ) +</span></span>
+<span id="cb30-16"><a></a><span class="in">  geom_text(</span></span>
+<span id="cb30-17"><a></a><span class="in">    aes(label = round(avg_sentiment, 1)),</span></span>
+<span id="cb30-18"><a></a><span class="in">    hjust = c(rep(1.25,10), rep(-0.25, 10)),</span></span>
+<span id="cb30-19"><a></a><span class="in">    color = "white",</span></span>
+<span id="cb30-20"><a></a><span class="in">    fontface = "bold"</span></span>
+<span id="cb30-21"><a></a><span class="in">  ) +</span></span>
+<span id="cb30-22"><a></a><span class="in">  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +</span></span>
+<span id="cb30-23"><a></a><span class="in">  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +</span></span>
+<span id="cb30-24"><a></a><span class="in">  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +</span></span>
+<span id="cb30-25"><a></a><span class="in">  scale_y_discrete(breaks = NULL) +</span></span>
+<span id="cb30-26"><a></a><span class="in">  coord_cartesian(xlim = c(-5, 5)) +</span></span>
+<span id="cb30-27"><a></a><span class="in">  labs(</span></span>
+<span id="cb30-28"><a></a><span class="in">    x = "negative  ←     Average sentiment score (AFINN)     →  positive",</span></span>
+<span id="cb30-29"><a></a><span class="in">    y = NULL,</span></span>
+<span id="cb30-30"><a></a><span class="in">    title = "The Chronicle - Opinion pieces\nAverage sentiment scores of abstracts by author",</span></span>
+<span id="cb30-31"><a></a><span class="in">    subtitle = "Top 10 average positive and negative scores",</span></span>
+<span id="cb30-32"><a></a><span class="in">    caption = "Source: Data scraped from The Chronicle on Feb 21, 2024"</span></span>
+<span id="cb30-33"><a></a><span class="in">  ) +</span></span>
+<span id="cb30-34"><a></a><span class="in">  theme_void(base_size = 16) +</span></span>
+<span id="cb30-35"><a></a><span class="in">  theme(</span></span>
+<span id="cb30-36"><a></a><span class="in">    plot.title = element_text(hjust = 0.5),</span></span>
+<span id="cb30-37"><a></a><span class="in">    plot.subtitle = element_text(hjust = 0.5, margin = unit(c(0.5, 0, 1, 0), "lines")),</span></span>
+<span id="cb30-38"><a></a><span class="in">    axis.text.y = element_blank(),</span></span>
+<span id="cb30-39"><a></a><span class="in">    plot.caption = element_text(color = "gray30")</span></span>
+<span id="cb30-40"><a></a><span class="in">  )</span></span>
+<span id="cb30-41"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
 
 <div class="quarto-auto-generated-content">
 <p><img src="../logo.png" class="slide-logo"></p>
@@ -941,7 +1341,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <p><a href="https://vizdata.org/">🔗 vizdata.org</a></p>
 </div>
 </div>
-</section></section>
+</section><section id="step-11-output" class="slide level2 smaller output-location-slide"><h2>Step 11</h2><div class="cell output-location-slide" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="10-pres-ready-plots-I_files/figure-revealjs/unnamed-chunk-31-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
+</figure>
+</div>
+</div>
+</div></section></section>
     </div>
   </div>
 
