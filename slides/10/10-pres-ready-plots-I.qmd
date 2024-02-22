@@ -27,6 +27,7 @@ library(countdown)
 library(tidyverse)
 library(ggrepel)
 library(patchwork)
+library(tidytext)
 
 # set theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
@@ -472,3 +473,270 @@ Learn more at [https://patchwork.data-imaginist.com](https://patchwork.data-imag
 <br>
 
 Look into the source code at <https://github.com/vizdata-s24/vizdata-s24/tree/main/slides>.
+
+# Take a sad plot, and make it better
+
+## Opinion pieces from The Chronicle
+
+```{r}
+chronicle <- read_csv("data/chronicle.csv")
+chronicle
+```
+
+## Step 1 {.smaller}
+
+```{r}
+#| output-location: column-fragment
+
+chronicle_to_plot <- chronicle |>
+  tidytext::unnest_tokens(word, abstract) |>
+  anti_join(tidytext::stop_words) |>
+  left_join(tidytext::get_sentiments("afinn")) |> 
+  group_by(author, title) |>
+  summarize(total_sentiment = sum(value, na.rm = TRUE), .groups = "drop") |>
+  group_by(author) |>
+  summarize(
+    n_articles = n(),
+    avg_sentiment = mean(total_sentiment, na.rm = TRUE),
+  ) |>
+  filter(n_articles > 1 & !is.na(author)) |>
+  arrange(desc(avg_sentiment)) |>
+  slice(c(1:10, 49:58)) |>
+  mutate(
+    author = fct_reorder(author, avg_sentiment),
+    neg_pos = if_else(avg_sentiment < 0, "neg", "pos"),
+    label_position = if_else(neg_pos == "neg", 0.25, -0.25)
+  )
+
+chronicle_to_plot
+```
+
+## Step 2 {.smaller}
+
+```{r}
+#| output-location: column-fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col()
+```
+
+## Step 3 {.smaller}
+
+```{r}
+#| output-location: column-fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos))
+```
+
+## Step 4 {.smaller}
+
+```{r}
+#| output-location: column-fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE)
+```
+
+## Step 5 {.smaller}
+
+```{r}
+#| output-location: column-fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91"))
+```
+
+## Step 6 {.smaller}
+
+```{r}
+#| output-location: column-fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91"))
+```
+
+## Step 7 {.smaller}
+
+```{r}
+#| output-location: column-fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  geom_text(
+    aes(label = round(avg_sentiment, 1)),
+    hjust = c(rep(1.25,10), rep(-0.25, 10)),
+    color = "white",
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91"))
+```
+
+## Step 8 {.smaller}
+
+```{r}
+#| output-location: column-fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  geom_text(
+    aes(label = round(avg_sentiment, 1)),
+    hjust = c(rep(1.25,10), rep(-0.25, 10)),
+    color = "white",
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +
+  scale_y_discrete(breaks = NULL) +
+  coord_cartesian(xlim = c(-5, 5))
+```
+
+## Step 9 {.smaller}
+
+```{r}
+#| output-location: column-fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  geom_text(
+    aes(label = round(avg_sentiment, 1)),
+    hjust = c(rep(1.25,10), rep(-0.25, 10)),
+    color = "white",
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +
+  scale_y_discrete(breaks = NULL) +
+  coord_cartesian(xlim = c(-5, 5)) +
+  labs(
+    x = "negative  ←     Average sentiment score (AFINN)     →  positive",
+    y = NULL,
+    title = "The Chronicle - Opinion pieces\nAverage sentiment scores of abstracts by author",
+    subtitle = "Top 10 average positive and negative scores",
+    caption = "Source: Data scraped from The Chronicle on Feb 21, 2024"
+  )
+```
+
+## Step 10 {.smaller}
+
+```{r}
+#| output-location: column-fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  geom_text(
+    aes(label = round(avg_sentiment, 1)),
+    hjust = c(rep(1.25,10), rep(-0.25, 10)),
+    color = "white",
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +
+  scale_y_discrete(breaks = NULL) +
+  coord_cartesian(xlim = c(-5, 5)) +
+  labs(
+    x = "negative  ←     Average sentiment score (AFINN)     →  positive",
+    y = NULL,
+    title = "The Chronicle - Opinion pieces\nAverage sentiment scores of abstracts by author",
+    subtitle = "Top 10 average positive and negative scores",
+    caption = "Source: Data scraped from The Chronicle on Feb 21, 2024"
+  ) +
+  theme_void(base_size = 16) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5, margin = unit(c(0.5, 0, 1, 0), "lines")),
+    axis.text.y = element_blank(),
+    plot.caption = element_text(color = "gray30")
+  )
+```
+
+## Step 11 {.smaller}
+
+```{r}
+#| echo: fenced
+#| output-location: slide
+#| fig-width: 8
+#| fig-asp: 0.75
+#| fig-align: center
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  geom_text(
+    aes(label = round(avg_sentiment, 1)),
+    hjust = c(rep(1.25,10), rep(-0.25, 10)),
+    color = "white",
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +
+  scale_y_discrete(breaks = NULL) +
+  coord_cartesian(xlim = c(-5, 5)) +
+  labs(
+    x = "negative  ←     Average sentiment score (AFINN)     →  positive",
+    y = NULL,
+    title = "The Chronicle - Opinion pieces\nAverage sentiment scores of abstracts by author",
+    subtitle = "Top 10 average positive and negative scores",
+    caption = "Source: Data scraped from The Chronicle on Feb 21, 2024"
+  ) +
+  theme_void(base_size = 16) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5, margin = unit(c(0.5, 0, 1, 0), "lines")),
+    axis.text.y = element_blank(),
+    plot.caption = element_text(color = "gray30")
+  )
+```
