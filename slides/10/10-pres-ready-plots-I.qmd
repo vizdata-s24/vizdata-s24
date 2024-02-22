@@ -544,8 +544,7 @@ chronicle_to_plot
 
 ## Step 2 {.smaller}
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## Plot
 
 ```{r}
@@ -565,7 +564,6 @@ How would you improve this visualization?
 ```{=html}
 <iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
 ```
-
 :::
 
 ## Step 3 {.smaller}
