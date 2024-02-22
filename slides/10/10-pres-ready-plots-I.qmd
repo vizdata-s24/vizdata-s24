@@ -28,9 +28,11 @@ library(tidyverse)
 library(ggrepel)
 library(patchwork)
 library(tidytext)
+library(hrbrthemes)
+library(scales)
 
 # set theme for ggplot2
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
 
 # no plot sizing defaults for this slide deck
 ```
@@ -80,14 +82,15 @@ ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
 ## Keep it simple
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="40%"}
 ![](images/pie.jpg)
 :::
 
-::: {.column width="50%"}
+::: {.column width="60%"}
 ```{r}
 #| echo: false
-#| out-width: "100%"
+#| fig-width: 6
+#| fig-asp: 0.618
 
 d <- tribble(
   ~category,                     ~value,
@@ -106,11 +109,11 @@ ggplot(d, aes(y = fct_reorder(category, value), x = value)) +
 
 ## Judging relative area
 
-![](images/pie-areas.png){fig-align="center" width="900"}
+![](images/pie-areas.png){fig-align="center" width="800"}
 
 . . .
 
-![](images/bar-areas.png){fig-align="center" width="900"}
+![](images/bar-areas.png){fig-align="center" width="800"}
 
 ::: aside
 From Data to Viz caveat collection - [The issue with pie chart](https://www.data-to-viz.com/caveat/pie.html)
@@ -124,7 +127,8 @@ From Data to Viz caveat collection - [The issue with pie chart](https://www.data
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
-#| out-width: "100%"
+#| fig-width: 6
+#| fig-asp: 0.618
 
 d |>
   mutate(category = str_replace(category, " ", "\n")) |>
@@ -138,9 +142,12 @@ d |>
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
-#| out-width: "100%"
+#| fig-width: 6
+#| fig-asp: 0.618
 
-ggplot(d, aes(y = fct_reorder(category, value), x = value, fill = category)) +
+d |>
+  mutate(category = str_replace(category, " ", "\n")) |>
+  ggplot(aes(y = fct_reorder(category, value), x = value, fill = category)) +
   geom_col() +
   labs(x = NULL, y = NULL) +
   scale_fill_manual(values = c("red", rep("gray", 4))) +
@@ -226,26 +233,46 @@ http://www.storytellingwithdata.com/2012/09/some-finer-points-of-data-visualizat
 :::
 
 ::: aside
-*Credit*: Angela Zoss and Eric Monson, Duke DVS
+Credit: Angela Zoss and Eric Monson, Duke DVS
 :::
 
 ## Annotate figures
 
-![](images/annotate.png){fig-align="center"}
+```{r}
+#| echo: false
+#| message: false
+#| fig-width: 7
+#| fig-asp: 0.5
+#| out-width: "100%"
+
+# Load dataset from github
+ts_data <- read_delim("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered.csv", delim = " ")
+
+# plot
+ ggplot(ts_data, aes(x = date, y = value)) +
+   geom_hline(yintercept = 5000, color = "orange", linewidth = 1, linetype = "dotted") +
+   annotate(
+     geom = "point", 
+     x = ymd("2017-12-17"), y = 20089, size = 10, shape = 21, 
+     fill = "transparent", color = "orange", stroke = 1
+   ) +
+   geom_line(color = "#69b3a2") +
+   annotate(
+     geom = "text", x = ymd("2017-07-01"), y = 20089,
+     label = "Bitcoin price reached 20k $\nat the end of 2017",
+     hjust = 1,
+     color = "gray20"
+   ) +
+   scale_y_continuous(limits = c(0, 22000), labels = label_dollar(scale = 1/1000, suffix = "K")) +
+   theme_ipsum() +
+   labs(x = "Date", y = "Bitcoin price (in $)", title = "Bitcoin price over time")
+```
 
 ::: aside
-https://bl.ocks.org/susielu/23dc3082669ee026c552b85081d90976
+Inspiration: <https://r-graph-gallery.com/line_chart_annotation.html>
 :::
 
 # Project workflow overview
-
-## First, some AInspiration
-
-<br><br>
-
-::: task
-Visualize the data at [\[url\]](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-21/bob_ross.csv) using ggplot2.
-:::
 
 ## Demo {.smaller}
 
@@ -476,9 +503,11 @@ Look into the source code at <https://github.com/vizdata-s24/vizdata-s24/tree/ma
 
 # Take a sad plot, and make it better
 
-## Opinion pieces from The Chronicle
+## Opinion pieces from The Chronicle {.smaller}
 
 ```{r}
+#| message: false
+
 chronicle <- read_csv("data/chronicle.csv")
 chronicle
 ```
@@ -486,7 +515,8 @@ chronicle
 ## Step 1 {.smaller}
 
 ```{r}
-#| output-location: column-fragment
+#| output-location: slide
+#| code-line-numbers: "|2-4|5-11|12|13-14|15-19"
 
 chronicle_to_plot <- chronicle |>
   tidytext::unnest_tokens(word, abstract) |>
@@ -514,7 +544,7 @@ chronicle_to_plot
 ## Step 2 {.smaller}
 
 ```{r}
-#| output-location: column-fragment
+#| output-location: fragment
 
 chronicle_to_plot |>
   ggplot(aes(y = author, x = avg_sentiment)) +
@@ -524,7 +554,7 @@ chronicle_to_plot |>
 ## Step 3 {.smaller}
 
 ```{r}
-#| output-location: column-fragment
+#| output-location: fragment
 
 chronicle_to_plot |>
   ggplot(aes(y = author, x = avg_sentiment)) +
@@ -534,7 +564,7 @@ chronicle_to_plot |>
 ## Step 4 {.smaller}
 
 ```{r}
-#| output-location: column-fragment
+#| output-location: fragment
 
 chronicle_to_plot |>
   ggplot(aes(y = author, x = avg_sentiment)) +
@@ -544,7 +574,7 @@ chronicle_to_plot |>
 ## Step 5 {.smaller}
 
 ```{r}
-#| output-location: column-fragment
+#| output-location: fragment
 
 chronicle_to_plot |>
   ggplot(aes(y = author, x = avg_sentiment)) +
@@ -555,7 +585,7 @@ chronicle_to_plot |>
 ## Step 6 {.smaller}
 
 ```{r}
-#| output-location: column-fragment
+#| output-location: slide
 
 chronicle_to_plot |>
   ggplot(aes(y = author, x = avg_sentiment)) +
@@ -573,7 +603,7 @@ chronicle_to_plot |>
 ## Step 7 {.smaller}
 
 ```{r}
-#| output-location: column-fragment
+#| output-location: slide
 
 chronicle_to_plot |>
   ggplot(aes(y = author, x = avg_sentiment)) +
@@ -597,7 +627,7 @@ chronicle_to_plot |>
 ## Step 8 {.smaller}
 
 ```{r}
-#| output-location: column-fragment
+#| output-location: slide
 
 chronicle_to_plot |>
   ggplot(aes(y = author, x = avg_sentiment)) +
@@ -624,7 +654,7 @@ chronicle_to_plot |>
 ## Step 9 {.smaller}
 
 ```{r}
-#| output-location: column-fragment
+#| output-location: slide
 
 chronicle_to_plot |>
   ggplot(aes(y = author, x = avg_sentiment)) +
@@ -658,7 +688,7 @@ chronicle_to_plot |>
 ## Step 10 {.smaller}
 
 ```{r}
-#| output-location: column-fragment
+#| output-location: slide
 
 chronicle_to_plot |>
   ggplot(aes(y = author, x = avg_sentiment)) +
@@ -701,6 +731,7 @@ chronicle_to_plot |>
 ```{r}
 #| echo: fenced
 #| output-location: slide
+#| code-line-numbers: "|4-6"
 #| fig-width: 8
 #| fig-asp: 0.75
 #| fig-align: center
