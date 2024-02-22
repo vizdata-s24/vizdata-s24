@@ -186,7 +186,7 @@
     "href": "slides/10/10-pres-ready-plots-I.html#announcements",
     "title": "Presentation ready plots I",
     "section": "Announcements",
-    "text": "Announcements\n\n…"
+    "text": "Announcements\n\nHW 3 is posted, not due till after project but get started early!\nProject 1 due next Wednesday"
   },
   {
     "objectID": "slides/10/10-pres-ready-plots-I.html#setup",
@@ -431,7 +431,7 @@
     "href": "slides/10/10-pres-ready-plots-I.html#step-2",
     "title": "Presentation ready plots I",
     "section": "Step 2",
-    "text": "Step 2\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col()"
+    "text": "Step 2\n\nPlotQuestion\n\n\n\nchronicle_to_plot |&gt;\n  ggplot(aes(y = author, x = avg_sentiment)) +\n  geom_col()\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow would you improve this visualization?"
   },
   {
     "objectID": "slides/10/10-pres-ready-plots-I.html#step-3",
