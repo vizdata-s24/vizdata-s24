@@ -14,7 +14,8 @@ editor_options:
 
 ## Announcements {.smaller}
 
--   ...
+-   HW 3 is posted, not due till after project but get started early!
+-   Project 1 due next Wednesday
 
 ## Setup
 
@@ -543,6 +544,10 @@ chronicle_to_plot
 
 ## Step 2 {.smaller}
 
+::: {.panel-tabset}
+
+## Plot
+
 ```{r}
 #| output-location: fragment
 
@@ -550,6 +555,18 @@ chronicle_to_plot |>
   ggplot(aes(y = author, x = avg_sentiment)) +
   geom_col()
 ```
+
+## Question
+
+::: task
+How would you improve this visualization?
+:::
+
+```{=html}
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
+```
+
+:::
 
 ## Step 3 {.smaller}
 
