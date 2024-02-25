@@ -15,6 +15,7 @@ editor_options:
 ## Announcements {.smaller}
 
 -   HW 3 is posted, not due till after project but get started early!
+-   RQ 3 is due next Tuesday
 -   Project 1 due next Wednesday
 
 ## Setup
