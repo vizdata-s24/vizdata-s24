@@ -186,14 +186,14 @@
     "href": "slides/10/10-pres-ready-plots-I.html#announcements",
     "title": "Presentation ready plots I",
     "section": "Announcements",
-    "text": "Announcements\n\nHW 3 is posted, not due till after project but get started early!\nProject 1 due next Wednesday"
+    "text": "Announcements\n\nHW 3 is posted, not due till after project but get started early!\nRQ 3 is due next Tuesday\nProject 1 due next Wednesday"
   },
   {
     "objectID": "slides/10/10-pres-ready-plots-I.html#setup",
     "href": "slides/10/10-pres-ready-plots-I.html#setup",
     "title": "Presentation ready plots I",
     "section": "Setup",
-    "text": "Setup\n\n# load packages\nlibrary(countdown)\nlibrary(tidyverse)\nlibrary(ggrepel)\nlibrary(patchwork)\nlibrary(tidytext)\nlibrary(hrbrthemes)\nlibrary(scales)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# no plot sizing defaults for this slide deck"
+    "text": "Setup\n\n# load packages\nlibrary(countdown)\nlibrary(tidyverse)\nlibrary(ggrepel)\nlibrary(patchwork)\nlibrary(tidytext)\nlibrary(hrbrthemes)\nlibrary(scales)\nlibrary(textdata)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# no plot sizing defaults for this slide deck"
   },
   {
     "objectID": "slides/10/10-pres-ready-plots-I.html#multiple-ways-of-telling-a-story",
