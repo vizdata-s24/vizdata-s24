@@ -1,0 +1,300 @@
+---
+title: Visualizing Likert data I
+subtitle: Lecture 11
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+editor_options: 
+  chunk_output_type: console
+---
+
+# Warm up
+
+## Announcements {.smaller}
+
+-   Project presentations tomorrow 👀
+
+## Setup
+
+```{r}
+#| label: setup
+#| message: false
+
+# load packages
+library(tidyverse)
+library(waffle)
+library(ggthemes)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7, # 7" width
+  fig.asp = 0.618, # the golden ratio
+  fig.retina = 3, # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300 # higher dpi, sharper image
+)
+```
+
+# 2020 Durham City and County Resident Survey
+
+## The survey
+
+![](images/durham-survey.png){fig-align="center" width="400"}
+
+## Sample survey questions I
+
+![](images/services.png){fig-align="center" width="800"}
+
+## Sample survey questions II
+
+![](images/safety.png){fig-align="center" width="800"}
+
+## Sample survey questions III
+
+![](images/demographics.png){fig-align="center" width="800"}
+
+## Raw data
+
+```{r}
+#| label: load-raw-data
+#| message: false
+
+durham_raw <- read_csv("data/durham-2020-raw.csv")
+```
+
+```{r}
+#| label: glimpse-raw-data
+
+glimpse(durham_raw)
+```
+
+## Processed data
+
+```{r}
+#| label: load-processed-data
+#| message: false
+
+durham <- read_csv("data/durham-2020.csv")
+```
+
+```{r}
+#| label: glimpse-processed-data
+
+glimpse(durham)
+```
+
+## Strategies for cleaning survey data {.smaller}
+
+-   `janitor::clean_names()`
+-   `select()` with `contains()`, `starts_with()`, etc.
+-   `mutate()` with `case_match()`, e.g.,
+
+```{r}
+#| eval: false
+
+durham_raw |>
+  mutate(
+    primary_language = case_match(
+      primary_language,
+      1 ~ "English",
+      2 ~ "Spanish",
+      3 ~ "Other"
+    )
+  )
+```
+
+-   Update variable names by writing variable names to a file, opening that file in a spreadsheet or plain text editor to write updated names, and then reading back in and updating the names.
+
+# Visualizing categorical data
+
+## Language
+
+::: {.callout-note appearance="minimal" icon="false"}
+What is the primary language used in your household?
+:::
+
+```{r}
+durham |> distinct(primary_language)
+```
+
+. . .
+
+```{r}
+durham <- durham |>
+  mutate(
+    primary_language = fct_relevel(primary_language, "English", "Spanish", "Other")
+  )
+```
+
+## Bar chart {.smaller}
+
+```{r}
+durham |>
+  filter(!is.na(primary_language)) |>
+  ggplot(aes(x = primary_language)) +
+  geom_bar()
+```
+
+## Pie chart
+
+```{r}
+#| label: pie-chart
+#| output-location: slide
+
+durham |>
+  filter(!is.na(primary_language)) |>
+  count(primary_language) |>
+  ggplot(aes(x = 1, y = n, fill = primary_language)) +
+  geom_col(linewidth = 0.5, color = "white") +
+  coord_polar("y") +
+  scale_fill_tableau() +
+  labs(fill = "Primary language") +
+  theme_void(base_size = 16) +
+  theme(legend.position = "top")
+```
+
+## Waffle chart
+
+Using [**waffle**](https://github.com/hrbrmstr/waffle):
+
+```{r}
+#| label: waffle-chart
+#| output-location: slide
+#| fig-asp: 0.5
+
+durham |>
+  filter(!is.na(primary_language)) |>
+  count(primary_language) |>
+  ggplot(aes(fill = primary_language, values = n)) +
+  geom_waffle(n_rows = 20, size = 0.33, color = "white") +
+  scale_fill_tableau() +
+  labs(fill = "Primary language") +
+  theme_enhance_waffle() +
+  theme(legend.position = "top")
+```
+
+## Proportional waffle chart
+
+::: columns
+::: {.column width="40%"}
+Waffles work best when they are square -- makes it easier to compare parts to whole which is the purpose of the chart
+
+::: task
+But what happened to "Other"?
+:::
+:::
+
+::: {.column width="60%"}
+```{r}
+#| label: waffle-chart-proportional
+#| echo: false
+#| fig-width: 4
+
+durham |>
+  filter(!is.na(primary_language)) |>
+  count(primary_language) |>
+  ggplot(aes(fill = primary_language, values = n)) +
+  geom_waffle(
+    n_rows = 10, size = 0.33, 
+    color = "white", flip = TRUE, make_proportional = TRUE
+  ) +
+  labs(fill = str_wrap("What is the primary language used in your household?", 30)) +
+  scale_fill_tableau() +
+  coord_equal() +
+  theme_void() + 
+  theme_enhance_waffle()
+```
+:::
+:::
+
+## Proportional waffle chart
+
+```{r}
+#| ref.label: waffle-chart-proportional
+#| fig-show: hide
+```
+
+## Proportional waffle chart, take 2
+
+With a bit of fudging...
+
+```{r}
+#| label: waffle-chart-proportional-2
+#| echo: false
+#| fig-width: 4
+
+durham |>
+  filter(!is.na(primary_language)) |>
+  count(primary_language) |>
+  mutate(
+    prop = n / sum(n),
+    n_norm = 100 * prop,
+    n_norm = ceiling(n_norm),
+    n_norm = if_else(primary_language == "English", 96, n_norm)
+  ) |>
+  ggplot(aes(fill = primary_language, values = n_norm)) +
+  geom_waffle(
+    n_rows = 10, size = 1,
+    color = "white", flip = TRUE, make_proportional = TRUE
+  ) +
+  labs(fill = str_wrap("What is the primary language used in your household?", 30)) +
+  scale_fill_tableau() +
+  coord_equal() +
+  theme_void() +
+  theme_enhance_waffle()
+```
+
+## Proportional waffle chart, take 2
+
+```{r}
+#| ref.label: waffle-chart-proportional-2
+#| fig-show: hide
+```
+
+# Visualizing Likert data
+
+## Quality
+
+```{r}
+durham |>
+  select(contains("_3_")) |>
+  glimpse()
+```
+
+## Overall quality of services
+
+A very rough starting point:
+
+```{r}
+#| echo: false
+#| fig-width: 7
+#| fig-asp: 0.5
+
+durham |>
+  select(contains("_3_")) |>
+  pivot_longer(
+    cols = everything(),
+    names_to = "question", 
+    values_to = "response",
+    values_transform = as.character
+  ) |>
+  ggplot(aes(y = question)) +
+  geom_bar(aes(fill = fct_rev(response))) +
+  scale_fill_viridis_d(na.value = "gray") +
+  labs(
+    title = "Overall quality of services", 
+    fill = "Response", 
+    y = "Number of Reponses"
+  )
+```
+
+## Let's improve!
+
+::: task
+Go to `ae-08` to pick up where we left off.
+:::
