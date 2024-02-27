@@ -564,7 +564,7 @@
     "href": "slides/11/11-likert-I.html#from-quiz-2",
     "title": "Visualizing Likert data I",
     "section": "From quiz",
-    "text": "From quiz\n\n\ngeom_text():\n\nstart_time &lt;- Sys.time()\np_geom_text &lt;- p +\n  geom_text(\n    aes(\n      x = 25000, y = 300, \n      label = \"High debt-to-income ratio\"\n    ), \n    size = 8, hjust = 0, color = \"red\"\n  ) +\n  labs(title = \"geom_text()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.003137827 secs\n\n\n\nannotate():\n\nstart_time &lt;- Sys.time()\np_annotate &lt;- p +\n  annotate(\n    geom = \"text\", x = 25000, y = 300, \n    label = \"High debt-to-income ratio\", \n    size = 8, hjust = 0,  color = \"red\"\n  ) +\n  labs(title = \"annotate()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.002314091 secs"
+    "text": "From quiz\n\n\ngeom_text():\n\nstart_time &lt;- Sys.time()\np_geom_text &lt;- p +\n  geom_text(\n    aes(\n      x = 25000, y = 300, \n      label = \"High debt-to-income ratio\"\n    ), \n    size = 8, hjust = 0, color = \"red\"\n  ) +\n  labs(title = \"geom_text()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.002963066 secs\n\n\n\nannotate():\n\nstart_time &lt;- Sys.time()\np_annotate &lt;- p +\n  annotate(\n    geom = \"text\", x = 25000, y = 300, \n    label = \"High debt-to-income ratio\", \n    size = 8, hjust = 0,  color = \"red\"\n  ) +\n  labs(title = \"annotate()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.002156019 secs"
   },
   {
     "objectID": "slides/11/11-likert-I.html#from-quiz-3",
@@ -718,7 +718,7 @@
     "href": "slides/11/11-likert-I.html#lets-improve",
     "title": "Visualizing Likert data I",
     "section": "Let’s improve!",
-    "text": "Let’s improve!\n\nGo to ae-08 to pick up where we left off.\n\n\n\n\n\n🔗 vizdata.org"
+    "text": "Let’s improve!\n\nGo to ae-08 to pick up where we left off and continue improving.\n\n\n\nStep 1:\n\n\nStep 2:\n\n\n\n\n\n\n\n🔗 vizdata.org"
   },
   {
     "objectID": "slides/08/08-web-du-bois.html#announcements",
