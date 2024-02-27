@@ -53,8 +53,7 @@ You add some text annotation to the plot using two methods: `geom_text()` and `a
 
 ## From quiz {.smaller}
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
 `geom_text()`:
 
@@ -90,8 +89,7 @@ end_time <- Sys.time()
 end_time - start_time
 ```
 :::
-
-::::
+:::
 
 ## From quiz
 
@@ -386,5 +384,19 @@ durham |>
 ## Let's improve!
 
 ::: task
-Go to `ae-08` to pick up where we left off.
+Go to `ae-08` to pick up where we left off and continue improving.
+:::
+
+::: columns
+::: {.column width="50%"}
+Step 1:
+
+![](images/likert-100-step-1.png)
+:::
+
+::: {.column width="50%"}
+Step 2:
+
+![](images/likert-100-step-2.png)
+:::
 :::
