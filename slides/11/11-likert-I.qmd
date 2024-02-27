@@ -12,9 +12,99 @@ editor_options:
 
 # Warm up
 
-## Announcements {.smaller}
+## Announcements
 
 -   Project presentations tomorrow 👀
+
+## From quiz {.smaller}
+
+```{r}
+#| echo: false
+#| message: false
+
+library(tidyverse)
+library(openintro)
+library(patchwork)
+
+set.seed(1234)
+loans_5000 <- loans_full_schema |>
+  filter(
+    annual_income < 200000,
+    !is.na(annual_income),
+    !is.na(debt_to_income)
+    ) |>
+  slice_sample(n = 5000)
+```
+
+Suppose you have the following plot of `r nrow(loans_5000)` loans, with loans given to borrowers with high debt to income ratios highlighted in red.
+
+```{r}
+p <- ggplot(loans_5000, aes(x = annual_income, y = debt_to_income)) +
+  geom_point() +
+  geom_point(data = loans_5000 |> filter(debt_to_income > 150), color = "red") +
+  theme_minimal()
+
+p
+```
+
+## From quiz
+
+You add some text annotation to the plot using two methods: `geom_text()` and `annotate()`. You also record how long it takes to run the code required to generate the annotated plots.
+
+## From quiz {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+`geom_text()`:
+
+```{r}
+start_time <- Sys.time()
+p_geom_text <- p +
+  geom_text(
+    aes(
+      x = 25000, y = 300, 
+      label = "High debt-to-income ratio"
+    ), 
+    size = 8, hjust = 0, color = "red"
+  ) +
+  labs(title = "geom_text()")
+end_time <- Sys.time()
+end_time - start_time
+```
+:::
+
+::: {.column width="50%"}
+`annotate()`:
+
+```{r}
+start_time <- Sys.time()
+p_annotate <- p +
+  annotate(
+    geom = "text", x = 25000, y = 300, 
+    label = "High debt-to-income ratio", 
+    size = 8, hjust = 0,  color = "red"
+  ) +
+  labs(title = "annotate()")
+end_time <- Sys.time()
+end_time - start_time
+```
+:::
+
+::::
+
+## From quiz
+
+These two plots can be seen below:
+
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-asp: 0.4
+#| fig-width: 8
+
+p_geom_text + p_annotate
+```
 
 ## Setup
 
