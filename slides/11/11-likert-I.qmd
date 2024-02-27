@@ -15,6 +15,7 @@ editor_options:
 ## Announcements
 
 -   Project presentations tomorrow 👀
+-   Before we analyze some Likert data, submit your own on the Campus Culture Survey – UG participation is very low, help lift it up!
 
 ## From quiz {.smaller}
 
