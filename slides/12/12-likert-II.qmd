@@ -1,0 +1,103 @@
+---
+title: Visualizing Likert data II
+subtitle: Lecture 12
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+editor_options: 
+  chunk_output_type: console
+---
+
+# Warm up
+
+## Announcements
+
+-   Complete your within team peer evaluations by 5 pm today
+-   HW 3 is due Thursday at 5 pm
+
+## Setup
+
+```{r}
+#| label: setup
+#| message: false
+
+# load packages
+library(tidyverse)
+library(ggthemes)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7, # 7" width
+  fig.asp = 0.618, # the golden ratio
+  fig.retina = 3, # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300 # higher dpi, sharper image
+)
+```
+
+# Visualizing Likert data
+
+## Continue improvements
+
+::: task
+Go to `ae-08` to pick up where we left off and continue improving.
+:::
+
+::: columns
+::: {.column width="50%"}
+Step 1:
+
+![](images/likert-100-step-1.png)
+:::
+
+::: {.column width="50%"}
+Step 2:
+
+![](images/likert-100-step-2.png)
+:::
+:::
+
+## Considerations
+
+::: task
+What have you learned from the reading about these considerations?
+
+-   Diverging charts
+
+-   100% charts
+
+-   `NA`s vs. neutrals/neithers
+:::
+
+## Diverging bar charts
+
+vs. 100% bar charts
+
+::: columns
+::: {.column width="50%"}
+![](images/movies-divergent.png)
+:::
+
+::: {.column width="50%"}
+![](images/movies-100.png)
+:::
+:::
+
+## Let's make a divergent bar chart
+
+::: task
+Go to `ae-08` and add a divergent bar chart.
+:::
+
+## Comparison
+
+![](images/full-180306_divergent19.png){width="609"}
+
+::: aside
+Source: <https://blog.datawrapper.de/divergingbars/>
+:::
