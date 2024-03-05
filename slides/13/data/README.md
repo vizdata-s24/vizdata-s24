@@ -1,0 +1,3 @@
+- freedom-2022: Freedom house
+- us_state_vaccinations: Our World in Data - https://ourworldindata.org/us-states-vaccinations
+- us-election-2020: National Archives - https://www.archives.gov/electoral-college/2020
