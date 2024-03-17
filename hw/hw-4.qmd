@@ -31,6 +31,10 @@ Up until the deadline, it doesn't matter how many times these checks fail. Just 
 
 **New York state of mind.** In the remainder of this assignment you’ll work with data on population change from 2021 to 2022 in counties of New York state.
 
+::: callout-caution
+Each of the following questions ask you to reproduce a plot. You must use ggplot2 and start with the data provided. You may not use screenshots of the figures provided, in part or in full, as part of your solution.
+:::
+
 ## Question 2
 
 **New York state of counties.** Using the **tigris** package, download the shapefile for counties in the state of New York (NY) for year 2021. Cache the code chunk where this action is done so the shapefile isn’t downloaded each time you render. Then, in a separate code chunk, plot thee county boundaries and label them. The word “County” should be omitted from the labels to keep them shorter, appropriate labels should be used, including a caption that mentions the data source, and the figure should be sized such that all labels are visible.
