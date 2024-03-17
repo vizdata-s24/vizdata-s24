@@ -1,6 +1,73 @@
 ---
 title: "HW 4"
-subtitle: "TBA"
+subtitle: "___"
 ---
 
-To be posted.
+For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk. Use a short and informative label. For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title. For any exercise where you’re including a description and/or interpretation, use full sentences. Make a commit at least after finishing each exercise, or better yet, more frequently. Push your work regularly to GitHub. Once you’re done, inspect your GitHub repo to make sure you've pushed all of your changes.
+
+::: callout-note
+Your homework repositories are set up to run a GitHub action every time you push to the repository checking for (1) any files that shouldn't be in your repository or that should be in a specific folder in your repository and (2) whether your Quarto document renders.
+
+![](images/badge-fail.svg){fig-align="left" style="float: left;" width="122" height="14"}
+
+If either of these checks fail, you'll see a red badge on your repository README and you'll get an email saying "check assignment" action has failed.
+
+![](images/badge-pass.svg){fig-align="left" style="float: left;" width="122" height="14"}
+
+If they pass, you'll see a green badge on your repository README and you won't get an email saying.
+
+Up until the deadline, it doesn't matter how many times these checks fail. Just make sure by the end the badge is green.
+:::
+
+## Question 1
+
+**A second chance.** Take one of the visualizations from your first project, ideally one you received more feedback on / lost more points on and improve it. First, write one sentence reminding us of your project and a a few sentences on why you chose this plot and how you plan to improve it. Some of these improvements might be "fixes" for things that were pointed out as missing or incorrect. Some of them might be things you hoped to do before the project deadline, but didn't get a chance to. And some might be things you wanted to do in your project but your teammates didn't agree so you gave up on at the time. Some notes for completing this assignment:
+
+-   You will need to add your data from your project to the `data/` folder in this assignment. You do not need to also add the data dictionary.
+-   You will need to copy over any code needed for cleaning / preparing your data for this plot. You can reuse code from your project but note that we will re-evaluate your code as part of the grading for this exercise. This means we might catch something wrong with it that we didn't catch before, so if you spot any errors make sure to fix them.
+-   Don't worry about being critical of your own work. Even if you lost no points on the plot, if you think it can be improved, articulate how / why.We will not go back and penalize for any mistakes you might point out that we didn't catch at the time of grading your project. There's no risk to being critical!
+
+------------------------------------------------------------------------
+
+**New York state of mind.** In the remainder of this assignment you’ll work with data on population change from 2021 to 2022 in counties of New York state.
+
+## Question 2
+
+**New York state of counties.** Using the **tigris** package, download the shapefile for counties in the state of New York (NY) for year 2021. Cache the code chunk where this action is done so the shapefile isn’t downloaded each time you render. Then, in a separate code chunk, plot thee county boundaries and label them. The word “County” should be omitted from the labels to keep them shorter, appropriate labels should be used, including a caption that mentions the data source, and the figure should be sized such that all labels are visible.
+
+**Hint:** When downloading the shape file, set `progress_bar = FALSE` so that the progress bar isn’t printed in your rendered document.
+
+<img src="images/plot-ny-counties-1.png" style="width:100.0%"/>
+
+## Question 3
+
+**New York state of population change.** TL;DR: Reproduce the figure below. But you’re going to want to read more…
+
+Next, fill in the color of the counties based on total population change from 2021 to 2022 using a *diverging* `RdBu` color palette. In order to do this, you will need to merge in the Excel file called `co-est2022-comp-36.xlsx` from your `data` folder to the shape file you loaded in the previous exercise. The Excel file is formatted such that there are merged cells on top that you don’t need as well as extraneous informational text at the bottom, so you will need to make use of additional arguments to the `read_excel()` package to skip some rows on top, limit the number of rows being read in, and label the columns appropriately. Label the column you will use for this analysis `total_pop_change_21_22`; note that this is variable name will then be reflected in the title of the legend in your figure. Do not label the counties so that we can see the map and the fill colors better, but do use appropriate labels should, including a caption that mentions the data sources, and use an appropriate aspect ratio and size for your figure.
+
+**Hint:** There are 62 counties in New York State.
+
+![](images/plot-ny-counties-pop-change-1.png)
+
+## Question 4
+
+**New York state of regions.** TL;DR: Reproduce the figure below. But you’re going to want to read more…
+
+New York State is divided into 10 regions along county boundaries. These regions are given in the CSV file called `ny_regions.csv` in your `data` folder. Merge in the region information to the data frame you have plotted in the previous exercise so that you have a new variable called `region` in your data frame. Then, create a new `sf` object that has the boundaries of the regions in its `sf_column` attribute, i.e., under `geometry`. Then, overlay this new `sf` object on the figure you created in the previous exercise, using a thicker line (`linewidth = 1`) to indicate region boundaries.
+
+**Hints:**
+
+-   Merging geographic areas is not something we’ve done in class previously, so you will need to figure out what tools to use to create these boundaries. It’s one of the `st_*()` functions from the [**sf**](https://r-spatial.github.io/sf/reference/index.html) package.
+-   The `nudge_x` and `nudge_y` arguments to `geom_label_repel()` can be helpful to nudge the labels in a consistent manner away from the centers of the gegions.
+
+![](images/plot-ny-regions-pop-change-1.png)
+
+## Question 5
+
+**New York state of patchwork.** TL;DR: Reproduce the figure below. But you’re going to want to read more…
+
+What we’re seeing is that what is happening in the New York City region is very different than the rest of New York State, which is probably not too surprising. So, let’s make it a bit easier to see each of the counties in New York City by insetting a zoomed-in version of that portion of the map.
+
+**Hint:** The `inset_element()` function from the **patchwork** package will be helpful!
+
+![](images/plot-ny-regions-pop-change-nyc-inset-1.png)
