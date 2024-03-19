@@ -14,7 +14,8 @@ editor_options:
 
 ## Announcements
 
--   ...
+-   Project proposal work + HW 4 in lab tomorrow
+-   Ideas for "Visualizing ..." for later in the semester?
 
 ## Setup {.smaller}
 
@@ -48,7 +49,7 @@ knitr::opts_chunk$set(
 
 # Project 2
 
-## Project 2 - potential directions
+## Project 2 - potential directions {.smaller}
 
 -   Present and visualize a technical topic in statistics or mathematics, e.g., Gradient descent, quadrature, autoregressive (AR) models, etc.
 
