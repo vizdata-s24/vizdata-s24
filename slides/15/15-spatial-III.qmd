@@ -14,7 +14,9 @@ editor_options:
 
 ## Announcements
 
--   ...
+-   My office hours this week: Friday, 12-1pm, Old Chem 213
+-   HW 4 due Tuesday at 5pm
+-   Project 2 proposal due Wednesday at 1pm
 
 ## From last time
 
@@ -213,4 +215,3 @@ ggplot() +
   guides(linewidth = "none") +
   labs(x = NULL, y = NULL)
 ```
-
