@@ -1,0 +1,216 @@
+---
+title: Visualizing geospatial data III
+subtitle: Lecture 15
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+editor_options: 
+  chunk_output_type: console
+---
+
+# Warm up
+
+## Announcements
+
+-   ...
+
+## From last time
+
+Finish up `ae-10`.
+
+## Setup {.smaller}
+
+```{r}
+#| label: setup
+#| message: false
+
+# load packages
+library(countdown)
+library(tidyverse)
+library(ggnewscale)
+library(magick)
+library(sf)
+library(stars)
+library(tmap)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7, # 7" width
+  fig.asp = 0.618, # the golden ratio
+  fig.retina = 3, # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300 # higher dpi, sharper image
+)
+```
+
+# Using stars
+
+## Spatiotemporal arrays with stars
+
+> The **stars** package provides infrastructure for data cubes, array data with labeled dimensions, with emphasis on arrays where some of the dimensions relate to time and/or space.
+
+::: columns
+::: {.column width="50%"}
+Three-dimensional cube: ![](images/cube1.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+Multi-dimensional hypercube: ![](images/cube2.png){fig-align="center"}
+:::
+:::
+
+::: aside
+Source: <https://r-spatial.github.io/stars/>
+:::
+
+## Easter Island
+
+::: columns
+::: {.column width="30%"}
+Easter Island (Rapa Nui / Isla de Pascua), a Chilean territory, is a remote volcanic island in Polynesia.
+:::
+
+::: {.column width="70%"}
+![](images/Easter_Island_map-en.png){fig-align="center"}
+:::
+:::
+
+::: aside
+Source: <https://en.wikipedia.org/wiki/Easter_Island>
+:::
+
+## File types
+
+-   `tif` files are geospatial raster data, e.g., elevation maps
+
+-   `gpkg` are geopackage files, modern version of shapefiles
+
+## Reading `tif` files
+
+```{r}
+elev <- read_stars("data/easter_island/ei_elev.tif")
+elev
+```
+
+## Plotting `tif` files
+
+```{r}
+ggplot() +
+  geom_stars(data = elev)
+```
+
+## Plays nicely with ggplot2
+
+```{r}
+ggplot() +
+  geom_stars(data = elev) +
+  scale_fill_distiller(palette = "RdYlGn", na.value = "transparent")
+```
+
+## Reading `gpkg` files
+
+```{r}
+border <- read_sf("data/easter_island/ei_border.gpkg")
+border
+```
+
+## Plotting `gpkg` files
+
+```{r}
+ggplot() +
+  geom_sf(data = border)
+```
+
+##  {.center}
+
+::: hand
+A brief aside...
+:::
+
+## Put a flag on it!
+
+Just for fun...
+
+```{r}
+#| output-location: slide
+
+ei_plot <- ggplot() +
+  geom_sf(data = border, fill = "white")
+
+ei_flag_image <- image_read("images/Flag_of_Rapa_Nui_Chile.png")
+ei_flag_raster <- as.raster(ei_flag_image)
+
+ei_plot + annotation_raster(ei_flag_raster, xmin = 657000, xmax = 670000, ymin = 6996000, ymax = 7004000)
+```
+
+::: aside
+Source: <https://en.wikipedia.org/wiki/Easter_Island>
+:::
+
+## Finding the "bounding box"
+
+-   `ggplot_build()` takes the plot object, and performs all steps necessary to produce an object that can be rendered
+-   Outputs:
+    1.  a list of data frames (one for each layer)
+    2.  a panel object, which contains all information about axis limits, breaks etc.
+
+```{r}
+ei_plot_build <- ggplot_build(ei_plot)
+```
+
+## `ggplot_build()` {.smaller}
+
+```{r}
+ei_plot_build
+```
+
+## Diving into the output
+
+```{r}
+ei_plot_build$data[[1]]$xmin
+ei_plot_build$data[[1]]$xmax
+ei_plot_build$data[[1]]$ymin
+ei_plot_build$data[[1]]$ymax
+```
+
+##  {.center}
+
+::: hand
+Back to Easter Island...
+:::
+
+## Let's get more data
+
+```{r}
+roads <- read_sf("data/easter_island/ei_roads.gpkg")
+points <- read_sf("data/easter_island/ei_points.gpkg")
+```
+
+## Layering with ggplot2
+
+::: task
+`ae-11`: Recreate the visualization below.
+:::
+
+```{r}
+#| echo: false
+
+ggplot() +
+  geom_sf(data = border) +
+  geom_stars(data = elev) +
+  scale_fill_distiller(name = "Elevation", palette = "RdYlGn", na.value = "transparent") +
+  geom_sf(data = roads, aes(linewidth = strokelwd)) +
+  scale_linewidth_continuous(range = c(0.1, 1)) +
+  new_scale_fill() +
+  geom_sf(data = points, aes(fill = type), shape = 24, size = 3) +
+  scale_fill_manual(name = "Type", values = c("gray50", "gold", "firebrick3")) +
+  theme_minimal() +
+  guides(linewidth = "none") +
+  labs(x = NULL, y = NULL)
+```
+
