@@ -2,162 +2,166 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vizdata.org/course-support.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.103Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/student-work/thank-you.html</loc>
-    <lastmod>2024-03-21T01:55:57.224Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.667Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/student-work/project-2.html</loc>
-    <lastmod>2024-03-21T01:55:57.224Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.667Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/about.html</loc>
-    <lastmod>2024-03-21T01:55:56.668Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.087Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/slides/10/10-pres-ready-plots-I.html</loc>
-    <lastmod>2024-03-21T01:55:56.852Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.275Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/slides/06/06-time-series-II.html</loc>
-    <lastmod>2024-03-21T01:55:56.816Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.239Z</lastmod>
   </url>
   <url>
-    <loc>https://vizdata.org/slides/09/09-accessibility.html</loc>
-    <lastmod>2024-03-21T01:55:56.844Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/04/04-wrangling-tidying-II.html</loc>
-    <lastmod>2024-03-21T01:55:56.792Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/13/13-spatial-I.html</loc>
-    <lastmod>2024-03-21T01:55:56.876Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/01/01-layers-I.html</loc>
-    <lastmod>2024-03-21T01:55:56.788Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/14/14-spatial-II.html</loc>
-    <lastmod>2024-03-21T01:55:57.084Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/07/07-themes-axes-annotation.html</loc>
-    <lastmod>2024-03-21T01:55:56.820Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/course-team.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/course-syllabus.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/hw/hw-1.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/hw/hw-4.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/hw/hw-5.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/computing/computing-troubleshooting.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/computing/computing-cheatsheets.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/project/project-2.html</loc>
-    <lastmod>2024-03-21T01:55:56.772Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/project/project-1.html</loc>
-    <lastmod>2024-03-21T01:55:56.768Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/project/project-tips-resources.html</loc>
-    <lastmod>2024-03-21T01:55:56.772Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/computing/computing-access.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/hw/hw-3.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/hw/hw-6.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/hw/hw-2.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/hw/hw-0.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/course-faq.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/course-overview.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/11/11-likert-I.html</loc>
-    <lastmod>2024-03-21T01:55:56.860Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/05/05-time-series-I.html</loc>
-    <lastmod>2024-03-21T01:55:56.816Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/03/03-wrangling-tidying-I.html</loc>
-    <lastmod>2024-03-21T01:55:56.792Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/12/12-likert-II.html</loc>
-    <lastmod>2024-03-21T01:55:56.872Z</lastmod>
+    <loc>https://vizdata.org/slides/15/15-spatial-III.html</loc>
+    <lastmod>2024-03-21T02:14:59.551Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/slides/02/02-layers-II.html</loc>
-    <lastmod>2024-03-21T01:55:56.788Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.211Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/12/12-likert-II.html</loc>
+    <lastmod>2024-03-21T02:14:59.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/03/03-wrangling-tidying-I.html</loc>
+    <lastmod>2024-03-21T02:14:59.215Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/05/05-time-series-I.html</loc>
+    <lastmod>2024-03-21T02:14:59.239Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/11/11-likert-I.html</loc>
+    <lastmod>2024-03-21T02:14:59.283Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/course-overview.html</loc>
+    <lastmod>2024-03-21T02:14:59.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/course-faq.html</loc>
+    <lastmod>2024-03-21T02:14:59.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-0.html</loc>
+    <lastmod>2024-03-21T02:14:59.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-2.html</loc>
+    <lastmod>2024-03-21T02:14:59.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-6.html</loc>
+    <lastmod>2024-03-21T02:14:59.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-3.html</loc>
+    <lastmod>2024-03-21T02:14:59.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/computing/computing-access.html</loc>
+    <lastmod>2024-03-21T02:14:59.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/project/project-tips-resources.html</loc>
+    <lastmod>2024-03-21T02:14:59.191Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/project/project-1.html</loc>
+    <lastmod>2024-03-21T02:14:59.191Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/project/project-2.html</loc>
+    <lastmod>2024-03-21T02:14:59.191Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/computing/computing-cheatsheets.html</loc>
+    <lastmod>2024-03-21T02:14:59.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/computing/computing-troubleshooting.html</loc>
+    <lastmod>2024-03-21T02:14:59.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-5.html</loc>
+    <lastmod>2024-03-21T02:14:59.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-4.html</loc>
+    <lastmod>2024-03-21T02:14:59.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-1.html</loc>
+    <lastmod>2024-03-21T02:14:59.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/course-syllabus.html</loc>
+    <lastmod>2024-03-21T02:14:59.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/course-team.html</loc>
+    <lastmod>2024-03-21T02:14:59.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/07/07-themes-axes-annotation.html</loc>
+    <lastmod>2024-03-21T02:14:59.243Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/14/14-spatial-II.html</loc>
+    <lastmod>2024-03-21T02:14:59.507Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/01/01-layers-I.html</loc>
+    <lastmod>2024-03-21T02:14:59.211Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/13/13-spatial-I.html</loc>
+    <lastmod>2024-03-21T02:14:59.299Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/04/04-wrangling-tidying-II.html</loc>
+    <lastmod>2024-03-21T02:14:59.215Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/09/09-accessibility.html</loc>
+    <lastmod>2024-03-21T02:14:59.267Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/slides/08/08-web-du-bois.html</loc>
-    <lastmod>2024-03-21T01:55:56.828Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.251Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/slides/00/00-welcome-grammar.html</loc>
-    <lastmod>2024-03-21T01:55:56.772Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.195Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/course-links.html</loc>
-    <lastmod>2024-03-21T01:55:56.684Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.103Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/student-work/project-1.html</loc>
-    <lastmod>2024-03-21T01:55:57.224Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.667Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/student-work/ugly-plot.html</loc>
-    <lastmod>2024-03-21T01:55:57.224Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.667Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/index.html</loc>
-    <lastmod>2024-03-21T01:55:56.768Z</lastmod>
+    <lastmod>2024-03-21T02:14:59.191Z</lastmod>
   </url>
 </urlset>
