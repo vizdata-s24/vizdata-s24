@@ -2042,7 +2042,7 @@
     "href": "hw/hw-4.html#question-2",
     "title": "HW 4",
     "section": "Question 2",
-    "text": "Question 2\nNew York state of counties. Using the tigris package, download the shapefile for counties in the state of New York (NY) for year 2021. Cache the code chunk where this action is done so the shapefile isn’t downloaded each time you render. Then, in a separate code chunk, plot thee county boundaries and label them. The word “County” should be omitted from the labels to keep them shorter, appropriate labels should be used, including a caption that mentions the data source, and the figure should be sized such that all labels are visible.\nHint: When downloading the shape file, set progress_bar = FALSE so that the progress bar isn’t printed in your rendered document.",
+    "text": "Question 2\nNew York state of counties. Using the tigris package, download the shapefile for counties in the state of New York (NY) for year 2021. Cache the code chunk where this action is done so the shapefile isn’t downloaded each time you render. Then, in a separate code chunk, plot the county boundaries and label them. The word “County” should be omitted from the labels to keep them shorter, appropriate labels should be used, including a caption that mentions the data source, and the figure should be sized such that all labels are visible. It’s ok if your labels are not placed in the exact same locations as the provided figure.\nHint: When downloading the shape file, set progress_bar = FALSE so that the progress bar isn’t printed in your rendered document.",
     "crumbs": [
       "HW",
       "HW 4"
@@ -2064,7 +2064,7 @@
     "href": "hw/hw-4.html#question-4",
     "title": "HW 4",
     "section": "Question 4",
-    "text": "Question 4\nNew York state of regions. TL;DR: Reproduce the figure below. But you’re going to want to read more…\nNew York State is divided into 10 regions along county boundaries. These regions are given in the CSV file called ny_regions.csv in your data folder. Merge in the region information to the data frame you have plotted in the previous exercise so that you have a new variable called region in your data frame. Then, create a new sf object that has the boundaries of the regions in its sf_column attribute, i.e., under geometry. Then, overlay this new sf object on the figure you created in the previous exercise, using a thicker line (linewidth = 1) to indicate region boundaries.\nHints:\n\nMerging geographic areas is not something we’ve done in class previously, so you will need to figure out what tools to use to create these boundaries. It’s one of the st_*() functions from the sf package.\nThe nudge_x and nudge_y arguments to geom_label_repel() can be helpful to nudge the labels in a consistent manner away from the centers of the gegions.",
+    "text": "Question 4\nNew York state of regions. TL;DR: Reproduce the figure below. But you’re going to want to read more…\nNew York State is divided into 10 regions along county boundaries. These regions are given in the CSV file called ny_regions.csv in your data folder. Merge in the region information to the data frame you have plotted in the previous exercise so that you have a new variable called region in your data frame. Then, create a new sf object that has the boundaries of the regions in its sf_column attribute, i.e., under geometry. Then, overlay this new sf object on the figure you created in the previous exercise, using a thicker line (linewidth = 1) to indicate region boundaries. It’s ok if your labels are not placed in the exact same locations as the provided figure.\nHints:\n\nMerging geographic areas is not something we’ve done in class previously, so you will need to figure out what tools to use to create these boundaries. It’s one of the st_*() functions from the sf package.\nThe nudge_x and nudge_y arguments to geom_label_repel() can be helpful to nudge the labels in a consistent manner away from the centers of the gegions.",
     "crumbs": [
       "HW",
       "HW 4"
@@ -2075,7 +2075,7 @@
     "href": "hw/hw-4.html#question-5",
     "title": "HW 4",
     "section": "Question 5",
-    "text": "Question 5\nNew York state of patchwork. TL;DR: Reproduce the figure below. But you’re going to want to read more…\nWhat we’re seeing is that what is happening in the New York City region is very different than the rest of New York State, which is probably not too surprising. So, let’s make it a bit easier to see each of the counties in New York City by insetting a zoomed-in version of that portion of the map.\nHint: The inset_element() function from the patchwork package will be helpful!",
+    "text": "Question 5\nNew York state of patchwork. TL;DR: Reproduce the figure below. But you’re going to want to read more…\nWhat we’re seeing is that what is happening in the New York City region is very different than the rest of New York State, which is probably not too surprising. So, let’s make it a bit easier to see each of the counties in New York City by insetting a zoomed-in version of that portion of the map. It’s ok if your labels are not placed in the exact same locations as the provided figure.\nHint: The inset_element() function from the patchwork package will be helpful!",
     "crumbs": [
       "HW",
       "HW 4"
