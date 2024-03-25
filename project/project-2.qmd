@@ -38,31 +38,27 @@ Most importantly, be prepared to brainstorm a bunch of ideas and discard them un
 
 ## Workflow
 
--   Week 1 of project (week of **TO BE POSTED**): Pick a focus for your project.
+-   Week 1 of project (week of Mar 18): Pick a focus for your project, developing your project proposal, and set up the structure for your repository.
 
--   Week 2 of project (week of **TO BE POSTED**): 🏖️ Spring Break
+-   Week 2 of project (week of Mar 25): Finalize your project proposal + Conduct peer review on project proposals, and optionally, submit in an updated version of your proposal.
 
--   Week 3 of project (week of **TO BE POSTED**): Work on developing your project proposal and setting up the structure for your repository.
+-   Week 3 of project (week of Apr 1): Continue working on your project, incorporating feedback from proposals.
 
--   Week 4 of project (week of **TO BE POSTED**): Finalize your project proposal + Conduct peer review on project proposals, and optionally, submit in an updated version of your proposal.
+-   Week 4 of project (week of Apr 8): Continue working on your project.
 
--   Week 5 of project (week of **TO BE POSTED**): Continue working on your project.
+-   Week 5 of project (week of Apr 15): Continue working on your project.
 
--   Week 6 of project (week of **TO BE POSTED**): Continue working on your project, incorporating feedback from proposals.
+-   Week 6 of project (week of Apr 22): Conduct peer code review, and incorporate feedback from the review.
 
--   Week 7 of project (week of **TO BE POSTED**): Continue working on your project.
-
--   Week 8 of project (week of **TO BE POSTED**): Conduct peer code review.
-
--   Week 9 of project (week of **TO BE POSTED** - finals week): Present projects and turn in final write-up.
+-   Week 7 of project (week of Apr 29 - finals week): Present projects and turn in final write-up.
 
 ## Due dates
 
--   Proposals for peer review: **TO BE POSTED**
--   Peer review of proposals: **TO BE POSTED**
--   Revised proposals for instructor review: **TO BE POSTED**
--   Peer review of code: **TO BE POSTED**
--   Write-up and presentation: **TO BE POSTED**
+-   Proposals for peer review: Wed, Mar 27 at 1 pm
+-   Peer review of proposals: Wed, Mar 27 in lab session
+-   Revised proposals for instructor review: Fri, Mar 29 at 5 pm
+-   Peer review of code: Wed, Apr 24 in lab session
+-   Write-up and presentation: Wed, May 1 at 9 am
 
 ## Deliverables
 
