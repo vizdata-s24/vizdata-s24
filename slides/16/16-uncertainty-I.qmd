@@ -1,6 +1,6 @@
 ---
 title: Visualizing uncertainty I
-subtitle: Lecture 15
+subtitle: Lecture 16
 title-slide-attributes:
   data-background-image: ../vizdata-bg.png
   data-background-size: stretch
@@ -51,7 +51,7 @@ knitr::opts_chunk$set(
 
 ## [The odds are in your favor: You have a 90% chance of winning!]{.hand}
 
-## {background-color="#cccccc" background-image="images/Disappearing_dots.gif" background-repeat="contain"}
+##  {background-color="#cccccc" background-image="images/Disappearing_dots.gif"}
 
 ::: aside
 Image by Wikiemdia user [Jahobr](https://commons.wikimedia.org/wiki/User:Jahobr), released into the public domain.
@@ -66,16 +66,21 @@ https://commons.wikimedia.org/wiki/File:Disappearing_dots.gif
 ## We are bad at judging uncertainty
 
 ::: incremental
-- You had a 10% chance of losing
-- One in ten playing this game will lose
-- 90% chance of winning is nowhere near a certain win
+-   You had a 10% chance of losing
+-   One in ten playing this game will lose
+-   90% chance of winning is nowhere near a certain win
 :::
 
 ## It helps to visualize a set of possible outcomes
 
 Possible outcomes from 100 individual games played
 
-```{r freq-waffle, fig.width = 4.5, fig.asp = 1, echo = FALSE, out.width = "45%"}
+```{r}
+#| label: freq-waffle
+#| echo: false
+#| fig-width: 4.5
+#| fig-asp: 1
+#| out-width: 45%
 g <- expand.grid(x = 1:10, y = 1:10)
 
 set.seed(84520)
@@ -97,9 +102,10 @@ data <- data.frame(ratio = c(0.99, 0.9, 0.7)) |>
     label = paste0(round(100*ratio), "% chance")
   )
 
-data |> filter(ratio == .9) |>
+data |> 
+  filter(ratio == .9) |>
   ggplot(aes(x, y, fill = value)) +
-  geom_tile(color = "white", size = 2) +
+  geom_tile(color = "white") +
   coord_fixed(expand = FALSE, clip = "off") +
   scale_x_continuous(name = NULL, breaks = NULL) +
   scale_y_continuous(name = NULL, breaks = NULL) +
@@ -129,9 +135,14 @@ data |> filter(ratio == .9) |>
 
 This type of visualization is called **frequency framing**
 
-```{r freq-waffle2, fig.width = 10, fig.asp = 0.45, echo = FALSE, out.width = "90%"}
+```{r}
+#| label: freq-waffle2
+#| echo: false
+#| fig-width: 10
+#| fig-asp: 0.45
+#| out-width: 90%
 ggplot(data, aes(x, y, fill = value)) +
-  geom_tile(color = "white", size = 1.5) +
+  geom_tile(color = "white", linewidth = 1.5) +
   coord_fixed(expand = FALSE, clip = "off") +
   scale_x_continuous(name = NULL, breaks = NULL) +
   scale_y_continuous(name = NULL, breaks = NULL) +
@@ -161,14 +172,17 @@ ggplot(data, aes(x, y, fill = value)) +
 ## Visualizing uncertainty of point estimates
 
 ::: incremental
-- A point estimate is a single number, such as a mean
-- Uncertainty is expressed as standard error, confidence interval, or credible interval
-- Important: Uncertainty of a point estimate != variation in the sample
+-   A point estimate is a single number, such as a mean
+-   Uncertainty is expressed as standard error, confidence interval, or credible interval
+-   Important: Uncertainty of a point estimate != variation in the sample
 :::
 
 ## Key concepts of statistical sampling
 
-```{r sampling-schematic1, echo = FALSE, fig.asp = 3/4}
+```{r}
+#| label: sampling-schematic1
+#| echo: false
+#| fig-asp: !expr 3/4
 fill_color <- "#F1DE6780"
 
 set.seed(452061)
@@ -257,7 +271,7 @@ p2 <- ggplot(df_sample, aes(x, y)) +
   geom_segment( # vertical bar representing mean
     data = data.frame(x = 1),
     aes(x = mean(df_sample$x), xend = mean(df_sample$x), y = -.2, yend = .2),
-    size = 1.5,
+    linewidth = 1.5,
     color = "#866fa3",
     inherit.aes = FALSE
   ) +
@@ -347,7 +361,10 @@ Figure redrawn from [Claus O. Wilke. Fundamentals of Data Visualization. O'Reill
 
 ## Key concepts of statistical sampling
 
-```{r sampling-schematic2, echo = FALSE, fig.asp = 3/4}
+```{r}
+#| label: sampling-schematic2
+#| echo: false
+#| fig-asp: !expr 3/4
 plot_grid(
   p1,
   p2,
@@ -362,7 +379,10 @@ Figure redrawn from [Claus O. Wilke. Fundamentals of Data Visualization. O'Reill
 
 ## Key concepts of statistical sampling
 
-```{r sampling-schematic3, echo = FALSE, fig.asp = 3/4}
+```{r}
+#| label: sampling-schematic3
+#| echo: false
+#| fig-asp: !expr 3/4
 plot_grid(
   p1,
   p2,
@@ -381,21 +401,25 @@ Figure redrawn from [Claus O. Wilke. Fundamentals of Data Visualization. O'Reill
 What does "95% confident" mean in the following sentence?
 :::
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Sentence
 
 > We are 95% confident that the confidence interval includes the true population mean.
 
 ### Discuss
 
-[Add Wooclap]
-
+\[Add Wooclap\]
 :::
 
 ## Frequentist interpretation of a confidence interval
 
-```{r echo = FALSE, fig.align = "center", warning = FALSE, fig.asp = 1, message = FALSE, out.width = "50%"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-align: center
+#| fig-asp: 1
+#| out-width: 50%
 set.seed(85439)
 df <- tibble(y = rnorm(10000))
 df_cont <- tibble(
@@ -438,7 +462,8 @@ Figure from [Claus O. Wilke. Fundamentals of Data Visualization. O'Reilly, 2019.
 
 ## Everest
 
-```{r message = FALSE}
+```{r}
+#| message: false
 everest <- read_csv(here::here("slides/16", "data/everest.csv"))
 ```
 
@@ -450,7 +475,12 @@ everest
 
 Includes only climbers and expedition members who **did not** summit
 
-```{r everest-highest-point, echo = FALSE, fig.width = 8, fig.asp = 0.5, out.width = "70%"}
+```{r}
+#| label: everest-highest-point
+#| echo: false
+#| fig-width: 8
+#| fig-asp: 0.5
+#| out-width: 70%
 everest_2019 <- everest |>
   filter(!is.na(highpoint_metres) & success == FALSE) |>
   filter(year == 2019)
@@ -555,12 +585,16 @@ ggplot(CI_df, aes(estimate, type)) +
 
 ## Marginal effects example: Height reached on Everest
 
-Average height reached relative to:<br>
-a male climber who climbed with oxygen, summited, and survived
+Average height reached relative to:<br> a male climber who climbed with oxygen, summited, and survived
 
 . . .
 
-```{r everest_margins, echo = FALSE, fig.width = 8, fig.asp = 0.5, out.width = "70%"}
+```{r}
+#| label: everest_margins
+#| echo: false
+#| fig-width: 8
+#| fig-asp: 0.5
+#| out-width: 70%
 everest_data <- everest |>
   filter(!is.na(age) & !is.na(highpoint_metres)) |>
   filter(year == 2019) |>
@@ -618,7 +652,12 @@ ggplot(evrst_gg) +
 
 Other visualization options: half-eye
 
-```{r everest_margins2, echo = FALSE, fig.width = 8, fig.asp = 0.5, out.width = "70%"}
+```{r}
+#| label: everest_margins2
+#| echo: false
+#| fig-width: 8
+#| fig-asp: 0.5
+#| out-width: 70%
 ggplot(evrst_gg) +
   aes(y = factor, x = AME) +
   geom_vline(xintercept = 0, color = "gray20") +
@@ -642,7 +681,12 @@ ggplot(evrst_gg) +
 
 Other visualization options: gradient interval
 
-```{r everest_margins3, echo = FALSE, fig.width = 8, fig.asp = 0.5, out.width = "70%"}
+```{r}
+#| label: everest_margins3
+#| echo: false
+#| fig-width: 8
+#| fig-asp: 0.5
+#| out-width: 70%
 ggplot(evrst_gg) +
   aes(y = factor, x = AME) +
   geom_vline(xintercept = 0, color = "gray20") +
@@ -666,7 +710,12 @@ ggplot(evrst_gg) +
 
 Other visualization options: quantile dotplot
 
-```{r everest_margins4, echo = FALSE, fig.width = 8, fig.asp = 0.5, out.width = "70%"}
+```{r}
+#| label: everest_margins4
+#| echo: false
+#| fig-width: 8
+#| fig-asp: 0.5
+#| out-width: 70%
 ggplot(evrst_gg) +
   aes(y = factor, x = AME) +
   geom_vline(xintercept = 0, color = "gray20") +
@@ -691,7 +740,12 @@ ggplot(evrst_gg) +
 
 Other visualization options: quantile dotplot
 
-```{r everest_margins5, echo = FALSE, fig.width = 8, fig.asp = 0.5, out.width = "70%"}
+```{r}
+#| label: everest_margins5
+#| echo: false
+#| fig-width: 8
+#| fig-asp: 0.5
+#| out-width: 70%
 ggplot(evrst_gg) +
   aes(y = factor, x = AME) +
   geom_vline(xintercept = 0, color = "gray20") +
@@ -716,7 +770,12 @@ ggplot(evrst_gg) +
 
 Other visualization options: quantile dotplot
 
-```{r everest_margins6, echo = FALSE, fig.width = 8, fig.asp = 0.5, out.width = "70%"}
+```{r}
+#| label: everest_margins6
+#| echo: false
+#| fig-width: 8
+#| fig-asp: 0.5
+#| out-width: 70%
 ggplot(evrst_gg) +
   aes(y = factor, x = AME) +
   geom_vline(xintercept = 0, color = "gray20") +
@@ -741,7 +800,13 @@ ggplot(evrst_gg) +
 
 Example: Relationship between life expectancy and GDP per capita
 
-```{r gapminder-regressions, echo = FALSE, message = FALSE, fig.width = 7, fig.asp = 0.65, out.width = "70%"}
+```{r}
+#| label: gapminder-regressions
+#| echo: false
+#| message: false
+#| fig-width: 7
+#| fig-asp: 0.65
+#| out-width: 70%
 gapminder |>
   filter(
     continent != "Oceania",
@@ -767,10 +832,15 @@ gapminder |>
 
 Example: Relationship between life expectancy and GDP per capita
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
-```{r gapminder-regressions2, echo = FALSE, message = FALSE, fig.width = 7, fig.asp = 0.65, out.width = "100%"}
+```{r}
+#| label: gapminder-regressions2
+#| echo: false
+#| message: false
+#| fig-width: 7
+#| fig-asp: 0.65
+#| out-width: 100%
 gapminder |>
   filter(
     continent != "Oceania",
@@ -794,7 +864,13 @@ gapminder |>
 :::
 
 ::: {.column width="50%"}
-```{r gapminder-summary, echo = FALSE, message = FALSE, fig.width = 7, fig.asp = 0.5, out.width = "100%"}
+```{r}
+#| label: gapminder-summary
+#| echo: false
+#| message: false
+#| fig-width: 7
+#| fig-asp: 0.5
+#| out-width: 100%
 gapminder |>
   nest(data = -c(continent, year)) |>
   mutate(
@@ -829,8 +905,7 @@ gapminder |>
   theme(legend.position = "top")
 ```
 :::
-
-::::
+:::
 
 ## Gapminder
 
@@ -944,7 +1019,7 @@ ggplot(lm_data) +
 Figure and code idea from [Kieran Healy. Data Visualization: A practical introduction. Princeton University Press, 2019.](https://socviz.co/)
 :::
 
-## Half-eyes, gradient intervals, etc.
+## Half-eyes, gradient intervals, etc. {.smaller}
 
 The **ggdist** package provides many different visualizations of uncertainty
 
@@ -966,7 +1041,7 @@ lm_data |>
   )
 ```
 
-## Half-eyes, gradient intervals, etc.
+## Half-eyes, gradient intervals, etc. {.smaller}
 
 The **ggdist** package provides many different visualizations of uncertainty
 
@@ -975,21 +1050,20 @@ The **ggdist** package provides many different visualizations of uncertainty
 #| output-location: column
 lm_data |>
   filter(year == 1952) |>
-  mutate(
-    continent = 
-      fct_reorder(continent, estimate) 
-  ) |>
+  mutate(continent = fct_reorder(continent, estimate)) |>
   ggplot(aes(x = estimate, y = continent)) +
   stat_dist_gradientinterval(
-    aes(dist = dist_normal(
-      mu = estimate, sigma = std.error
-    )),
+    aes(
+      dist = dist_normal(
+        mu = estimate, sigma = std.error
+      )
+    ),
     point_size = 4,
     fill = "skyblue"
   )
 ```
 
-## Half-eyes, gradient intervals, etc.
+## Half-eyes, gradient intervals, etc. {.smaller}
 
 The **ggdist** package provides many different visualizations of uncertainty
 
@@ -998,22 +1072,21 @@ The **ggdist** package provides many different visualizations of uncertainty
 #| output-location: column
 lm_data |>
   filter(year == 1952) |>
-  mutate(
-    continent = 
-      fct_reorder(continent, estimate) 
-  ) |>
+  mutate(continent = fct_reorder(continent, estimate)) |>
   ggplot(aes(x = estimate, y = continent)) +
   stat_dist_dotsinterval(
-    aes(dist = dist_normal(
-      mu = estimate, sigma = std.error
-    )),
+    aes(
+      dist = dist_normal(
+        mu = estimate, sigma = std.error
+      )
+    ),
     point_size = 4,
     fill = "skyblue",
     quantiles = 20
   )
 ```
 
-## Half-eyes, gradient intervals, etc.
+## Half-eyes, gradient intervals, etc. {.smaller}
 
 The **ggdist** package provides many different visualizations of uncertainty
 
@@ -1022,27 +1095,26 @@ The **ggdist** package provides many different visualizations of uncertainty
 #| output-location: column
 lm_data |>
   filter(year == 1952) |>
-  mutate(
-    continent = 
-      fct_reorder(continent, estimate) 
-  ) |>
+  mutate(continent = fct_reorder(continent, estimate)) |>
   ggplot(aes(x = estimate, y = continent)) +
   stat_dist_dotsinterval(
-    aes(dist = dist_normal(
-      mu = estimate, sigma = std.error
-    )),
+    aes(
+      dist = dist_normal(
+        mu = estimate, sigma = std.error
+      )
+    ),
     point_size = 4,
     fill = "skyblue",
     quantiles = 10
   )
 ```
 
-## Further reading and acknowledgements
+## Further reading and acknowledgements {.smaller}
 
-- Acknowledgements: Slides from [Visualizing uncertainty](https://wilkelab.org/SDS375/slides/visualizing-uncertainty.html) by Claus Wilke
-- Further reading
-  - Fundamentals of Data Visualization: [Chapter 16: Visualizing uncertainty](https://clauswilke.com/dataviz/visualizing-uncertainty.html)
-  - Data Visualization—A Practical Introduction: [Chapter 6.6: Grouped analysis and list columns](https://socviz.co/modeling.html#grouped-analysis-and-list-columns)
-  - Data Visualization—A Practical Introduction: [Chapter 6.7: Plot marginal effects](https://socviz.co/modeling.html#plot-marginal-effects)
-  - **ggdist** reference documentation: https://mjskay.github.io/ggdist/index.html
-  - **ggdist** vignette: [Frequentist uncertainty visualization](https://mjskay.github.io/ggdist/articles/freq-uncertainty-vis.html)
+-   Acknowledgements: Slides from [Visualizing uncertainty](https://wilkelab.org/SDS375/slides/visualizing-uncertainty.html) by Claus Wilke
+-   Further reading
+    -   Fundamentals of Data Visualization: [Chapter 16: Visualizing uncertainty](https://clauswilke.com/dataviz/visualizing-uncertainty.html)
+    -   Data Visualization—A Practical Introduction: [Chapter 6.6: Grouped analysis and list columns](https://socviz.co/modeling.html#grouped-analysis-and-list-columns)
+    -   Data Visualization—A Practical Introduction: [Chapter 6.7: Plot marginal effects](https://socviz.co/modeling.html#plot-marginal-effects)
+    -   **ggdist** reference documentation: https://mjskay.github.io/ggdist/index.html
+    -   **ggdist** vignette: [Frequentist uncertainty visualization](https://mjskay.github.io/ggdist/articles/freq-uncertainty-vis.html)
