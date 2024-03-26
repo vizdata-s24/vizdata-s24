@@ -21,10 +21,10 @@ jobs:
           tinytex: true
           version: 1.5.9
 
-      - name: Install libcurl
+      - name: Install system libraries
         run: |
           sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+          sudo apt-get install -y libcurl4-openssl-dev libudunits2-dev libgdal-dev libgeos-dev libproj-dev libmagick++-dev
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
