@@ -1723,9 +1723,14 @@
     },
     "infer": {
       "Package": "infer",
-      "Version": "1.0.7",
-      "Source": "Repository",
-      "Repository": "CRAN",
+      "Version": "1.0.6.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "infer",
+      "RemoteUsername": "tidymodels",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "5f3e7c93ca3e1eff5f1de1e4c1b2550d3b82aabb",
       "Requirements": [
         "R",
         "broom",
@@ -1745,7 +1750,7 @@
         "tidyr",
         "vctrs"
       ],
-      "Hash": "8d30ac9c5e21efd8575f934bdb5c3029"
+      "Hash": "9106b2d88c5bc67a685c5afccc0ee008"
     },
     "ipred": {
       "Package": "ipred",

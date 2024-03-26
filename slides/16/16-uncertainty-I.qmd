@@ -14,7 +14,8 @@ editor_options:
 
 ## Announcements
 
--   ...
+-   Project 2 proposals due by 1 pm tomorrow
+-   Peer review of proposals in lab
 
 ## Setup {.smaller}
 
@@ -47,27 +48,48 @@ knitr::opts_chunk$set(
 )
 ```
 
-# [Let's imagine we're playing a game]{.hand}
+# Probability
 
-## [The odds are in your favor: You have a 90% chance of winning!]{.hand}
+##  {.center}
 
-##  {background-color="#cccccc" background-image="images/Disappearing_dots.gif"}
-
-::: aside
-Image by Wikiemdia user [Jahobr](https://commons.wikimedia.org/wiki/User:Jahobr), released into the public domain.
-
-https://commons.wikimedia.org/wiki/File:Disappearing_dots.gif
+::: large
+::: hand
+Let's imagine we're playing a game <br><br> The odds are in your favor: <br> You have a 90% chance of winning!
+:::
 :::
 
-## [Sorry, you lost.]{.hand}
+##  {background-image="images/Disappearing_dots.gif" background-size="contain" background-color="#cccccc"}
 
-## [How does that make you feel?]{.hand}
+::: large
+::: hand
+playing...
+:::
+:::
+
+##  {.center}
+
+::: large
+::: hand
+Sorry, you lost.
+😞
+:::
+:::
+
+##  {.center}
+
+::: large
+::: hand
+How does that make you feel?
+:::
+:::
 
 ## We are bad at judging uncertainty
 
 ::: incremental
 -   You had a 10% chance of losing
+
 -   One in ten playing this game will lose
+
 -   90% chance of winning is nowhere near a certain win
 :::
 
@@ -169,6 +191,8 @@ ggplot(data, aes(x, y, fill = value)) +
   )
 ```
 
+# Uncertainty
+
 ## Visualizing uncertainty of point estimates
 
 ::: incremental
@@ -182,7 +206,7 @@ ggplot(data, aes(x, y, fill = value)) +
 ```{r}
 #| label: sampling-schematic1
 #| echo: false
-#| fig-asp: !expr 3/4
+#| fig-asp: 0.5
 fill_color <- "#F1DE6780"
 
 set.seed(452061)
@@ -351,7 +375,7 @@ plot_grid(
   p1,
   NULL,
   NULL,
-  ncol = 1, rel_heights = c(1, .4, 1), align = 'v'
+  ncol = 1, rel_heights = c(0.7, 0.4, 0.7), align = 'v'
 )
 ```
 
@@ -364,12 +388,12 @@ Figure redrawn from [Claus O. Wilke. Fundamentals of Data Visualization. O'Reill
 ```{r}
 #| label: sampling-schematic2
 #| echo: false
-#| fig-asp: !expr 3/4
+#| fig-asp: 0.5
 plot_grid(
   p1,
   p2,
   NULL,
-  ncol = 1, rel_heights = c(1, .4, 1), align = 'v'
+  ncol = 1, rel_heights = c(0.7, 0.4, 0.7), align = 'v'
 )
 ```
 
@@ -382,12 +406,12 @@ Figure redrawn from [Claus O. Wilke. Fundamentals of Data Visualization. O'Reill
 ```{r}
 #| label: sampling-schematic3
 #| echo: false
-#| fig-asp: !expr 3/4
+#| fig-asp: 0.5
 plot_grid(
   p1,
   p2,
   p3,
-  ncol = 1, rel_heights = c(1, .4, 1), align = 'v'
+  ncol = 1, rel_heights = c(0.7, 0.4, 0.7), align = 'v'
 )
 ```
 
@@ -408,7 +432,9 @@ What does "95% confident" mean in the following sentence?
 
 ### Discuss
 
-\[Add Wooclap\]
+```{=html}
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
+```
 :::
 
 ## Frequentist interpretation of a confidence interval
@@ -418,7 +444,7 @@ What does "95% confident" mean in the following sentence?
 #| warning: false
 #| message: false
 #| fig-align: center
-#| fig-asp: 1
+#| fig-asp: 0.8
 #| out-width: 50%
 set.seed(85439)
 df <- tibble(y = rnorm(10000))
@@ -464,14 +490,20 @@ Figure from [Claus O. Wilke. Fundamentals of Data Visualization. O'Reilly, 2019.
 
 ```{r}
 #| message: false
+#| echo: false
 everest <- read_csv(here::here("slides/16", "data/everest.csv"))
+```
+
+```{r}
+#| eval: false
+everest <- read_csv("data/everest.csv")
 ```
 
 ```{r}
 everest
 ```
 
-## Example: Highest point reached on Everest in 2019
+## Highest point reached on Everest in 2019
 
 Includes only climbers and expedition members who **did not** summit
 
@@ -583,7 +615,7 @@ ggplot(CI_df, aes(estimate, type)) +
   )
 ```
 
-## Marginal effects example: Height reached on Everest
+## Marginal effects: Height reached on Everest
 
 Average height reached relative to:<br> a male climber who climbed with oxygen, summited, and survived
 
@@ -648,7 +680,7 @@ ggplot(evrst_gg) +
   theme(axis.ticks.length.x = grid::unit(0, "pt"))
 ```
 
-## Marginal effects example: Height reached on Everest
+## Marginal effects: Height reached on Everest
 
 Other visualization options: half-eye
 
@@ -677,7 +709,7 @@ ggplot(evrst_gg) +
   theme(axis.ticks.length.x = grid::unit(0, "pt"))
 ```
 
-## Marginal effects example: Height reached on Everest
+## Marginal effects: Height reached on Everest
 
 Other visualization options: gradient interval
 
@@ -706,7 +738,7 @@ ggplot(evrst_gg) +
   theme(axis.ticks.length.x = grid::unit(0, "pt"))
 ```
 
-## Marginal effects example: Height reached on Everest
+## Marginal effects: Height reached on Everest
 
 Other visualization options: quantile dotplot
 
@@ -736,7 +768,7 @@ ggplot(evrst_gg) +
   theme(axis.ticks.length.x = grid::unit(0, "pt"))
 ```
 
-## Marginal effects example: Height reached on Everest
+## Marginal effects: Height reached on Everest
 
 Other visualization options: quantile dotplot
 
@@ -766,7 +798,7 @@ ggplot(evrst_gg) +
   theme(axis.ticks.length.x = grid::unit(0, "pt"))
 ```
 
-## Marginal effects example: Height reached on Everest
+## Marginal effects: Height reached on Everest
 
 Other visualization options: quantile dotplot
 
@@ -1010,7 +1042,7 @@ ggplot(lm_data) +
     position = position_dodge(width = 1)
   ) +
   scale_x_continuous(
-    breaks = unique(gapminder$year)
+    breaks = gapminder |> distinct(year) |> pull(year)
   ) + 
   theme(legend.position = "top")
 ```
@@ -1019,38 +1051,47 @@ ggplot(lm_data) +
 Figure and code idea from [Kieran Healy. Data Visualization: A practical introduction. Princeton University Press, 2019.](https://socviz.co/)
 :::
 
-## Half-eyes, gradient intervals, etc. {.smaller}
+## Data prep
 
-The **ggdist** package provides many different visualizations of uncertainty
+For 1952 only:
+
+```{r}
+lm_data_1952 <- lm_data |>
+  filter(year == 1952) |>
+  mutate(
+    continent = fct_reorder(continent, estimate) 
+  )
+```
+
+## Half-eye {.smaller}
+
+`ggdist::stat_dist_halfeye()`:
 
 ```{r}
 #| label: gapminder-halfeye
 #| output-location: column
-lm_data |>
-  filter(year == 1952) |>
-  mutate(
-    continent = 
-      fct_reorder(continent, estimate) 
-  ) |>
+#| code-line-numbers: "|3-10"
+lm_data_1952 |>
   ggplot(aes(x = estimate, y = continent)) +
   stat_dist_halfeye(
-    aes(dist = dist_normal(
-      mu = estimate, sigma = std.error
-    )),
+    aes(
+      dist = dist_normal(
+        mu = estimate, sigma = std.error
+      )
+    ),
     point_size = 4
   )
 ```
 
-## Half-eyes, gradient intervals, etc. {.smaller}
+## Gradient interval {.smaller}
 
-The **ggdist** package provides many different visualizations of uncertainty
+`ggdist::stat_dist_gradientinterval()`:
 
 ```{r}
 #| label: gapminder-gradinterval
 #| output-location: column
-lm_data |>
-  filter(year == 1952) |>
-  mutate(continent = fct_reorder(continent, estimate)) |>
+#| code-line-numbers: "|3-11"
+lm_data_1952 |>
   ggplot(aes(x = estimate, y = continent)) +
   stat_dist_gradientinterval(
     aes(
@@ -1063,16 +1104,15 @@ lm_data |>
   )
 ```
 
-## Half-eyes, gradient intervals, etc. {.smaller}
+## Dots interval {.smaller}
 
-The **ggdist** package provides many different visualizations of uncertainty
+`ggdist::stat_dist_dotsinterval()`:
 
 ```{r}
 #| label: gapminder-quantiledots
 #| output-location: column
-lm_data |>
-  filter(year == 1952) |>
-  mutate(continent = fct_reorder(continent, estimate)) |>
+#| code-line-numbers: "|3-12"
+lm_data_1952 |>
   ggplot(aes(x = estimate, y = continent)) +
   stat_dist_dotsinterval(
     aes(
@@ -1086,16 +1126,15 @@ lm_data |>
   )
 ```
 
-## Half-eyes, gradient intervals, etc. {.smaller}
+## Dots interval {.smaller}
 
-The **ggdist** package provides many different visualizations of uncertainty
+`ggdist::stat_dist_dotsinterval()`:
 
 ```{r}
 #| label: gapminder-quantiledots2
 #| output-location: column
-lm_data |>
-  filter(year == 1952) |>
-  mutate(continent = fct_reorder(continent, estimate)) |>
+#| code-line-numbers: "|11"
+lm_data_1952 |>
   ggplot(aes(x = estimate, y = continent)) +
   stat_dist_dotsinterval(
     aes(
