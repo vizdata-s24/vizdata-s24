@@ -103,7 +103,7 @@ The peer review assignments for **proposal peer reviews** are **TO BE POSTED**:
 #| message: false
 #| eval: true
 
-p2_pr <- read_csv("project-2-peer-review.csv")
+p2_pr <- read_csv("project_2_peer_review_teams.csv")
 gt(p2_pr)
 ```
 
