@@ -1,0 +1,152 @@
+---
+title: Visualizing uncertainty II
+subtitle: Lecture 17
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+# Warm up
+
+## Announcements
+
+-   ...
+
+## Setup {.smaller}
+
+```{r}
+#| label: setup
+#| message: false
+#| code-line-numbers: "|7-8"
+
+# load packages
+library(openintro)
+library(tidyverse)
+library(tidymodels)
+library(ggdist)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7, # 7" width
+  fig.asp = 0.618, # the golden ratio
+  fig.retina = 3, # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300 # higher dpi, sharper image
+)
+```
+
+# Visualizing uncertainty of model estimates
+
+## Data: House prices in Duke Forest {.smaller}
+
+```{r}
+openintro::duke_forest
+```
+
+## Price vs. area
+
+```{r}
+ggplot(duke_forest, aes(x = area, y = price)) +
+  geom_point()
+```
+
+## Price vs. bedrooms
+
+```{r}
+ggplot(duke_forest, aes(x = bed, y = price)) +
+  geom_point(alpha = 0.5)
+```
+
+## Price vs. area + bedrooms
+
+```{r}
+ggplot(duke_forest, aes(x = area, y = price)) +
+  geom_point() +
+  facet_wrap(~bed)
+```
+
+## Data prep
+
+-   Remove 6 bedroom houeses
+-   Make `bed` a factor variable
+
+```{r}
+duke_forest <- duke_forest |>
+  filter(bed != 6) |>
+  mutate(bed = as.factor(bed))
+
+duke_forest |>
+  select(price, area, bed)
+```
+
+## Fit a model
+
+::: task
+Interpret the slopes and the intercept.
+Then, describe what `std.error` in the output means.
+:::
+
+```{r}
+price_fit <- lm(price ~ area + bed, data = duke_forest)
+tidy(price_fit)
+```
+
+## Let's bootstrap!
+
+```{r}
+n_rep <- 500
+
+set.seed(25)
+
+duke_forest_bootstraps <- map_dfr(
+  seq_len(n_rep),
+  function(i) {
+    duke_forest |>
+      slice_sample(prop = 1, by = bed, replace = TRUE) |>
+      mutate(resample = i, .before = address)
+  }
+)
+```
+
+## Bootstrap samples {.smaller}
+
+```{r}
+duke_forest_bootstraps
+```
+
+## Bootstrap samples - another look
+
+```{r}
+glimpse(duke_forest_bootstraps)
+```
+
+## `ae-12`: Part 1 {.smaller}
+
+::: task
+The following visualization shows **bootstrap confidence intervals for predictions** from additive (main effects) models for predicting price from area and number of bedrooms.
+Recreate the visualization.
+Once you're done, share your code and plot on Slack in #general.
+:::
+
+![](images/boot-ci-preds.png){fig-align="center" width="1000"}
+
+## `ae-12`: Part 2 {.smaller}
+
+::: task
+Construct and visualize **bootstrap distributions of model estimates** using halfeye plots, i.e., recreate the following visualization.
+Once you're done, share your code and plot on Slack in #general.
+Then, try other `stat`s (other ways of visualizing the distributions) from the **ggdist** package.
+:::
+
+::: {layout-ncol="3"}
+![](images/boot-model-est-1.png)
+
+![](images/boot-model-est-2.png)
+
+![](images/boot-model-est-3.png)
+:::
