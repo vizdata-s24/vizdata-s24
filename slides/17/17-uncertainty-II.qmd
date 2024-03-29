@@ -10,10 +10,6 @@ format: revealjs
 
 # Warm up
 
-## Announcements
-
--   ...
-
 ## Setup {.smaller}
 
 ```{r}
