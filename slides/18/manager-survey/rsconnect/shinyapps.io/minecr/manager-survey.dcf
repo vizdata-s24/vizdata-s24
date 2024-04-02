@@ -1,0 +1,9 @@
+name: manager-survey
+title:
+username:
+account: minecr
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5090468
+bundleId: 8444202
+url: https://minecr.shinyapps.io/manager-survey/
