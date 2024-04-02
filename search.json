@@ -2264,7 +2264,7 @@
     "href": "hw/hw-5.html#question-1",
     "title": "HW 5",
     "section": "Question 1",
-    "text": "Question 1\nMirror, mirror on the wall, who’s the ugliest of them all? Make a plot of the variables in the diamonds dataset from the ggplot2 package. Your plot should use at least two variables, but more is fine too.\n\nFirst, make the plot using the default theme and color scales.\nThen, update the plot to be as ugly as possible. You will probably want to play around with theme options, colors, fonts, etc. The ultimate goal is the ugliest possible plot, and the sky is the limit!\n\n\nUse the following prompt for Questions 2-5.\nMeaning of life. A 2021 Pew Research survey of 18,850 adults from 17 advanced economies (Canada, Belgium, France, Germany, Greece, Italy, the Netherlands, Spain, Sweden, the United Kingdom, the United States, Australia, Japan, New Zealand, Singapore, South Korea and Taiwan) asked the following question: “We’re interested in exploring what it means to live a satisfying life. What aspects of your life do you currently find meaningful, fulfilling or satisfying?” The results of the survey are summarized in the following visualization, which can be found on Pew’s summary of their findings.",
+    "text": "Question 1\nMirror, mirror on the wall, who’s the ugliest of them all? Make a plot of the variables in the diamonds dataset from the ggplot2 package. Your plot should use at least two variables, but more is fine too.\n\nFirst, make the plot using the default theme and color scales.\nThen, update the plot to be as ugly as possible. You will probably want to play around with theme options, colors, fonts, etc. The ultimate goal is the ugliest possible plot, and the sky is the limit!\n\nYour response must include two plots – the one with the default look and your “ugly” plot.\n\nUse the following prompt for Questions 2-5.\nMeaning of life. A 2021 Pew Research survey of 18,850 adults from 17 advanced economies (Canada, Belgium, France, Germany, Greece, Italy, the Netherlands, Spain, Sweden, the United Kingdom, the United States, Australia, Japan, New Zealand, Singapore, South Korea and Taiwan) asked the following question: “We’re interested in exploring what it means to live a satisfying life. What aspects of your life do you currently find meaningful, fulfilling or satisfying?” The results of the survey are summarized in the following visualization, which can be found on Pew’s summary of their findings.",
     "crumbs": [
       "HW",
       "HW 5"
@@ -2275,7 +2275,7 @@
     "href": "hw/hw-5.html#question-2",
     "title": "HW 5",
     "section": "Question 2",
-    "text": "Question 2\nThe data. Create a dataset based on the data presented in this visualization. You will want to take a peek at the next question, since the dataset you create / how the data are organized will depend on the type of visualization you might make in the next question.\n\nThe code to create the data should go in the data/data-create.R file.\nThe dataset should be called life_meaning and saved as life_meaning.csv in the data folder.",
+    "text": "Question 2\nThe data. Create a dataset based on the data presented in this visualization. You will want to take a peek at the next question, since the dataset you create / how the data are organized will depend on the type of visualization you might make in the next question.\n\nThe code to create the data should go in the data/data-create.R file.\nThe dataset should be called life_meaning and saved as life-meaning.csv in the data folder.",
     "crumbs": [
       "HW",
       "HW 5"
@@ -2286,7 +2286,7 @@
     "href": "hw/hw-5.html#question-3",
     "title": "HW 5",
     "section": "Question 3",
-    "text": "Question 3\nThe visualization. Create an alternative visualization of these data. Accompany your visualization with a brief explanation of how you decided to create what you created, as well as how it is similar to and how it differs from the original visualization. It’s OK if your visualization is such that all the conclusions that can be drawn from the original visualization can’t be drawn from yours (e.g., maybe fewer choices per country are displayed), but this should be something you articulate in your answer along with a justification with why you think it’s OK to omit this feature. Make sure that your visualization employs accessibility best practices we’ve discussed in class, and write a sentence about features you’ve decided to include/omit to meet these guidelines. The code to make the visualization should go in your Quarto file (as usual).",
+    "text": "Question 3\nThe visualization. Create an alternative visualization of these data. Accompany your visualization with a brief explanation of how you decided to create what you did, as well as how it is similar to and how it differs from the original visualization. It’s OK if your visualization is such that all the conclusions that can be drawn from the original visualization can’t be drawn from yours (e.g., maybe fewer choices per country are displayed), but this should be something you articulate in your answer along with a justification with why you think it’s OK to omit this feature. Make sure that your visualization employs accessibility best practices we’ve discussed in class, and write a sentence about features you’ve decided to include/omit to meet these guidelines. The code to make the visualization should go in your Quarto file (as usual).",
     "crumbs": [
       "HW",
       "HW 5"
@@ -2297,7 +2297,7 @@
     "href": "hw/hw-5.html#question-4",
     "title": "HW 5",
     "section": "Question 4",
-    "text": "Question 4\nThe app. Create a Shiny app that features the visualization you made and at least one reactive element. The reactivity can be as simple as selecting a country to highlight. Deploy the app to shinyapps.io.\n\nThe code of the app should go in the app1 folder.\nThe link to the deployed app should be included in your R Markdown folder.\nIf you have a dataset you’ve created and placed in the data folder in the root of your project/repo, move that data file into the app1/data folder. You need everything needed to run the app in the app1 folder for deployment. This creates multiple copies of the data in your repo, but that’s ok. If you don’t have a dataset\nNote: You’ve learned about Shiny in class, but we haven’t covered deployment, so completing this question will require a bit of self-learning. See this article on deployment for instructions) for instructions for deployment to shinyapps.io, and ask questions if you need further guidance!",
+    "text": "Question 4\nThe app. Create a Shiny app that features the visualization you made in the previous question and at least one reactive element. The reactivity can be as simple as selecting a country to highlight. Deploy the app to shinyapps.io.\n\nThe code of the app should go in the app1 folder.\nThe link to the deployed app should be included in your Quarto document.\nPlace a copy of the dataset you’ve created and placed in the data folder in the root of your project/repo in the app1/data folder. You need everything needed to run the app in the app1 folder for deployment. This creates multiple copies of the data in your repo, but that’s OK.\n\n\n\n\n\n\n\nNote\n\n\n\nYou’ve learned about Shiny in class, but we haven’t covered deployment, so completing this question will require a bit of self-learning. See this article on deployment for instructions) for instructions for deployment to shinyapps.io, and ask questions if you need further guidance!",
     "crumbs": [
       "HW",
       "HW 5"
@@ -2308,7 +2308,7 @@
     "href": "hw/hw-5.html#question-5",
     "title": "HW 5",
     "section": "Question 5",
-    "text": "Question 5\nThe styled app. Change the look of your app using the theming features and the auto-theming option offered by the thematic package. This will allow the look of your app to match the look of your visualization. Deploy the app to Shinyapps.io.\n\nThe code of the app should go in the app2 folder.\nThe link to the deployed app should be included in your R Markdown folder.",
+    "text": "Question 5\nThe styled app. Change the look of your app using the theming features and the auto-theming option offered by the thematic package. This will allow the look of your app to match the look of your visualization. Deploy the app to Shinyapps.io.\n\nThe code of the app should go in the app2 folder.\nThe link to the deployed app should be included in your Quarto document.",
     "crumbs": [
       "HW",
       "HW 5"

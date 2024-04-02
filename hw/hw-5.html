@@ -395,6 +395,7 @@ Note
 <li><p>First, make the plot using the default theme and color scales.</p></li>
 <li><p>Then, update the plot to be as ugly as possible. You will probably want to play around with theme options, colors, fonts, etc. The ultimate goal is the ugliest possible plot, and the sky is the limit!</p></li>
 </ul>
+<p>Your response must include two plots – the one with the default look and your “ugly” plot.</p>
 <hr>
 <p>Use the following prompt for Questions 2-5.</p>
 <p><strong>Meaning of life.</strong> A 2021 Pew Research survey of 18,850 adults from 17 advanced economies (Canada, Belgium, France, Germany, Greece, Italy, the Netherlands, Spain, Sweden, the United Kingdom, the United States, Australia, Japan, New Zealand, Singapore, South Korea and Taiwan) asked the following question: “We’re interested in exploring what it means to live a satisfying life. What aspects of your life do you currently find meaningful, fulfilling or satisfying?” The results of the survey are summarized in the following visualization, which can be found on <a href="https://www.pewresearch.org/global/2021/11/18/what-makes-life-meaningful-views-from-17-advanced-economies/">Pew’s summary of their findings</a>.</p>
@@ -405,29 +406,41 @@ Note
 <p><strong>The data.</strong> Create a dataset based on the data presented in this visualization. You will want to take a peek at the next question, since the dataset you create / how the data are organized will depend on the type of visualization you might make in the next question.</p>
 <ul>
 <li><p>The code to create the data should go in the <code>data/data-create.R</code> file.</p></li>
-<li><p>The dataset should be called <code>life_meaning</code> and saved as <code>life_meaning.csv</code> in the data folder.</p></li>
+<li><p>The dataset should be called <code>life_meaning</code> and saved as <code>life-meaning.csv</code> in the data folder.</p></li>
 </ul>
 </section>
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
-<p><strong>The visualization.</strong> Create an alternative visualization of these data. Accompany your visualization with a brief explanation of how you decided to create what you created, as well as how it is similar to and how it differs from the original visualization. It’s OK if your visualization is such that all the conclusions that can be drawn from the original visualization can’t be drawn from yours (e.g., maybe fewer choices per country are displayed), but this should be something you articulate in your answer along with a justification with why you think it’s OK to omit this feature. Make sure that your visualization employs accessibility best practices we’ve discussed in class, and write a sentence about features you’ve decided to include/omit to meet these guidelines. The code to make the visualization should go in your Quarto file (as usual).</p>
+<p><strong>The visualization.</strong> Create an alternative visualization of these data. Accompany your visualization with a brief explanation of how you decided to create what you did, as well as how it is similar to and how it differs from the original visualization. It’s OK if your visualization is such that all the conclusions that can be drawn from the original visualization can’t be drawn from yours (e.g., maybe fewer choices per country are displayed), but this should be something you articulate in your answer along with a justification with why you think it’s OK to omit this feature. Make sure that your visualization employs accessibility best practices we’ve discussed in class, and write a sentence about features you’ve decided to include/omit to meet these guidelines. The code to make the visualization should go in your Quarto file (as usual).</p>
 </section>
 <section id="question-4" class="level2">
 <h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
-<p><strong>The app.</strong> Create a Shiny app that features the visualization you made and at least one reactive element. The reactivity can be as simple as selecting a country to highlight. Deploy the app to shinyapps.io.</p>
+<p><strong>The app.</strong> Create a Shiny app that features the visualization you made in the previous question and at least one reactive element. The reactivity can be as simple as selecting a country to highlight. Deploy the app to shinyapps.io.</p>
 <ul>
 <li><p>The code of the app should go in the <code>app1</code> folder.</p></li>
-<li><p>The link to the deployed app should be included in your R Markdown folder.</p></li>
-<li><p>If you have a dataset you’ve created and placed in the <code>data</code> folder in the root of your project/repo, move that data file into the <code>app1/data</code> folder. You need everything needed to run the app in the <code>app1</code> folder for deployment. This creates multiple copies of the data in your repo, but that’s ok. If you don’t have a dataset</p></li>
-<li><p>Note: You’ve learned about Shiny in class, but we haven’t covered deployment, so completing this question will require a bit of self-learning. See <a href="https://shiny.rstudio.com/articles/shinyapps.html">this article on deployment</a> for instructions) for instructions for deployment to shinyapps.io, and ask questions if you need further guidance!</p></li>
+<li><p>The link to the deployed app should be included in your Quarto document.</p></li>
+<li><p>Place a copy of the dataset you’ve created and placed in the <code>data</code> folder in the root of your project/repo in the <code>app1/data</code> folder. You need everything needed to run the app in the <code>app1</code> folder for deployment. This creates multiple copies of the data in your repo, but that’s OK.</p></li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You’ve learned about Shiny in class, but we haven’t covered deployment, so completing this question will require a bit of self-learning. See <a href="https://shiny.posit.co/r/articles/share/shinyapps/">this article on deployment</a> for instructions) for instructions for deployment to shinyapps.io, and ask questions if you need further guidance!</p>
+</div>
+</div>
 </section>
 <section id="question-5" class="level2">
 <h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
 <p><strong>The styled app.</strong> Change the look of your app using the theming features and the auto-theming option offered by the <a href="https://rstudio.github.io/thematic">thematic</a> package. This will allow the look of your app to match the look of your visualization. Deploy the app to Shinyapps.io.</p>
 <ul>
 <li><p>The code of the app should go in the <code>app2</code> folder.</p></li>
-<li><p>The link to the deployed app should be included in your R Markdown folder.</p></li>
+<li><p>The link to the deployed app should be included in your Quarto document.</p></li>
 </ul>
 
 
