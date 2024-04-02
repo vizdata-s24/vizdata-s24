@@ -12,7 +12,7 @@ format: revealjs
 
 ## Announcements
 
--   ...
+-   HW 5 is posted, due next Tuesday, work on it in lab tomorrow
 
 ## Setup {.smaller}
 
