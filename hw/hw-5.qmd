@@ -58,6 +58,10 @@ You will want to take a peek at the next question, since the dataset you create 
 
 -   The dataset should be called `life_meaning` and saved as `life-meaning.csv` in the data folder.
 
+-   Once you create the data, read it in your Quarto document and run `glimpse()` on the data.
+    A code chunk doing this is already provided for you, but it's set to `eval: false`.
+    Either remove this code chunk option (so the default, `true`, behavior kicks in) or set it to `true`.
+
 ## Question 3
 
 **The visualization.** Create an alternative visualization of these data.
