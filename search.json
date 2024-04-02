@@ -4122,21 +4122,21 @@
     "href": "slides/18/18-shiny.html#livecoding",
     "title": "Interactive reporting + visualization with Shiny",
     "section": "Livecoding",
-    "text": "Livecoding\n\nGo to the ae-13 project and code along in manager-survey/app-1.R.\n\n\nHighlights:\n\nData pre-processing\nBasic reactivity"
+    "text": "Livecoding\n\nGo to the ae-13 project and code along in app-1.R.\n\n\nHighlights:\n\nData pre-processing\nBasic reactivity"
   },
   {
     "objectID": "slides/18/18-shiny.html#livecoding-1",
     "href": "slides/18/18-shiny.html#livecoding-1",
     "title": "Interactive reporting + visualization with Shiny",
     "section": "Livecoding",
-    "text": "Livecoding\n\nGo to the ae-21 project and code along in manager-survey/app-2.R.\n\n\nHighlights:\n\nData pre-processing outside of the app\nTabsets\nValidation"
+    "text": "Livecoding\n\nGo to the ae-21 project and code along in app-2.R.\n\n\nHighlights:\n\nData pre-processing outside of the app\nTabsets\nValidation"
   },
   {
     "objectID": "slides/18/18-shiny.html#livecoding-2",
     "href": "slides/18/18-shiny.html#livecoding-2",
     "title": "Interactive reporting + visualization with Shiny",
     "section": "Livecoding",
-    "text": "Livecoding\n\nGo to the ae-21 project and code along in manager-survey/app-3.R.\n\n\nHighlights:\n\nConditional panels\nLinked brushing"
+    "text": "Livecoding\n\nGo to the ae-13 project and code along in app-3.R.\n\n\nHighlights:\n\nConditional panels\nLinked brushing"
   },
   {
     "objectID": "slides/18/18-shiny.html#reference",
