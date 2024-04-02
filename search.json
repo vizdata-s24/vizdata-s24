@@ -2275,7 +2275,7 @@
     "href": "hw/hw-5.html#question-2",
     "title": "HW 5",
     "section": "Question 2",
-    "text": "Question 2\nThe data. Create a dataset based on the data presented in this visualization. You will want to take a peek at the next question, since the dataset you create / how the data are organized will depend on the type of visualization you might make in the next question.\n\nThe code to create the data should go in the data/data-create.R file.\nThe dataset should be called life_meaning and saved as life-meaning.csv in the data folder.",
+    "text": "Question 2\nThe data. Create a dataset based on the data presented in this visualization. You will want to take a peek at the next question, since the dataset you create / how the data are organized will depend on the type of visualization you might make in the next question.\n\nThe code to create the data should go in the data/data-create.R file.\nThe dataset should be called life_meaning and saved as life-meaning.csv in the data folder.\nOnce you create the data, read it in your Quarto document and run glimpse() on the data. A code chunk doing this is already provided for you, but it’s set to eval: false. Either remove this code chunk option (so the default, true, behavior kicks in) or set it to true.",
     "crumbs": [
       "HW",
       "HW 5"
