@@ -72,10 +72,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="STA 313 - HW 5">
-<meta property="og:description" content="TBA">
+<meta property="og:description" content="Shine bright like a diamond">
 <meta property="og:site_name" content="STA 313">
 <meta name="twitter:title" content="STA 313 - HW 5">
-<meta name="twitter:description" content="TBA">
+<meta name="twitter:description" content="Shine bright like a diamond">
 <meta name="twitter:image" content="https://vizdata.org/hw/images/twitter-card.png">
 <meta name="twitter:creator" content="@minebocek">
 <meta name="twitter:card" content="summary_large_image">
@@ -325,8 +325,18 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link active" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a></li>
+  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/vizdata-s24/vizdata-s24/edit/main/hw/hw-5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vizdata-s24/vizdata-s24/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -334,7 +344,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../hw/hw-0.html">HW</a></li><li class="breadcrumb-item"><a href="../hw/hw-5.html">HW 5</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">HW 5</h1>
-<p class="subtitle lead">TBA</p>
+<p class="subtitle lead">Shine bright like a diamond</p>
 </div>
 
 
@@ -351,9 +361,77 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>To be posted.</p>
+<p>For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk. Use a short and informative label. For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title. For any exercise where you’re including a description and/or interpretation, use full sentences. Make a commit at least after finishing each exercise, or better yet, more frequently. Push your work regularly to GitHub. Once you’re done, inspect your GitHub repo to make sure you’ve pushed all of your changes.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your homework repositories are set up to run a GitHub action every time you push to the repository checking for (1) any files that shouldn’t be in your repository or that should be in a specific folder in your repository and (2) whether your Quarto document renders.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/badge-fail.svg" class="quarto-figure quarto-figure-left figure-img" style="float: left;" width="122" height="14"></p>
+</figure>
+</div>
+<p>If either of these checks fail, you’ll see a red badge on your repository README and you’ll get an email saying “check assignment” action has failed.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/badge-pass.svg" class="quarto-figure quarto-figure-left figure-img" style="float: left;" width="122" height="14"></p>
+</figure>
+</div>
+<p>If they pass, you’ll see a green badge on your repository README and you won’t get an email saying.</p>
+<p>Up until the deadline, it doesn’t matter how many times these checks fail. Just make sure by the end the badge is green.</p>
+</div>
+</div>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<p><strong>Mirror, mirror on the wall, who’s the ugliest of them all?</strong> Make a plot of the variables in the <code>diamonds</code> dataset from the <strong>ggplot2</strong> package. Your plot should use at least two variables, but more is fine too.</p>
+<ul>
+<li><p>First, make the plot using the default theme and color scales.</p></li>
+<li><p>Then, update the plot to be as ugly as possible. You will probably want to play around with theme options, colors, fonts, etc. The ultimate goal is the ugliest possible plot, and the sky is the limit!</p></li>
+</ul>
+<hr>
+<p>Use the following prompt for Questions 2-5.</p>
+<p><strong>Meaning of life.</strong> A 2021 Pew Research survey of 18,850 adults from 17 advanced economies (Canada, Belgium, France, Germany, Greece, Italy, the Netherlands, Spain, Sweden, the United Kingdom, the United States, Australia, Japan, New Zealand, Singapore, South Korea and Taiwan) asked the following question: “We’re interested in exploring what it means to live a satisfying life. What aspects of your life do you currently find meaningful, fulfilling or satisfying?” The results of the survey are summarized in the following visualization, which can be found on <a href="https://www.pewresearch.org/global/2021/11/18/what-makes-life-meaningful-views-from-17-advanced-economies/">Pew’s summary of their findings</a>.</p>
+<p><img src="images/pew.png" class="img-fluid"></p>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<p><strong>The data.</strong> Create a dataset based on the data presented in this visualization. You will want to take a peek at the next question, since the dataset you create / how the data are organized will depend on the type of visualization you might make in the next question.</p>
+<ul>
+<li><p>The code to create the data should go in the <code>data/data-create.R</code> file.</p></li>
+<li><p>The dataset should be called <code>life_meaning</code> and saved as <code>life_meaning.csv</code> in the data folder.</p></li>
+</ul>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<p><strong>The visualization.</strong> Create an alternative visualization of these data. Accompany your visualization with a brief explanation of how you decided to create what you created, as well as how it is similar to and how it differs from the original visualization. It’s OK if your visualization is such that all the conclusions that can be drawn from the original visualization can’t be drawn from yours (e.g., maybe fewer choices per country are displayed), but this should be something you articulate in your answer along with a justification with why you think it’s OK to omit this feature. Make sure that your visualization employs accessibility best practices we’ve discussed in class, and write a sentence about features you’ve decided to include/omit to meet these guidelines. The code to make the visualization should go in your Quarto file (as usual).</p>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<p><strong>The app.</strong> Create a Shiny app that features the visualization you made and at least one reactive element. The reactivity can be as simple as selecting a country to highlight. Deploy the app to shinyapps.io.</p>
+<ul>
+<li><p>The code of the app should go in the <code>app1</code> folder.</p></li>
+<li><p>The link to the deployed app should be included in your R Markdown folder.</p></li>
+<li><p>If you have a dataset you’ve created and placed in the <code>data</code> folder in the root of your project/repo, move that data file into the <code>app1/data</code> folder. You need everything needed to run the app in the <code>app1</code> folder for deployment. This creates multiple copies of the data in your repo, but that’s ok. If you don’t have a dataset</p></li>
+<li><p>Note: You’ve learned about Shiny in class, but we haven’t covered deployment, so completing this question will require a bit of self-learning. See <a href="https://shiny.rstudio.com/articles/shinyapps.html">this article on deployment</a> for instructions) for instructions for deployment to shinyapps.io, and ask questions if you need further guidance!</p></li>
+</ul>
+</section>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<p><strong>The styled app.</strong> Change the look of your app using the theming features and the auto-theming option offered by the <a href="https://rstudio.github.io/thematic">thematic</a> package. This will allow the look of your app to match the look of your visualization. Deploy the app to Shinyapps.io.</p>
+<ul>
+<li><p>The code of the app should go in the <code>app2</code> folder.</p></li>
+<li><p>The link to the deployed app should be included in your R Markdown folder.</p></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -907,7 +985,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/vizdata-s24/vizdata-s24/edit/main/hw/hw-5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vizdata-s24/vizdata-s24/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vizdata-s24/vizdata-s24/edit/main/hw/hw-5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vizdata-s24/vizdata-s24/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with 💛 and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
