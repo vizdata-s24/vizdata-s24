@@ -18,6 +18,18 @@ format: revealjs
 Source: [Mike Simonsen on X.com](https://x.com/mikesimonsen/status/1775683012598079639?s=20)
 :::
 
+## Announcements
+
+-   HW 6 - optional
+
+    -   A - If you turn it in, we'll calculate your HW grade as 5 best out of 6
+
+    -   B - If you don't turn it in, we'll calculate your HW grade as 4 best out of 5
+
+    -   Your HW score will be max(A, B)
+
+-   Code review for Project 2 moved 1 week up, no lab ob LDOC but TAs will have office hours during the time of lab, location TBA
+
 # Building dashboards with Shiny
 
 ## bslib
