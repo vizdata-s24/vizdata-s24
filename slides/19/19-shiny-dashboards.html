@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.9">
 
   <meta name="author" content="Dr.&nbsp;Mine Çetinkaya-Rundel">
-  <title>STA 313 – Interactive reporting + visualization with Shiny</title>
+  <title>STA 313 – Shiny Dashboards</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -387,12 +387,12 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="STA 313 - Interactive reporting + visualization with Shiny">
-<meta property="og:description" content="Lecture 18">
+<meta property="og:title" content="STA 313 - Shiny Dashboards">
+<meta property="og:description" content="Lecture 19">
 <meta property="og:site_name" content="STA 313">
-<meta name="twitter:title" content="STA 313 - Interactive reporting + visualization with Shiny">
-<meta name="twitter:description" content="Lecture 18">
-<meta name="twitter:image" content="https://vizdata.org/slides/18/images/twitter-card.png">
+<meta name="twitter:title" content="STA 313 - Shiny Dashboards">
+<meta name="twitter:description" content="Lecture 19">
+<meta name="twitter:image" content="https://vizdata.org/slides/19/images/twitter-card.png">
 <meta name="twitter:creator" content="@minebocek">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -401,8 +401,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../vizdata-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Interactive reporting + visualization with Shiny</h1>
-  <p class="subtitle">Lecture 18</p>
+  <h1 class="title">Shiny Dashboards</h1>
+  <p class="subtitle">Lecture 19</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -421,187 +421,46 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <h1>Warm up</h1>
 
 </section>
-<section id="announcements" class="slide level2">
-<h2>Announcements</h2>
-<ul>
-<li>HW 5 is posted, due next Tuesday, work on it in lab tomorrow</li>
-</ul>
-</section>
-<section id="setup" class="slide level2 smaller">
-<h2>Setup</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># load packages</span></span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="co"># set figure parameters for knitr</span></span>
-<span id="cb1-5"><a></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb1-6"><a></a>  <span class="at">fig.width =</span> <span class="dv">7</span>, <span class="co"># 7" width</span></span>
-<span id="cb1-7"><a></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>, <span class="co"># the golden ratio</span></span>
-<span id="cb1-8"><a></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>, <span class="co"># dpi multiplier for displaying HTML output on retina</span></span>
-<span id="cb1-9"><a></a>  <span class="at">fig.align =</span> <span class="st">"center"</span>, <span class="co"># center align figures</span></span>
-<span id="cb1-10"><a></a>  <span class="at">dpi =</span> <span class="dv">300</span> <span class="co"># higher dpi, sharper image</span></span>
-<span id="cb1-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
+<section id="what-is-visualization-about" class="slide level2">
+<h2>What is visualization about?</h2>
+<p><img data-src="images/airbnb-april-7.jpg"></p>
+
+<aside><div>
+<p>Source: <a href="https://x.com/mikesimonsen/status/1775683012598079639?s=20">Mike Simonsen on X.com</a></p>
+</div></aside></section></section>
 <section>
-<section id="shiny-high-level-view" class="title-slide slide level1 center">
-<h1>Shiny: High level view</h1>
+<section id="building-dashboards-with-shiny" class="title-slide slide level1 center">
+<h1>Building dashboards with Shiny</h1>
 
 </section>
-<section id="shiny" class="slide level2 center">
-<h2>Shiny</h2>
-<p>Every Shiny app has a webpage that the user visits, <br> and behind this webpage there is a computer that serves this webpage by running R.</p>
-
-<img data-src="images/high-level-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
-<section id="shiny-1" class="slide level2 center">
-<h2>Shiny</h2>
-<p>When running your app locally, the computer serving your app is your computer.</p>
-
-<img data-src="images/high-level-2.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="shiny-2" class="slide level2 center">
-<h2>Shiny</h2>
-<p>When your app is deployed, the computer serving your app is a web server.</p>
-
-<img data-src="images/high-level-3.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="shiny-3" class="slide level2 center">
-<h2>Shiny</h2>
-
-<img data-src="images/high-level-4.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="bslib" class="slide level2">
+<h2>bslib</h2>
+<p>Modern UI toolkit for Shiny based on <a href="https://getbootstrap.com/">Bootstrap</a>:</p>
+<ul>
+<li><p>Creation of delightful and customizable <a href="https://rstudio.github.io/bslib/articles/dashboards.html">Shiny dashboards</a> with <a href="https://rstudio.github.io/bslib/articles/cards.html">cards</a>, <a href="https://rstudio.github.io/bslib/articles/value-boxes.html">value boxes</a>, <a href="https://rstudio.github.io/bslib/articles/sidebars.html">sidebars</a>, etc.</p></li>
+<li><p><a href="https://rstudio.github.io/bslib/articles/theming.html">Custom theming</a></p></li>
+<li><p>Use of modern versions of Bootstrap and <a href="https://bootswatch.com/">Bootswatch</a></p></li>
+</ul>
+<p>Learn more at <a href="https://rstudio.github.io/bslib/">https://rstudio.github.io/bslib</a>.</p>
+</section>
 <section id="demo" class="slide level2">
 <h2>Demo</h2>
 <div class="cell" data-layout-align="center">
-<iframe src="https://gallery.shinyapps.io/goog-trend-index/?showcase=0" width="100%" height="650px" data-external="1">
+<iframe src="https://minecr.shinyapps.io/manager-survey-bslib?showcase=0" width="100%" height="650px" data-external="1">
 </iframe>
 </div>
-</section></section>
-<section>
-<section id="anatomy-of-a-shiny-app" class="title-slide slide level1 center">
-<h1>Anatomy of a Shiny app</h1>
-
 </section>
-<section id="whats-in-an-app" class="slide level2">
-<h2>What’s in an app?</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb2-2"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>()</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
-<span id="cb2-6"><a></a>    input, </span>
-<span id="cb2-7"><a></a>    output, </span>
-<span id="cb2-8"><a></a>    session) {</span>
-<span id="cb2-9"><a></a>  ...</span>
-<span id="cb2-10"><a></a>}</span>
-<span id="cb2-11"><a></a></span>
-<span id="cb2-12"><a></a></span>
-<span id="cb2-13"><a></a><span class="fu">shinyApp</span>(</span>
-<span id="cb2-14"><a></a>  <span class="at">ui =</span> ui, </span>
-<span id="cb2-15"><a></a>  <span class="at">server =</span> server</span>
-<span id="cb2-16"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="width:50%;">
-<ul>
-<li><p><strong>User interface</strong> controls the layout and appearance of app</p></li>
-<li><p><strong>Server function</strong> contains instructions needed to build app</p></li>
-</ul>
-</div>
-</div>
-</section>
-<section id="data-ask-a-manager" class="slide level2">
-<h2>Data: Ask a manager</h2>
-<p>Source: Ask a Manager Survey via <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-05-18">TidyTuesday</a></p>
-<blockquote>
-<p>This data does not reflect the general population; it reflects Ask a Manager readers who self-selected to respond, which is a very different group (as you can see just from the demographic breakdown below, which is very white and very female).</p>
-</blockquote>
-<p>Some findings <a href="https://www.askamanager.org/2021/05/some-findings-from-24000-peoples-salaries.html">here</a>.</p>
-</section>
-<section id="data-manager" class="slide level2">
-<h2>Data: <code>manager</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>manager <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/survey.csv"</span>)</span>
-<span id="cb3-2"><a></a>manager</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 26,232 × 18
-   timestamp          how_old_are_you industry  job_title additional_context_o…¹
-   &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                 
- 1 4/27/2021 11:02:10 25-34           Educatio… Research… &lt;NA&gt;                  
- 2 4/27/2021 11:02:22 25-34           Computin… Change &amp;… &lt;NA&gt;                  
- 3 4/27/2021 11:02:38 25-34           Accounti… Marketin… &lt;NA&gt;                  
- 4 4/27/2021 11:02:41 25-34           Nonprofi… Program … &lt;NA&gt;                  
- 5 4/27/2021 11:02:42 25-34           Accounti… Accounti… &lt;NA&gt;                  
- 6 4/27/2021 11:02:46 25-34           Educatio… Scholarl… &lt;NA&gt;                  
- 7 4/27/2021 11:02:51 25-34           Publishi… Publishi… &lt;NA&gt;                  
- 8 4/27/2021 11:03:00 25-34           Educatio… Librarian High school, FT       
- 9 4/27/2021 11:03:01 45-54           Computin… Systems … Data developer/ETL De…
-10 4/27/2021 11:03:02 35-44           Accounti… Senior A… &lt;NA&gt;                  
-# ℹ 26,222 more rows
-# ℹ abbreviated name: ¹​additional_context_on_job_title
-# ℹ 13 more variables: annual_salary &lt;dbl&gt;, other_monetary_comp &lt;dbl&gt;,
-#   currency &lt;chr&gt;, currency_other &lt;chr&gt;, additional_context_on_income &lt;chr&gt;,
-#   country &lt;chr&gt;, state &lt;chr&gt;, city &lt;chr&gt;,
-#   overall_years_of_professional_experience &lt;chr&gt;,
-#   years_of_experience_in_field &lt;chr&gt;, …</code></pre>
-</div>
-</div>
-</section>
-<section id="ultimate-goal" class="slide level2">
-<h2>Ultimate goal</h2>
-<div class="medium center-align">
-<p><a href="https://minecr.shinyapps.io/manager-survey/">https://minecr.shinyapps.io/manager-survey</a></p>
-</div>
-<div class="cell" data-layout-align="center">
-<iframe src="https://minecr.shinyapps.io/manager-survey/?showcase=0" width="2100" height="550px" data-external="1">
-</iframe>
-</div>
-</section></section>
-<section>
-<section id="interactive-reporting-with-shiny" class="title-slide slide level1 center">
-<h1>Interactive reporting with Shiny</h1>
-
-</section>
-<section id="livecoding" class="slide level2">
-<h2>Livecoding</h2>
+<section id="livecoding---cards" class="slide level2">
+<h2>Livecoding - Cards</h2>
 <div class="task">
-<p>Go to the <code>ae-13</code> project and code along in <code>app-1.R</code>.</p>
+<p>Go to the <code>ae-14</code> project and code along in <code>app-1.R</code> completing the given tasks in order.</p>
 </div>
-<p><br></p>
-<p>Highlights:</p>
-<ul>
-<li>Data pre-processing</li>
-<li>Basic reactivity</li>
-</ul>
 </section>
-<section id="livecoding-1" class="slide level2">
-<h2>Livecoding</h2>
+<section id="livecoding---value-boxes" class="slide level2">
+<h2>Livecoding - Value boxes</h2>
 <div class="task">
-<p>Go to the <code>ae-21</code> project and code along in <code>app-2.R</code>.</p>
+<p>Go to the <code>ae-14</code> project and code along in <code>app-2.R</code> completing the given tasks in order.</p>
 </div>
-<p><br></p>
-<p>Highlights:</p>
-<ul>
-<li>Data pre-processing outside of the app</li>
-<li>Tabsets</li>
-<li>Validation</li>
-</ul>
-</section></section>
-<section>
-<section id="interactive-visualizations-with-shiny" class="title-slide slide level1 center">
-<h1>Interactive visualizations with Shiny</h1>
-
-</section>
-<section id="livecoding-2" class="slide level2">
-<h2>Livecoding</h2>
-<div class="task">
-<p>Go to the <code>ae-13</code> project and code along in <code>app-3.R</code>.</p>
-</div>
-<p><br></p>
-<p>Highlights:</p>
-<ul>
-<li>Conditional panels</li>
-<li>Linked brushing</li>
-</ul>
 </section></section>
 <section>
 <section id="reference" class="title-slide slide level1 center">
@@ -610,201 +469,270 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 </section>
 <section id="reference-1" class="slide level2">
 <h2>Reference</h2>
-<p>The code for the app can be found <a href="https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/18/manager-survey/app.R">here</a>.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Load packages ----------------------------------------------------------------</span></span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb5-4"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-5"><a></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb5-6"><a></a><span class="fu">library</span>(scales)</span>
-<span id="cb5-7"><a></a><span class="fu">library</span>(countrycode)</span>
-<span id="cb5-8"><a></a></span>
-<span id="cb5-9"><a></a><span class="co"># Load data --------------------------------------------------------------------</span></span>
-<span id="cb5-10"><a></a></span>
-<span id="cb5-11"><a></a>manager_survey <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"data/manager-survey.rds"</span>)</span>
-<span id="cb5-12"><a></a></span>
-<span id="cb5-13"><a></a><span class="co"># Find all industries ----------------------------------------------------------</span></span>
-<span id="cb5-14"><a></a></span>
-<span id="cb5-15"><a></a>industry_choices <span class="ot">&lt;-</span> manager_survey <span class="sc">|&gt;</span></span>
-<span id="cb5-16"><a></a>  <span class="fu">distinct</span>(industry_other) <span class="sc">|&gt;</span></span>
-<span id="cb5-17"><a></a>  <span class="fu">arrange</span>(industry_other) <span class="sc">|&gt;</span></span>
-<span id="cb5-18"><a></a>  <span class="fu">pull</span>(industry_other)</span>
-<span id="cb5-19"><a></a></span>
-<span id="cb5-20"><a></a><span class="co"># Randomly select 3 industries to start with -----------------------------------</span></span>
-<span id="cb5-21"><a></a></span>
-<span id="cb5-22"><a></a>selected_industry_choices <span class="ot">&lt;-</span> <span class="fu">sample</span>(industry_choices, <span class="dv">3</span>)</span>
-<span id="cb5-23"><a></a></span>
-<span id="cb5-24"><a></a><span class="co"># Define UI --------------------------------------------------------------------</span></span>
-<span id="cb5-25"><a></a></span>
-<span id="cb5-26"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb5-27"><a></a>  <span class="fu">titlePanel</span>(<span class="at">title =</span> <span class="st">"Ask a Manager"</span>),</span>
-<span id="cb5-28"><a></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb5-29"><a></a>    </span>
-<span id="cb5-30"><a></a>    <span class="co"># Sidebar panel</span></span>
-<span id="cb5-31"><a></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb5-32"><a></a>      <span class="fu">checkboxGroupInput</span>(</span>
-<span id="cb5-33"><a></a>        <span class="at">inputId =</span> <span class="st">"industry"</span>,</span>
-<span id="cb5-34"><a></a>        <span class="at">label =</span> <span class="st">"Select up to 8 industies:"</span>,</span>
-<span id="cb5-35"><a></a>        <span class="at">choices =</span> industry_choices,</span>
-<span id="cb5-36"><a></a>        <span class="at">selected =</span> selected_industry_choices</span>
-<span id="cb5-37"><a></a>      ),</span>
-<span id="cb5-38"><a></a>    ),</span>
-<span id="cb5-39"><a></a>    </span>
-<span id="cb5-40"><a></a>    <span class="co"># Main panel</span></span>
-<span id="cb5-41"><a></a>    <span class="fu">mainPanel</span>(</span>
-<span id="cb5-42"><a></a>      <span class="fu">hr</span>(),</span>
-<span id="cb5-43"><a></a>      <span class="st">"Showing only results for those with salaries in USD who have provided information on their industry and highest level of education completed."</span>,</span>
-<span id="cb5-44"><a></a>      <span class="fu">br</span>(), <span class="fu">br</span>(),</span>
-<span id="cb5-45"><a></a>      <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"selected_industries"</span>),</span>
-<span id="cb5-46"><a></a>      <span class="fu">hr</span>(),</span>
-<span id="cb5-47"><a></a>      <span class="fu">br</span>(),</span>
-<span id="cb5-48"><a></a>      <span class="fu">tabsetPanel</span>(</span>
-<span id="cb5-49"><a></a>        <span class="at">type =</span> <span class="st">"tabs"</span>,</span>
-<span id="cb5-50"><a></a>        <span class="fu">tabPanel</span>(<span class="st">"Average salaries"</span>, <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"avg_salary_plot"</span>)),</span>
-<span id="cb5-51"><a></a>        <span class="fu">tabPanel</span>(</span>
-<span id="cb5-52"><a></a>          <span class="st">"Individual salaries"</span>,</span>
-<span id="cb5-53"><a></a>          <span class="fu">conditionalPanel</span>(</span>
-<span id="cb5-54"><a></a>            <span class="at">condition =</span> <span class="st">"input.industry.length &lt;= 8"</span>,</span>
-<span id="cb5-55"><a></a>            <span class="fu">sliderInput</span>(</span>
-<span id="cb5-56"><a></a>              <span class="at">inputId =</span> <span class="st">"ylim"</span>,</span>
-<span id="cb5-57"><a></a>              <span class="at">label =</span> <span class="st">"Zoom in to salaries between"</span>,</span>
-<span id="cb5-58"><a></a>              <span class="at">min =</span> <span class="dv">0</span>,</span>
-<span id="cb5-59"><a></a>              <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1000000</span>),</span>
-<span id="cb5-60"><a></a>              <span class="at">max =</span> <span class="fu">max</span>(manager_survey<span class="sc">$</span>annual_salary),</span>
-<span id="cb5-61"><a></a>              <span class="at">width =</span> <span class="st">"100%"</span></span>
-<span id="cb5-62"><a></a>            )</span>
-<span id="cb5-63"><a></a>          ),</span>
-<span id="cb5-64"><a></a>          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"indiv_salary_plot"</span>, <span class="at">brush =</span> <span class="st">"indiv_salary_brush"</span>),</span>
-<span id="cb5-65"><a></a>          <span class="fu">tableOutput</span>(<span class="at">outputId =</span> <span class="st">"indiv_salary_table"</span>)</span>
-<span id="cb5-66"><a></a>        ),</span>
-<span id="cb5-67"><a></a>        <span class="fu">tabPanel</span>(<span class="st">"Data"</span>, DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"data"</span>))</span>
-<span id="cb5-68"><a></a>      )</span>
-<span id="cb5-69"><a></a>    )</span>
-<span id="cb5-70"><a></a>    </span>
-<span id="cb5-71"><a></a>  )</span>
-<span id="cb5-72"><a></a>)</span>
-<span id="cb5-73"><a></a></span>
-<span id="cb5-74"><a></a><span class="co"># Define server function -------------------------------------------------------</span></span>
-<span id="cb5-75"><a></a></span>
-<span id="cb5-76"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb5-77"><a></a>  </span>
-<span id="cb5-78"><a></a>  <span class="co"># Print number of selected industries</span></span>
-<span id="cb5-79"><a></a>  output<span class="sc">$</span>selected_industries <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb5-80"><a></a>    <span class="fu">paste</span>(<span class="st">"You've selected"</span>, <span class="fu">length</span>(input<span class="sc">$</span>industry), <span class="st">"industries."</span>)</span>
-<span id="cb5-81"><a></a>  })</span>
-<span id="cb5-82"><a></a>  </span>
-<span id="cb5-83"><a></a>  <span class="co"># Filter data for selected industries</span></span>
-<span id="cb5-84"><a></a>  manager_survey_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb5-85"><a></a>    manager_survey <span class="sc">|&gt;</span></span>
-<span id="cb5-86"><a></a>      <span class="fu">filter</span>(industry_other <span class="sc">%in%</span> input<span class="sc">$</span>industry)</span>
-<span id="cb5-87"><a></a>  })</span>
-<span id="cb5-88"><a></a>  </span>
-<span id="cb5-89"><a></a>  <span class="co"># Make a table of filtered data</span></span>
-<span id="cb5-90"><a></a>  output<span class="sc">$</span>data <span class="ot">&lt;-</span> DT<span class="sc">::</span><span class="fu">renderDataTable</span>({</span>
-<span id="cb5-91"><a></a>    <span class="fu">manager_survey_filtered</span>() <span class="sc">|&gt;</span></span>
-<span id="cb5-92"><a></a>      <span class="fu">select</span>(</span>
-<span id="cb5-93"><a></a>        industry,</span>
-<span id="cb5-94"><a></a>        job_title,</span>
-<span id="cb5-95"><a></a>        annual_salary,</span>
-<span id="cb5-96"><a></a>        other_monetary_comp,</span>
-<span id="cb5-97"><a></a>        country,</span>
-<span id="cb5-98"><a></a>        overall_years_of_professional_experience,</span>
-<span id="cb5-99"><a></a>        years_of_experience_in_field,</span>
-<span id="cb5-100"><a></a>        highest_level_of_education_completed,</span>
-<span id="cb5-101"><a></a>        gender,</span>
-<span id="cb5-102"><a></a>        race</span>
-<span id="cb5-103"><a></a>      )</span>
-<span id="cb5-104"><a></a>  })</span>
-<span id="cb5-105"><a></a>  </span>
-<span id="cb5-106"><a></a>  <span class="co"># Futher filter for salary range</span></span>
-<span id="cb5-107"><a></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>industry, {</span>
-<span id="cb5-108"><a></a>    <span class="fu">updateSliderInput</span>(</span>
-<span id="cb5-109"><a></a>      <span class="at">inputId =</span> <span class="st">"ylim"</span>,</span>
-<span id="cb5-110"><a></a>      <span class="at">min =</span> <span class="fu">min</span>(<span class="fu">manager_survey_filtered</span>()<span class="sc">$</span>annual_salary),</span>
-<span id="cb5-111"><a></a>      <span class="at">max =</span> <span class="fu">max</span>(<span class="fu">manager_survey_filtered</span>()<span class="sc">$</span>annual_salary),</span>
-<span id="cb5-112"><a></a>      <span class="at">value =</span> <span class="fu">c</span>(</span>
-<span id="cb5-113"><a></a>        <span class="fu">min</span>(<span class="fu">manager_survey_filtered</span>()<span class="sc">$</span>annual_salary),</span>
-<span id="cb5-114"><a></a>        <span class="fu">max</span>(<span class="fu">manager_survey_filtered</span>()<span class="sc">$</span>annual_salary)</span>
-<span id="cb5-115"><a></a>      )</span>
-<span id="cb5-116"><a></a>    )</span>
-<span id="cb5-117"><a></a>  })</span>
-<span id="cb5-118"><a></a>  </span>
-<span id="cb5-119"><a></a>  <span class="co"># Plot of jittered salaries from filtered data</span></span>
-<span id="cb5-120"><a></a>  output<span class="sc">$</span>indiv_salary_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb5-121"><a></a>    </span>
-<span id="cb5-122"><a></a>    <span class="fu">validate</span>(</span>
-<span id="cb5-123"><a></a>      <span class="fu">need</span>(<span class="fu">length</span>(input<span class="sc">$</span>industry) <span class="sc">&lt;=</span> <span class="dv">8</span>, <span class="st">"Please select a maxiumum of 8 industries."</span>)</span>
-<span id="cb5-124"><a></a>    )</span>
-<span id="cb5-125"><a></a>    </span>
-<span id="cb5-126"><a></a>    <span class="fu">ggplot</span>(</span>
-<span id="cb5-127"><a></a>      <span class="fu">manager_survey_filtered</span>(),</span>
-<span id="cb5-128"><a></a>      <span class="fu">aes</span>(</span>
-<span id="cb5-129"><a></a>        <span class="at">x =</span> highest_level_of_education_completed,</span>
-<span id="cb5-130"><a></a>        <span class="at">y =</span> annual_salary,</span>
-<span id="cb5-131"><a></a>        <span class="at">color =</span> industry</span>
-<span id="cb5-132"><a></a>      )</span>
-<span id="cb5-133"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb5-134"><a></a>      <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb5-135"><a></a>      <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
-<span id="cb5-136"><a></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span></span>
-<span id="cb5-137"><a></a>      <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb5-138"><a></a>      <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">label_wrap_gen</span>(<span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb5-139"><a></a>      <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb5-140"><a></a>        <span class="at">limits =</span> input<span class="sc">$</span>ylim,</span>
-<span id="cb5-141"><a></a>        <span class="at">labels =</span> <span class="fu">label_dollar</span>()</span>
-<span id="cb5-142"><a></a>      ) <span class="sc">+</span></span>
-<span id="cb5-143"><a></a>      <span class="fu">labs</span>(</span>
-<span id="cb5-144"><a></a>        <span class="at">x =</span> <span class="st">"Highest level of education completed"</span>,</span>
-<span id="cb5-145"><a></a>        <span class="at">y =</span> <span class="st">"Annual salary"</span>,</span>
-<span id="cb5-146"><a></a>        <span class="at">color =</span> <span class="st">"Industry"</span>,</span>
-<span id="cb5-147"><a></a>        <span class="at">title =</span> <span class="st">"Individual salaries"</span></span>
-<span id="cb5-148"><a></a>      )</span>
-<span id="cb5-149"><a></a>  })</span>
-<span id="cb5-150"><a></a>  </span>
-<span id="cb5-151"><a></a>  <span class="co"># Linked brushing</span></span>
-<span id="cb5-152"><a></a>  output<span class="sc">$</span>indiv_salary_table <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
-<span id="cb5-153"><a></a>    <span class="fu">brushedPoints</span>(<span class="fu">manager_survey_filtered</span>(), input<span class="sc">$</span>indiv_salary_brush)</span>
-<span id="cb5-154"><a></a>  })</span>
-<span id="cb5-155"><a></a>  </span>
-<span id="cb5-156"><a></a>  <span class="co"># Plot of average salaries from filtered data</span></span>
-<span id="cb5-157"><a></a>  output<span class="sc">$</span>avg_salary_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb5-158"><a></a>    </span>
-<span id="cb5-159"><a></a>    <span class="fu">validate</span>(</span>
-<span id="cb5-160"><a></a>      <span class="fu">need</span>(<span class="fu">length</span>(input<span class="sc">$</span>industry) <span class="sc">&lt;=</span> <span class="dv">8</span>, <span class="st">"Please select a maxiumum of 8 industries."</span>)</span>
-<span id="cb5-161"><a></a>    )</span>
-<span id="cb5-162"><a></a>    </span>
-<span id="cb5-163"><a></a>    <span class="fu">manager_survey_filtered</span>() <span class="sc">|&gt;</span></span>
-<span id="cb5-164"><a></a>      <span class="fu">group_by</span>(industry, highest_level_of_education_completed) <span class="sc">|&gt;</span></span>
-<span id="cb5-165"><a></a>      <span class="fu">summarise</span>(</span>
-<span id="cb5-166"><a></a>        <span class="at">mean_annual_salary =</span> <span class="fu">mean</span>(annual_salary, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb5-167"><a></a>        <span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb5-168"><a></a>      ) <span class="sc">|&gt;</span></span>
-<span id="cb5-169"><a></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
-<span id="cb5-170"><a></a>        <span class="at">x =</span> highest_level_of_education_completed,</span>
-<span id="cb5-171"><a></a>        <span class="at">y =</span> mean_annual_salary,</span>
-<span id="cb5-172"><a></a>        <span class="at">group =</span> industry,</span>
-<span id="cb5-173"><a></a>        <span class="at">color =</span> industry</span>
-<span id="cb5-174"><a></a>      )) <span class="sc">+</span></span>
-<span id="cb5-175"><a></a>      <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb5-176"><a></a>      <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
-<span id="cb5-177"><a></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span></span>
-<span id="cb5-178"><a></a>      <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb5-179"><a></a>      <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">label_wrap_gen</span>(<span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb5-180"><a></a>      <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_dollar</span>()) <span class="sc">+</span></span>
-<span id="cb5-181"><a></a>      <span class="fu">labs</span>(</span>
-<span id="cb5-182"><a></a>        <span class="at">x =</span> <span class="st">"Highest level of education completed"</span>,</span>
-<span id="cb5-183"><a></a>        <span class="at">y =</span> <span class="st">"Mean annual salary"</span>,</span>
-<span id="cb5-184"><a></a>        <span class="at">color =</span> <span class="st">"Industry"</span>,</span>
-<span id="cb5-185"><a></a>        <span class="at">title =</span> <span class="st">"Average salaries"</span></span>
-<span id="cb5-186"><a></a>      )</span>
-<span id="cb5-187"><a></a>  })</span>
-<span id="cb5-188"><a></a>}</span>
-<span id="cb5-189"><a></a></span>
-<span id="cb5-190"><a></a></span>
-<span id="cb5-191"><a></a><span class="co"># Create the Shiny app object --------------------------------------------------</span></span>
-<span id="cb5-192"><a></a></span>
-<span id="cb5-193"><a></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The code for the app can be found <a href="https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/19/manager-survey-bslib/app.R">here</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Load packages ----------------------------------------------------------------</span></span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb1-6"><a></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-7"><a></a><span class="fu">library</span>(bslib)</span>
+<span id="cb1-8"><a></a><span class="fu">library</span>(bsicons)</span>
+<span id="cb1-9"><a></a></span>
+<span id="cb1-10"><a></a><span class="co"># Load data --------------------------------------------------------------------</span></span>
+<span id="cb1-11"><a></a></span>
+<span id="cb1-12"><a></a>manager_survey <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"data/manager-survey.rds"</span>)</span>
+<span id="cb1-13"><a></a></span>
+<span id="cb1-14"><a></a><span class="co"># Find all industries ----------------------------------------------------------</span></span>
+<span id="cb1-15"><a></a></span>
+<span id="cb1-16"><a></a>industry_choices <span class="ot">&lt;-</span> manager_survey <span class="sc">|&gt;</span></span>
+<span id="cb1-17"><a></a>  <span class="fu">distinct</span>(industry_other) <span class="sc">|&gt;</span></span>
+<span id="cb1-18"><a></a>  <span class="fu">arrange</span>(industry_other) <span class="sc">|&gt;</span></span>
+<span id="cb1-19"><a></a>  <span class="fu">pull</span>(industry_other)</span>
+<span id="cb1-20"><a></a></span>
+<span id="cb1-21"><a></a><span class="co"># Randomly select 3 industries to start with -----------------------------------</span></span>
+<span id="cb1-22"><a></a></span>
+<span id="cb1-23"><a></a>selected_industry_choices <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">str_subset</span>(industry_choices, <span class="st">"Other"</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>)</span>
+<span id="cb1-24"><a></a></span>
+<span id="cb1-25"><a></a><span class="co"># Calculate overall average</span></span>
+<span id="cb1-26"><a></a></span>
+<span id="cb1-27"><a></a>overall_average <span class="ot">&lt;-</span> manager_survey <span class="sc">|&gt;</span></span>
+<span id="cb1-28"><a></a>  <span class="fu">summarize</span>(<span class="at">mean_salary =</span> <span class="fu">round</span>(<span class="fu">mean</span>(annual_salary), <span class="dv">0</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-29"><a></a>  <span class="fu">pull</span>(mean_salary) <span class="sc">|&gt;</span></span>
+<span id="cb1-30"><a></a>  scales<span class="sc">::</span><span class="fu">dollar</span>()</span>
+<span id="cb1-31"><a></a></span>
+<span id="cb1-32"><a></a><span class="co"># Define UI --------------------------------------------------------------------</span></span>
+<span id="cb1-33"><a></a></span>
+<span id="cb1-34"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">page_navbar</span>(</span>
+<span id="cb1-35"><a></a>  <span class="at">title =</span> <span class="st">"Ask a Manager"</span>,</span>
+<span id="cb1-36"><a></a>  <span class="at">theme =</span> <span class="fu">bs_theme</span>(</span>
+<span id="cb1-37"><a></a>    <span class="at">primary =</span> <span class="st">"#0577B1"</span>,</span>
+<span id="cb1-38"><a></a>    <span class="at">secondary =</span> <span class="st">"#339898"</span>,</span>
+<span id="cb1-39"><a></a>    <span class="at">info =</span> <span class="st">"#E89923"</span>,</span>
+<span id="cb1-40"><a></a>    <span class="at">danger =</span> <span class="st">"#C84E00"</span></span>
+<span id="cb1-41"><a></a>  ),</span>
+<span id="cb1-42"><a></a>  <span class="at">bg =</span> <span class="st">"#005587"</span>,</span>
+<span id="cb1-43"><a></a>  <span class="at">sidebar =</span> <span class="fu">sidebar</span>(</span>
+<span id="cb1-44"><a></a>    <span class="fu">selectizeInput</span>(</span>
+<span id="cb1-45"><a></a>      <span class="at">inputId =</span> <span class="st">"industry"</span>,</span>
+<span id="cb1-46"><a></a>      <span class="at">label =</span> <span class="st">"Select up to 8 industies:"</span>,</span>
+<span id="cb1-47"><a></a>      <span class="at">multiple =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-48"><a></a>      <span class="at">choices =</span> industry_choices,</span>
+<span id="cb1-49"><a></a>      <span class="at">selected =</span> selected_industry_choices,</span>
+<span id="cb1-50"><a></a>      <span class="at">options =</span> <span class="fu">list</span>(<span class="at">plugins =</span> <span class="st">"remove_button"</span>)</span>
+<span id="cb1-51"><a></a>    )</span>
+<span id="cb1-52"><a></a>  ),</span>
+<span id="cb1-53"><a></a>  <span class="at">header =</span> <span class="fu">layout_columns</span>(</span>
+<span id="cb1-54"><a></a>    <span class="at">col_widths =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">3</span>),</span>
+<span id="cb1-55"><a></a>    <span class="at">fill =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-56"><a></a>    <span class="fu">uiOutput</span>(<span class="st">"selected_industries"</span>),</span>
+<span id="cb1-57"><a></a>    <span class="fu">value_box</span>(</span>
+<span id="cb1-58"><a></a>      <span class="at">title =</span> <span class="st">"Average salary for selected industries"</span>,</span>
+<span id="cb1-59"><a></a>      <span class="at">value =</span> <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"selected_average"</span>),</span>
+<span id="cb1-60"><a></a>      <span class="at">showcase =</span> <span class="fu">bs_icon</span>(<span class="st">"cash"</span>),</span>
+<span id="cb1-61"><a></a>      <span class="at">theme_color =</span> <span class="st">"secondary"</span>,</span>
+<span id="cb1-62"><a></a>      <span class="at">fill =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-63"><a></a>      <span class="at">height =</span> <span class="st">"150px"</span></span>
+<span id="cb1-64"><a></a>    ),</span>
+<span id="cb1-65"><a></a>    <span class="fu">value_box</span>(</span>
+<span id="cb1-66"><a></a>      <span class="at">title =</span> <span class="st">"Overall average salary"</span>,</span>
+<span id="cb1-67"><a></a>      <span class="at">value =</span> overall_average,</span>
+<span id="cb1-68"><a></a>      <span class="at">showcase =</span> <span class="fu">bs_icon</span>(<span class="st">"cash-stack"</span>),</span>
+<span id="cb1-69"><a></a>      <span class="at">theme_color =</span> <span class="st">"info"</span>,</span>
+<span id="cb1-70"><a></a>      <span class="at">fill =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-71"><a></a>      <span class="at">height =</span> <span class="st">"150px"</span></span>
+<span id="cb1-72"><a></a>    )</span>
+<span id="cb1-73"><a></a>  ),</span>
+<span id="cb1-74"><a></a>  <span class="fu">nav_spacer</span>(),</span>
+<span id="cb1-75"><a></a>  <span class="fu">nav_panel</span>(</span>
+<span id="cb1-76"><a></a>    <span class="at">title =</span> <span class="st">"Average salaries"</span>,</span>
+<span id="cb1-77"><a></a>    <span class="fu">card</span>(</span>
+<span id="cb1-78"><a></a>      <span class="fu">card_body</span>(</span>
+<span id="cb1-79"><a></a>        <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"avg_salary_plot"</span>)</span>
+<span id="cb1-80"><a></a>      )</span>
+<span id="cb1-81"><a></a>    )</span>
+<span id="cb1-82"><a></a>  ),</span>
+<span id="cb1-83"><a></a>  <span class="fu">nav_panel</span>(</span>
+<span id="cb1-84"><a></a>    <span class="at">title =</span> <span class="st">"Individual salaries"</span>,</span>
+<span id="cb1-85"><a></a>    <span class="fu">layout_columns</span>(</span>
+<span id="cb1-86"><a></a>      <span class="at">col_widths =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">4</span>),</span>
+<span id="cb1-87"><a></a>      <span class="fu">conditionalPanel</span>(</span>
+<span id="cb1-88"><a></a>        <span class="at">condition =</span> <span class="st">"input.industry.length &lt;= 8"</span>,</span>
+<span id="cb1-89"><a></a>        <span class="fu">card</span>(</span>
+<span id="cb1-90"><a></a>          <span class="fu">card_header</span>(<span class="st">"Zoom in to salaries between"</span>),</span>
+<span id="cb1-91"><a></a>          <span class="fu">card_body</span>(</span>
+<span id="cb1-92"><a></a>            <span class="fu">sliderInput</span>(</span>
+<span id="cb1-93"><a></a>              <span class="at">inputId =</span> <span class="st">"ylim"</span>,</span>
+<span id="cb1-94"><a></a>              <span class="at">label =</span> <span class="st">""</span>,</span>
+<span id="cb1-95"><a></a>              <span class="at">min =</span> <span class="dv">0</span>,</span>
+<span id="cb1-96"><a></a>              <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1000000</span>),</span>
+<span id="cb1-97"><a></a>              <span class="at">max =</span> <span class="fu">max</span>(manager_survey<span class="sc">$</span>annual_salary),</span>
+<span id="cb1-98"><a></a>              <span class="at">width =</span> <span class="st">"100%"</span></span>
+<span id="cb1-99"><a></a>            )</span>
+<span id="cb1-100"><a></a>          )</span>
+<span id="cb1-101"><a></a>        )</span>
+<span id="cb1-102"><a></a>      ),</span>
+<span id="cb1-103"><a></a>      <span class="fu">card</span>(</span>
+<span id="cb1-104"><a></a>        <span class="fu">card_body</span>(</span>
+<span id="cb1-105"><a></a>          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"indiv_salary_plot"</span>, <span class="at">brush =</span> <span class="st">"indiv_salary_brush"</span>)</span>
+<span id="cb1-106"><a></a>        )</span>
+<span id="cb1-107"><a></a>      ),</span>
+<span id="cb1-108"><a></a>      <span class="fu">card</span>(</span>
+<span id="cb1-109"><a></a>        <span class="fu">card_body</span>(</span>
+<span id="cb1-110"><a></a>          <span class="fu">tableOutput</span>(<span class="at">outputId =</span> <span class="st">"indiv_salary_table"</span>)</span>
+<span id="cb1-111"><a></a>        )</span>
+<span id="cb1-112"><a></a>      )</span>
+<span id="cb1-113"><a></a>    )</span>
+<span id="cb1-114"><a></a>  ),</span>
+<span id="cb1-115"><a></a>  <span class="fu">nav_panel</span>(</span>
+<span id="cb1-116"><a></a>    <span class="st">"Data"</span>,</span>
+<span id="cb1-117"><a></a>    <span class="fu">card</span>(<span class="fu">card_body</span>(DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"data"</span>)))</span>
+<span id="cb1-118"><a></a>  ),</span>
+<span id="cb1-119"><a></a>  <span class="at">footer =</span> <span class="fu">p</span>(<span class="st">"Showing only results for those with salaries in USD who have provided information on their industry and highest level of education completed."</span>)</span>
+<span id="cb1-120"><a></a>)</span>
+<span id="cb1-121"><a></a></span>
+<span id="cb1-122"><a></a><span class="co"># Define server function -------------------------------------------------------</span></span>
+<span id="cb1-123"><a></a></span>
+<span id="cb1-124"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb1-125"><a></a>  <span class="co"># Number of selected industries</span></span>
+<span id="cb1-126"><a></a>  output<span class="sc">$</span>selected_industries <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb1-127"><a></a>    <span class="fu">value_box</span>(</span>
+<span id="cb1-128"><a></a>      <span class="at">title =</span> <span class="st">"Number of selected industries"</span>,</span>
+<span id="cb1-129"><a></a>      <span class="at">value =</span> <span class="fu">length</span>(input<span class="sc">$</span>industry),</span>
+<span id="cb1-130"><a></a>      <span class="at">showcase =</span> <span class="fu">if_else</span>(<span class="fu">length</span>(input<span class="sc">$</span>industry) <span class="sc">&lt;=</span> <span class="dv">8</span>, <span class="fu">bs_icon</span>(<span class="st">"check"</span>), <span class="fu">bs_icon</span>(<span class="st">"x-octagon"</span>)),</span>
+<span id="cb1-131"><a></a>      <span class="at">theme_color =</span> <span class="fu">if_else</span>(<span class="fu">length</span>(input<span class="sc">$</span>industry) <span class="sc">&lt;=</span> <span class="dv">8</span>, <span class="st">"primary"</span>, <span class="st">"danger"</span>),</span>
+<span id="cb1-132"><a></a>      <span class="at">fill =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-133"><a></a>      <span class="at">height =</span> <span class="st">"150px"</span></span>
+<span id="cb1-134"><a></a>    )</span>
+<span id="cb1-135"><a></a>  })</span>
+<span id="cb1-136"><a></a></span>
+<span id="cb1-137"><a></a>  <span class="co"># Filter data for selected industries</span></span>
+<span id="cb1-138"><a></a>  manager_survey_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb1-139"><a></a>    manager_survey <span class="sc">|&gt;</span></span>
+<span id="cb1-140"><a></a>      <span class="fu">filter</span>(industry_other <span class="sc">%in%</span> input<span class="sc">$</span>industry)</span>
+<span id="cb1-141"><a></a>  })</span>
+<span id="cb1-142"><a></a></span>
+<span id="cb1-143"><a></a>  <span class="co"># Selected average</span></span>
+<span id="cb1-144"><a></a>  output<span class="sc">$</span>selected_average <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb1-145"><a></a>    <span class="fu">manager_survey_filtered</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-146"><a></a>      <span class="fu">summarize</span>(<span class="at">mean_salary =</span> <span class="fu">round</span>(<span class="fu">mean</span>(annual_salary), <span class="dv">0</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-147"><a></a>      <span class="fu">pull</span>(mean_salary) <span class="sc">|&gt;</span></span>
+<span id="cb1-148"><a></a>      scales<span class="sc">::</span><span class="fu">dollar</span>()</span>
+<span id="cb1-149"><a></a>  })</span>
+<span id="cb1-150"><a></a></span>
+<span id="cb1-151"><a></a>  <span class="co"># Make a table of filtered data</span></span>
+<span id="cb1-152"><a></a>  output<span class="sc">$</span>data <span class="ot">&lt;-</span> DT<span class="sc">::</span><span class="fu">renderDataTable</span>({</span>
+<span id="cb1-153"><a></a>    <span class="fu">manager_survey_filtered</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-154"><a></a>      <span class="fu">select</span>(</span>
+<span id="cb1-155"><a></a>        industry,</span>
+<span id="cb1-156"><a></a>        job_title,</span>
+<span id="cb1-157"><a></a>        annual_salary,</span>
+<span id="cb1-158"><a></a>        other_monetary_comp,</span>
+<span id="cb1-159"><a></a>        country,</span>
+<span id="cb1-160"><a></a>        overall_years_of_professional_experience,</span>
+<span id="cb1-161"><a></a>        years_of_experience_in_field,</span>
+<span id="cb1-162"><a></a>        highest_level_of_education_completed,</span>
+<span id="cb1-163"><a></a>        gender,</span>
+<span id="cb1-164"><a></a>        race</span>
+<span id="cb1-165"><a></a>      )</span>
+<span id="cb1-166"><a></a>  })</span>
+<span id="cb1-167"><a></a></span>
+<span id="cb1-168"><a></a>  <span class="co"># Futher filter for salary range</span></span>
+<span id="cb1-169"><a></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>industry, {</span>
+<span id="cb1-170"><a></a>    <span class="fu">updateSliderInput</span>(</span>
+<span id="cb1-171"><a></a>      <span class="at">inputId =</span> <span class="st">"ylim"</span>,</span>
+<span id="cb1-172"><a></a>      <span class="at">min =</span> <span class="fu">min</span>(<span class="fu">manager_survey_filtered</span>()<span class="sc">$</span>annual_salary),</span>
+<span id="cb1-173"><a></a>      <span class="at">max =</span> <span class="fu">max</span>(<span class="fu">manager_survey_filtered</span>()<span class="sc">$</span>annual_salary),</span>
+<span id="cb1-174"><a></a>      <span class="at">value =</span> <span class="fu">c</span>(</span>
+<span id="cb1-175"><a></a>        <span class="fu">min</span>(<span class="fu">manager_survey_filtered</span>()<span class="sc">$</span>annual_salary),</span>
+<span id="cb1-176"><a></a>        <span class="fu">max</span>(<span class="fu">manager_survey_filtered</span>()<span class="sc">$</span>annual_salary)</span>
+<span id="cb1-177"><a></a>      )</span>
+<span id="cb1-178"><a></a>    )</span>
+<span id="cb1-179"><a></a>  })</span>
+<span id="cb1-180"><a></a></span>
+<span id="cb1-181"><a></a>  <span class="co"># Plot of jittered salaries from filtered data</span></span>
+<span id="cb1-182"><a></a>  output<span class="sc">$</span>indiv_salary_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb1-183"><a></a>    <span class="fu">validate</span>(</span>
+<span id="cb1-184"><a></a>      <span class="fu">need</span>(<span class="fu">length</span>(input<span class="sc">$</span>industry) <span class="sc">&lt;=</span> <span class="dv">8</span>, <span class="st">"Please select a maxiumum of 8 industries."</span>)</span>
+<span id="cb1-185"><a></a>    )</span>
+<span id="cb1-186"><a></a></span>
+<span id="cb1-187"><a></a>    <span class="fu">ggplot</span>(</span>
+<span id="cb1-188"><a></a>      <span class="fu">manager_survey_filtered</span>(),</span>
+<span id="cb1-189"><a></a>      <span class="fu">aes</span>(</span>
+<span id="cb1-190"><a></a>        <span class="at">x =</span> highest_level_of_education_completed,</span>
+<span id="cb1-191"><a></a>        <span class="at">y =</span> annual_salary,</span>
+<span id="cb1-192"><a></a>        <span class="at">color =</span> industry</span>
+<span id="cb1-193"><a></a>      )</span>
+<span id="cb1-194"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb1-195"><a></a>      <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb1-196"><a></a>      <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb1-197"><a></a>      <span class="fu">scale_color_colorblind</span>(<span class="at">labels =</span> <span class="fu">label_wrap_gen</span>(<span class="dv">20</span>)) <span class="sc">+</span></span>
+<span id="cb1-198"><a></a>      <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">label_wrap_gen</span>(<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb1-199"><a></a>      <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb1-200"><a></a>        <span class="at">limits =</span> input<span class="sc">$</span>ylim,</span>
+<span id="cb1-201"><a></a>        <span class="at">labels =</span> <span class="fu">label_dollar</span>()</span>
+<span id="cb1-202"><a></a>      ) <span class="sc">+</span></span>
+<span id="cb1-203"><a></a>      <span class="fu">labs</span>(</span>
+<span id="cb1-204"><a></a>        <span class="at">x =</span> <span class="st">"Highest level of education completed"</span>,</span>
+<span id="cb1-205"><a></a>        <span class="at">y =</span> <span class="st">"Annual salary"</span>,</span>
+<span id="cb1-206"><a></a>        <span class="at">color =</span> <span class="st">"Industry"</span></span>
+<span id="cb1-207"><a></a>      )</span>
+<span id="cb1-208"><a></a>  })</span>
+<span id="cb1-209"><a></a></span>
+<span id="cb1-210"><a></a>  <span class="co"># Linked brushing</span></span>
+<span id="cb1-211"><a></a>  output<span class="sc">$</span>indiv_salary_table <span class="ot">&lt;-</span> <span class="fu">renderTable</span>(</span>
+<span id="cb1-212"><a></a>    {</span>
+<span id="cb1-213"><a></a>      <span class="fu">validate</span>(</span>
+<span id="cb1-214"><a></a>        <span class="fu">need</span>(<span class="fu">length</span>(input<span class="sc">$</span>industry) <span class="sc">&lt;=</span> <span class="dv">8</span>, <span class="st">"Please select a maxiumum of 8 industries."</span>)</span>
+<span id="cb1-215"><a></a>      )</span>
+<span id="cb1-216"><a></a></span>
+<span id="cb1-217"><a></a>      <span class="fu">brushedPoints</span>(<span class="fu">manager_survey_filtered</span>(), input<span class="sc">$</span>indiv_salary_brush) <span class="sc">|&gt;</span></span>
+<span id="cb1-218"><a></a>        <span class="fu">select</span>(industry, highest_level_of_education_completed, annual_salary) <span class="sc">|&gt;</span></span>
+<span id="cb1-219"><a></a>        <span class="fu">rename</span>(</span>
+<span id="cb1-220"><a></a>          <span class="at">Industry =</span> industry,</span>
+<span id="cb1-221"><a></a>          <span class="at">Education =</span> highest_level_of_education_completed,</span>
+<span id="cb1-222"><a></a>          <span class="at">Salary =</span> annual_salary</span>
+<span id="cb1-223"><a></a>        )</span>
+<span id="cb1-224"><a></a>    },</span>
+<span id="cb1-225"><a></a>    <span class="at">digits =</span> <span class="dv">0</span></span>
+<span id="cb1-226"><a></a>  )</span>
+<span id="cb1-227"><a></a></span>
+<span id="cb1-228"><a></a>  <span class="co"># Plot of average salaries from filtered data</span></span>
+<span id="cb1-229"><a></a>  output<span class="sc">$</span>avg_salary_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb1-230"><a></a>    <span class="fu">validate</span>(</span>
+<span id="cb1-231"><a></a>      <span class="fu">need</span>(<span class="fu">length</span>(input<span class="sc">$</span>industry) <span class="sc">&lt;=</span> <span class="dv">8</span>, <span class="st">"Please select a maxiumum of 8 industries."</span>)</span>
+<span id="cb1-232"><a></a>    )</span>
+<span id="cb1-233"><a></a></span>
+<span id="cb1-234"><a></a>    <span class="fu">manager_survey_filtered</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-235"><a></a>      <span class="fu">group_by</span>(industry, highest_level_of_education_completed) <span class="sc">|&gt;</span></span>
+<span id="cb1-236"><a></a>      <span class="fu">summarise</span>(</span>
+<span id="cb1-237"><a></a>        <span class="at">mean_annual_salary =</span> <span class="fu">mean</span>(annual_salary, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-238"><a></a>        <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb1-239"><a></a>      ) <span class="sc">|&gt;</span></span>
+<span id="cb1-240"><a></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb1-241"><a></a>        <span class="at">x =</span> highest_level_of_education_completed,</span>
+<span id="cb1-242"><a></a>        <span class="at">y =</span> mean_annual_salary,</span>
+<span id="cb1-243"><a></a>        <span class="at">group =</span> industry,</span>
+<span id="cb1-244"><a></a>        <span class="at">color =</span> industry</span>
+<span id="cb1-245"><a></a>      )) <span class="sc">+</span></span>
+<span id="cb1-246"><a></a>      <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb1-247"><a></a>      <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb1-248"><a></a>      <span class="fu">scale_color_colorblind</span>(<span class="at">labels =</span> <span class="fu">label_wrap_gen</span>(<span class="dv">20</span>)) <span class="sc">+</span></span>
+<span id="cb1-249"><a></a>      <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">label_wrap_gen</span>(<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb1-250"><a></a>      <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_dollar</span>()) <span class="sc">+</span></span>
+<span id="cb1-251"><a></a>      <span class="fu">labs</span>(</span>
+<span id="cb1-252"><a></a>        <span class="at">x =</span> <span class="st">"Highest level of education completed"</span>,</span>
+<span id="cb1-253"><a></a>        <span class="at">y =</span> <span class="st">"Mean annual salary"</span>,</span>
+<span id="cb1-254"><a></a>        <span class="at">color =</span> <span class="st">"Industry"</span></span>
+<span id="cb1-255"><a></a>      )</span>
+<span id="cb1-256"><a></a>  })</span>
+<span id="cb1-257"><a></a>}</span>
+<span id="cb1-258"><a></a></span>
+<span id="cb1-259"><a></a></span>
+<span id="cb1-260"><a></a><span class="co"># Create the Shiny app object --------------------------------------------------</span></span>
+<span id="cb1-261"><a></a></span>
+<span id="cb1-262"><a></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="quarto-auto-generated-content">
