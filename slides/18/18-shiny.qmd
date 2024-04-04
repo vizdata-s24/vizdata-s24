@@ -178,6 +178,13 @@ Highlights:
 -   Conditional panels
 -   Linked brushing
 
+# Reference
+
 ## Reference
 
-The code for the app can be found [here](https://github.com/vizdata-s23/vizdata-s23/blob/main/slides/26/manager-survey/app.R).
+The code for the app can be found [here](https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/18/manager-survey/app.R).
+
+```{r}
+#| file: manager-survey/app.R
+#| eval: false
+```

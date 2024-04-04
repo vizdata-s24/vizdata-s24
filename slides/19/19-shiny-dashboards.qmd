@@ -1,0 +1,65 @@
+---
+title: Shiny Dashboards
+subtitle: Lecture 19
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+# Warm up
+
+## What is visualization about?
+
+![](images/airbnb-april-7.jpg)
+
+::: aside
+Source: [Mike Simonsen on X.com](https://x.com/mikesimonsen/status/1775683012598079639?s=20)
+:::
+
+# Building dashboards with Shiny
+
+## bslib
+
+Modern UI toolkit for Shiny based on [Bootstrap](https://getbootstrap.com/):
+
+-   Creation of delightful and customizable [Shiny dashboards](https://rstudio.github.io/bslib/articles/dashboards.html) with [cards](https://rstudio.github.io/bslib/articles/cards.html), [value boxes](https://rstudio.github.io/bslib/articles/value-boxes.html), [sidebars](https://rstudio.github.io/bslib/articles/sidebars.html), etc.
+
+-   [Custom theming](https://rstudio.github.io/bslib/articles/theming.html)
+
+-   Use of modern versions of Bootstrap and [Bootswatch](https://bootswatch.com/)
+
+Learn more at [https://rstudio.github.io/bslib](https://rstudio.github.io/bslib/).
+
+## Demo
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: "100%"
+knitr::include_app("https://minecr.shinyapps.io/manager-survey-bslib", height = "650px")
+```
+
+## Livecoding - Cards
+
+::: task
+Go to the `ae-14` project and code along in `app-1.R` completing the given tasks in order.
+:::
+
+## Livecoding - Value boxes
+
+::: task
+Go to the `ae-14` project and code along in `app-2.R` completing the given tasks in order.
+:::
+
+# Reference
+
+## Reference
+
+The code for the app can be found [here](https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/19/manager-survey-bslib/app.R).
+
+```{r}
+#| file: manager-survey-bslib/app.R
+#| eval: false
+```

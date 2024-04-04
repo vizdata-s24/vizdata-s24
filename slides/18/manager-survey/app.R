@@ -4,7 +4,6 @@ library(shiny)
 library(tidyverse)
 library(ggthemes)
 library(scales)
-library(countrycode)
 
 # Load data --------------------------------------------------------------------
 
