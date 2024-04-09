@@ -28,10 +28,6 @@ format: revealjs
 
 # Last week
 
-::: task
-Any questions about any of the components from last week?
-:::
-
 ## Building interactive apps with Shiny
 
 ```{r}
@@ -40,10 +36,6 @@ Any questions about any of the components from last week?
 #| out-width: "100%"
 knitr::include_app("https://minecr.shinyapps.io/manager-survey", height = "650px")
 ```
-
-::: aside
-Code: <https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/18/manager-survey/app.R>
-:::
 
 ## Building interactive dashboards with Shiny and **bslib**
 
@@ -54,8 +46,14 @@ Code: <https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/18/manager-su
 knitr::include_app("https://minecr.shinyapps.io/manager-survey-bslib", height = "650px")
 ```
 
-::: aside
-Code: <https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/19/manager-survey-bslib/app.R>
+## Review
+
+- Code for Shiny app: <https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/18/manager-survey/app.R>
+
+- Code for Shiny+bslib dashboard: <https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/19/manager-survey-bslib/app.R>
+
+::: task
+Any questions about any of the components from last week?
 :::
 
 # Quarto dashboards
@@ -126,7 +124,7 @@ format:
 
 ## Sidebars: Page Level
 
-::: columns
+:::: columns
 ::: column
 ```` {.markdown style="margin-top: 45px;"}
 ---
@@ -154,7 +152,7 @@ format: dashboard
 ::: {.column .fragment}
 ![](images/chart-input-sidebar.png)
 :::
-:::
+::::
 
 ## Sidebars: Global
 
@@ -384,19 +382,16 @@ Theming: Add a light and dark theme.
 <https://github.com/mine-cetinkaya-rundel/dashing-through-snow>
 
 - R: 
-  - Dashboard: https://mine.quarto.pub/dashing-through-snow-r
-  - Code: https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-r.qmd
+  - Dashboard: <https://mine.quarto.pub/dashing-through-snow-r>
+  - Code: <https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-r.qmd>
 - Python: 
-  - Dashboard: https://mine.quarto.pub/dashing-through-snow-py
-  - Code: https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-py.qmd
+  - Dashboard: <https://mine.quarto.pub/dashing-through-snow-py>
+  - Code: <https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-py.qmd>
 
 ## Learn more
 
 <https://quarto.org/docs/dashboards>
 
 ```{=html}
-<iframe width="560" height="315" src="https://quarto.org/docs/dashboards" 
-</iframe>
+<iframe width="1000" height="400" src="https://quarto.org/docs/dashboards" frameborder="1" style="background:white;"></iframe>
 ```
-
-
