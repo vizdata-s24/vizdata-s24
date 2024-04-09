@@ -1,0 +1,366 @@
+---
+title: Quarto Dashboards
+subtitle: Lecture 20
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+# Warm up
+
+## What is visualization about?
+
+![](images/my-eyes-hurt-1.png)
+
+## "My eyes hurt"
+
+![](images/my-eyes-hurt-2.png)
+
+## Announcements
+
+-   HW 5 due today at 5 pm
+
+-   RQ 6 (last quiz) to be posted by the weekend, covers up to and including tables, due at 10 am on Tue, April 15
+
+-   Work on projects tomorrow in lab
+
+# Last week
+
+::: task
+Any questions about any of the components from last week?
+:::
+
+## Building interactive apps with Shiny
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: "100%"
+knitr::include_app("https://minecr.shinyapps.io/manager-survey", height = "650px")
+```
+
+::: aside
+Code: <https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/18/manager-survey/app.R>
+:::
+
+## Building interactive dashboards with Shiny and **bslib**
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: "100%"
+knitr::include_app("https://minecr.shinyapps.io/manager-survey-bslib", height = "650px")
+```
+
+::: aside
+Code: <https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/19/manager-survey-bslib/app.R>
+:::
+
+# Quarto dashboards
+
+A new output format for easily creating\
+dashboards from `.qmd` files
+
+##  {.no-line background-image="images/dashboards/dashing-through-snow.png" background-size="contain"}
+
+##  {.no-line background-image="images/dashboards/customer-churn.png" background-size="contain"}
+
+##  {.no-line background-image="images/dashboards/mynorfolk.png" background-size="contain"}
+
+##  {.no-line background-image="images/dashboards/earthquakes.png" background-size="contain"}
+
+##  {.no-line background-image="images/dashboards/model-card.png" background-size="contain"}
+
+##  {.no-line background-image="images/dashboards/shiny-penguins.png" background-size="contain"}
+
+##  {.no-line background-image="images/dashboards/gapminder.png" background-size="contain"}
+
+## .qmd ➝ Dashboard
+
+``` {.markdown code-line-numbers="|3"}
+---
+title: "Dashing through the snow ❄️"
+format: dashboard
+---
+
+# content goes here...
+```
+
+## Dashboard Components
+
+::: incremental
+1.  **Navigation Bar and Pages** --- Icon, title, and author along with links to sub-pages (if more than one page is defined).
+
+2.  **Sidebars, Rows & Columns, and Tabsets** --- Rows and columns using markdown heading (with optional attributes to control height, width, etc.).
+    Sidebars for interactive inputs.
+    Tabsets to further divide content.
+
+3.  **Cards (Plots, Tables, Value Boxes, Content)** --- Cards are containers for cell outputs and free form markdown text.
+    The content of cards typically maps to *cells* in your notebook or source document.
+:::
+
+## Navigation Bar and Pages
+
+![](images/navigation-toolbar.png)
+
+::: {style="margin-top: 0.7em;"}
+``` markdown
+--- 
+title: "Palmer Penguins"
+author: "Cobblepot Analytics"
+format: 
+  dashboard:
+    logo: images/penguins.png
+    nav-buttons: [linkedin, twitter, github]
+---
+
+# Bills
+
+# Flippers
+
+# Data
+```
+:::
+
+## Sidebars: Page Level
+
+::: columns
+::: column
+```` {.markdown style="margin-top: 45px;"}
+---
+title: "Sidebar"
+format: dashboard
+---
+    
+# Page 1
+
+## {.sidebar}
+
+```{{r}}
+```
+
+## Column 
+
+```{{r}}
+```
+
+```{{r}}
+```
+````
+:::
+
+::: {.column .fragment}
+![](images/chart-input-sidebar.png)
+:::
+:::
+
+## Sidebars: Global
+
+::: columns
+::: column
+```` {.markdown style="margin-top: 45px;"}
+---
+title: "Global Sidebar"
+format: dashboard
+---
+    
+# {.sidebar}
+
+Sidebar content (e.g. inputs)
+
+# Plot
+
+```{{r}}
+```
+
+# Data
+
+```{{r}}
+```
+````
+:::
+
+::: {.column .fragment}
+![](images/global-sidebar.png){width="80%"}
+:::
+:::
+
+## Layout: Rows
+
+::: columns
+::: {.column style="margin-top: 65px;"}
+```` markdown
+---
+title: "Focal (Top)"
+format: dashboard
+---
+    
+## Row {height=70%}
+
+```{{r}}
+```
+
+## Row {height=30%}
+
+```{{r}}
+```
+
+```{{r}}
+```
+````
+:::
+
+::: {.column .fragment}
+![](images/chart-focal-top.png){width="90%"}
+:::
+:::
+
+##  {.no-line background-image="images/dashboards/customer-churn.png" background-size="contain"}
+
+## Layout: Columns
+
+::: columns
+::: {.column style="margin-top: 40px;"}
+```` markdown
+---
+title: "Focal (Top)"
+format: 
+  dashboard:
+    orientation: columns
+---
+    
+## Column {width=60%}
+
+```{{r}}
+```
+
+## Column {width=40%}
+
+```{{r}}
+```
+
+```{{python}}
+```
+````
+:::
+
+::: {.column .fragment}
+![](images/chart-focal-left.png)
+:::
+:::
+
+##  {.no-line background-image="images/dashboards/housing-market.png" background-size="contain"}
+
+## Tabset
+
+::: columns
+::: {.column style="margin-top: 45px;"}
+```` markdown
+---
+title: "Palmer Penguins"
+format: dashboard
+---
+    
+## Row
+
+```{{r}}
+```
+
+## Row {.tabset}
+
+```{{r}}
+#| title: Chart 2
+```
+
+```{{r}}
+#| title: Chart 3
+```
+````
+:::
+
+::: {.column .fragment}
+![](images/chart-tabset-row.png){width="87%"}
+:::
+:::
+
+##  {.no-line background-image="images/dashboards/mynorfolk.png" background-size="contain"}
+
+## Plots
+
+Each code chunk makes a card, and can take a title
+
+::: columns
+::: {.column .fragment .smaller}
+```` r
+```{{r}}
+#| title: GDP and Life Expectancy
+library(gapminder)
+library(tidyverse)
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  geom_point()
+```
+````
+:::
+
+::: {.column .fragment}
+![](images/ggplot-gapminder.png){width="85%"}
+:::
+:::
+
+## Tables
+
+Each code chunk makes a card, doesn't have to have a title
+
+::: columns
+::: {.column .fragment .smaller}
+```` r
+```{{r}}
+library(gapminder)
+library(tidyverse)
+library(gt)
+gapminder |>
+  group_by(continent, year) |>
+  summarize(mean_lifeExp = round(mean(lifeExp), 1)) |>
+  pivot_wider(names_from = continent, values_from = mean_lifeExp) |>
+  gt()
+```
+````
+:::
+
+::: {.column .fragment}
+![](images/kable-gapminder.png){width="85%"}
+:::
+:::
+
+## Other features
+
+-   Text content
+
+-   Value boxes
+
+-   Expanding cards
+
+## Dashboard deployment
+
+Dashboards are typically just static HTML pages so can be deployed to any web server or web host!
+
+## Interactive Dashboards
+
+<https://quarto.org/docs/dashboards/interactivity/shiny-r>
+
+-   For interactive exploration, some dashboards can benefit from a live R backend
+
+-   To do this with Quarto Dashboards, add interactive [Shiny](https://shiny.posit.co) components
+
+-   Deploy with or without a server!
+
+## Learn more
+
+<https://quarto.org/docs/dashboards>
+
+```{=html}
+<iframe width="560" height="315" src="https://quarto.org/docs/dashboards" 
+</iframe>
+```
