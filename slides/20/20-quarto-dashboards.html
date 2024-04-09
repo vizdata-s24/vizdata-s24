@@ -440,9 +440,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <section>
 <section id="last-week" class="title-slide slide level1 center">
 <h1>Last week</h1>
-<div class="task">
-<p>Any questions about any of the components from last week?</p>
-</div>
+
 </section>
 <section id="building-interactive-apps-with-shiny" class="slide level2">
 <h2>Building interactive apps with Shiny</h2>
@@ -450,20 +448,24 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <iframe src="https://minecr.shinyapps.io/manager-survey?showcase=0" width="100%" height="650px" data-external="1">
 </iframe>
 </div>
-
-<aside><div>
-<p>Code: <a href="https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/18/manager-survey/app.R" class="uri">https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/18/manager-survey/app.R</a></p>
-</div></aside></section>
+</section>
 <section id="building-interactive-dashboards-with-shiny-and-bslib" class="slide level2">
 <h2>Building interactive dashboards with Shiny and <strong>bslib</strong></h2>
 <div class="cell" data-layout-align="center">
 <iframe src="https://minecr.shinyapps.io/manager-survey-bslib?showcase=0" width="100%" height="650px" data-external="1">
 </iframe>
 </div>
-
-<aside><div>
-<p>Code: <a href="https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/19/manager-survey-bslib/app.R" class="uri">https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/19/manager-survey-bslib/app.R</a></p>
-</div></aside></section></section>
+</section>
+<section id="review" class="slide level2">
+<h2>Review</h2>
+<ul>
+<li><p>Code for Shiny app: <a href="https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/18/manager-survey/app.R" class="uri">https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/18/manager-survey/app.R</a></p></li>
+<li><p>Code for Shiny+bslib dashboard: <a href="https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/19/manager-survey-bslib/app.R" class="uri">https://github.com/vizdata-s24/vizdata-s24/blob/main/slides/19/manager-survey-bslib/app.R</a></p></li>
+</ul>
+<div class="task">
+<p>Any questions about any of the components from last week?</p>
+</div>
+</section></section>
 <section>
 <section id="quarto-dashboards" class="title-slide slide level1 center">
 <h1>Quarto dashboards</h1>
@@ -768,25 +770,23 @@ dashboards from <code>.qmd</code> files</p>
 <ul>
 <li>R:
 <ul>
-<li>Dashboard: https://mine.quarto.pub/dashing-through-snow-r</li>
-<li>Code: https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-r.qmd</li>
+<li>Dashboard: <a href="https://mine.quarto.pub/dashing-through-snow-r" class="uri">https://mine.quarto.pub/dashing-through-snow-r</a></li>
+<li>Code: <a href="https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-r.qmd" class="uri">https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-r.qmd</a></li>
 </ul></li>
 <li>Python:
 <ul>
-<li>Dashboard: https://mine.quarto.pub/dashing-through-snow-py</li>
-<li>Code: https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-py.qmd</li>
+<li>Dashboard: <a href="https://mine.quarto.pub/dashing-through-snow-py" class="uri">https://mine.quarto.pub/dashing-through-snow-py</a></li>
+<li>Code: <a href="https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-py.qmd" class="uri">https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-py.qmd</a></li>
 </ul></li>
 </ul>
 </section>
 <section id="learn-more" class="slide level2">
 <h2>Learn more</h2>
 <p><a href="https://quarto.org/docs/dashboards" class="uri">https://quarto.org/docs/dashboards</a></p>
-<iframe width="560" height="315" src="https://quarto.org/docs/dashboards" <="" iframe="">
-<div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden" data-render-id="quarto-metatitle">STA 313 - Quarto Dashboards</span> <span class="hidden" data-render-id="quarto-twittercardtitle">STA 313 - Quarto Dashboards</span> <span class="hidden" data-render-id="quarto-ogcardtitle">STA 313 - Quarto Dashboards</span> <span class="hidden" data-render-id="quarto-metasitename">STA 313</span> <span class="hidden" data-render-id="quarto-twittercarddesc">Lecture 20</span> <span class="hidden" data-render-id="quarto-ogcardddesc">Lecture 20</span></p>
-</div>
+<iframe width="1000" height="400" src="https://quarto.org/docs/dashboards" frameborder="1" style="background:white;"></iframe>
+
 <div class="quarto-auto-generated-content">
-<p><img src="../logo.png" class="slide-logo" /></p>
+<p><img src="../logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://vizdata.org/">🔗 vizdata.org</a></p>
 </div>
@@ -816,7 +816,17 @@ dashboards from <code>.qmd</code> files</p>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
-      Reveal.initialize({ 
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
         // Display controls in the bottom right corner
         controls: false,
 
@@ -835,7 +845,7 @@ dashboards from <code>.qmd</code> files</p>
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: c/t,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -985,7 +995,8 @@ dashboards from <code>.qmd</code> files</p>
         },
 
         // reveal.js plugins
-        plugins: [
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
           RevealMath,
           RevealNotes,
           RevealSearch,
@@ -1031,7 +1042,7 @@ dashboards from <code>.qmd</code> files</p>
       })();
     </script>
 
-    <script id = "quarto-html-after-body" type="application/javascript">
+    <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -1185,6 +1196,6 @@ dashboards from <code>.qmd</code> files</p>
       }
     });
     </script>
-    </body>
-</html>
-</iframe></section></section></div></div></body></html>
+    
+
+</body></html>
