@@ -197,18 +197,18 @@
       "Version": "0.0.1",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "ThemePark",
       "RemoteUsername": "MatthewBJane",
+      "RemoteRepo": "ThemePark",
       "RemoteRef": "HEAD",
-      "RemoteSha": "16c39744f648070b758bc7f5ce062269d97b9c06",
+      "RemoteSha": "3c370a11eab598942bebed3b21fac92d23cfbbae",
+      "RemoteHost": "api.github.com",
       "Requirements": [
         "R",
         "ggplot2",
         "showtext",
         "sysfonts"
       ],
-      "Hash": "423f097eed4a3def9079d52ef1ed328f"
+      "Hash": "cb13e5d5165ffc32251fab1d12274ecf"
     },
     "V8": {
       "Package": "V8",
@@ -361,15 +361,30 @@
       ],
       "Hash": "fd25391c3c4f6ecf0fa95f1e6d15378c"
     },
+    "bsicons": {
+      "Package": "bsicons",
+      "Version": "0.1.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "htmltools",
+        "rlang",
+        "utils"
+      ],
+      "Hash": "d8f892fbd94d0b9b1f6d688b05b8633c"
+    },
     "bslib": {
       "Package": "bslib",
-      "Version": "0.6.2",
+      "Version": "0.7.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "base64enc",
         "cachem",
+        "fastmap",
         "grDevices",
         "htmltools",
         "jquerylib",
@@ -380,7 +395,7 @@
         "rlang",
         "sass"
       ],
-      "Hash": "7fb73102553e0c8e478bfaa0ccebe479"
+      "Hash": "8644cc53f43828f19133548195d7e59e"
     },
     "cachem": {
       "Package": "cachem",
@@ -496,13 +511,13 @@
     },
     "codetools": {
       "Package": "codetools",
-      "Version": "0.2-19",
+      "Version": "0.2-20",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
-      "Hash": "c089a619a7fae175d149d89164f8c7d8"
+      "Hash": "61e097f35917d342622f21cdc79c256e"
     },
     "coloratio": {
       "Package": "coloratio",
@@ -566,16 +581,6 @@
         "whisker"
       ],
       "Hash": "b44ad5a5e287637c3b8ca0e9bb64bb18"
-    },
-    "countrycode": {
-      "Package": "countrycode",
-      "Version": "1.6.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R"
-      ],
-      "Hash": "08b7058813f13c7a1bb294fea9045e3a"
     },
     "cowplot": {
       "Package": "cowplot",
@@ -656,14 +661,14 @@
     },
     "data.table": {
       "Package": "data.table",
-      "Version": "1.15.2",
+      "Version": "1.15.4",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "methods"
       ],
-      "Hash": "536dfe4ac4093b5d115caed7a1a7223b"
+      "Hash": "8ee9ac56ef633d0c7cab8b2ca87d683e"
     },
     "dbplyr": {
       "Package": "dbplyr",
@@ -1056,9 +1061,9 @@
     },
     "future": {
       "Package": "future",
-      "Version": "1.33.1",
+      "Version": "1.33.2",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "digest",
         "globals",
@@ -1067,13 +1072,13 @@
         "parallelly",
         "utils"
       ],
-      "Hash": "e57e292737f7a4efa9d8a91c5908222c"
+      "Hash": "fd7b1d69d16d0d114e4fa82db68f184c"
     },
     "future.apply": {
       "Package": "future.apply",
-      "Version": "1.11.1",
+      "Version": "1.11.2",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "future",
@@ -1081,7 +1086,7 @@
         "parallel",
         "utils"
       ],
-      "Hash": "455e00c16ec193c8edcf1b2b522b3288"
+      "Hash": "afe1507511629f44572e6c53b9baeb7c"
     },
     "gapminder": {
       "Package": "gapminder",
@@ -1640,20 +1645,19 @@
     },
     "htmltools": {
       "Package": "htmltools",
-      "Version": "0.5.7",
+      "Version": "0.5.8",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "base64enc",
         "digest",
-        "ellipsis",
         "fastmap",
         "grDevices",
         "rlang",
         "utils"
       ],
-      "Hash": "2d7b3857980e0e0d0a1fd6f11928ab0f"
+      "Hash": "149431ee39aba5bdc264112c8ff94444"
     },
     "htmlwidgets": {
       "Package": "htmlwidgets",
@@ -1679,7 +1683,7 @@
     },
     "httpuv": {
       "Package": "httpuv",
-      "Version": "1.6.14",
+      "Version": "1.6.15",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1690,7 +1694,7 @@
         "promises",
         "utils"
       ],
-      "Hash": "16abeb167dbf511f8cc0552efaf05bab"
+      "Hash": "d55aa087c47a63ead0f6fc10f8fa1ee0"
     },
     "httr": {
       "Package": "httr",
@@ -1733,14 +1737,14 @@
     },
     "infer": {
       "Package": "infer",
-      "Version": "1.0.6.9000",
+      "Version": "1.0.7.9000",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "infer",
       "RemoteUsername": "tidymodels",
+      "RemoteRepo": "infer",
       "RemoteRef": "HEAD",
-      "RemoteSha": "5f3e7c93ca3e1eff5f1de1e4c1b2550d3b82aabb",
+      "RemoteSha": "1d069b3e16569cbb5f7dc9a5458e52379441259f",
+      "RemoteHost": "api.github.com",
       "Requirements": [
         "R",
         "broom",
@@ -1760,7 +1764,7 @@
         "tidyr",
         "vctrs"
       ],
-      "Hash": "9106b2d88c5bc67a685c5afccc0ee008"
+      "Hash": "22ce4a273ebe18fb9cb27083fbc527f2"
     },
     "ipred": {
       "Package": "ipred",
@@ -1989,7 +1993,7 @@
     },
     "leaflet": {
       "Package": "leaflet",
-      "Version": "2.2.1",
+      "Version": "2.2.2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2007,10 +2011,10 @@
         "scales",
         "sp",
         "stats",
-        "viridis",
+        "viridisLite",
         "xfun"
       ],
-      "Hash": "6e09cb2c9dc2e5a1e71a413e60c3834e"
+      "Hash": "ca012d4a706e21ce217ba15f22d402b2"
     },
     "leaflet.providers": {
       "Package": "leaflet.providers",
@@ -2259,14 +2263,14 @@
     },
     "munsell": {
       "Package": "munsell",
-      "Version": "0.5.0",
+      "Version": "0.5.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "colorspace",
         "methods"
       ],
-      "Hash": "6dfe8bf774944bd5595785e3229d8771"
+      "Hash": "4fd8900853b746af55b81fda99da7695"
     },
     "mvtnorm": {
       "Package": "mvtnorm",
@@ -2320,11 +2324,11 @@
       "Version": "2.4.0",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "openintro",
       "RemoteUsername": "openintrostat",
+      "RemoteRepo": "openintro",
       "RemoteRef": "HEAD",
-      "RemoteSha": "1dbc62ee28cf4ed4c6c3d30a5d8157aebb9d3e13",
+      "RemoteSha": "6f28a60a59280f2d4849d1cbc8239a9ff58b1e76",
+      "RemoteHost": "api.github.com",
       "Requirements": [
         "R",
         "airports",
@@ -2336,7 +2340,7 @@
         "tibble",
         "usdata"
       ],
-      "Hash": "04c5d613bf0576318d3275cdc30db708"
+      "Hash": "9aba163113fc7d1b4f996ec2594d3101"
     },
     "openssl": {
       "Package": "openssl",
@@ -3102,9 +3106,9 @@
     },
     "shiny": {
       "Package": "shiny",
-      "Version": "1.8.0",
+      "Version": "1.8.1.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "R6",
@@ -3112,7 +3116,6 @@
         "cachem",
         "commonmark",
         "crayon",
-        "ellipsis",
         "fastmap",
         "fontawesome",
         "glue",
@@ -3132,7 +3135,7 @@
         "withr",
         "xtable"
       ],
-      "Hash": "3a1f41807d648a908e3c7f0334bf85e6"
+      "Hash": "54b26646816af9960a4c64d8ceec75d6"
     },
     "showtext": {
       "Package": "showtext",
@@ -3774,19 +3777,6 @@
         "rlang"
       ],
       "Hash": "c03fa420630029418f7e6da3667aac4a"
-    },
-    "viridis": {
-      "Package": "viridis",
-      "Version": "0.6.5",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "ggplot2",
-        "gridExtra",
-        "viridisLite"
-      ],
-      "Hash": "acd96d9fa70adeea4a5a1150609b9745"
     },
     "viridisLite": {
       "Package": "viridisLite",

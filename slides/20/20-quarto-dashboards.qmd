@@ -356,6 +356,40 @@ Dashboards are typically just static HTML pages so can be deployed to any web se
 
 -   Deploy with or without a server!
 
+# Let's make a Quarto dashboard
+
+## `ae-15` - Step 1
+
+::: task
+- Review dashboard layout components.
+- Sidebar: Make callout collapsible.
+- All tabs: Add values to valueboxes.
+- Data tab: Add leaflet map and data table.
+:::
+
+## `ae-15` - Step 2
+
+::: task
+Parameters: Make date a parameter.
+:::
+
+## `ae-15` - Step 3
+
+::: task
+Theming: Add a light and dark theme.
+:::
+
+## Quarto dashboard, but make it Python!
+
+<https://github.com/mine-cetinkaya-rundel/dashing-through-snow>
+
+- R: 
+  - Dashboard: https://mine.quarto.pub/dashing-through-snow-r
+  - Code: https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-r.qmd
+- Python: 
+  - Dashboard: https://mine.quarto.pub/dashing-through-snow-py
+  - Code: https://github.com/mine-cetinkaya-rundel/dashing-through-snow/blob/main/snowdash-py.qmd
+
 ## Learn more
 
 <https://quarto.org/docs/dashboards>
@@ -364,3 +398,5 @@ Dashboards are typically just static HTML pages so can be deployed to any web se
 <iframe width="560" height="315" src="https://quarto.org/docs/dashboards" 
 </iframe>
 ```
+
+
