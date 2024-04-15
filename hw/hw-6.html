@@ -72,10 +72,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="STA 313 - HW 6">
-<meta property="og:description" content="TBA">
+<meta property="og:description" content="Animate, tabulate, generate">
 <meta property="og:site_name" content="STA 313">
 <meta name="twitter:title" content="STA 313 - HW 6">
-<meta name="twitter:description" content="TBA">
+<meta name="twitter:description" content="Animate, tabulate, generate">
 <meta name="twitter:image" content="https://vizdata.org/hw/images/twitter-card.png">
 <meta name="twitter:creator" content="@minebocek">
 <meta name="twitter:card" content="summary_large_image">
@@ -325,8 +325,18 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link active" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a></li>
+  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/vizdata-s24/vizdata-s24/edit/main/hw/hw-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vizdata-s24/vizdata-s24/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -334,7 +344,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../hw/hw-0.html">HW</a></li><li class="breadcrumb-item"><a href="../hw/hw-6.html">HW 6</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">HW 6</h1>
-<p class="subtitle lead">TBA</p>
+<p class="subtitle lead">Animate, tabulate, generate</p>
 </div>
 
 
@@ -351,9 +361,124 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>To be posted.</p>
+<p>For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk. Use a short and informative label. For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title. For any exercise where you’re including a description and/or interpretation, use full sentences. Make a commit at least after finishing each exercise, or better yet, more frequently. Push your work regularly to GitHub. Once you’re done, inspect your GitHub repo to make sure you’ve pushed all of your changes.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your homework repositories are set up to run a GitHub action every time you push to the repository checking for (1) any files that shouldn’t be in your repository or that should be in a specific folder in your repository and (2) whether your Quarto document renders.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/badge-fail.svg" class="quarto-figure quarto-figure-left figure-img" style="float: left;" width="122" height="14"></p>
+</figure>
+</div>
+<p>If either of these checks fail, you’ll see a red badge on your repository README and you’ll get an email saying “check assignment” action has failed.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/badge-pass.svg" class="quarto-figure quarto-figure-left figure-img" style="float: left;" width="122" height="14"></p>
+</figure>
+</div>
+<p>If they pass, you’ll see a green badge on your repository README and you won’t get an email saying.</p>
+<p>Up until the deadline, it doesn’t matter how many times these checks fail. Just make sure by the end the badge is green.</p>
+</div>
+</div>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<p><strong>Country populations.</strong> For this exercise you will work with data on country populations. The data come from <a href="https://data.worldbank.org/indicator/SP.POP.TOTL">The WorldBank</a>. The dataset you will use is in your <code>data/</code> folder and it’s called <code>country-pop.csv</code>.</p>
+<ul>
+<li><p>Load the two dataset using <code>read_csv()</code>.</p>
+<ul>
+<li>You will need to use the <code>skip</code> argument since the CSV file has some extraneous rows on top. First load the data without it, then determine how many rows to skip.</li>
+<li>Make sure there are no extraneous columns by removing them.</li>
+<li>Use <code>janitor::clean_names()</code></li>
+</ul></li>
+<li><p>Find the countries with the top 10 highest population count in 2020. Subset the data for just these 10 countries.</p></li>
+<li><p>Create a racing bar chart, using <strong>gganimate</strong> for the change in population for these countries.</p></li>
+</ul>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<p><strong>Adopt, don’t shop.</strong> The data for this exercise comes from <a href="https://github.com/the-pudding/data/blob/master/dog-shelters/README.md">The Pudding</a> via <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-12-17">TidyTuesday</a>.</p>
+<ol type="a">
+<li><p>Load the <code>dog_travel</code> dataset included in the <code>data</code> folder of your repository with <code>read_csv()</code>.</p></li>
+<li><p>Calculate the number of dogs available to adopt per <code>contact_state</code>. Save the result as a new data frame with variables <code>contact_state</code> and <code>n</code>.</p></li>
+<li><p>Make a histogram of the number of dogs available to adopt and describe the distribution of this variable.</p></li>
+<li><p>Use this dataset to make a map of the US states, where each state is filled in with a color based on the number of dogs available to adopt in that state.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Use the <code>state_list</code> dataset which you can find in the <code>data</code> folder of your repo as a lookup table to match state names to abbreviations.</li>
+<li>Use a gradient color scale and <code>log10</code> transformation.</li>
+</ul>
+</div>
+</div></li>
+<li><p>Interpret the visualization.</p></li>
+</ol>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<p><strong>Key lyme pie.</strong> The goal of this exercise is to recreate a pie chart in R and then improve it by presenting the same information as a bar graph. The pie chart to be recreate is below and it comes from the Lyme Disease Association. (Source: <a href="https://lymediseaseassociation.org/resources/2018-reported-lyme-cases-top-15-states/">https://lymediseaseassociation.org/resources/2018-reported-lyme-cases-top-15-states</a>.)</p>
+<p><img src="images/2018_case_numbers_final.jpg" title="Bar chart of 2018 US reported lyme disease cases featuring top 15 states" alt="Bar chart of 2018 US reported lyme disease cases featuring top 15 states" width="90%"></p>
+<p>Below are the steps I recommend you follow and some guidance on what (not) to worry about:</p>
+<ul>
+<li><p>First, create the data frame: Use the annotations in the visualization provided to do this. You should create the new data frame using the <code>tibble()</code> or the <code>tribble()</code> functions.</p></li>
+<li><p>Then, recreate the pie chart: When recreating the pie chart you do not need to</p>
+<ul>
+<li>make it a 3D pie chart (2D is sufficient)</li>
+<li>match the colors (default ggplot2 colors or any other color palette is fine)</li>
+<li>annotate the plot in the same way (just the legend is sufficient)</li>
+<li>match the entire caption (see below for what we want you to match)</li>
+</ul>
+<p>However you should,</p>
+<ul>
+<li>make a 2D pie chart</li>
+<li>present a legend on the right that shows the mapping of the colors to states</li>
+<li>match the title text, location, and alignment</li>
+<li>match the text, location, and alignment of the first two lines of the caption</li>
+</ul></li>
+<li><p>Finally, improve the visualization by presenting this information in the form of a bar graph. And as an additional challenge, imagine you’re working for the state of Connecticut, so highlight that bar corresponding to that state in some way. Write a sentence or two describing why you chose to highlight the Connecticut info the way you did.</p></li>
+</ul>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<p><strong>Revisit and tabulate.</strong> Take a dataset you visualized in an earlier HW assignment and construct a table communicating the same or relevant message using the <strong>gt</strong> package and following the “10 Guidelines for Better Tables” as much as possible.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Place the relevant data in the <code>data</code> folder.</li>
+<li>Not all of the guidelines will be relevant and I’m not looking for the perfect table. Instead, I would like you to make three decisions based on what you learned about good tables, state why you made these decisions, and implement them. You’re welcomed to make more than three improvements to the default table, but you’re not expected to do so (for grading purposes).</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<p><strong>Generate.</strong> Create a piece of generative art using either the <a href="https://jasmines.djnavarro.net/"><strong>jasmines</strong></a> package or a system you build from scratch. Provide at least three bullet points for some of the choices you make in building this piece, either functions you use or their parameters.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -907,7 +1032,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/vizdata-s24/vizdata-s24/edit/main/hw/hw-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vizdata-s24/vizdata-s24/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vizdata-s24/vizdata-s24/edit/main/hw/hw-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vizdata-s24/vizdata-s24/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with 💛 and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

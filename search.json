@@ -4957,7 +4957,62 @@
     "href": "hw/hw-6.html",
     "title": "HW 6",
     "section": "",
-    "text": "To be posted.",
+    "text": "For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk. Use a short and informative label. For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title. For any exercise where you’re including a description and/or interpretation, use full sentences. Make a commit at least after finishing each exercise, or better yet, more frequently. Push your work regularly to GitHub. Once you’re done, inspect your GitHub repo to make sure you’ve pushed all of your changes.",
+    "crumbs": [
+      "HW",
+      "HW 6"
+    ]
+  },
+  {
+    "objectID": "hw/hw-6.html#question-1",
+    "href": "hw/hw-6.html#question-1",
+    "title": "HW 6",
+    "section": "Question 1",
+    "text": "Question 1\nCountry populations. For this exercise you will work with data on country populations. The data come from The WorldBank. The dataset you will use is in your data/ folder and it’s called country-pop.csv.\n\nLoad the two dataset using read_csv().\n\nYou will need to use the skip argument since the CSV file has some extraneous rows on top. First load the data without it, then determine how many rows to skip.\nMake sure there are no extraneous columns by removing them.\nUse janitor::clean_names()\n\nFind the countries with the top 10 highest population count in 2020. Subset the data for just these 10 countries.\nCreate a racing bar chart, using gganimate for the change in population for these countries.",
+    "crumbs": [
+      "HW",
+      "HW 6"
+    ]
+  },
+  {
+    "objectID": "hw/hw-6.html#question-2",
+    "href": "hw/hw-6.html#question-2",
+    "title": "HW 6",
+    "section": "Question 2",
+    "text": "Question 2\nAdopt, don’t shop. The data for this exercise comes from The Pudding via TidyTuesday.\n\nLoad the dog_travel dataset included in the data folder of your repository with read_csv().\nCalculate the number of dogs available to adopt per contact_state. Save the result as a new data frame with variables contact_state and n.\nMake a histogram of the number of dogs available to adopt and describe the distribution of this variable.\nUse this dataset to make a map of the US states, where each state is filled in with a color based on the number of dogs available to adopt in that state.\n\n\n\n\n\n\nTip\n\n\n\n\nUse the state_list dataset which you can find in the data folder of your repo as a lookup table to match state names to abbreviations.\nUse a gradient color scale and log10 transformation.\n\n\n\nInterpret the visualization.",
+    "crumbs": [
+      "HW",
+      "HW 6"
+    ]
+  },
+  {
+    "objectID": "hw/hw-6.html#question-3",
+    "href": "hw/hw-6.html#question-3",
+    "title": "HW 6",
+    "section": "Question 3",
+    "text": "Question 3\nKey lyme pie. The goal of this exercise is to recreate a pie chart in R and then improve it by presenting the same information as a bar graph. The pie chart to be recreate is below and it comes from the Lyme Disease Association. (Source: https://lymediseaseassociation.org/resources/2018-reported-lyme-cases-top-15-states.)\n\nBelow are the steps I recommend you follow and some guidance on what (not) to worry about:\n\nFirst, create the data frame: Use the annotations in the visualization provided to do this. You should create the new data frame using the tibble() or the tribble() functions.\nThen, recreate the pie chart: When recreating the pie chart you do not need to\n\nmake it a 3D pie chart (2D is sufficient)\nmatch the colors (default ggplot2 colors or any other color palette is fine)\nannotate the plot in the same way (just the legend is sufficient)\nmatch the entire caption (see below for what we want you to match)\n\nHowever you should,\n\nmake a 2D pie chart\npresent a legend on the right that shows the mapping of the colors to states\nmatch the title text, location, and alignment\nmatch the text, location, and alignment of the first two lines of the caption\n\nFinally, improve the visualization by presenting this information in the form of a bar graph. And as an additional challenge, imagine you’re working for the state of Connecticut, so highlight that bar corresponding to that state in some way. Write a sentence or two describing why you chose to highlight the Connecticut info the way you did.",
+    "crumbs": [
+      "HW",
+      "HW 6"
+    ]
+  },
+  {
+    "objectID": "hw/hw-6.html#question-4",
+    "href": "hw/hw-6.html#question-4",
+    "title": "HW 6",
+    "section": "Question 4",
+    "text": "Question 4\nRevisit and tabulate. Take a dataset you visualized in an earlier HW assignment and construct a table communicating the same or relevant message using the gt package and following the “10 Guidelines for Better Tables” as much as possible.\n\n\n\n\n\n\nNote\n\n\n\n\nPlace the relevant data in the data folder.\nNot all of the guidelines will be relevant and I’m not looking for the perfect table. Instead, I would like you to make three decisions based on what you learned about good tables, state why you made these decisions, and implement them. You’re welcomed to make more than three improvements to the default table, but you’re not expected to do so (for grading purposes).",
+    "crumbs": [
+      "HW",
+      "HW 6"
+    ]
+  },
+  {
+    "objectID": "hw/hw-6.html#question-5",
+    "href": "hw/hw-6.html#question-5",
+    "title": "HW 6",
+    "section": "Question 5",
+    "text": "Question 5\nGenerate. Create a piece of generative art using either the jasmines package or a system you build from scratch. Provide at least three bullet points for some of the choices you make in building this piece, either functions you use or their parameters.",
     "crumbs": [
       "HW",
       "HW 6"
