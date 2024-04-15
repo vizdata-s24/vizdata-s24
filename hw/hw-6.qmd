@@ -1,6 +1,109 @@
 ---
 title: "HW 6"
-subtitle: "TBA"
+subtitle: "Animate, tabulate, generate"
 ---
 
-To be posted.
+For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk.
+Use a short and informative label.
+For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title.
+For any exercise where you’re including a description and/or interpretation, use full sentences.
+Make a commit at least after finishing each exercise, or better yet, more frequently.
+Push your work regularly to GitHub.
+Once you’re done, inspect your GitHub repo to make sure you've pushed all of your changes.
+
+::: callout-note
+Your homework repositories are set up to run a GitHub action every time you push to the repository checking for (1) any files that shouldn't be in your repository or that should be in a specific folder in your repository and (2) whether your Quarto document renders.
+
+![](images/badge-fail.svg){fig-align="left" style="float: left;" width="122" height="14"}
+
+If either of these checks fail, you'll see a red badge on your repository README and you'll get an email saying "check assignment" action has failed.
+
+![](images/badge-pass.svg){fig-align="left" style="float: left;" width="122" height="14"}
+
+If they pass, you'll see a green badge on your repository README and you won't get an email saying.
+
+Up until the deadline, it doesn't matter how many times these checks fail.
+Just make sure by the end the badge is green.
+:::
+
+## Question 1
+
+**Country populations.** For this exercise you will work with data on country populations.
+The data come from [The WorldBank](https://data.worldbank.org/indicator/SP.POP.TOTL).
+The dataset you will use is in your `data/` folder and it’s called `country-pop.csv`.
+
+-   Load the two dataset using `read_csv()`.
+
+    -   You will need to use the `skip` argument since the CSV file has some extraneous rows on top. First load the data without it, then determine how many rows to skip.
+    -   Make sure there are no extraneous columns by removing them.
+    -   Use `janitor::clean_names()`
+
+-   Find the countries with the top 10 highest population count in 2020.
+    Subset the data for just these 10 countries.
+
+-   Create a racing bar chart, using **gganimate** for the change in population for these countries.
+
+## Question 2
+
+**Adopt, don’t shop.** The data for this exercise comes from [The Pudding](https://github.com/the-pudding/data/blob/master/dog-shelters/README.md) via [TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-12-17).
+
+a.  Load the `dog_travel` dataset included in the `data` folder of your repository with `read_csv()`.
+
+b.  Calculate the number of dogs available to adopt per `contact_state`.
+    Save the result as a new data frame with variables `contact_state` and `n`.
+
+c.  Make a histogram of the number of dogs available to adopt and describe the distribution of this variable.
+
+d.  Use this dataset to make a map of the US states, where each state is filled in with a color based on the number of dogs available to adopt in that state.
+
+    ::: callout-tip
+    -   Use the `state_list` dataset which you can find in the `data` folder of your repo as a lookup table to match state names to abbreviations.
+    -   Use a gradient color scale and `log10` transformation.
+    :::
+
+e.  Interpret the visualization.
+
+## Question 3
+
+**Key lyme pie.** The goal of this exercise is to recreate a pie chart in R and then improve it by presenting the same information as a bar graph.
+The pie chart to be recreate is below and it comes from the Lyme Disease Association.
+(Source: [https://lymediseaseassociation.org/resources/2018-reported-lyme-cases-top-15-states](https://lymediseaseassociation.org/resources/2018-reported-lyme-cases-top-15-states/).)
+
+<img src="images/2018_case_numbers_final.jpg" title="Bar chart of 2018 US reported lyme disease cases featuring top 15 states" alt="Bar chart of 2018 US reported lyme disease cases featuring top 15 states" width="90%"/>
+
+Below are the steps I recommend you follow and some guidance on what (not) to worry about:
+
+-   First, create the data frame: Use the annotations in the visualization provided to do this.
+    You should create the new data frame using the `tibble()` or the `tribble()` functions.
+
+-   Then, recreate the pie chart: When recreating the pie chart you do not need to
+
+    -   make it a 3D pie chart (2D is sufficient)
+    -   match the colors (default ggplot2 colors or any other color palette is fine)
+    -   annotate the plot in the same way (just the legend is sufficient)
+    -   match the entire caption (see below for what we want you to match)
+
+    However you should,
+
+    -   make a 2D pie chart
+    -   present a legend on the right that shows the mapping of the colors to states
+    -   match the title text, location, and alignment
+    -   match the text, location, and alignment of the first two lines of the caption
+
+-   Finally, improve the visualization by presenting this information in the form of a bar graph.
+    And as an additional challenge, imagine you’re working for the state of Connecticut, so highlight that bar corresponding to that state in some way.
+    Write a sentence or two describing why you chose to highlight the Connecticut info the way you did.
+
+## Question 4
+
+**Revisit and tabulate.** Take a dataset you visualized in an earlier HW assignment and construct a table communicating the same or relevant message using the **gt** package and following the "10 Guidelines for Better Tables" as much as possible.
+
+::: callout-note
+-   Place the relevant data in the `data` folder.
+-   Not all of the guidelines will be relevant and I’m not looking for the perfect table. Instead, I would like you to make three decisions based on what you learned about good tables, state why you made these decisions, and implement them. You’re welcomed to make more than three improvements to the default table, but you’re not expected to do so (for grading purposes).
+:::
+
+## Question 5
+
+**Generate.** Create a piece of generative art using either the [**jasmines**](https://jasmines.djnavarro.net/) package or a system you build from scratch.
+Provide at least three bullet points for some of the choices you make in building this piece, either functions you use or their parameters.
