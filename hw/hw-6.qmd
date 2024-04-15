@@ -47,7 +47,7 @@ The dataset you will use is in your `data/` folder and it’s called `country-po
 
 **Adopt, don’t shop.** The data for this exercise comes from [The Pudding](https://github.com/the-pudding/data/blob/master/dog-shelters/README.md) via [TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-12-17).
 
-a.  Load the `dog_travel` dataset included in the `data` folder of your repository with `read_csv()`.
+a.  Load the `dog-travel` dataset included in the `data` folder of your repository with `read_csv()`.
 
 b.  Calculate the number of dogs available to adopt per `contact_state`.
     Save the result as a new data frame with variables `contact_state` and `n`.
@@ -91,8 +91,8 @@ Below are the steps I recommend you follow and some guidance on what (not) to wo
     -   match the text, location, and alignment of the first two lines of the caption
 
 -   Finally, improve the visualization by presenting this information in the form of a bar graph.
-    And as an additional challenge, imagine you’re working for the state of Connecticut, so highlight that bar corresponding to that state in some way.
-    Write a sentence or two describing why you chose to highlight the Connecticut info the way you did.
+    And as an additional challenge, imagine you’re working for the state of Maine, so highlight that bar corresponding to that state in some way.
+    Write a sentence or two describing why you chose to highlight the Maine info the way you did.
 
 ## Question 4
 
