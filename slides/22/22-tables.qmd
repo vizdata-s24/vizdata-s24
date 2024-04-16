@@ -541,7 +541,7 @@ Source: Schwabish, Jonathan A.
 
 -   2022 Posit table contest: [Winners of the 2022 Table Contest](https://posit.co/blog/winners-of-the-2022-table-contest/)
 
-    -   Look out for 2024 table contest announcement!
+    -   2024 table contest just announced! [https://posit.co/blog/announcing-the-2024-table-contest](https://posit.co/blog/announcing-the-2024-table-contest/)
 
 -   Table gallery: <https://forum.posit.co/c/irl/table-gallery/64>
 
