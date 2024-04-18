@@ -10,10 +10,17 @@ format: revealjs
 
 # Warm up
 
-## Announcements
+## Announcements {.smaller}
 
 ::: incremental
--   Any volunteers for live code review of project on Tuesday? DM me on Slack with a link to your repo. First come, first served-ish.
+-   Course and TA evaluations are open, please fill them out.
+
+    -   Want to nominate a TA as "TA of the Year"?
+        Send an email to dus\@stat.duke.edu with your nomination.
+
+-   Any volunteers for live code review of project on Tuesday?
+    DM me on Slack with a link to your repo.
+    First come, first served-ish.
 
 -   Award ceremony on Tuesday!
 
@@ -25,7 +32,8 @@ format: revealjs
 
     -   A pkgdown site
 
-    If you need help building this, don't leave it to the last minute! And if building a website, reach out to me to turn on hosting for you.
+    If you need help building this, don't leave it to the last minute!
+    And if building a website, reach out to me to turn on hosting for you.
 :::
 
 ## From last time...
