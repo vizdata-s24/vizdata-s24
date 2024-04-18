@@ -10,6 +10,24 @@ format: revealjs
 
 # Warm up
 
+## Announcements
+
+::: incremental
+-   Any volunteers for live code review of project on Tuesday? DM me on Slack with a link to your repo. First come, first served-ish.
+
+-   Award ceremony on Tuesday!
+
+-   Your project needs a live "homepage":
+
+    -   Quarto website like in Project 1
+
+    -   An app/dashboard/etc.
+
+    -   A pkgdown site
+
+    If you need help building this, don't leave it to the last minute! And if building a website, reach out to me to turn on hosting for you.
+:::
+
 ## Setup {.smaller}
 
 ```{r}
@@ -102,7 +120,8 @@ To fill in missing book covers in an ebook-borrowing and reading app
 ![](images/Generative-book-covers.png){fig-align="center"}
 
 ::: aside
-New York Public Library, [Generative eBook Covers](https://www.nypl.org/blog/2014/09/03/generative-ebook-covers). September 3, 2014.
+New York Public Library, [Generative eBook Covers](https://www.nypl.org/blog/2014/09/03/generative-ebook-covers).
+September 3, 2014.
 :::
 
 # I can plot myself flowers
@@ -146,7 +165,8 @@ The golden angle is the angle separating successive florets on a sunflower.
 :::
 
 ::: aside
-Wikipedia. [Golden angle](https://en.wikipedia.org/wiki/Golden_angle).
+Wikipedia.
+[Golden angle](https://en.wikipedia.org/wiki/Golden_angle).
 :::
 
 ## Petals with the golden angle {.smaller}
@@ -396,7 +416,8 @@ Go to `ae-22` and let's make some flowers!
 
 -   [Getting Started with Generative Art in R](https://towardsdatascience.com/getting-started-with-generative-art-in-r-3bc50067d34b)
 
--   [Why Love Generative Art?](https://www.artnome.com/news/2018/8/8/why-love-generative-art) by Jason Bailey
+-   [Why Love Generative Art?](https://www.artnome.com/news/2018/8/8/why-love-generative-art)
+    by Jason Bailey
 
 ## Learn/do more
 
