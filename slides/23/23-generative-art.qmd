@@ -28,6 +28,10 @@ format: revealjs
     If you need help building this, don't leave it to the last minute! And if building a website, reach out to me to turn on hosting for you.
 :::
 
+## From last time...
+
+<https://vizdata.org/slides/22/22-tables.html#/ae-17-task-3>
+
 ## Setup {.smaller}
 
 ```{r}
