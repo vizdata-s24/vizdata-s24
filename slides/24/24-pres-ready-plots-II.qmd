@@ -1,0 +1,106 @@
+---
+title: Presentation ready plots II
+subtitle: Lecture 24
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+# Warm up
+
+## Announcements
+
+-   Peer eval 2 is due Wednesday night, results will be distributed Thursday morning so no extensions are possible.
+
+-   HW 6 is due tomorrow at 5 pm.
+
+## Projects presentations
+
+Show up at the beginning (or, better yet, 10 mins before) the time period you're assigned to:
+
+-   Section 1 (Holly's section) - 9-10 am
+
+-   Section 2 (Eli's section) - 10:05-11:05 am
+
+::: task
+Any questions / things I can clarify about the projects or anything else we have covered so far?
+:::
+
+# Live code review
+
+-   [Team Spring](https://github.com/vizdata-s24/project-2-team_spring)
+
+-   [Team Ella](https://github.com/vizdata-s24/project-2-team_ella)
+
+# Awards
+
+## Best thank you card - Honorable mentions
+
+::: columns
+::: {.column width="33%"}
+Emma Chun
+
+![](awards/thank-you/HM-emma-chun.png)
+:::
+
+::: {.column width="33%"}
+Jon Michael Stroh
+
+![](awards/thank-you/HM-jonmichaelstroh.png)
+:::
+
+::: {.column width="33%"}
+Mitch Harrison
+
+![](awards/thank-you/HM-MitchellHarrison.png)
+:::
+:::
+
+## Best thank you card - Winner 🏆
+
+Nathan Yang
+
+![](awards/thank-you/W-Knicey.png)
+
+## Best ugly plot - Honorable mentions
+
+::: columns
+::: {.column width="33%"}
+Ameya Rao
+
+![](awards/ugly-plot/HM-ameya-rao.png)
+:::
+
+::: {.column width="33%"}
+Brian Janger
+
+![](awards/ugly-plot/HM-brian-janger.png)
+:::
+
+::: {.column width="33%"}
+Ezra Odio
+
+![](awards/ugly-plot/HM-ezra-odio.png)
+:::
+:::
+
+## Best ugly plot - Winner 🏆
+
+Cooper Likosar
+
+![](awards/ugly-plot/W-cooperlikosar.png){width="1000"}
+
+## Most commits
+
+|                 |     |     |
+|-----------------|-----|-----|
+| Ryan Silver     | 400 | 🏆  |
+| Rohit Gunda     | 271 |     |
+| Alexa Fahrer    | 246 |     |
+| Katherine Zhong | 212 |     |
+
+# Farewell, and thank you 💙
+
+And please take the rest of class time to fill out course and TA evaluations!
