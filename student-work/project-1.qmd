@@ -2,4 +2,51 @@
 title: "Project 1 outputs"
 ---
 
-To be posted.
+The assignment for Project 1 can be found [here](/project/project-1.html).
+
+Below are projects the teams produced.
+
+::: project
+[**Taylor Swift (Soon-to-be Kelce)**](https://vizdata-s24.github.io/project-1-team_robots/) by Team Robots
+
+------------------------------------------------------------------------
+
+[![Energy of Taylor Swift songs vs. albums.](images/project-1/team_robots.png){width="640"}](https://vizdata-s24.github.io/project-1-team_robots/)
+
+------------------------------------------------------------------------
+
+Answer two key questions: 
+1. How do Taylor Swift's single releases differ from the songs on the full albums?
+2. How have Taylor Swift's songs changed over time?
+[*Read more.*](https://vizdata-s24.github.io/project-1-team_robots/)
+:::
+
+::: project
+[**Tackling Tornado Trends**](https://vizdata-s24.github.io/project-1-team_two/) by Team Two
+
+------------------------------------------------------------------------
+
+[![Average Tornado Magnitude and Fatalities by season and decade.](images/project-1/team_two.png){width="640"}](https://vizdata-s24.github.io/project-1-team_two/)
+
+------------------------------------------------------------------------
+
+Answer two key questions: 
+1. How may the nature of tornadoes vary by the location they occur in?
+2. How may the nature of tornadoes vary by the season they occur in and over time?
+[*Read more.*](https://vizdata-s24.github.io/project-1-team_two/)
+:::
+
+::: project
+[**Teardrops on my GitR: A statistical exploration of musicality in Taylor Swift’s discography**](https://vizdata-s24.github.io/project-1-tear/) by Tear
+
+------------------------------------------------------------------------
+
+[![Average Tornado Magnitude and Fatalities by season and decade.](images/project-1/team_tear.png){width="640"}](https://vizdata-s24.github.io/project-1-tear/)
+
+------------------------------------------------------------------------
+
+Answer two key questions: 
+1. Is there a relationship between an album’s average energy level and its critical reception?
+2. How do bonus tracks differ from album tracks? Do the two groups show different trends from the other songs on their respective albums?
+[*Read more.*](https://vizdata-s24.github.io/project-1-tear/)
+:::
