@@ -50,3 +50,18 @@ Answer two key questions:
 2. How do bonus tracks differ from album tracks? Do the two groups show different trends from the other songs on their respective albums?
 [*Read more.*](https://vizdata-s24.github.io/project-1-tear/)
 :::
+
+::: project
+[**Energy Consumption and Production in the US vs. China**](https://vizdata-s24.github.io/project-1-team_rgb/) by Team RGB
+
+------------------------------------------------------------------------
+
+[![US v. China Renewable Energy Production.](images/project-1/team_rgb.png){width="640"}](https://vizdata-s24.github.io/project-1-team_rgb/)
+
+------------------------------------------------------------------------
+
+Answer two key questions: 
+1. How has energy production differed between the United States and China?
+2. How has energy consumption changed in the United States, China, and globally since 1995?
+[*Read more.*](https://vizdata-s24.github.io/project-1-team_rgb/)
+:::
