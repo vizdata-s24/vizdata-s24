@@ -90,3 +90,37 @@ Answer two key questions:
 
 [*Read more.*](https://vizdata-s24.github.io/project-1-tidy_team_3/)
 :::
+
+::: project
+[**Squirrelytics: Central Park Squirrels**](https://vizdata-s24.github.io/project-1-team_arthur/) by Team Arthur
+
+------------------------------------------------------------------------
+
+[![Squirrel Locations in Central Park, New York City](images/project-1/team_arthur.png){width="640"}](https://vizdata-s24.github.io/project-1-team_arthur/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  Where do different colors and ages of squirrels reside in Central Park?
+2.  How are squirrel activities affected by the time of day or interactions with humans?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-team_arthur/)
+:::
+
+::: project
+[**London Marathon Winners Since 1981**](https://vizdata-s24.github.io/project-1-team_ryan/) by Team Ryan
+
+------------------------------------------------------------------------
+
+[![London Marathon Acceptance Rates Since 1981](images/project-1/team_ryan.png){width="640"}](https://vizdata-s24.github.io/project-1-team_ryan/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  How does performance differ across race categories over time in relationship to the weather?
+2.  How have the marathon acceptance and race completion rates changed over time?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-team_ryan/)
+:::
