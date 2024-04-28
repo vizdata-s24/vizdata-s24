@@ -16,8 +16,10 @@ Below are projects the teams produced.
 ------------------------------------------------------------------------
 
 Answer two key questions: 
-1. How do Taylor Swift's single releases differ from the songs on the full albums?
-2. How have Taylor Swift's songs changed over time?
+
+1. How do Taylor Swift's single releases differ from the songs on the full albums? 
+2. How have Taylor Swift's songs changed over time? 
+
 [*Read more.*](https://vizdata-s24.github.io/project-1-team_robots/)
 :::
 
@@ -30,9 +32,11 @@ Answer two key questions:
 
 ------------------------------------------------------------------------
 
-Answer two key questions: 
-1. How may the nature of tornadoes vary by the location they occur in?
-2. How may the nature of tornadoes vary by the season they occur in and over time?
+Answer two key questions:
+
+1.  How may the nature of tornadoes vary by the location they occur in?
+2.  How may the nature of tornadoes vary by the season they occur in and over time?
+
 [*Read more.*](https://vizdata-s24.github.io/project-1-team_two/)
 :::
 
@@ -45,9 +49,11 @@ Answer two key questions:
 
 ------------------------------------------------------------------------
 
-Answer two key questions: 
-1. Is there a relationship between an album’s average energy level and its critical reception?
-2. How do bonus tracks differ from album tracks? Do the two groups show different trends from the other songs on their respective albums?
+Answer two key questions:
+
+1.  Is there a relationship between an album’s average energy level and its critical reception?
+2.  How do bonus tracks differ from album tracks? Do the two groups show different trends from the other songs on their respective albums?
+
 [*Read more.*](https://vizdata-s24.github.io/project-1-tear/)
 :::
 
@@ -60,8 +66,27 @@ Answer two key questions:
 
 ------------------------------------------------------------------------
 
-Answer two key questions: 
-1. How has energy production differed between the United States and China?
-2. How has energy consumption changed in the United States, China, and globally since 1995?
+Answer two key questions:
+
+1.  How has energy production differed between the United States and China?
+2.  How has energy consumption changed in the United States, China, and globally since 1995?
+
 [*Read more.*](https://vizdata-s24.github.io/project-1-team_rgb/)
+:::
+
+::: project
+[**UFO Sightings in the US**](https://vizdata-s24.github.io/project-1-tidy_team_3/) by Tidy Team 3
+
+------------------------------------------------------------------------
+
+[![Distribution of UFO Sightings and Military Bases in California](images/project-1/tidy_team_3.png){width="640"}](https://vizdata-s24.github.io/project-1-tidy_team_3/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  Is there a correlation between UFO sightings and military bases across the US?
+2.  How have UFO sightings changed over time? Why?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-tidy_team_3/)
 :::
