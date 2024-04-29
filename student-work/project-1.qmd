@@ -124,3 +124,20 @@ Answer two key questions:
 
 [*Read more.*](https://vizdata-s24.github.io/project-1-team_ryan/)
 :::
+
+::: project
+[**Unveiling the Mysteries Above: Exploring UFO Sightings in the United States**](https://vizdata-s24.github.io/project-1-gggang/) by Team gggang
+
+------------------------------------------------------------------------
+
+[![UFO sightings relative to population density in the United States](images/project-1/gggang.png){width="640"}](https://vizdata-s24.github.io/project-1-gggang/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  Where are the UFOs?
+2.  When do people see UFOs?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-gggang/)
+:::
