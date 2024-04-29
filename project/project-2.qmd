@@ -253,11 +253,8 @@ All results presented must have corresponding code. If you do calculations by ha
 
 -   Set aside time to work together and apart (physically).
 
--   Code:
-
-    -   In your presentation your code should be hidden (`echo: false`) so that your slides are neat and easy to read. However your document should include all your code such that if I re-render your Quarto file I should be able to obtain the results you presented. **Exception:** If you want to highlight something specific about a piece of code, you're welcomed to show that portion.
-
-    -   In your write-up your code should be visible.
+-   Code: In your presentation and your write-up your code should be hidden (`echo: false`) so that your slides are neat and easy to read. However your document should include all your code such that if I re-render / re-run your source code, I should be able to obtain the results you presented. This is true, at a minimum, for your write-up. Your presentation can be created with other software.
+    - **Exception:** If you want to highlight something specific about a piece of code, you're welcomed to show that portion.
 
 -   Teamwork: You are to complete the assignment as a team. All team members are expected to contribute equally to the completion of this assignment and team evaluations will be given at its completion - anyone judged to not have sufficiently contributed to the final product will have their grade penalized. While different team members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment work.
 
