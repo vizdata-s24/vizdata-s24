@@ -15,10 +15,10 @@ Below are projects the teams produced.
 
 ------------------------------------------------------------------------
 
-Answer two key questions: 
+Answer two key questions:
 
-1. How do Taylor Swift's single releases differ from the songs on the full albums? 
-2. How have Taylor Swift's songs changed over time? 
+1.  How do Taylor Swift's single releases differ from the songs on the full albums?
+2.  How have Taylor Swift's songs changed over time?
 
 [*Read more.*](https://vizdata-s24.github.io/project-1-team_robots/)
 :::
@@ -140,4 +140,21 @@ Answer two key questions:
 2.  When do people see UFOs?
 
 [*Read more.*](https://vizdata-s24.github.io/project-1-gggang/)
+:::
+
+::: project
+[**Exploring Regional Socioeconomic Dynamics: Childcare, Income, Unemployment, and Poverty Insights**](https://vizdata-s24.github.io/project-1-statistical_six/) by Statistical Six
+
+------------------------------------------------------------------------
+
+[![Median Household Income and Childcare Costs by US Region](images/project-1/statistical_six.png){width="640"}](https://vizdata-s24.github.io/project-1-statistical_six/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  In 2018, how does the relationship between median household income and median annual childcare costs differ across regions of the United States and between Family- vs Center-Based Care?
+2.  From 2008 to 2018, how does the poverty rate and the unemployment rate change across regions of the United States?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-statistical_six/)
 :::
